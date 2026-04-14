@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OSRO Quests (MR)</title>
+    <link rel="shortcut icon" type="image/png" href="image/favicon.png">
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+    <div class="container">
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+          <h1>
+            <img id="osro-quests-logo" src="image/osro_quests_logo_v2.png" width="170" height="69" title="OSRO Quests (Midrate)" alt="OSRO Quests Logo" />
+            <div class="header-right-group">
+              <!-- Remove the old editor toggle div, keep only the github link -->
+              <div class="header-controls-row">
+                <button class="header-icon-btn" id="themeToggleBtn" title="Toggle theme" onclick="toggleTheme()">☀</button>
+                <button class="header-icon-btn" id="settingsGearBtn" title="Settings" onclick="toggleSettingsPanel()">⚙</button>
+              </div>
+              <div id="header-version-tag"></div>
+            </div>
+          </h1>
+          <div class="tab-bar">
+            <div class="tab active" onclick="switchTab('quests')">Quests</div>
+            <div class="tab" onclick="switchTab('shops')">Shops</div>
+            <div class="tab" onclick="switchTab('items')">Items</div>
+            <div class="tab" onclick="switchTab('groups')">Groups</div>
+            <div class="tab" onclick="switchTab('autoloot')">Autoloot</div>
+          </div>
+          <div id="settingsPanel">
+            <div class="settings-row">
+              <div>
+                <div class="settings-label">Show Location</div>
+                <div class="settings-sublabel">Group / subgroup under rows</div>
+              </div>
+              <label class="setting-toggle">
+                <input type="checkbox" id="settingShowLocation" checked onchange="settingSetShowLocation(this.checked)">
+                <span class="setting-toggle-slider"></span>
+              </label>
+            </div>
+            <div class="settings-row">
+              <div class="settings-label">Sections</div>
+              <div class="sec-btn-group">
+                <button id="secBtn_desc"       class="sec-btn" onclick="toggleSection('desc')">Desc</button>
+                <button id="secBtn_reqs"       class="sec-btn" onclick="toggleSection('reqs')">Reqs</button>
+                <button id="secBtn_value"      class="sec-btn" onclick="toggleSection('value')">Value</button>
+                <button id="secBtn_producedby" class="sec-btn" onclick="toggleSection('producedby')">Produced</button>
+                <button id="secBtn_requiredby" class="sec-btn" onclick="toggleSection('requiredby')">Required</button>
+              </div>
+            </div>
+            <div class="settings-row">
+              <a href="https://github.com/torrq/osro-quest-helper" class="settings-link" target="_blank" rel="noopener">
+                <img src="image/github.png" alt="GitHub" width="20" height="20" />
+                GitHub
+              </a>
+            </div>
+          </div>
+          <div id="questsSearch" class="search-section">
+            <div class="search-row">
+              <input
+                type="text"
+                id="questSearchInput"
+                class="search-input"
+                placeholder="Search quests..."
+              />
+              <button class="btn btn-sm" onclick="clearQuestSearch()">×</button>
+            </div>
+          </div>
+          <div id="shopsSearch" class="search-section hidden">
+            <div class="search-row">
+              <input
+                type="text"
+                id="shopSearchInput"
+                class="search-input"
+                placeholder="Search shops..."
+              />
+              <button class="btn btn-sm" onclick="clearShopSearch()">×</button>
+            </div>
+          </div>
+          <div id="itemsSearch" class="search-section hidden">
+            <div class="search-row">
+              <input
+                type="text"
+                id="itemSearchInput"
+                class="search-input"
+                placeholder="Search items..."
+              />
+              <button class="btn btn-sm" onclick="clearItemSearch()">×</button>
+            </div>
+            <div class="market-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="searchDescriptions" onchange="toggleDescSearch(this.checked)" autocomplete="off">
+                <span>Desc</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="showAllItems" onchange="toggleShowAllItems(this.checked)" autocomplete="off">
+                <span>All</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="showNewItemsOnly" onchange="toggleNewItemsFilter(this.checked)" autocomplete="off">
+                <span>New</span>
+              </label>
+            </div>
+            <div class="market-row">
+              <label class="checkbox-label">
+                <input type="checkbox" id="showValuesOnly" onchange="toggleValuesFilter(this.checked)" autocomplete="off">
+                <span>Zeny Values</span>
+              </label>
+              <button class="btn btn-sm" onclick="importItemValues()" title="Import Zeny Values">Import</button>
+              <button class="btn btn-sm" onclick="exportValues()" title="Export Zeny Values">Export</button>
+            </div>
+          </div>
+          <div class="toolbar">
+            <div id="groupsActions" class="search-section hidden">
+              <div class="search-row">
+                <button class="btn btn-primary btn-sm" onclick="addGroup()">+ Add Group</button>
+              </div>
+            </div>
+            <div class="toolbar-actions">
+              <div class="dropdown">
+                <button class="btn btn-sm">Export ▾</button>
+                <div class="dropdown-content">
+                  <button onclick="exportAll()">All (2 Files)</button>
+                  <hr class="dropdown-divider" />
+                  <button onclick="exportQuests()">Quests JSON</button>
+                  <button onclick="exportShops()">Shops JSON</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tree-container" id="treeContainer"></div>
+        <div class="tree-container hidden" id="shopsTreeContainer"></div>
+        <div class="items-list hidden" id="itemsList"></div>
+        <div class="groups-list hidden" id="groupsList"></div>
+        <div class="autoloot-list hidden" id="autolootList"></div>
+      </div>
+      <div class="main-content" id="mainContent">
+        <div class="empty-state">
+          <h2>No Quest Selected</h2>
+          <p>Select a quest from the sidebar</p>
+        </div>
+      </div>
+    </div>
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/items.js"></script>
+    <script src="js/quests.js"></script>
+    <script src="js/shops.js"></script>
+    <script src="js/groups.js"></script>
+    <script src="js/autoloot.js"></script>
+  </body>
+</html>
