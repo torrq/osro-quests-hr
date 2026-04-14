@@ -14,7 +14,7 @@ from pathlib import Path
 # Paths relative to helpers/ directory (where this script lives)
 SCRIPT_DIR = Path(__file__).parent
 SPRITE_PATH = SCRIPT_DIR / ".." / "image" / "item_sprite.png"
-MAP_PATH = SCRIPT_DIR / ".." / "data" / "osromr_sprite_map.json"
+MAP_PATH = SCRIPT_DIR / ".." / "data" / "osrohr_sprite_map.json"
 ICON_DIR = SCRIPT_DIR / ".." / "image" / "item"
 
 def verify_sprite_sheet():

@@ -13,10 +13,10 @@ from pathlib import Path
 
 # Paths
 SCRIPT_DIR = Path(__file__).parent
-EXISTING_ITEMS_FILE = SCRIPT_DIR / ".." / "data" / "osromr_items.json"
-INPUT_FILE = "itemInfo_EN.lub"
-OUTPUT_FILE = "osromr_items.json"
-OUTPUT_NEW_FILE = SCRIPT_DIR / ".." / "data" / "osromr_items_new.json"
+EXISTING_ITEMS_FILE = SCRIPT_DIR / ".." / "data" / "osrohr_items.json"
+INPUT_FILE = "itemInfo_custom.lub"
+OUTPUT_FILE = "osrohr_items.json"
+OUTPUT_NEW_FILE = SCRIPT_DIR / ".." / "data" / "osrohr_items_new.json"
 
 ITEM_START_RE = re.compile(r"\[(\d+)\]\s*=\s*{")
 KEY_VALUE_RE = re.compile(r"^(\w+)\s*=\s*(.+?)(?:,\s*)?$")

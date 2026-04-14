@@ -21,7 +21,7 @@ ICON_SIZE = 24  # Size of each icon (24x24px)
 ICONS_PER_ROW = 128  # Icons per row (128 icons = 3072px wide)
 INPUT_DIR = SCRIPT_DIR / ".." / "image" / "item"  # Directory containing individual icon PNGs
 OUTPUT_SPRITE = SCRIPT_DIR / ".." / "image" / "item_sprite.png"  # Output sprite sheet
-OUTPUT_MAP = SCRIPT_DIR / ".." / "data" / "osromr_sprite_map.json"  # Output mapping file
+OUTPUT_MAP = SCRIPT_DIR / ".." / "data" / "osrohr_sprite_map.json"  # Output mapping file
 
 # ============================================================================
 # SPRITE GENERATION

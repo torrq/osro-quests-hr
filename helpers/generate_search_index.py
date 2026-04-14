@@ -2,7 +2,7 @@
 """
 generate_search_index.py
 
-Generate search indices from osromr_items.json for fast client-side searching.
+Generate search indices from osrohr_items.json for fast client-side searching.
 Creates two indices: name-only and description-only.
 """
 
@@ -13,9 +13,9 @@ import re
 
 # Paths
 SCRIPT_DIR = Path(__file__).parent
-ITEMS_FILE = SCRIPT_DIR / ".." / "data" / "osromr_items.json"
-OUTPUT_NAME = SCRIPT_DIR / ".." / "data" / "osromr_search_index_name.json"
-OUTPUT_DESC = SCRIPT_DIR / ".." / "data" / "osromr_search_index_desc.json"
+ITEMS_FILE = SCRIPT_DIR / ".." / "data" / "osrohr_items.json"
+OUTPUT_NAME = SCRIPT_DIR / ".." / "data" / "osrohr_search_index_name.json"
+OUTPUT_DESC = SCRIPT_DIR / ".." / "data" / "osrohr_search_index_desc.json"
 
 def tokenize(text):
     """Convert text to searchable tokens (lowercase words)"""

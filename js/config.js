@@ -3,7 +3,7 @@
 // ============================================================================
 
 const VERSION = 115;
-const FLAVOR = 'Midrate';
+const FLAVOR = 'Highrate';
 
 // === DATA SOURCE CONFIGURATION ===
 
@@ -17,15 +17,15 @@ const REMOTE_PREFIX = "https://torrq.github.io/osro-quest-helper/data/";
 const LOCAL_PREFIX  = "http://10.0.0.20:8298/data/";
 
 const FILES = {
-  items:           "osromr_items.json",
-  newItems:        "osromr_items_new.json",
-  values:          "osromr_item_values.json",
-  quests:          "osromr_quests.json",
-  shops:           "osromr_shops.json",
-  icons:           "osromr_item_icons.json",
-  searchIndexName: "osromr_search_index_name.json",
-  searchIndexDesc: "osromr_search_index_desc.json",
-  spriteMap:       "osromr_sprite_map.json",
+  items:           "osrohr_items.json",
+  newItems:        "osrohr_items_new.json",
+  values:          "osrohr_item_values.json",
+  quests:          "osrohr_quests.json",
+  shops:           "osrohr_shops.json",
+  icons:           "osrohr_item_icons.json",
+  searchIndexName: "osrohr_search_index_name.json",
+  searchIndexDesc: "osrohr_search_index_desc.json",
+  spriteMap:       "osrohr_sprite_map.json",
 };
 
 const prefix = USE_LOCAL_SERVER ? LOCAL_PREFIX : REMOTE_PREFIX;

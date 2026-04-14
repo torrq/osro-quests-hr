@@ -5,8 +5,8 @@ from pathlib import Path
 # Paths relative to helpers/ directory
 SCRIPT_DIR = Path(__file__).parent
 IMAGE_DIR = SCRIPT_DIR / ".." / "image" / "item"
-ITEMS_FILE = SCRIPT_DIR / ".." / "data" / "osromr_items.json"
-OUTPUT_FILE = SCRIPT_DIR / ".." / "data" / "osromr_item_icons.json"
+ITEMS_FILE = SCRIPT_DIR / ".." / "data" / "osrohr_items.json"
+OUTPUT_FILE = SCRIPT_DIR / ".." / "data" / "osrohr_item_icons.json"
 
 def get_available_icons():
     """Scan image/item directory and return list of item IDs that have icons"""

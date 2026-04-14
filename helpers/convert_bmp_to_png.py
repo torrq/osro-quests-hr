@@ -24,7 +24,7 @@ from PIL import Image
 
 # Paths
 SCRIPT_DIR = Path(__file__).parent
-INPUT_FILE = "itemInfo_EN.lub"
+INPUT_FILE = "itemInfo_custom.lub"
 ITEM_DIR = SCRIPT_DIR / "item"
 OUTPUT_DIR = SCRIPT_DIR / "item_png"
 

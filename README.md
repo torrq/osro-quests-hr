@@ -5,7 +5,7 @@
 A web-based quest, material and autoloot management tool for [OSRO Midrate](https://osro.mr). Organize quests, track materials needed for crafting chains, generate @alootid2 commands, and calculate total resource costs with ease.
 
 <h1 align="center">
-   Try it now! 🔗 <a href="https://torrq.github.io/osro-quest-helper">OSRO Quests: Midrate</a>
+   Try it now! 🔗 <a href="https://torrq.github.io/osro-quest-helper">OSRO Quests: Highrate</a>
 </h1>
 <p>&nbsp;</p>
 <p align="center">

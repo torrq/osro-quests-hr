@@ -131,7 +131,7 @@ function initSecretEditorToggle() {
 
 // ===== SETTINGS =====
 
-const CONFIG_KEY = 'osromr_config_v1';
+const CONFIG_KEY = 'osrohr_config_v1';
 
 function loadConfig() {
   try {
@@ -1031,7 +1031,7 @@ function exportQuests() {
     }))
   }));
 
-  downloadJSON({ groups: cleanedGroups }, "osromr_quests.json");
+  downloadJSON({ groups: cleanedGroups }, "osrohr_quests.json");
 }
 
 function exportShops() {
@@ -1050,7 +1050,7 @@ function exportShops() {
     }))
   }));
 
-  downloadJSON({ groups: cleanedGroups }, "osromr_shops.json");
+  downloadJSON({ groups: cleanedGroups }, "osrohr_shops.json");
 }
 
 function exportValues() {
@@ -1058,7 +1058,7 @@ function exportValues() {
   Object.entries(DATA.items).forEach(([id, item]) => {
     if (item.value > 0) values[id] = item.value;
   });
-  downloadJSON(values, "osromr_item_values.json");
+  downloadJSON(values, "osrohr_item_values.json");
 }
 
 function exportAll() {
