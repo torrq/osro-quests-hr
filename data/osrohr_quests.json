@@ -537,6 +537,753 @@
                   "amount": 10
                 }
               ]
+            },
+            {
+              "name": "Magina Blindfold [1]",
+              "producesId": 3657,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 2295,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5101,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7054,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Blank Eyes [1]",
+              "producesId": 5102,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 5101,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1054,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 943,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 976,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 982,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Robot Ears [1]",
+              "producesId": 3678,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 2295,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5104,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3657,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5014,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Alice Doll [1]",
+              "producesId": 5137,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 1064,
+                  "amount": 150
+                },
+                {
+                  "type": "item",
+                  "id": 7047,
+                  "amount": 200
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Magic Eyes [1]",
+              "producesId": 5138,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 1020,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 1034,
+                  "amount": 300
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Spell Ring",
+              "producesId": 20124,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 4405,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 4290,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 4146,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 981,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 982,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7088,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 1000
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Hokage Hat [1]",
+              "producesId": 3016,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 7111,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7156,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7020,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7005,
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Mizukage Hat [1]",
+              "producesId": 3842,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 7562,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 12080,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 5138,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3001,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Tsuchikage Hat [1]",
+              "producesId": 3843,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3010,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3007,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 947,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 968,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7211,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 200
+                },
+                {
+                  "type": "credit",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Kazekage Hat [1]",
+              "producesId": 20719,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3015,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3663,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5495,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7445,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 968,
+                  "amount": 0
+                },
+                {
+                  "type": "item",
+                  "id": 7436,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 979,
+                  "amount": 30
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "zeny",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Otokage Hat [1]",
+              "producesId": 20720,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3013,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3005,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4374,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7511,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 968,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 981,
+                  "amount": 30
+                },
+                {
+                  "type": "gold",
+                  "amount": 1000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Raikage Hat [1]",
+              "producesId": 20721,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3012,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3008,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3002,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4277,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7448,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 968,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7020,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 976,
+                  "amount": 20
+                },
+                {
+                  "type": "gold",
+                  "amount": 1000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Cygnus Helm [1]",
+              "producesId": 3677,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 2229,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7095,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7116,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 963,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 200
+                },
+                {
+                  "type": "credit",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Earth's Head Protector [1]",
+              "producesId": 3010,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000000
+                },
+                {
+                  "type": "item",
+                  "id": 2256,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 999,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Fire's Head Protector [1]",
+              "producesId": 3011,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000000
+                },
+                {
+                  "type": "item",
+                  "id": 2256,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 999,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Lightning's Head Protector [1]",
+              "producesId": 3012,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000000
+                },
+                {
+                  "type": "item",
+                  "id": 2256,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 999,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Sound's Head Protector [1]",
+              "producesId": 3013,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000000
+                },
+                {
+                  "type": "item",
+                  "id": 2256,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 999,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Water's Head Protector [1]",
+              "producesId": 3014,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000000
+                },
+                {
+                  "type": "item",
+                  "id": 2256,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 999,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Wind's Head Protector [1]",
+              "producesId": 3015,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000000
+                },
+                {
+                  "type": "item",
+                  "id": 2256,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 999,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 10
+                }
+              ]
             }
           ]
         },
