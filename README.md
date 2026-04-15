@@ -2,7 +2,7 @@
 
 # OSRO Quests 
 
-A web-based quest, material and autoloot management tool for [OSRO Midrate](https://osro.mr). Organize quests, track materials needed for crafting chains, generate @alootid2 commands, and calculate total resource costs with ease.
+A web-based quest, material and autoloot management tool for [OSRO Highrate](https://osro.gg). Organize quests, track materials needed for crafting chains, generate @alootid2 commands, and calculate total resource costs with ease.
 
 <h1 align="center">
    Try it now! 🔗 <a href="https://torrq.github.io/osro-quests-hr">OSRO Quests: Highrate</a>
