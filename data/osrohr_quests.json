@@ -36,6 +36,475 @@
                   "amount": 10
                 }
               ]
+            },
+            {
+              "name": "Deviling Wings",
+              "producesId": 3661,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                },
+                {
+                  "type": "item",
+                  "id": 4174,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 2255,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Arch Devil Wings",
+              "producesId": 3658,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                },
+                {
+                  "type": "item",
+                  "id": 1038,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 1039,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Torn Wings",
+              "producesId": 3008,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 1058,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7101,
+                  "amount": 250
+                },
+                {
+                  "type": "item",
+                  "id": 924,
+                  "amount": 200
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Arctic Wings",
+              "producesId": 3001,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 995,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 749,
+                  "amount": 150
+                },
+                {
+                  "type": "item",
+                  "id": 7066,
+                  "amount": 150
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Demon Wings",
+              "producesId": 3003,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 1036,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 923,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 1030,
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Phoenix Wings",
+              "producesId": 3007,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 994,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 954,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7006,
+                  "amount": 200
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "White Butterfly Wings",
+              "producesId": 3009,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 3000,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7168,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7063,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 982,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 1007,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 4054,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Black Butterfly Wings",
+              "producesId": 3002,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 3000,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7168,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7063,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 1008,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 4174,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Gargoyle Wings",
+              "producesId": 3005,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 7214,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7063,
+                  "amount": 150
+                },
+                {
+                  "type": "item",
+                  "id": 7067,
+                  "amount": 150
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Wings",
+              "producesId": 3006,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 3000,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3009,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3002,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 980,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 716,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 715,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 718,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Devil Wings",
+              "producesId": 3750,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3658,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3661,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3003,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3009,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3002,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1038,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 1039,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Claw Wings",
+              "producesId": 3660,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 7116,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 963,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 200
+                },
+                {
+                  "type": "credit",
+                  "amount": 5
+                }
+              ]
             }
           ]
         },
