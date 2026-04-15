@@ -29,10 +29,11 @@ const FILES = {
 };
 
 const LOCAL_STORAGE = {
-  "config": "osrohr_config_v1",
-  "autoloot_data": "osrohr_autoloot_v1",
-  "autoloot_names": "osrohr_autoloot_names_v1",
-  "item_values":   "osrohr_item_values_v1"
+  "config": "osrohr_config",
+  "theme": "osrohr_theme",
+  "autoloot_data": "osrohr_autoloot_data",
+  "autoloot_names": "osrohr_autoloot_names",
+  "item_values":   "osrohr_item_values"
 };
 
 const prefix = USE_LOCAL_SERVER ? LOCAL_PREFIX : REMOTE_PREFIX;
