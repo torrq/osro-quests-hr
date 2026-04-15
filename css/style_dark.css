@@ -5,16 +5,16 @@
 
 :root {
   /* Base backgrounds - subtle blue-gray tones */
-  --bg: #0c140a;
+  --bg: #020403;
   --bg-dark: #0a140c;
-  --bg-secondary: #162216;
-  --bg-tertiary: #1c281e;
+  --bg-secondary: #09120d;
+  --bg-tertiary: #112112;
   
   /* Header background image */
   --header-bg-image: url("../image/osrohr_dark.jpg");
 
   /* Panel colors */
-  --panel: #0d1117;
+  --panel: #080e0e;
   --panel-hover: #1f3735;
   
   /* Borders */
@@ -69,7 +69,7 @@
   --code-bg: #0d1117;
   --code-block-bg: rgba(0, 0, 0, 0.3);
   --code-text: #79c0ff;
-  --autocomplete-bg: #1a1f2b;
+  --autocomplete-bg: #1a272b;
   
   /* Item placeholders */
   --placeholder-bg: #3a3a3a;
