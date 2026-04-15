@@ -1320,6 +1320,855 @@
                   "amount": 100
                 }
               ]
+            },
+            {
+              "name": "Fist Of Fury [4]",
+              "producesId": 3503,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                },
+                {
+                  "type": "item",
+                  "id": 3011,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7020,
+                  "amount": 20
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Sword [4]",
+              "producesId": 3500,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 13421,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1170,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1311,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Bow [4]",
+              "producesId": 3501,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 1745,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1284,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 13004,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Staff [4]",
+              "producesId": 3502,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 1647,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1646,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1616,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1523,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Book [4]",
+              "producesId": 3527,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 1559,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1560,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1561,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7347,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7015,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 1006,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7117,
+                  "amount": 200
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Axe [4]",
+              "producesId": 3528,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 1311,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1364,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1369,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7036,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Dagger [4]",
+              "producesId": 3529,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 1232,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1242,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1230,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7048,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Knuckle [4]",
+              "producesId": 3530,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 1810,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1820,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1822,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7289,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 1009,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Guitar [4]",
+              "producesId": 3532,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 1910,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1915,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1917,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7296,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7297,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Whip [4]",
+              "producesId": 3533,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 1970,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1974,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1972,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7296,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7297,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Revolver [4]",
+              "producesId": 3534,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 13103,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 13104,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 13105,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 13106,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 13101,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 13107,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7290,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Shuriken [4]",
+              "producesId": 3535,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 13303,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 13304,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 13302,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 13300,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7109,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7108,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Katar [4]",
+              "producesId": 3536,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 1264,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1261,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1266,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7347,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7345,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7507,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 678,
+                  "amount": 200
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Spear [4]",
+              "producesId": 3537,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 1413,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "amount": 1,
+                  "id": 1417
+                },
+                {
+                  "type": "item",
+                  "id": 1421,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7109,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7020,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Balmung [4]",
+              "producesId": 1161,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7079,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 7089,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 7088,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 3500,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1135,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1131,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1141,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1136,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Elemental Sword [3]",
+              "producesId": 13414,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7090,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7091,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4474,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4419,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4148,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 3500,
+                  "amount": 4
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Farmer's Axe [4]",
+              "producesId": 30435,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 99999999
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 99
+                },
+                {
+                  "type": "item",
+                  "id": 3528,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "amount": 33,
+                  "id": 3191
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "amount": 300,
+                  "id": 7233
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Farmer's Bow [4]",
+              "producesId": 30436,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 99999999
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 99
+                },
+                {
+                  "type": "item",
+                  "id": 3501,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 33
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 7233,
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Farmer's Staff [4]",
+              "producesId": 30437,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 99999999
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 99
+                },
+                {
+                  "type": "item",
+                  "id": 3502,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 33
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7233,
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             }
           ]
         },
@@ -1358,6 +2207,490 @@
                 {
                   "type": "item",
                   "id": 3100,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Book [2]",
+              "producesId": 30409,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3527,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7347,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7015,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 1006,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7117,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 10
+                },
+                {
+                  "type": "credit",
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Bow [2]",
+              "producesId": 30410,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3501,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7036,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 0
+                },
+                {
+                  "type": "credit",
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Dagger [2]",
+              "producesId": 30411,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3529,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7048,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 10
+                },
+                {
+                  "type": "credit",
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Guitar [2]",
+              "producesId": 30412,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3532,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7296,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7297,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 10
+                },
+                {
+                  "type": "credit",
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Katar [2]",
+              "producesId": 30413,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3536,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7347,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7345,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7507,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 678,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 10
+                },
+                {
+                  "type": "credit",
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Knuckle [2]",
+              "producesId": 30414,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3530,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7289,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 1009,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 10
+                },
+                {
+                  "type": "credit",
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Revolver [2]",
+              "producesId": 30415,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3534,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7290,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 10
+                },
+                {
+                  "type": "credit",
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Shuriken [2]",
+              "producesId": 30416,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3535,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7109,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7108,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 10
+                },
+                {
+                  "type": "credit",
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Spear [2]",
+              "producesId": 30417,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3537,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7109,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7020,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 10
+                },
+                {
+                  "type": "credit",
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Sword [2]",
+              "producesId": 30418,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3500,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7562,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 10
+                },
+                {
+                  "type": "credit",
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Elite Whip [2]",
+              "producesId": 30419,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3533,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7296,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7297,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 10
+                },
+                {
+                  "type": "credit",
                   "amount": 10
                 },
                 {
