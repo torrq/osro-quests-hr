@@ -14,7 +14,7 @@ const USE_LOCAL_SERVER = false;
 const AUTO_IMPORT_ON_FIRST_LOAD = true;
 
 const REMOTE_PREFIX = "https://torrq.github.io/osro-quests-hr/data/";
-const LOCAL_PREFIX  = "http://10.0.0.20:8298/data/";
+const LOCAL_PREFIX  = "http://10.0.0.20:9080/data/";
 
 const FILES = {
   items:           "osrohr_items.json",
