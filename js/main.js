@@ -28,6 +28,7 @@ window.state = {
   showLocation: true,
   sections: {
     desc:       true,
+    notes:      true,
     reqs:       true,
     value:      true,
     requiredby: true,
@@ -142,7 +143,7 @@ function saveConfig(patch) {
   localStorage.setItem(LOCAL_STORAGE.config, JSON.stringify({ ...current, ...patch }));
 }
 
-const SECTION_KEYS = ['desc', 'reqs', 'value', 'requiredby', 'producedby'];
+const SECTION_KEYS = ['desc', 'notes', 'reqs', 'value', 'requiredby', 'producedby'];
 
 function initSettings() {
   const cfg = loadConfig();
@@ -198,7 +199,7 @@ window.toggleTheme            = toggleTheme;
 // ===== THEME MANAGEMENT =====
 
 function initTheme() {
-  const savedTheme = localStorage.getItem('osro-theme') || 'dark';
+  const savedTheme = localStorage.getItem(LOCAL_STORAGE.theme) || 'dark';
   applyTheme(savedTheme);
   updateThemeIcon(savedTheme);
 }
@@ -209,10 +210,10 @@ function updateThemeIcon(theme) {
 }
 
 function toggleTheme() {
-  const current = localStorage.getItem('osro-theme') || 'dark';
+  const current = localStorage.getItem(LOCAL_STORAGE.theme) || 'dark';
   const next = current === 'dark' ? 'light' : 'dark';
   applyTheme(next);
-  localStorage.setItem('osro-theme', next);
+  localStorage.setItem(LOCAL_STORAGE.theme, next);
   updateThemeIcon(next);
 }
 
@@ -820,7 +821,7 @@ function parseDescription(desc) {
     }
     
     // Check current theme
-    const currentTheme = localStorage.getItem('osro-theme') || 'dark';
+    const currentTheme = localStorage.getItem(LOCAL_STORAGE.theme) || 'dark';
     const isDarkTheme = currentTheme === 'dark';
     
     // RO color handling - only adjust for dark theme
