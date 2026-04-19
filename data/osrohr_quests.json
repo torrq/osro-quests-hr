@@ -3643,7 +3643,27 @@
               "producesId": 5257,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 5074,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 2282,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7064,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 5
+                }
+              ]
             },
             {
               "name": "Spore Hat",
@@ -3804,7 +3824,27 @@
               "producesId": 5297,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 5257,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1472,
+                  "amount": 2
+                },
+                {
+                  "type": "credit",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7063,
+                  "amount": 40
+                }
+              ]
             },
             {
               "name": "Telling Doll Hat [1]",
