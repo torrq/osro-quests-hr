@@ -3565,7 +3565,43 @@
               "producesId": 5208,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 1550,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1553,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 1556,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 1554,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 1557,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 1555,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 7015,
+                  "amount": 30
+                }
+              ]
             },
             {
               "name": "Red Ribbon",
