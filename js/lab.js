@@ -22,6 +22,11 @@ const GC_ITEMS = [
   { id: 4009,  amount: 10,  name: 'Chonchon Card' },
   { id: 4010,  amount: 10,  name: 'Willow Card' },
   { id: 4021,  amount: 10,  name: 'Rocker Card' },
+  { id: 969,   amount: 100, name: 'Gold' },
+  { id: 7444,  amount: 100, name: 'Treasure Box' },
+  { id: 7035,  amount: 5,   name: 'Matchstick' },
+  { id: 7289,  amount: 5,   name: 'Peridot' },
+  { id: 7297,  amount: 5,   name: 'Biotite' }
 ];
 GC_ITEMS.sort((a, b) => a.name.localeCompare(b.name));
 
