@@ -3105,7 +3105,7 @@ body.viewer-mode .editor-quest select {
 
 /* Main content */
 .lab-main {
-  padding: 16px;
+  padding: 12px 8px;
   max-width: 900px;
 }
 
@@ -3145,11 +3145,13 @@ body.viewer-mode .editor-quest select {
 .gc-timer-row {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 10px 14px;
+  gap: 12px;
+  padding: 10px 12px;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 6px;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .gc-timer-block {
@@ -3188,7 +3190,7 @@ body.viewer-mode .editor-quest select {
   display: flex;
   gap: 6px;
   align-items: center;
-  margin-left: auto;
+  flex-shrink: 0;
 }
 
 /* Controls row */
@@ -3212,6 +3214,10 @@ body.viewer-mode .editor-quest select {
 }
 
 @media (max-width: 600px) {
+  .lab-main {
+    padding: 8px 6px;
+  }
+
   .gc-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 5px;
@@ -3283,10 +3289,6 @@ body.viewer-mode .editor-quest select {
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  background: var(--bg);
-  border-radius: 6px;
-  padding: 4px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.04);
 }
 
 .gc-card-amt {
@@ -3310,10 +3312,7 @@ body.viewer-mode .editor-quest select {
 }
 
 .gc-card-id {
-  font-size: 10px;
-  font-family: monospace;
-  color: var(--text-muted);
-  opacity: 0.5;
+  display: none;
 }
 
 /* Add item row */
