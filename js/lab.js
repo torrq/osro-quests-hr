@@ -22,12 +22,8 @@ const GC_ITEMS = [
   { id: 4009,  amount: 10,  name: 'Chonchon Card' },
   { id: 4010,  amount: 10,  name: 'Willow Card' },
   { id: 4021,  amount: 10,  name: 'Rocker Card' },
-  { id: 969,   amount: 100, name: 'Gold' },
-  { id: 7444,  amount: 100, name: 'Treasure Box' },
-  { id: 7035,  amount: 5,   name: 'Matchstick' },
-  { id: 7289,  amount: 5,   name: 'Peridot' },
-  { id: 7297,  amount: 5,   name: 'Biotite' }
 ];
+GC_ITEMS.sort((a, b) => a.name.localeCompare(b.name));
 
 const GC_REFRESH_MS  = 6 * 60 * 60 * 1000; // 6 hours
 const LAB_STORAGE_KEY = 'osromr_lab_v1';
@@ -202,6 +198,10 @@ function gcToggleItem(id) {
   if (selected.has(id)) {
     selected.delete(id);
   } else {
+    if (selected.size >= 6) {
+      showToast('Maximum 6 items selected', 'warning');
+      return;
+    }
     selected.add(id);
   }
   saveLabData({ gcSelected: [...selected] });
