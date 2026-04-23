@@ -7001,6 +7001,478 @@
       "caption": "@quest"
     },
     {
+      "name": "Tyr: Tier Upgrader (Shop 1)",
+      "subgroups": [
+        {
+          "name": "Wings",
+          "quests": [
+            {
+              "name": "Spell Ring I",
+              "producesId": 20711,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 20124,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4405,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 4290,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 4146,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 981,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 982,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7088,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 5000
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Torn Wings I",
+              "producesId": 3879,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 3008,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3504,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 5102,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 1058,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7101,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 924,
+                  "amount": 400
+                },
+                {
+                  "type": "item",
+                  "id": 3110,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 4172,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 4222,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 4173,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 976,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 980,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 979,
+                  "amount": 30
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Icarus Wings I",
+              "producesId": 3878,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 3006,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3002,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3009,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7168,
+                  "amount": 400
+                },
+                {
+                  "type": "item",
+                  "id": 3110,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7063,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 4213,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 4181,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 979,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 982,
+                  "amount": 30
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Gargoyle Wings I",
+              "producesId": 20089,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 3005,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3677,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3660,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3501,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7214,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7063,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7067,
+                  "amount": 300
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Phoenix Wings I",
+              "producesId": 30210,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 3007,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3010,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3843,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3296,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3504,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1029,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12020,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 980,
+                  "amount": 30
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Claw Wings I",
+              "producesId": 20709,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 3660,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7116,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 963,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 4131,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 20
+                },
+                {
+                  "type": "credit",
+                  "amount": 3000
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Headgears",
+          "quests": []
+        },
+        {
+          "name": "Accessories",
+          "quests": []
+        },
+        {
+          "name": "Weapons",
+          "quests": []
+        },
+        {
+          "name": "Boarding Halter - Mount",
+          "quests": []
+        },
+        {
+          "name": "Artifacts I",
+          "quests": []
+        },
+        {
+          "name": "Artifacts II",
+          "quests": []
+        },
+        {
+          "name": "Artifacts III",
+          "quests": []
+        }
+      ],
+      "caption": "@quest"
+    },
+    {
+      "name": "Tyr: Tier Upgrader (Shop 2)",
+      "subgroups": [
+        {
+          "name": "Gacha Weapons",
+          "quests": []
+        },
+        {
+          "name": "Quest Costume Weapons",
+          "quests": []
+        },
+        {
+          "name": "Dragon Weapons",
+          "quests": []
+        },
+        {
+          "name": "Equipments",
+          "quests": []
+        },
+        {
+          "name": "Accessories",
+          "quests": []
+        },
+        {
+          "name": "Otherworld Set",
+          "quests": []
+        }
+      ],
+      "caption": "@quest"
+    },
+    {
+      "name": "Tyr: Tier Upgrader (Tickets)",
+      "subgroups": [
+        {
+          "name": "Equipments",
+          "quests": []
+        },
+        {
+          "name": "Dragon Weapons",
+          "quests": []
+        },
+        {
+          "name": "Otherworld Set",
+          "quests": []
+        }
+      ],
+      "caption": "@quest"
+    },
+    {
       "name": "Crafting",
       "subgroups": [
         {
