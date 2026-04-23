@@ -3050,3 +3050,253 @@ body.viewer-mode .editor-quest select {
   text-decoration: none;
   opacity: 1;
 }
+
+/* =========================================
+   LAB TAB
+   ========================================= */
+
+/* Sidebar */
+.lab-list {
+  overflow-y: auto;
+  height: 100%;
+}
+
+.lab-sidebar-content {
+  padding: 6px 0;
+}
+
+.lab-sidebar-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.lab-sidebar-section:hover {
+  color: var(--text);
+  background: var(--panel-hover);
+}
+
+.lab-sidebar-section.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.lab-sidebar-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Tab icon button */
+.tab--icon {
+  flex: 0 0 auto;
+  padding: 6px 10px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main content */
+.lab-main {
+  padding: 16px;
+  max-width: 900px;
+}
+
+.lab-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lab-section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lab-section-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.lab-section-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.lab-section-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  padding-left: 23px;
+}
+
+/* Timer row */
+.gc-timer-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.gc-timer-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 160px;
+}
+
+.gc-timer-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.gc-timer-display {
+  font-size: 22px;
+  font-family: monospace;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  transition: color 0.3s;
+}
+
+.gc-timer--warn {
+  color: var(--warning);
+}
+
+.gc-timer--ready {
+  color: var(--success);
+}
+
+.gc-timer-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* Controls row */
+.gc-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gc-selection-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+/* Item grid */
+.gc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 8px;
+}
+
+.gc-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 12px 8px 10px;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, opacity 0.15s, transform 0.1s;
+  opacity: 0.45;
+  user-select: none;
+  text-align: center;
+}
+
+.gc-card:hover {
+  border-color: var(--border-light);
+  background: var(--panel-hover);
+  opacity: 0.75;
+  transform: translateY(-1px);
+}
+
+.gc-card--on {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+  opacity: 1;
+}
+
+.gc-card--on:hover {
+  border-color: var(--accent);
+  opacity: 1;
+}
+
+.gc-card--on .gc-card-name {
+  color: var(--text);
+}
+
+.gc-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.gc-card-amt {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--warning);
+  font-family: monospace;
+}
+
+.gc-card-name {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.3;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.gc-card-id {
+  font-size: 10px;
+  font-family: monospace;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* Add item row */
+.lab-add-item-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gc-add-panel {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Icon hover scale — same as other tabs */
+.gc-card:hover .item-icon {
+  transform: scale(1.15);
+}

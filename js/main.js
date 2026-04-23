@@ -865,6 +865,10 @@ const TAB_ELEMENTS = {
   autoloot: {
     sidebar: "autolootList",
     render: ["renderAutolootSidebar", "renderAutolootMain"]
+  },
+  lab: {
+    sidebar: "labList",
+    render: ["renderLabSidebar", "renderLabMain"]
   }
 };
 
@@ -889,12 +893,16 @@ function switchTab(tabName, pushState = true) {
 
 function updateTabButtons(tabName) {
   document.querySelectorAll(".tab").forEach(tab => {
-    tab.classList.toggle("active", tab.textContent.toLowerCase().includes(tabName));
+    const dataTab = tab.getAttribute('data-tab');
+    const matches = dataTab
+      ? dataTab === tabName
+      : tab.textContent.toLowerCase().includes(tabName);
+    tab.classList.toggle("active", matches);
   });
 }
 
 function hideAllElements() {
-  ["treeContainer", "shopsTreeContainer", "itemsList", "groupsList", "autolootList"].forEach(id => {
+  ["treeContainer", "shopsTreeContainer", "itemsList", "groupsList", "autolootList", "labList"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.add("hidden");
   });

@@ -29,6 +29,16 @@
             <div class="tab" onclick="switchTab('items')">Items</div>
             <div class="tab" onclick="switchTab('groups')">Groups</div>
             <div class="tab" onclick="switchTab('autoloot')">Autoloot</div>
+            <div class="tab tab--icon" data-tab="lab" onclick="switchTab('lab')" title="Lab">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 3h6"/>
+                <path d="M8.5 3 5 12h14L15.5 3"/>
+                <path d="M5 12a7 7 0 0 0 14 0"/>
+                <circle cx="9.5"  cy="17"   r="0.8" fill="currentColor" stroke="none"/>
+                <circle cx="14"   cy="15.5" r="1"   fill="currentColor" stroke="none"/>
+                <circle cx="15.5" cy="18.5" r="0.7" fill="currentColor" stroke="none"/>
+              </svg>
+            </div>
           </div>
           <div id="settingsPanel">
             <div class="settings-row">
@@ -138,6 +148,7 @@
         <div class="items-list hidden" id="itemsList"></div>
         <div class="groups-list hidden" id="groupsList"></div>
         <div class="autoloot-list hidden" id="autolootList"></div>
+        <div class="lab-list hidden" id="labList"></div>
       </div>
       <div class="main-content" id="mainContent">
         <div class="empty-state">
@@ -153,5 +164,6 @@
     <script src="js/shops.js"></script>
     <script src="js/groups.js"></script>
     <script src="js/autoloot.js"></script>
+    <script src="js/lab.js"></script>
   </body>
 </html>
