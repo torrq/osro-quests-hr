@@ -3274,6 +3274,24 @@ body.viewer-mode .editor-quest select {
   flex-wrap: wrap;
 }
 
+.gc-check-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.gc-check-option input {
+  width: auto;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
 /* Item grid */
 .gc-grid {
   display: grid;
@@ -3304,6 +3322,10 @@ body.viewer-mode .editor-quest select {
     width: 100%;
     margin-left: 0;
     justify-content: space-between;
+  }
+
+  .gc-check-option {
+    font-size: 11px;
   }
 
   .gc-grid {

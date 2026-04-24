@@ -19,22 +19,39 @@ function renderGcItemVisual(itemId) {
 
 // ===== SORT HELPERS =====
 
-function gcSortItems(items, mode, manualOrder) {
-  const list = [...items];
+function gcBaseComparator(mode, manualOrder) {
   if (mode === SORT_ALPHA) {
-    list.sort((a, b) => a.name.localeCompare(b.name));
-  } else if (mode === SORT_MANUAL && manualOrder?.length) {
+    return (a, b) => a.name.localeCompare(b.name);
+  }
+
+  if (mode === SORT_MANUAL && manualOrder?.length) {
     const idx = Object.fromEntries(manualOrder.map((id, i) => [id, i]));
-    list.sort((a, b) => {
+    return (a, b) => {
       const ai = idx[a.id] ?? 9999;
       const bi = idx[b.id] ?? 9999;
       if (ai !== bi) return ai - bi;
       return a.amount - b.amount || a.name.localeCompare(b.name);
-    });
-  } else {
-    // Default: amount asc, then alpha
-    list.sort((a, b) => a.amount - b.amount || a.name.localeCompare(b.name));
+    };
   }
+
+  return (a, b) => a.amount - b.amount || a.name.localeCompare(b.name);
+}
+
+function gcSortItems(items, mode, manualOrder, selected = new Set(), selectedFirst = false) {
+  const list = [...items];
+  const compare = gcBaseComparator(mode, manualOrder);
+
+  if (selectedFirst) {
+    list.sort((a, b) => {
+      const aSel = selected.has(a.id);
+      const bSel = selected.has(b.id);
+      if (aSel !== bSel) return aSel ? -1 : 1;
+      return compare(a, b);
+    });
+    return list;
+  }
+
+  list.sort(compare);
   return list;
 }
 
@@ -80,7 +97,8 @@ function renderLabMain() {
   const timerStart  = data.gcTimerStart || null;
   const sortMode    = data.gcSortMode || SORT_AMT_ALPHA;
   const manualOrder = data.gcManualOrder || [];
-  const sorted      = gcSortItems(GUILD_CONTRIBUTION_ITEMS, sortMode, manualOrder);
+  const selectedFirst = !!data.gcSelectedFirst;
+  const sorted      = gcSortItems(GUILD_CONTRIBUTION_ITEMS, sortMode, manualOrder, selected, selectedFirst);
 
   const itemsHtml = sorted.map(item => {
     const name = DATA.items?.[item.id]?.name || item.name;
@@ -137,6 +155,10 @@ function renderLabMain() {
             ${radio(SORT_MANUAL,    'Manual')}
           </div>
           <div class="gc-toolbar-right">
+            <label class="gc-check-option">
+              <input type="checkbox" ${selectedFirst ? 'checked' : ''} onchange="gcSetSelectedFirst(this.checked)">
+              Selected to top
+            </label>
             <span class="gc-selection-count" id="gcSelCount">${selected.size} / 6</span>
             <button class="btn btn-sm" onclick="gcClearSelection()">Clear</button>
           </div>
@@ -157,6 +179,11 @@ function renderLabMain() {
 
 function gcSetSort(mode) {
   saveLabData({ gcSortMode: mode });
+  renderLabMain();
+}
+
+function gcSetSelectedFirst(enabled) {
+  saveLabData({ gcSelectedFirst: !!enabled });
   renderLabMain();
 }
 
@@ -369,6 +396,11 @@ function gcToggleItem(id) {
   }
   saveLabData({ gcSelected: [...selected] });
 
+  if (data.gcSelectedFirst) {
+    renderLabMain();
+    return;
+  }
+
   const card = document.querySelector(`.gc-card[data-id="${id}"]`);
   if (card) card.classList.toggle('gc-card--on', selected.has(id));
   const cnt = document.getElementById('gcSelCount');
@@ -377,6 +409,12 @@ function gcToggleItem(id) {
 
 function gcClearSelection() {
   saveLabData({ gcSelected: [] });
+
+  if (loadLabData().gcSelectedFirst) {
+    renderLabMain();
+    return;
+  }
+
   document.querySelectorAll('.gc-card').forEach(c => c.classList.remove('gc-card--on'));
   const cnt = document.getElementById('gcSelCount');
   if (cnt) cnt.textContent = '0 / 6';
@@ -391,3 +429,4 @@ window.gcClearSelection  = gcClearSelection;
 window.gcStartTimer      = gcStartTimer;
 window.gcClearTimer      = gcClearTimer;
 window.gcSetSort         = gcSetSort;
+window.gcSetSelectedFirst = gcSetSelectedFirst;
