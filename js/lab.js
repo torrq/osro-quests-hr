@@ -457,9 +457,13 @@ function gcHandleKeydown(e) {
     return;
   }
 
-  if (!selectedFirstEnabled && /^[0-9]$/.test(e.key)) {
+  const digitKey = /^[0-9]$/.test(e.key) ? e.key
+    : /^Numpad[0-9]$/.test(e.code) ? e.code.replace('Numpad', '')
+    : null;
+
+  if (!selectedFirstEnabled && digitKey) {
     const cards = [...document.querySelectorAll('.gc-grid .gc-card[data-id]')];
-    const index = e.key === '0' ? 9 : Number(e.key) - 1;
+    const index = digitKey === '0' ? 9 : Number(digitKey) - 1;
     const card = cards[index];
     const id = parseInt(card?.dataset?.id, 10);
     if (!Number.isNaN(id)) {
