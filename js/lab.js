@@ -5,6 +5,9 @@ const LAB_STORAGE_KEY = 'osromr_lab_v1';
 const SORT_AMT_ALPHA  = 'amt_alpha';
 const SORT_ALPHA      = 'alpha';
 const SORT_MANUAL     = 'manual';
+const GC_SIZE_SMALL   = 'small';
+const GC_SIZE_MEDIUM  = 'medium';
+const GC_SIZE_LARGE   = 'large';
 
 let gcTimerInterval = null;
 
@@ -98,6 +101,7 @@ function renderLabMain() {
   const sortMode    = data.gcSortMode || SORT_AMT_ALPHA;
   const manualOrder = data.gcManualOrder || [];
   const selectedFirst = !!data.gcSelectedFirst;
+  const sizeMode    = data.gcSizeMode || GC_SIZE_MEDIUM;
   const sorted      = gcSortItems(GUILD_CONTRIBUTION_ITEMS, sortMode, manualOrder, selected, selectedFirst);
 
   const itemsHtml = sorted.map(item => {
@@ -121,7 +125,7 @@ function renderLabMain() {
     </label>`;
 
   container.innerHTML = `
-    <div class="lab-main lab-main--gc">
+    <div class="lab-main lab-main--gc lab-main--gc-size-${sizeMode}">
       <div class="lab-section">
 
         <div class="lab-section-header">
@@ -155,6 +159,11 @@ function renderLabMain() {
             ${radio(SORT_MANUAL,    'Manual')}
           </div>
           <div class="gc-toolbar-right">
+            <select class="gc-size-select" onchange="gcSetSize(this.value)" aria-label="Item size">
+              <option value="${GC_SIZE_SMALL}" ${sizeMode === GC_SIZE_SMALL ? 'selected' : ''}>Small</option>
+              <option value="${GC_SIZE_MEDIUM}" ${sizeMode === GC_SIZE_MEDIUM ? 'selected' : ''}>Medium</option>
+              <option value="${GC_SIZE_LARGE}" ${sizeMode === GC_SIZE_LARGE ? 'selected' : ''}>Large</option>
+            </select>
             <label class="gc-check-option">
               <input type="checkbox" ${selectedFirst ? 'checked' : ''} onchange="gcSetSelectedFirst(this.checked)">
               Selected to top
@@ -184,6 +193,12 @@ function gcSetSort(mode) {
 
 function gcSetSelectedFirst(enabled) {
   saveLabData({ gcSelectedFirst: !!enabled });
+  renderLabMain();
+}
+
+function gcSetSize(mode) {
+  const next = [GC_SIZE_SMALL, GC_SIZE_MEDIUM, GC_SIZE_LARGE].includes(mode) ? mode : GC_SIZE_MEDIUM;
+  saveLabData({ gcSizeMode: next });
   renderLabMain();
 }
 
@@ -430,3 +445,4 @@ window.gcStartTimer      = gcStartTimer;
 window.gcClearTimer      = gcClearTimer;
 window.gcSetSort         = gcSetSort;
 window.gcSetSelectedFirst = gcSetSelectedFirst;
+window.gcSetSize         = gcSetSize;
