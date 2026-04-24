@@ -3283,7 +3283,7 @@ body.viewer-mode .editor-quest select {
 
 @media (max-width: 600px) {
   .lab-main {
-    padding: 6px 2px 6px 8px;
+    padding: 6px 12px 6px 0;
   }
 
   .gc-toolbar {
@@ -3360,7 +3360,7 @@ body.viewer-mode .editor-quest select {
   border-radius: 8px;
   cursor: pointer;
   transition: border-color 0.15s, background 0.15s, opacity 0.15s, transform 0.1s;
-  opacity: 0.7;
+  opacity: 0.85;
   user-select: none;
   text-align: center;
 }
@@ -3419,7 +3419,7 @@ body.viewer-mode .editor-quest select {
 }
 
 .gc-card-name {
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text);
   line-height: 1.15;
