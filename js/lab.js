@@ -1,29 +1,5 @@
 // lab.js — Lab Tab: Guild Contribution Tracker + future utilities
 
-// ===== GUILD CONTRIBUTION DATA =====
-
-const GC_ITEMS = [
-  { id: 678,   amount: 25,  name: 'Poison Bottle' },
-  { id: 7139,  amount: 50,  name: 'Glistening Coat' },
-  { id: 607,   amount: 50,  name: 'Yggdrasil Berry' },
-  { id: 608,   amount: 50,  name: 'Yggdrasil Seed' },
-  { id: 610,   amount: 50,  name: 'Yggdrasil Leaf' },
-  { id: 504,   amount: 100, name: 'White Potion' },
-  { id: 505,   amount: 100, name: 'Blue Potion' },
-  { id: 12028, amount: 50,  name: 'Box of Thunder' },
-  { id: 12114, amount: 50,  name: 'Fire Elemental Converter' },
-  { id: 12115, amount: 50,  name: 'Water Elemental Converter' },
-  { id: 12116, amount: 50,  name: 'Earth Elemental Converter' },
-  { id: 12117, amount: 50,  name: 'Wind Elemental Converter' },
-  { id: 4002,  amount: 10,  name: 'Fabre Card' },
-  { id: 4003,  amount: 10,  name: 'Pupa Card' },
-  { id: 4006,  amount: 10,  name: 'Lunatic Card' },
-  { id: 4008,  amount: 10,  name: 'Picky Card' },
-  { id: 4009,  amount: 10,  name: 'Chonchon Card' },
-  { id: 4010,  amount: 10,  name: 'Willow Card' },
-  { id: 4021,  amount: 10,  name: 'Rocker Card' },
-];
-
 const GC_REFRESH_MS   = 6 * 60 * 60 * 1000;
 const LAB_STORAGE_KEY = 'osromr_lab_v1';
 const SORT_AMT_ALPHA  = 'amt_alpha';
@@ -31,6 +7,15 @@ const SORT_ALPHA      = 'alpha';
 const SORT_MANUAL     = 'manual';
 
 let gcTimerInterval = null;
+
+const GC_CARD_ART_IDS = new Set([4002, 4003, 4006, 4008, 4009, 4010, 4021]);
+
+function renderGcItemVisual(itemId) {
+  if (GC_CARD_ART_IDS.has(itemId)) {
+    return `<img class="gc-card-art" src="image/card/${itemId}.jpg" alt="" loading="lazy" decoding="async">`;
+  }
+  return renderItemIcon(itemId, 48);
+}
 
 // ===== SORT HELPERS =====
 
@@ -95,11 +80,11 @@ function renderLabMain() {
   const timerStart  = data.gcTimerStart || null;
   const sortMode    = data.gcSortMode || SORT_AMT_ALPHA;
   const manualOrder = data.gcManualOrder || [];
-  const sorted      = gcSortItems(GC_ITEMS, sortMode, manualOrder);
+  const sorted      = gcSortItems(GUILD_CONTRIBUTION_ITEMS, sortMode, manualOrder);
 
   const itemsHtml = sorted.map(item => {
     const name = DATA.items?.[item.id]?.name || item.name;
-    const icon = renderItemIcon(item.id, 48);
+    const icon = renderGcItemVisual(item.id);
     const isOn = selected.has(item.id);
     return `
       <div class="gc-card ${isOn ? 'gc-card--on' : ''} ${sortMode === SORT_MANUAL ? 'gc-card--draggable' : ''}"

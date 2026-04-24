@@ -49,6 +49,33 @@ const SPECIAL_ITEMS = {
   GOLD: 969,      // Gold
 };
 
+const GUILD_CONTRIBUTION_ITEMS = [
+  { id: 678,   amount: 25,  name: 'Poison Bottle' },
+  { id: 7139,  amount: 50,  name: 'Glistening Coat' },
+  { id: 607,   amount: 50,  name: 'Yggdrasil Berry' },
+  { id: 608,   amount: 50,  name: 'Yggdrasil Seed' },
+  { id: 610,   amount: 50,  name: 'Yggdrasil Leaf' },
+  { id: 504,   amount: 100, name: 'White Potion' },
+  { id: 505,   amount: 100, name: 'Blue Potion' },
+  { id: 969,   amount: 100, name: 'Gold' },
+  { id: 7444,  amount: 100, name: 'Treasure Box' },
+  { id: 12028, amount: 50,  name: 'Box of Thunder' },
+  { id: 12114, amount: 50,  name: 'Fire Elemental Converter' },
+  { id: 12115, amount: 50,  name: 'Water Elemental Converter' },
+  { id: 12116, amount: 50,  name: 'Earth Elemental Converter' },
+  { id: 12117, amount: 50,  name: 'Wind Elemental Converter' },
+  { id: 7035,  amount: 5,   name: 'Matchstick' },
+  { id: 7289,  amount: 5,   name: 'Peridot' },
+  { id: 7297,  amount: 5,   name: 'Biotite' },
+  { id: 4002,  amount: 10,  name: 'Fabre Card' },
+  { id: 4003,  amount: 10,  name: 'Pupa Card' },
+  { id: 4006,  amount: 10,  name: 'Lunatic Card' },
+  { id: 4008,  amount: 10,  name: 'Picky Card' },
+  { id: 4009,  amount: 10,  name: 'Chonchon Card' },
+  { id: 4010,  amount: 10,  name: 'Willow Card' },
+  { id: 4021,  amount: 10,  name: 'Rocker Card' },
+];
+
 // === HELPER FUNCTIONS ===
 
 /**
