@@ -103,7 +103,7 @@ function renderLabMain() {
     </label>`;
 
   container.innerHTML = `
-    <div class="lab-main">
+    <div class="lab-main lab-main--gc">
       <div class="lab-section">
 
         <div class="lab-section-header">

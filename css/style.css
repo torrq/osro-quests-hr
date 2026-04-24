@@ -3109,6 +3109,10 @@ body.viewer-mode .editor-quest select {
   max-width: 900px;
 }
 
+.lab-main--gc {
+  max-width: none;
+}
+
 .lab-section {
   display: flex;
   flex-direction: column;
@@ -3339,7 +3343,7 @@ body.viewer-mode .editor-quest select {
   .gc-card-icon .item-icon-placeholder,
   .gc-card-icon .item-icon-placeholder-zeny,
   .gc-card-icon .item-icon-placeholder-points {
-    transform: scale(0.54);
+    transform: scale(1.1);
     transform-origin: center;
   }
 }
@@ -3390,6 +3394,14 @@ body.viewer-mode .editor-quest select {
   pointer-events: none;
 }
 
+.gc-card-icon .item-icon,
+.gc-card-icon .item-icon-placeholder,
+.gc-card-icon .item-icon-placeholder-zeny,
+.gc-card-icon .item-icon-placeholder-points {
+  transform: scale(1.75);
+  transform-origin: center;
+}
+
 .gc-card-art {
   display: block;
   width: 100%;
@@ -3399,17 +3411,18 @@ body.viewer-mode .editor-quest select {
 }
 
 .gc-card-amt {
-  font-size: 11px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--warning);
   font-family: monospace;
+  line-height: 1;
 }
 
 .gc-card-name {
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--text);
-  line-height: 1.3;
+  line-height: 1.15;
   max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3434,9 +3447,4 @@ body.viewer-mode .editor-quest select {
   gap: 6px;
   align-items: center;
   flex-wrap: wrap;
-}
-
-/* Icon hover scale — same as other tabs */
-.gc-card:hover .item-icon {
-  transform: scale(1.15);
 }
