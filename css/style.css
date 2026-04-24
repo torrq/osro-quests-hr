@@ -3315,6 +3315,17 @@ body.viewer-mode .editor-quest select {
   border-radius: 6px;
 }
 
+.gc-clear-btn {
+  font-weight: 600;
+  border-color: color-mix(in srgb, var(--danger) 45%, var(--border));
+  background: color-mix(in srgb, var(--danger) 10%, var(--bg));
+}
+
+.gc-clear-btn:hover {
+  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 18%, var(--panel-hover));
+}
+
 .gc-check-option {
   display: inline-flex;
   align-items: center;

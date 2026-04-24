@@ -169,7 +169,9 @@ function renderLabMain() {
               Selected to top
             </label>
             <span class="gc-selection-count" id="gcSelCount">${selected.size} / 6</span>
-            <button class="btn btn-sm" onclick="gcClearSelection()">Clear</button>
+            <button class="btn btn-sm btn-danger gc-clear-btn" onclick="gcClearSelection()" title="Clear selected items (C)">
+              Clear Selected
+            </button>
           </div>
         </div>
 
@@ -435,6 +437,22 @@ function gcClearSelection() {
   if (cnt) cnt.textContent = '0 / 6';
 }
 
+function gcHandleKeydown(e) {
+  if (e.defaultPrevented || e.repeat || e.ctrlKey || e.metaKey || e.altKey) return;
+  if ((e.target instanceof HTMLElement) && (
+    e.target.closest('input, textarea, select, [contenteditable="true"]') ||
+    e.target.isContentEditable
+  )) return;
+
+  const labRoot = document.querySelector('.lab-main--gc');
+  if (!labRoot || !labRoot.isConnected) return;
+
+  if (e.key?.toLowerCase() === 'c') {
+    e.preventDefault();
+    gcClearSelection();
+  }
+}
+
 // ===== WINDOW EXPORTS =====
 
 window.renderLabSidebar  = renderLabSidebar;
@@ -446,3 +464,5 @@ window.gcClearTimer      = gcClearTimer;
 window.gcSetSort         = gcSetSort;
 window.gcSetSelectedFirst = gcSetSelectedFirst;
 window.gcSetSize         = gcSetSize;
+
+window.addEventListener('keydown', gcHandleKeydown);
