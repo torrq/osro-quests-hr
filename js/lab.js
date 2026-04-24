@@ -22,25 +22,42 @@ const GC_ITEMS = [
   { id: 4009,  amount: 10,  name: 'Chonchon Card' },
   { id: 4010,  amount: 10,  name: 'Willow Card' },
   { id: 4021,  amount: 10,  name: 'Rocker Card' },
-  { id: 969,   amount: 100, name: 'Gold' },
-  { id: 7444,  amount: 100, name: 'Treasure Box' },
-  { id: 7035,  amount: 5,   name: 'Matchstick' },
-  { id: 7289,  amount: 5,   name: 'Peridot' },
-  { id: 7297,  amount: 5,   name: 'Biotite' }
 ];
-GC_ITEMS.sort((a, b) => a.name.localeCompare(b.name));
 
-const GC_REFRESH_MS  = 6 * 60 * 60 * 1000; // 6 hours
+const GC_REFRESH_MS   = 6 * 60 * 60 * 1000;
 const LAB_STORAGE_KEY = 'osromr_lab_v1';
+const SORT_AMT_ALPHA  = 'amt_alpha';
+const SORT_ALPHA      = 'alpha';
+const SORT_MANUAL     = 'manual';
 
 let gcTimerInterval = null;
+
+// ===== SORT HELPERS =====
+
+function gcSortItems(items, mode, manualOrder) {
+  const list = [...items];
+  if (mode === SORT_ALPHA) {
+    list.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (mode === SORT_MANUAL && manualOrder?.length) {
+    const idx = Object.fromEntries(manualOrder.map((id, i) => [id, i]));
+    list.sort((a, b) => {
+      const ai = idx[a.id] ?? 9999;
+      const bi = idx[b.id] ?? 9999;
+      if (ai !== bi) return ai - bi;
+      return a.amount - b.amount || a.name.localeCompare(b.name);
+    });
+  } else {
+    // Default: amount asc, then alpha
+    list.sort((a, b) => a.amount - b.amount || a.name.localeCompare(b.name));
+  }
+  return list;
+}
 
 // ===== STORAGE =====
 
 function loadLabData() {
-  try {
-    return JSON.parse(localStorage.getItem(LAB_STORAGE_KEY)) || {};
-  } catch { return {}; }
+  try { return JSON.parse(localStorage.getItem(LAB_STORAGE_KEY)) || {}; }
+  catch { return {}; }
 }
 
 function saveLabData(patch) {
@@ -73,23 +90,32 @@ function renderLabMain() {
   const container = document.getElementById('mainContent');
   if (!container) return;
 
-  const data    = loadLabData();
-  const selected = new Set(data.gcSelected || []);
-  const timerStart = data.gcTimerStart || null;
+  const data        = loadLabData();
+  const selected    = new Set(data.gcSelected || []);
+  const timerStart  = data.gcTimerStart || null;
+  const sortMode    = data.gcSortMode || SORT_AMT_ALPHA;
+  const manualOrder = data.gcManualOrder || [];
+  const sorted      = gcSortItems(GC_ITEMS, sortMode, manualOrder);
 
-  // Build items HTML
-  const itemsHtml = GC_ITEMS.map(item => {
-    const name = (DATA.items?.[item.id]?.name) || item.name;
+  const itemsHtml = sorted.map(item => {
+    const name = DATA.items?.[item.id]?.name || item.name;
     const icon = renderItemIcon(item.id, 48);
-    const isSelected = selected.has(item.id);
+    const isOn = selected.has(item.id);
     return `
-      <div class="gc-card ${isSelected ? 'gc-card--on' : ''}" onclick="gcToggleItem(${item.id})" title="${name}">
+      <div class="gc-card ${isOn ? 'gc-card--on' : ''} ${sortMode === SORT_MANUAL ? 'gc-card--draggable' : ''}"
+           data-id="${item.id}" title="${name}">
         <div class="gc-card-icon">${icon}</div>
         <div class="gc-card-amt">×${item.amount}</div>
         <div class="gc-card-name">${name}</div>
-        <div class="gc-card-id">#${item.id}</div>
       </div>`;
   }).join('');
+
+  const radio = (val, label) => `
+    <label class="gc-sort-option ${sortMode === val ? 'gc-sort-option--active' : ''}">
+      <input type="radio" name="gcSort" value="${val}" ${sortMode === val ? 'checked' : ''}
+             onchange="gcSetSort('${val}')">
+      ${label}
+    </label>`;
 
   container.innerHTML = `
     <div class="lab-main">
@@ -114,39 +140,184 @@ function renderLabMain() {
             <div class="gc-timer-display" id="gcTimerDisplay">—</div>
           </div>
           <div class="gc-timer-actions">
-            <button class="btn btn-primary btn-sm" onclick="gcStartTimer()" title="I just accessed the NPC — start 6h countdown">
-              Accessed NPC
-            </button>
-            <button class="btn btn-sm" onclick="gcClearTimer()" title="Clear timer">
-              Clear
-            </button>
+            <button class="btn btn-primary btn-sm" onclick="gcStartTimer()">Accessed NPC</button>
+            <button class="btn btn-sm" onclick="gcClearTimer()">Clear</button>
           </div>
         </div>
 
-        <div class="gc-controls">
-          <span class="gc-selection-count" id="gcSelCount">${selected.size} / 6 selected</span>
-          <button class="btn btn-sm" onclick="gcClearSelection()">Clear Selection</button>
+        <div class="gc-toolbar">
+          <div class="gc-sort-group">
+            ${radio(SORT_AMT_ALPHA, 'Qty → A–Z')}
+            ${radio(SORT_ALPHA,     'A–Z')}
+            ${radio(SORT_MANUAL,    'Manual')}
+          </div>
+          <div class="gc-toolbar-right">
+            <span class="gc-selection-count" id="gcSelCount">${selected.size} / 6</span>
+            <button class="btn btn-sm" onclick="gcClearSelection()">Clear</button>
+          </div>
         </div>
 
         <div class="gc-grid" id="gcGrid">
           ${itemsHtml}
         </div>
 
-        <div class="lab-add-item-row">
-          <span class="settings-sublabel">Missing an item?</span>
-          <button class="btn btn-sm" onclick="gcShowAddItem()">+ Add Item</button>
-        </div>
-        <div id="gcAddItemPanel" style="display:none;" class="gc-add-panel">
-          <input type="number" id="gcAddId" class="search-input" placeholder="Item ID" style="width:110px;">
-          <input type="number" id="gcAddAmt" class="search-input" placeholder="Amount" style="width:90px;">
-          <button class="btn btn-primary btn-sm" onclick="gcAddItem()">Add</button>
-          <button class="btn btn-sm" onclick="gcHideAddItem()">Cancel</button>
-        </div>
-
       </div>
     </div>`;
 
   gcStartTickerIfNeeded(timerStart);
+  gcInitGridInteraction(sortMode);
+}
+
+// ===== SORT =====
+
+function gcSetSort(mode) {
+  saveLabData({ gcSortMode: mode });
+  renderLabMain();
+}
+
+// ===== GRID INTERACTION (click-to-toggle + hold-to-drag) =====
+
+function gcInitGridInteraction(sortMode) {
+  const grid = document.getElementById('gcGrid');
+  if (!grid) return;
+
+  // ── Drag state ──
+  let dragEl       = null;
+  let ghost        = null;
+  let pointerDown  = null;
+  let dragStarted  = false;
+  let holdTimer    = null;
+  const HOLD_MS    = 220;   // ms before drag activates
+  const MOVE_THRESH = 6;    // px before we decide it's a drag attempt
+
+  function getCardFromTarget(el) {
+    return el?.closest?.('.gc-card');
+  }
+
+  function getCardId(card) {
+    return parseInt(card?.dataset?.id);
+  }
+
+  function buildGhost(card) {
+    const g = card.cloneNode(true);
+    const r = card.getBoundingClientRect();
+    g.style.cssText = `
+      position: fixed; z-index: 9999; pointer-events: none;
+      width: ${r.width}px; height: ${r.height}px;
+      left: ${r.left}px; top: ${r.top}px;
+      opacity: 0.85; transform: scale(1.06) rotate(2deg);
+      transition: transform 0.1s; box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    `;
+    g.classList.add('gc-card--ghost');
+    document.body.appendChild(g);
+    return g;
+  }
+
+  function moveGhost(e) {
+    if (!ghost) return;
+    const r = dragEl.getBoundingClientRect();
+    ghost.style.left = `${e.clientX - r.width / 2}px`;
+    ghost.style.top  = `${e.clientY - r.height / 2}px`;
+  }
+
+  function getDropTarget(e) {
+    ghost.style.display = 'none';
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    ghost.style.display = '';
+    return getCardFromTarget(el);
+  }
+
+  function commitDragOrder() {
+    const cards = [...grid.querySelectorAll('.gc-card[data-id]')];
+    const order = cards.map(c => parseInt(c.dataset.id));
+    saveLabData({ gcManualOrder: order });
+  }
+
+  grid.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    const card = getCardFromTarget(e.target);
+    if (!card) return;
+
+    pointerDown  = { x: e.clientX, y: e.clientY, card };
+    dragStarted  = false;
+
+    if (sortMode !== SORT_MANUAL) return; // drag only in manual mode
+
+    holdTimer = setTimeout(() => {
+      if (!pointerDown) return;
+      dragEl = card;
+      dragStarted = true;
+      ghost = buildGhost(card);
+      card.classList.add('gc-card--dragging');
+      grid.setPointerCapture?.(e.pointerId);
+    }, HOLD_MS);
+  }, { passive: true });
+
+  grid.addEventListener('pointermove', e => {
+    if (!pointerDown) return;
+
+    if (!dragStarted && sortMode === SORT_MANUAL) {
+      const dx = Math.abs(e.clientX - pointerDown.x);
+      const dy = Math.abs(e.clientY - pointerDown.y);
+      if (dx > MOVE_THRESH || dy > MOVE_THRESH) {
+        // Moved before hold timer — start drag immediately
+        clearTimeout(holdTimer);
+        dragEl = pointerDown.card;
+        dragStarted = true;
+        ghost = buildGhost(dragEl);
+        dragEl.classList.add('gc-card--dragging');
+      }
+    }
+
+    if (!dragStarted || !ghost) return;
+
+    moveGhost(e);
+
+    // Highlight drop target
+    const target = getDropTarget(e);
+    grid.querySelectorAll('.gc-card--drop-target').forEach(c => c.classList.remove('gc-card--drop-target'));
+    if (target && target !== dragEl) {
+      target.classList.add('gc-card--drop-target');
+    }
+  });
+
+  function endDrag(e) {
+    clearTimeout(holdTimer);
+
+    if (dragStarted && dragEl && ghost) {
+      // Perform the reorder
+      const target = getDropTarget(e);
+      if (target && target !== dragEl) {
+        const cards = [...grid.querySelectorAll('.gc-card[data-id]')];
+        const fromIdx = cards.indexOf(dragEl);
+        const toIdx   = cards.indexOf(target);
+        if (fromIdx !== -1 && toIdx !== -1) {
+          if (fromIdx < toIdx) {
+            grid.insertBefore(dragEl, target.nextSibling);
+          } else {
+            grid.insertBefore(dragEl, target);
+          }
+          commitDragOrder();
+        }
+      }
+
+      ghost.remove();
+      ghost = null;
+      dragEl.classList.remove('gc-card--dragging');
+      grid.querySelectorAll('.gc-card--drop-target').forEach(c => c.classList.remove('gc-card--drop-target'));
+      dragEl = null;
+    } else if (pointerDown && !dragStarted) {
+      // It was a short tap — toggle
+      const id = getCardId(pointerDown.card);
+      if (id) gcToggleItem(id);
+    }
+
+    pointerDown = null;
+    dragStarted = false;
+  }
+
+  grid.addEventListener('pointerup',     endDrag);
+  grid.addEventListener('pointercancel', endDrag);
 }
 
 // ===== TIMER =====
@@ -174,7 +345,7 @@ function gcStartTickerIfNeeded(timerStart) {
   function tick() {
     const el = document.getElementById('gcTimerDisplay');
     if (!el) { clearInterval(gcTimerInterval); return; }
-    const elapsed = Date.now() - timerStart;
+    const elapsed   = Date.now() - timerStart;
     const remaining = GC_REFRESH_MS - elapsed;
     if (remaining <= 0) {
       el.textContent = 'Ready!';
@@ -198,7 +369,7 @@ function gcStartTickerIfNeeded(timerStart) {
 // ===== ITEM TOGGLE =====
 
 function gcToggleItem(id) {
-  const data = loadLabData();
+  const data     = loadLabData();
   const selected = new Set(data.gcSelected || []);
   if (selected.has(id)) {
     selected.delete(id);
@@ -211,48 +382,17 @@ function gcToggleItem(id) {
   }
   saveLabData({ gcSelected: [...selected] });
 
-  // Update DOM directly (avoid full re-render so timer keeps ticking)
-  const card = document.querySelector(`.gc-card[onclick="gcToggleItem(${id})"]`);
+  const card = document.querySelector(`.gc-card[data-id="${id}"]`);
   if (card) card.classList.toggle('gc-card--on', selected.has(id));
   const cnt = document.getElementById('gcSelCount');
-  if (cnt) cnt.textContent = `${selected.size} / 6 selected`;
+  if (cnt) cnt.textContent = `${selected.size} / 6`;
 }
 
 function gcClearSelection() {
   saveLabData({ gcSelected: [] });
   document.querySelectorAll('.gc-card').forEach(c => c.classList.remove('gc-card--on'));
   const cnt = document.getElementById('gcSelCount');
-  if (cnt) cnt.textContent = '0 / 6 selected';
-}
-
-// ===== ADD CUSTOM ITEM =====
-
-function gcShowAddItem() {
-  const p = document.getElementById('gcAddItemPanel');
-  if (p) p.style.display = 'flex';
-}
-
-function gcHideAddItem() {
-  const p = document.getElementById('gcAddItemPanel');
-  if (p) p.style.display = 'none';
-}
-
-function gcAddItem() {
-  const idEl  = document.getElementById('gcAddId');
-  const amtEl = document.getElementById('gcAddAmt');
-  const id  = parseInt(idEl?.value);
-  const amt = parseInt(amtEl?.value);
-  if (!id || isNaN(id) || id <= 0) { showToast('Enter a valid item ID', 'error'); return; }
-  if (!amt || isNaN(amt) || amt <= 0) { showToast('Enter a valid amount', 'error'); return; }
-  if (GC_ITEMS.find(i => i.id === id)) { showToast('Item already in list', 'warning'); return; }
-
-  const name = DATA.items?.[id]?.name || `Item #${id}`;
-  GC_ITEMS.push({ id, amount: amt, name });
-  if (idEl)  idEl.value  = '';
-  if (amtEl) amtEl.value = '';
-  gcHideAddItem();
-  renderLabMain();
-  showToast(`Added ${name}`, 'success');
+  if (cnt) cnt.textContent = '0 / 6';
 }
 
 // ===== WINDOW EXPORTS =====
@@ -263,6 +403,4 @@ window.gcToggleItem      = gcToggleItem;
 window.gcClearSelection  = gcClearSelection;
 window.gcStartTimer      = gcStartTimer;
 window.gcClearTimer      = gcClearTimer;
-window.gcShowAddItem     = gcShowAddItem;
-window.gcHideAddItem     = gcHideAddItem;
-window.gcAddItem         = gcAddItem;
+window.gcSetSort         = gcSetSort;
