@@ -3105,7 +3105,7 @@ body.viewer-mode .editor-quest select {
 
 /* Main content */
 .lab-main {
-  padding: 12px 8px;
+  padding: 12px 4px;
   max-width: 900px;
 }
 
@@ -3279,7 +3279,7 @@ body.viewer-mode .editor-quest select {
 
 @media (max-width: 600px) {
   .lab-main {
-    padding: 8px 6px;
+    padding: 6px 1px;
   }
 
   .gc-toolbar {
@@ -3303,12 +3303,13 @@ body.viewer-mode .editor-quest select {
   }
 
   .gc-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
   }
 
   .gc-card {
-    padding: 4px 3px 5px;
+    min-width: 0;
+    padding: 3px 2px 4px;
     gap: 2px;
     border-radius: 5px;
     border-width: 1px;
@@ -3319,8 +3320,9 @@ body.viewer-mode .editor-quest select {
   }
 
   .gc-card-name {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
+    line-height: 1.2;
   }
 
   .gc-card-id {
@@ -3328,8 +3330,8 @@ body.viewer-mode .editor-quest select {
   }
 
   .gc-card-icon {
-    width: 52px;
-    height: 70px;
+    width: 44px;
+    height: 59px;
     margin-bottom: 0;
   }
 
@@ -3346,6 +3348,7 @@ body.viewer-mode .editor-quest select {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 0;
   gap: 5px;
   padding: 12px 8px 10px;
   background: var(--panel);

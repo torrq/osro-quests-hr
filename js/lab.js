@@ -165,6 +165,7 @@ function gcSetSort(mode) {
 function gcInitGridInteraction(sortMode) {
   const grid = document.getElementById('gcGrid');
   if (!grid) return;
+  grid.style.touchAction = sortMode === SORT_MANUAL ? 'none' : '';
 
   // ── Drag state ──
   let dragEl       = null;
@@ -255,6 +256,7 @@ function gcInitGridInteraction(sortMode) {
     }
 
     if (!dragStarted || !ghost) return;
+    e.preventDefault();
 
     moveGhost(e);
 
