@@ -3279,7 +3279,7 @@ body.viewer-mode .editor-quest select {
 
 @media (max-width: 600px) {
   .lab-main {
-    padding: 6px 1px;
+    padding: 6px 2px 6px 8px;
   }
 
   .gc-toolbar {
@@ -3304,23 +3304,23 @@ body.viewer-mode .editor-quest select {
 
   .gc-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 4px;
+    gap: 3px;
   }
 
   .gc-card {
     min-width: 0;
-    padding: 3px 2px 4px;
-    gap: 2px;
-    border-radius: 5px;
+    padding: 3px 1px 4px;
+    gap: 1px;
+    border-radius: 4px;
     border-width: 1px;
   }
 
   .gc-card-amt {
-    font-size: 9px;
+    font-size: 8px;
   }
 
   .gc-card-name {
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 600;
     line-height: 1.2;
   }
@@ -3330,8 +3330,8 @@ body.viewer-mode .editor-quest select {
   }
 
   .gc-card-icon {
-    width: 44px;
-    height: 59px;
+    width: 40px;
+    height: 54px;
     margin-bottom: 0;
   }
 
@@ -3339,7 +3339,7 @@ body.viewer-mode .editor-quest select {
   .gc-card-icon .item-icon-placeholder,
   .gc-card-icon .item-icon-placeholder-zeny,
   .gc-card-icon .item-icon-placeholder-points {
-    transform: scale(0.6);
+    transform: scale(0.54);
     transform-origin: center;
   }
 }
