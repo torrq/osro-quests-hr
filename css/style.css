@@ -3344,6 +3344,13 @@ body.viewer-mode .editor-quest select {
   accent-color: var(--accent);
 }
 
+.gc-hotkey-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
 /* Item grid */
 .gc-grid {
   display: grid;
@@ -3441,6 +3448,13 @@ body.viewer-mode .editor-quest select {
 
   .gc-check-option {
     font-size: 11px;
+  }
+
+  .gc-hotkey-note {
+    width: 100%;
+    white-space: normal;
+    font-size: 10px;
+    line-height: 1.25;
   }
 
   .gc-size-select {

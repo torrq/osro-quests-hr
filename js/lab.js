@@ -158,6 +158,9 @@ function renderLabMain() {
             ${radio(SORT_ALPHA,     'A–Z')}
             ${radio(SORT_MANUAL,    'Manual')}
           </div>
+          <span class="gc-hotkey-note" title="${selectedFirst ? 'C clears selection.' : '1-9 toggle the first visible items. C clears selection.'}">
+            ${selectedFirst ? 'Hotkey: C clears' : 'Hotkeys: 1-9 toggle, C clears'}
+          </span>
           <div class="gc-toolbar-right">
             <select class="gc-size-select" onchange="gcSetSize(this.value)" aria-label="Item size">
               <option value="${GC_SIZE_SMALL}" ${sizeMode === GC_SIZE_SMALL ? 'selected' : ''}>Small</option>
@@ -446,10 +449,23 @@ function gcHandleKeydown(e) {
 
   const labRoot = document.querySelector('.lab-main--gc');
   if (!labRoot || !labRoot.isConnected) return;
+  const selectedFirstEnabled = !!loadLabData().gcSelectedFirst;
 
   if (e.key?.toLowerCase() === 'c') {
     e.preventDefault();
     gcClearSelection();
+    return;
+  }
+
+  if (!selectedFirstEnabled && /^[0-9]$/.test(e.key)) {
+    const cards = [...document.querySelectorAll('.gc-grid .gc-card[data-id]')];
+    const index = e.key === '0' ? 9 : Number(e.key) - 1;
+    const card = cards[index];
+    const id = parseInt(card?.dataset?.id, 10);
+    if (!Number.isNaN(id)) {
+      e.preventDefault();
+      gcToggleItem(id);
+    }
   }
 }
 
