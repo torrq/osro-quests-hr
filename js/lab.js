@@ -3,6 +3,7 @@
 const GC_REFRESH_MS   = 6 * 60 * 60 * 1000;
 const LAB_STORAGE_KEY = 'osromr_lab_v1';
 const SORT_AMT_ALPHA  = 'amt_alpha';
+const SORT_GROUP_ID   = 'group_id';
 const SORT_ALPHA      = 'alpha';
 const SORT_MANUAL     = 'manual';
 const GC_SIZE_SMALL   = 'small';
@@ -24,8 +25,14 @@ function renderGcItemVisual(itemId) {
 // ===== SORT HELPERS =====
 
 function gcBaseComparator(mode, manualOrder) {
+  const compareGroup = (a, b) => (GC_GROUP_ORDER[a.group] ?? 9999) - (GC_GROUP_ORDER[b.group] ?? 9999);
+
   if (mode === SORT_ALPHA) {
     return (a, b) => a.name.localeCompare(b.name);
+  }
+
+  if (mode === SORT_GROUP_ID) {
+    return (a, b) => compareGroup(a, b) || a.id - b.id || a.name.localeCompare(b.name);
   }
 
   if (mode === SORT_MANUAL && manualOrder?.length) {
@@ -39,9 +46,8 @@ function gcBaseComparator(mode, manualOrder) {
   }
 
   return (a, b) => {
-    const ag = GC_GROUP_ORDER[a.group] ?? 9999;
-    const bg = GC_GROUP_ORDER[b.group] ?? 9999;
-    if (ag !== bg) return ag - bg;
+    const groupCmp = compareGroup(a, b);
+    if (groupCmp !== 0) return groupCmp;
     return a.name.localeCompare(b.name);
   };
 }
@@ -160,7 +166,8 @@ function renderLabMain() {
 
         <div class="gc-toolbar">
           <div class="gc-sort-group">
-            ${radio(SORT_AMT_ALPHA, 'Type → A–Z')}
+            ${radio(SORT_AMT_ALPHA, 'Type → Name')}
+            ${radio(SORT_GROUP_ID,  'Type → ItemID')}
             ${radio(SORT_ALPHA,     'A–Z')}
             ${radio(SORT_MANUAL,    'Manual')}
           </div>
