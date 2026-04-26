@@ -8,6 +8,7 @@ const SORT_MANUAL     = 'manual';
 const GC_SIZE_SMALL   = 'small';
 const GC_SIZE_MEDIUM  = 'medium';
 const GC_SIZE_LARGE   = 'large';
+const GC_GROUP_ORDER  = { Consumable: 0, Card: 1, Loot: 2 };
 
 let gcTimerInterval = null;
 
@@ -37,7 +38,12 @@ function gcBaseComparator(mode, manualOrder) {
     };
   }
 
-  return (a, b) => a.amount - b.amount || a.name.localeCompare(b.name);
+  return (a, b) => {
+    const ag = GC_GROUP_ORDER[a.group] ?? 9999;
+    const bg = GC_GROUP_ORDER[b.group] ?? 9999;
+    if (ag !== bg) return ag - bg;
+    return a.name.localeCompare(b.name);
+  };
 }
 
 function gcSortItems(items, mode, manualOrder, selected = new Set(), selectedFirst = false) {
@@ -154,7 +160,7 @@ function renderLabMain() {
 
         <div class="gc-toolbar">
           <div class="gc-sort-group">
-            ${radio(SORT_AMT_ALPHA, 'Qty → A–Z')}
+            ${radio(SORT_AMT_ALPHA, 'Type → A–Z')}
             ${radio(SORT_ALPHA,     'A–Z')}
             ${radio(SORT_MANUAL,    'Manual')}
           </div>
