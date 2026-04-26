@@ -1,38 +1,38 @@
 /* =========================================
    OSRO Quests - Light Theme
-   Cool professional light mode with blue tint
+   Highrate light mode with green accent palette
    ========================================= */
 
 :root {
-  /* Base backgrounds - cool blue-gray tones */
-  --bg: #f6f8fa;
-  --bg-dark: #eef2f5;
+  /* Base backgrounds - soft neutral greens */
+  --bg: #f5f8f4;
+  --bg-dark: #ebf1ea;
   --bg-secondary: #ffffff;
-  --bg-tertiary: #eef1f4;
+  --bg-tertiary: #edf3ee;
   
   /* Header background image */
   --header-bg-image: url("../image/osrohr_light.jpg");
 
   /* Panel colors */
   --panel: #ffffff;
-  --panel-hover: #e8ecf0;
+  --panel-hover: #e7efe8;
   
   /* Borders */
-  --border: #d0d7de;
-  --border-light: #e1e4e8;
-  --group-border: #d0d7de;
+  --border: #cdd9cf;
+  --border-light: #dde7de;
+  --group-border: #cdd9cf;
   
   /* Text colors */
   --text: #24292f;
   --text-muted: #57606a;
   
-  /* Accent colors - darker blue for light backgrounds */
-  --accent: #0969da;
-  --accent-hover: #0550ae;
-  --accent-bg: rgba(9, 105, 218, 0.1);
+  /* Accent colors - HR green for light backgrounds */
+  --accent: #11885a;
+  --accent-hover: #0c6d48;
+  --accent-bg: rgba(17, 136, 90, 0.1);
   
   /* Expand icon */
-  --expand-icon: #0969da;
+  --expand-icon: #11885a;
   
   /* Success hover (copy link button) */
   --success-hover-bright: #2da44e;
@@ -63,39 +63,39 @@
   
   /* Special elements */
   --version-tag: #137215;
-  --active-quest-bg: rgba(9, 105, 218, 0.1);
+  --active-quest-bg: rgba(17, 136, 90, 0.1);
   
   /* Code blocks */
-  --code-bg: #f6f8fa;
-  --code-block-bg: rgba(175, 184, 193, 0.2);
-  --code-text: #0550ae;
+  --code-bg: #f5f8f4;
+  --code-block-bg: rgba(155, 171, 158, 0.18);
+  --code-text: #0c6d48;
   --autocomplete-bg: #ffffff;
   
   /* Item placeholders */
-  --placeholder-bg: #e8ecf0;
+  --placeholder-bg: #e7efe8;
   --placeholder-text: #57606a;
-  --placeholder-border: #d0d7de;
-  --placeholder-icon: #8c959f;
+  --placeholder-border: #cdd9cf;
+  --placeholder-icon: #7f9182;
   
-  --zeny-bg: #ddf4ff;
-  --zeny-border: #54aeff;
-  --zeny-icon: #0969da;
+  --zeny-bg: #e2f7ec;
+  --zeny-border: #52b788;
+  --zeny-icon: #11885a;
   
   --points-bg: #ffeff7;
   --points-border: #ff80c8;
   --points-icon: #d1242f;
   
   /* Search highlight */
-  --highlight-bg: #fff8c5;
+  --highlight-bg: #f3f7bf;
   --highlight-text: #24292f;
   
   /* Badge */
   --badge-gradient: linear-gradient(135deg, #f85149 0%, #d1242f 100%);
   --badge-shadow: rgba(209, 36, 47, 0.25);
 
-  /* Material Tree - warm parchment palette */
-  --mat-connector:      #c4b89a;   /* warm tan spine lines */
-  --mat-connector-opts: #c4b89a;   /* same, dashed for options */
+  /* Material Tree - light parchment palette */
+  --mat-connector:      #beb39a;
+  --mat-connector-opts: #beb39a;
 
   /* ⚠ options badge — warm amber */
   --mat-opts-bg:     #fff4e0;
