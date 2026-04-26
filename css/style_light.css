@@ -27,12 +27,12 @@
   --text-muted: #57606a;
   
   /* Accent colors - HR green for light backgrounds */
-  --accent: #11885a;
-  --accent-hover: #0c6d48;
-  --accent-bg: rgba(17, 136, 90, 0.1);
+  --accent: #4f9800;
+  --accent-hover: #3f7900;
+  --accent-bg: rgba(79, 152, 0, 0.12);
   
   /* Expand icon */
-  --expand-icon: #11885a;
+  --expand-icon: #4f9800;
   
   /* Success hover (copy link button) */
   --success-hover-bright: #2da44e;
@@ -63,12 +63,12 @@
   
   /* Special elements */
   --version-tag: #137215;
-  --active-quest-bg: rgba(17, 136, 90, 0.1);
+  --active-quest-bg: rgba(79, 152, 0, 0.12);
   
   /* Code blocks */
   --code-bg: #f5f8f4;
   --code-block-bg: rgba(155, 171, 158, 0.18);
-  --code-text: #0c6d48;
+  --code-text: #3f7900;
   --autocomplete-bg: #ffffff;
   
   /* Item placeholders */
@@ -78,8 +78,8 @@
   --placeholder-icon: #7f9182;
   
   --zeny-bg: #e2f7ec;
-  --zeny-border: #52b788;
-  --zeny-icon: #11885a;
+  --zeny-border: #6bb53a;
+  --zeny-icon: #4f9800;
   
   --points-bg: #ffeff7;
   --points-border: #ff80c8;
