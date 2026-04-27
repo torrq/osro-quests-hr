@@ -7,14 +7,20 @@ const FLAVOR = 'Highrate';
 
 // === DATA SOURCE CONFIGURATION ===
 
-// Toggle between local development server and production GitHub URLs
-const USE_LOCAL_SERVER = false; 
-
 // Auto-import data on page load (disable if you want to manually import)
 const AUTO_IMPORT_ON_FIRST_LOAD = true;
 
 const REMOTE_PREFIX = "https://torrq.github.io/osro-quests-hr/data/";
-const LOCAL_PREFIX  = "http://10.0.0.20:9080/data/";
+const LOCAL_PREFIX  = `${window.location.origin}/data/`;
+
+function isLocalLikeHost(hostname) {
+  return hostname === 'localhost'
+    || hostname === '127.0.0.1'
+    || hostname === '::1'
+    || hostname.startsWith('10.')
+    || /^192\.168\./.test(hostname)
+    || /^172\.(1[6-9]|2\d|3[0-1])\./.test(hostname);
+}
 
 const FILES = {
   items:           "osrohr_items.json",
@@ -36,6 +42,7 @@ const LOCAL_STORAGE = {
   "item_values":   "osrohr_item_values"
 };
 
+const USE_LOCAL_SERVER = isLocalLikeHost(window.location.hostname);
 const prefix = USE_LOCAL_SERVER ? LOCAL_PREFIX : REMOTE_PREFIX;
 const AUTO_IMPORT_URLS = Object.fromEntries(
   Object.entries(FILES).map(([k, f]) => [k, prefix + f])
