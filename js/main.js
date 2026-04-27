@@ -869,10 +869,18 @@ const TAB_ELEMENTS = {
   lab: {
     sidebar: "labList",
     render: ["renderLabSidebar", "renderLabMain"]
+  },
+  'lab-gc': {
+    sidebar: "labList",
+    render: ["renderLabSidebar", "renderLabMain"]
   }
 };
 
 function switchTab(tabName, pushState = true) {
+  // 'lab' is a namespace — redirect to the active experiment tab
+  if (tabName === 'lab') {
+    tabName = (window.LAB_DEFAULT_EXPERIMENT) || 'lab-gc';
+  }
   const previousTab = state.currentTab;
   state.currentTab = tabName;
   updateTabButtons(tabName);
@@ -894,9 +902,13 @@ function switchTab(tabName, pushState = true) {
 function updateTabButtons(tabName) {
   document.querySelectorAll(".tab").forEach(tab => {
     const dataTab = tab.getAttribute('data-tab');
-    const matches = dataTab
-      ? dataTab === tabName
-      : tab.textContent.toLowerCase().includes(tabName);
+    let matches;
+    if (dataTab) {
+      // 'lab' button should be active for any lab-* subtab
+      matches = dataTab === tabName || (dataTab === 'lab' && tabName.startsWith('lab-'));
+    } else {
+      matches = tab.textContent.toLowerCase().includes(tabName);
+    }
     tab.classList.toggle("active", matches);
   });
 }

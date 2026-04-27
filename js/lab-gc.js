@@ -69,40 +69,9 @@ function gcSortItems(items, mode, manualOrder, selected = new Set(), selectedFir
   return list;
 }
 
-// ===== STORAGE =====
-
-function loadLabData() {
-  try { return JSON.parse(localStorage.getItem(LOCAL_STORAGE.lab_data)) || {}; }
-  catch { return {}; }
-}
-
-function saveLabData(patch) {
-  const cur = loadLabData();
-  localStorage.setItem(LOCAL_STORAGE.lab_data, JSON.stringify({ ...cur, ...patch }));
-}
-
 // ===== RENDER =====
 
-function renderLabSidebar() {
-  const el = document.getElementById('labList');
-  if (!el) return;
-  el.innerHTML = `
-    <div class="lab-sidebar-content">
-      <div class="lab-sidebar-section active">
-        <span class="lab-sidebar-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 3h6M8 3l-4 9h16L16 3"/><path d="M4 12c0 4.4 3.6 8 8 8s8-3.6 8-8"/>
-            <circle cx="9" cy="17" r="1" fill="currentColor" stroke="none" opacity="0.6"/>
-            <circle cx="14" cy="15" r="1.2" fill="currentColor" stroke="none" opacity="0.5"/>
-            <circle cx="16" cy="18" r="0.8" fill="currentColor" stroke="none" opacity="0.4"/>
-          </svg>
-        </span>
-        Guild Contribution
-      </div>
-    </div>`;
-}
-
-function renderLabMain() {
+function gcRenderMain() {
   const container = document.getElementById('mainContent');
   if (!container) return;
 
@@ -205,18 +174,18 @@ function renderLabMain() {
 
 function gcSetSort(mode) {
   saveLabData({ gcSortMode: mode });
-  renderLabMain();
+  gcRenderMain();
 }
 
 function gcSetSelectedFirst(enabled) {
   saveLabData({ gcSelectedFirst: !!enabled });
-  renderLabMain();
+  gcRenderMain();
 }
 
 function gcSetSize(mode) {
   const next = [GC_SIZE_SMALL, GC_SIZE_MEDIUM, GC_SIZE_LARGE].includes(mode) ? mode : GC_SIZE_MEDIUM;
   saveLabData({ gcSizeMode: next });
-  renderLabMain();
+  gcRenderMain();
 }
 
 // ===== GRID INTERACTION (click-to-toggle + hold-to-drag) =====
@@ -372,7 +341,7 @@ function gcStartTimer() {
   const now = Date.now();
   saveLabData({ gcTimerStart: now });
   gcStartTickerIfNeeded(now);
-  renderLabMain();
+  gcRenderMain();
 }
 
 function gcClearTimer() {
@@ -429,7 +398,7 @@ function gcToggleItem(id) {
   saveLabData({ gcSelected: [...selected] });
 
   if (data.gcSelectedFirst) {
-    renderLabMain();
+    gcRenderMain();
     return;
   }
 
@@ -443,7 +412,7 @@ function gcClearSelection() {
   saveLabData({ gcSelected: [] });
 
   if (loadLabData().gcSelectedFirst) {
-    renderLabMain();
+    gcRenderMain();
     return;
   }
 
@@ -487,9 +456,18 @@ function gcHandleKeydown(e) {
 
 // ===== REGISTRATION / WINDOW EXPORTS =====
 
-window.registerLabExperiment?.('gc', {
-  renderSidebar: renderLabSidebar,
-  renderMain: renderLabMain,
+window.registerLabExperiment?.('lab-gc', {
+  tabId: 'lab-gc',
+  title: 'Guild Contribution',
+  sidebarLabel: 'Guild Contribution',
+  sidebarIcon: `
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 3h6M8 3l-4 9h16L16 3"/><path d="M4 12c0 4.4 3.6 8 8 8s8-3.6 8-8"/>
+      <circle cx="9" cy="17" r="1" fill="currentColor" stroke="none" opacity="0.6"/>
+      <circle cx="14" cy="15" r="1.2" fill="currentColor" stroke="none" opacity="0.5"/>
+      <circle cx="16" cy="18" r="0.8" fill="currentColor" stroke="none" opacity="0.4"/>
+    </svg>`,
+  renderMain: gcRenderMain,
 });
 
 window.gcToggleItem = gcToggleItem;
