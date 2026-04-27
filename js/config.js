@@ -39,7 +39,8 @@ const LOCAL_STORAGE = {
   "theme": "osrohr_theme",
   "autoloot_data": "osrohr_autoloot_data",
   "autoloot_names": "osrohr_autoloot_names",
-  "item_values":   "osrohr_item_values"
+  "item_values":   "osrohr_item_values",
+  "lab_data":      "osrohr_lab_data"
 };
 
 const USE_LOCAL_SERVER = isLocalLikeHost(window.location.hostname);

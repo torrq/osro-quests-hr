@@ -1,7 +1,6 @@
-// lab.js — Lab Tab: Guild Contribution Tracker + future utilities
+// lab-gc.js — Lab Tab: Guild Contribution Tracker
 
 const GC_REFRESH_MS   = 6 * 60 * 60 * 1000;
-const LAB_STORAGE_KEY = 'osrohr_lab_v1';
 const SORT_AMT_ALPHA  = 'amt_alpha';
 const SORT_GROUP_ID   = 'group_id';
 const SORT_ALPHA      = 'alpha';
@@ -73,13 +72,13 @@ function gcSortItems(items, mode, manualOrder, selected = new Set(), selectedFir
 // ===== STORAGE =====
 
 function loadLabData() {
-  try { return JSON.parse(localStorage.getItem(LAB_STORAGE_KEY)) || {}; }
+  try { return JSON.parse(localStorage.getItem(LOCAL_STORAGE.lab_data)) || {}; }
   catch { return {}; }
 }
 
 function saveLabData(patch) {
   const cur = loadLabData();
-  localStorage.setItem(LAB_STORAGE_KEY, JSON.stringify({ ...cur, ...patch }));
+  localStorage.setItem(LOCAL_STORAGE.lab_data, JSON.stringify({ ...cur, ...patch }));
 }
 
 // ===== RENDER =====
