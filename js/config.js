@@ -76,6 +76,10 @@ const GUILD_CONTRIBUTION_ITEMS = [
   { id: 4021,  amount: 10,  name: 'Rocker Card', group: 'Card' },
 ];
 
+const GUILD_CONTRIBUTION_CARD_ART_IDS = [
+  4002, 4003, 4006, 4008, 4009, 4010, 4021,
+];
+
 // === HELPER FUNCTIONS ===
 
 /**
