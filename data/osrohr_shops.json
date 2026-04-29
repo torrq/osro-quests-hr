@@ -1,6 +1,726 @@
 {
   "groups": [
     {
+      "name": "Tool Dealer",
+      "subgroups": [
+        {
+          "name": "Usable Items",
+          "shops": [
+            {
+              "name": "Authoritative Badge",
+              "producesId": 662,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1450
+                }
+              ]
+            },
+            {
+              "name": "Concentration Potion",
+              "producesId": 645,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 800
+                }
+              ]
+            },
+            {
+              "name": "Awakening Potion",
+              "producesId": 656,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1500
+                }
+              ]
+            },
+            {
+              "name": "Berserk Potion",
+              "producesId": 657,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Green Potion",
+              "producesId": 506,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 40
+                }
+              ]
+            },
+            {
+              "name": "White Potion",
+              "producesId": 504,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1200
+                }
+              ]
+            },
+            {
+              "name": "Blue Potion",
+              "producesId": 505,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 9000
+                }
+              ]
+            },
+            {
+              "name": "Worn Out Scroll",
+              "producesId": 618,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Fly Wing",
+              "producesId": 601,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "name": "Butterfly Wing",
+              "producesId": 602,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Giant Fly Wing",
+              "producesId": 12212,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Magic Paint",
+              "producesId": 7045,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Trap",
+              "producesId": 1065,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Barricade Kit",
+              "producesId": 14287,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 2000000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Spirit Scrolls",
+          "shops": [
+            {
+              "name": "Jedi Talisman",
+              "producesId": 3202,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Sith Talisman",
+              "producesId": 3214,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Gunslinger Talisman",
+              "producesId": 3216,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Star Gladiator Talisman",
+              "producesId": 3215,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Alchemist Talisman",
+              "producesId": 3200,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Monk Talisman",
+              "producesId": 3201,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Sage Talisman",
+              "producesId": 3203,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Crusader Talisman",
+              "producesId": 3204,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Super Novice Talisman",
+              "producesId": 3205,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Knight Talisman",
+              "producesId": 3206,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Wizard Talisman",
+              "producesId": 3207,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Priest Talisman",
+              "producesId": 3208,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Bard &amp; Dancer Talisman",
+              "producesId": 3209,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Rogue Talisman",
+              "producesId": 3210,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Assassin Talisman",
+              "producesId": 3211,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Blacksmith Talisman",
+              "producesId": 3212,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            },
+            {
+              "name": "Hunter Talisman",
+              "producesId": 3213,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Smiths Tools",
+          "shops": [
+            {
+              "name": "Iron Ore",
+              "producesId": 1002,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Coal",
+              "producesId": 1003,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500
+                }
+              ]
+            },
+            {
+              "name": "Star Dust",
+              "producesId": 1001,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1500
+                }
+              ]
+            },
+            {
+              "name": "Wind of Verdure",
+              "producesId": 992,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Green Live",
+              "producesId": 993,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Red Blood",
+              "producesId": 990,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Crystal Blue",
+              "producesId": 991,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Iron",
+              "producesId": 998,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Steel",
+              "producesId": 999,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Iron Hammer",
+              "producesId": 613,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Golden Hammer",
+              "producesId": 614,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Oridecon Hammer",
+              "producesId": 615,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000
+                }
+              ]
+            },
+            {
+              "name": "Hammer of Blacksmith",
+              "producesId": 1005,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 2
+                }
+              ]
+            },
+            {
+              "name": "Mini Furnace",
+              "producesId": 612,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Anvil",
+              "producesId": 986,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 150000
+                }
+              ]
+            },
+            {
+              "name": "Oridecon Anvil",
+              "producesId": 987,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000
+                }
+              ]
+            },
+            {
+              "name": "Golden Anvil",
+              "producesId": 988,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 450000
+                }
+              ]
+            },
+            {
+              "name": "Emperium Anvil",
+              "producesId": 989,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Elemental Tools",
+          "shops": [
+            {
+              "name": "Blank Scroll",
+              "producesId": 7433,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 4000
+                }
+              ]
+            },
+            {
+              "name": "Wind of Verdure",
+              "producesId": 992,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Green Live",
+              "producesId": 993,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Red Blood",
+              "producesId": 990,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Crystal Blue",
+              "producesId": 991,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Cobweb",
+              "producesId": 1025,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 184
+                }
+              ]
+            },
+            {
+              "name": "Snail's Shell",
+              "producesId": 946,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 50000
+                }
+              ]
+            },
+            {
+              "name": "Scorpion Tail",
+              "producesId": 904,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 50000
+                }
+              ]
+            },
+            {
+              "name": "Rainbow Shell",
+              "producesId": 1013,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 50000
+                }
+              ]
+            },
+            {
+              "name": "Horn",
+              "producesId": 947,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 50000
+                }
+              ]
+            },
+            {
+              "name": "Blue Gemstone",
+              "producesId": 717,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 600
+                }
+              ]
+            },
+            {
+              "name": "Red Gemstone",
+              "producesId": 716,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 600
+                }
+              ]
+            },
+            {
+              "name": "Yellow Gemstone",
+              "producesId": 715,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 600
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Chemist Tools",
+          "shops": []
+        },
+        {
+          "name": "Poison Tools",
+          "shops": []
+        },
+        {
+          "name": "Ammunitions",
+          "shops": []
+        }
+      ],
+      "caption": "@npc 16"
+    },
+    {
       "name": "Kafra Point Shop",
       "subgroups": [
         {
