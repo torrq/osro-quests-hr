@@ -707,15 +707,1151 @@
         },
         {
           "name": "Chemist Tools",
-          "shops": []
+          "shops": [
+            {
+              "name": "Medicine Bowl",
+              "producesId": 7134,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 8
+                }
+              ]
+            },
+            {
+              "name": "Empty Test Tube",
+              "producesId": 1092,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "name": "Zenorc's Fang",
+              "producesId": 1044,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 264
+                }
+              ]
+            },
+            {
+              "name": "Stem",
+              "producesId": 905,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 46
+                }
+              ]
+            },
+            {
+              "name": "Cactus Needle",
+              "producesId": 952,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 82
+                }
+              ]
+            },
+            {
+              "name": "Witch Starsand",
+              "producesId": 1061,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 484
+                }
+              ]
+            },
+            {
+              "name": "Scell",
+              "producesId": 911,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 160
+                }
+              ]
+            },
+            {
+              "name": "Red Gemstone",
+              "producesId": 716,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 600
+                }
+              ]
+            },
+            {
+              "name": "Blue Gemstone",
+              "producesId": 717,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 600
+                }
+              ]
+            },
+            {
+              "name": "Heart of Mermaid",
+              "producesId": 950,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 264
+                }
+              ]
+            },
+            {
+              "name": "Large Jellopy",
+              "producesId": 7126,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 840
+                }
+              ]
+            },
+            {
+              "name": "Frill",
+              "producesId": 1012,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 250
+                }
+              ]
+            },
+            {
+              "name": "Moth Dust",
+              "producesId": 1057,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 138
+                }
+              ]
+            },
+            {
+              "name": "Mushroom Spore",
+              "producesId": 921,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 36
+                }
+              ]
+            },
+            {
+              "name": "Poison Spore",
+              "producesId": 7033,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 114
+                }
+              ]
+            },
+            {
+              "name": "Immortal Heart",
+              "producesId": 929,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 374
+                }
+              ]
+            },
+            {
+              "name": "Fang",
+              "producesId": 1063,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 680
+                }
+              ]
+            },
+            {
+              "name": "Detonator",
+              "producesId": 1051,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 450
+                }
+              ]
+            },
+            {
+              "name": "Tendon",
+              "producesId": 1050,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 220
+                }
+              ]
+            },
+            {
+              "name": "Maneater Blossom",
+              "producesId": 1032,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 196
+                }
+              ]
+            },
+            {
+              "name": "Karvodailnirol",
+              "producesId": 972,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 400
+                }
+              ]
+            },
+            {
+              "name": "Detrimindexta",
+              "producesId": 971,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 400
+                }
+              ]
+            },
+            {
+              "name": "Empty Bottle Box",
+              "producesId": 13761,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20
+                }
+              ]
+            },
+            {
+              "name": "Condensed White Potion",
+              "producesId": 547,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Marine Sphere Bottle",
+              "producesId": 7138,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Plant Bottle",
+              "producesId": 7137,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Embryo",
+              "producesId": 7142,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Bottle Grenade",
+              "producesId": 7135,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Acid Bottle",
+              "producesId": 7136,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Acid Bomb Box(100)",
+              "producesId": 13989,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000000
+                }
+              ]
+            },
+            {
+              "name": "Elemental Potion Creation Guide",
+              "producesId": 7434,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000
+                }
+              ]
+            },
+            {
+              "name": "Condensed Potion Creation Guide",
+              "producesId": 7133,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 240000
+                }
+              ]
+            },
+            {
+              "name": "Potion Creation Gude",
+              "producesId": 7144,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000
+                }
+              ]
+            },
+            {
+              "name": "Alcohol Creation Guide",
+              "producesId": 7127,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000
+                }
+              ]
+            },
+            {
+              "name": "Bottle Grenade Creation Guide",
+              "producesId": 7128,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000
+                }
+              ]
+            },
+            {
+              "name": "Acid Bottle Creation Guide",
+              "producesId": 7129,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000
+                }
+              ]
+            },
+            {
+              "name": "Plant Bottle Creation Guide",
+              "producesId": 7130,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000
+                }
+              ]
+            },
+            {
+              "name": "Marine Sphere Creation Guide",
+              "producesId": 7131,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000
+                }
+              ]
+            },
+            {
+              "name": "Glistening Coat Creation Guide",
+              "producesId": 7132,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Poison Tools",
-          "shops": []
+          "shops": [
+            {
+              "name": "Venom Knife",
+              "producesId": 1771,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Poison Spore",
+              "producesId": 7033,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 114
+                }
+              ]
+            },
+            {
+              "name": "Cactus Needle",
+              "producesId": 952,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 82
+                }
+              ]
+            },
+            {
+              "name": "Bee Sting",
+              "producesId": 939,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000
+                }
+              ]
+            },
+            {
+              "name": "Venom Canine",
+              "producesId": 937,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000
+                }
+              ]
+            },
+            {
+              "name": "Karvodailnirol",
+              "producesId": 972,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 400
+                }
+              ]
+            },
+            {
+              "name": "Berserk Potion",
+              "producesId": 657,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Empty Bottle Box",
+              "producesId": 13761,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Ammunitions",
-          "shops": []
+          "shops": [
+            {
+              "name": "Arrow of Counter Evil",
+              "producesId": 1766,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 40
+                }
+              ]
+            },
+            {
+              "name": "Arrow of Wind",
+              "producesId": 1755,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "name": "Arrow",
+              "producesId": 1750,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Crystal Arrow",
+              "producesId": 1754,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "name": "Cursed Arrow",
+              "producesId": 1761,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Fire Arrow",
+              "producesId": 1752,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "name": "Flash Arrow",
+              "producesId": 1760,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Frozen Arrow",
+              "producesId": 1759,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Holy Arrow",
+              "producesId": 1772,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "name": "Immaterial Arrow",
+              "producesId": 1757,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "name": "Iron Arrow",
+              "producesId": 1770,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 2
+                }
+              ]
+            },
+            {
+              "name": "Mute Arrow",
+              "producesId": 1769,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Oridecon Arrow",
+              "producesId": 1765,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30
+                }
+              ]
+            },
+            {
+              "name": "Poison Arrow",
+              "producesId": 1763,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Rusty Arrow",
+              "producesId": 1762,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "name": "Arrow of Shadow",
+              "producesId": 1767,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "name": "Sharp Arrow",
+              "producesId": 1764,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20
+                }
+              ]
+            },
+            {
+              "name": "Silver Arrow",
+              "producesId": 1751,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "name": "Sleep Arrow",
+              "producesId": 1768,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Steel Arrow",
+              "producesId": 1753,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30
+                }
+              ]
+            },
+            {
+              "name": "Stone Arrow",
+              "producesId": 1756,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3
+                }
+              ]
+            },
+            {
+              "name": "Stun Arrow",
+              "producesId": 1758,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Venom Knife",
+              "producesId": 1771,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Bullet",
+              "producesId": 13200,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Bloody Shell",
+              "producesId": 13202,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30
+                }
+              ]
+            },
+            {
+              "name": "Silver Bullet",
+              "producesId": 13201,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 15
+                }
+              ]
+            },
+            {
+              "name": "Blazing Bullet",
+              "producesId": 13216,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "name": "Freezing Bullet",
+              "producesId": 13217,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "name": "Lightning Bullet",
+              "producesId": 13218,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "name": "Magic Stone Bullet",
+              "producesId": 13219,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "name": "Cartridge",
+              "producesId": 12149,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500
+                }
+              ]
+            },
+            {
+              "name": "Blood Cartridge",
+              "producesId": 12150,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 15000
+                }
+              ]
+            },
+            {
+              "name": "Silver Cartridge",
+              "producesId": 12151,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 7500
+                }
+              ]
+            },
+            {
+              "name": "Blazing Bullet Ammo Case",
+              "producesId": 22745,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Freezing Bullet Ammo Case",
+              "producesId": 22746,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Lightning Bullet Ammo Case",
+              "producesId": 22747,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Magic Stone Bullet Ammo Case",
+              "producesId": 22748,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Blind Sphere",
+              "producesId": 13206,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 80
+                }
+              ]
+            },
+            {
+              "name": "Flare Sphere",
+              "producesId": 13203,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 80
+                }
+              ]
+            },
+            {
+              "name": "Freezing Sphere",
+              "producesId": 13207,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 80
+                }
+              ]
+            },
+            {
+              "name": "Lightning Sphere",
+              "producesId": 13204,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 80
+                }
+              ]
+            },
+            {
+              "name": "Poison Sphere",
+              "producesId": 13205,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 80
+                }
+              ]
+            },
+            {
+              "name": "Flash Shuriken",
+              "producesId": 13252,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20
+                }
+              ]
+            },
+            {
+              "name": "Thorn Needle Shuriken",
+              "producesId": 13254,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Nimbus Shuriken",
+              "producesId": 13251,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Sharp Leaf Shuriken",
+              "producesId": 13253,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 40
+                }
+              ]
+            },
+            {
+              "name": "Shuriken",
+              "producesId": 13250,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 4
+                }
+              ]
+            },
+            {
+              "name": "Black Earth Kunai",
+              "producesId": 13256,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Fell Poison Kunai",
+              "producesId": 13259,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Heat Wave Kunai",
+              "producesId": 13258,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Icicle Kunai",
+              "producesId": 13255,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "High Wind Kunai",
+              "producesId": 13257,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Charm Fire",
+              "producesId": 6512,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Charm Ice",
+              "producesId": 6513,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Charm Wind",
+              "producesId": 6514,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Charm Earth",
+              "producesId": 6515,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            }
+          ]
         }
       ],
       "caption": "@npc 16"
