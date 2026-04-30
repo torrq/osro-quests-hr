@@ -7476,6 +7476,272 @@
       "name": "Crafting",
       "subgroups": [
         {
+          "name": "Box Trader",
+          "quests": [
+            {
+              "name": "White Potion 100 Box",
+              "producesId": 12531,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 504,
+                  "amount": 100
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Yggdrasil Seed (10)",
+              "producesId": 3122,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 608,
+                  "amount": 10
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Yggdrasil Berry (10)",
+              "producesId": 3121,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 607,
+                  "amount": 10
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Box of Thunder (10)",
+              "producesId": 3123,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 12028,
+                  "amount": 10
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Poison Bottle Box",
+              "producesId": 12550,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 678,
+                  "amount": 30
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Aloevera Box (30)",
+              "producesId": 3115,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 606,
+                  "amount": 30
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Dried Yggdrasil Berry Box",
+              "producesId": 13550,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 12293,
+                  "amount": 100
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Elunium Box",
+              "producesId": 12997,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 985,
+                  "amount": 100
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Oridecon Box",
+              "producesId": 12998,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 984,
+                  "amount": 100
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Dried Yggdrasil Berry Box (10)",
+              "producesId": 3182,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 12293,
+                  "amount": 10
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Box of Gloom Box (10)",
+              "producesId": 3183,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 12029,
+                  "amount": 10
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Slim White Potion Box",
+              "producesId": 12529,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 547,
+                  "amount": 100
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Dried Yggdrasil Seed Box (10)",
+              "producesId": 3113,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 6272,
+                  "amount": 10
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Pure Mithril Box",
+              "producesId": 40111,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Gold Box",
+              "producesId": 40112,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "gold",
+                  "amount": 10000
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            }
+          ],
+          "caption": "@npc 4"
+        }
+      ],
+      "caption": "OSRO Recipes"
+    },
+    {
+      "name": "Vanilla Crafting",
+      "subgroups": [
+        {
           "name": "Cooking",
           "quests": [
             {
@@ -8375,7 +8641,7 @@
           ]
         }
       ],
-      "caption": "Vanilla Recipes"
+      "caption": "Default Recipes"
     }
   ]
 }
