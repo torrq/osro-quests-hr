@@ -7741,7 +7741,7 @@
             {
               "name": "Dried Yggdrasil Berry",
               "producesId": 12293,
-              "successRate": 100,
+              "successRate": 40,
               "accountBound": false,
               "requirements": [
                 {
@@ -7773,7 +7773,7 @@
             {
               "name": "Dark Box of Thunder",
               "producesId": 3140,
-              "successRate": 100,
+              "successRate": 40,
               "accountBound": false,
               "requirements": [
                 {
@@ -7805,7 +7805,7 @@
             {
               "name": "Dried Yggdrasil Seed",
               "producesId": 6272,
-              "successRate": 100,
+              "successRate": 40,
               "accountBound": false,
               "requirements": [
                 {
