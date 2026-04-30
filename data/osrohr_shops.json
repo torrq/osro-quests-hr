@@ -1857,6 +1857,124 @@
       "caption": "@npc 16"
     },
     {
+      "name": "Armors",
+      "subgroups": [
+        {
+          "name": "Armor",
+          "shops": []
+        },
+        {
+          "name": "Shield",
+          "shops": []
+        },
+        {
+          "name": "Footgear",
+          "shops": []
+        },
+        {
+          "name": "Garments",
+          "shops": []
+        },
+        {
+          "name": "Headgears",
+          "shops": []
+        },
+        {
+          "name": "Accessories",
+          "shops": []
+        }
+      ],
+      "caption": "@npc 16"
+    },
+    {
+      "name": "Weapons",
+      "subgroups": [
+        {
+          "name": "Katars",
+          "shops": []
+        },
+        {
+          "name": "Mace",
+          "shops": []
+        },
+        {
+          "name": "Knuckle",
+          "shops": []
+        },
+        {
+          "name": "Whips",
+          "shops": []
+        },
+        {
+          "name": "Instruments",
+          "shops": []
+        },
+        {
+          "name": "Books",
+          "shops": []
+        },
+        {
+          "name": "Guns",
+          "shops": []
+        },
+        {
+          "name": "Fuuma",
+          "shops": []
+        },
+        {
+          "name": "One-Handed Swords",
+          "shops": []
+        },
+        {
+          "name": "Two-Handed Swords",
+          "shops": []
+        },
+        {
+          "name": "Spears",
+          "shops": []
+        },
+        {
+          "name": "Dagger",
+          "shops": []
+        },
+        {
+          "name": "Axes",
+          "shops": []
+        },
+        {
+          "name": "Bows",
+          "shops": []
+        },
+        {
+          "name": "Staffs",
+          "shops": []
+        },
+        {
+          "name": "Lightsabers",
+          "shops": []
+        }
+      ],
+      "caption": "@npc 16"
+    },
+    {
+      "name": "Pet Shop",
+      "subgroups": [
+        {
+          "name": "Pet Food",
+          "shops": []
+        },
+        {
+          "name": "Pet Equipment",
+          "shops": []
+        },
+        {
+          "name": "Taming Item",
+          "shops": []
+        }
+      ],
+      "caption": "@npc 16"
+    },
+    {
       "name": "Kafra Point Shop",
       "subgroups": [
         {
