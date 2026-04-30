@@ -2678,67 +2678,1491 @@
       "subgroups": [
         {
           "name": "Katars",
-          "shops": []
+          "shops": [
+            {
+              "name": "Jamadhar [1]",
+              "producesId": 1255,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Jur [3]",
+              "producesId": 1251,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Katar [2]",
+              "producesId": 1253,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Mace",
-          "shops": []
+          "shops": [
+            {
+              "name": "Chain [3]",
+              "producesId": 1520,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Club [4]",
+              "producesId": 1502,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Flail [3]",
+              "producesId": 1511,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Mace [4]",
+              "producesId": 1505,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Morning Star [2]",
+              "producesId": 1514,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Smasher [3]",
+              "producesId": 1508,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Sword Mace [1]",
+              "producesId": 1517,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Knuckle",
-          "shops": []
+          "shops": [
+            {
+              "name": "Berserk [1]",
+              "producesId": 1816,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Claw [2]",
+              "producesId": 1810,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Finger [2]",
+              "producesId": 1812,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Fist [1]",
+              "producesId": 1808,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Knuckle Dusters [3]",
+              "producesId": 1804,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Studded Knuckles [3]",
+              "producesId": 1806,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Waghnak [4]",
+              "producesId": 1802,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Whips",
-          "shops": []
+          "shops": [
+            {
+              "name": "Queen's Whip [2]",
+              "producesId": 1976,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Rante Whip [1]",
+              "producesId": 1957,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Rope [4]",
+              "producesId": 1951,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Tail Whip [2]",
+              "producesId": 1959,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Whip [3]",
+              "producesId": 1953,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Whip [2]",
+              "producesId": 1961,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Wire Whip [3]",
+              "producesId": 1955,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Instruments",
-          "shops": []
+          "shops": [
+            {
+              "name": "Guitar [1]",
+              "producesId": 1908,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Gumoongoh [2]",
+              "producesId": 1912,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Harp [2]",
+              "producesId": 1910,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Lute [3]",
+              "producesId": 1906,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Mandolin [3]",
+              "producesId": 1904,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Violin [4]",
+              "producesId": 1902,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Books",
-          "shops": []
+          "shops": [
+            {
+              "name": "Bible [2]",
+              "producesId": 1551,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Book [3]",
+              "producesId": 1550,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Tablet [1]",
+              "producesId": 1552,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Guns",
-          "shops": []
+          "shops": [
+            {
+              "name": "Crimson Bolt [2]",
+              "producesId": 13103,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Garrison [3]",
+              "producesId": 13105,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Six Shooter [2]",
+              "producesId": 13101,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Branch [3]",
+              "producesId": 13150,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Cyclone [2]",
+              "producesId": 13152,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Jungle Carbine [1]",
+              "producesId": 13166,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Long Barrel [1]",
+              "producesId": 13164,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Black Rose [1]",
+              "producesId": 13155,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Gate Keeper",
+              "producesId": 13156,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Rolling Stone [1]",
+              "producesId": 13154,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Thunder P [2]",
+              "producesId": 13169,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Butcher [1]",
+              "producesId": 13159,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Drifter [1]",
+              "producesId": 13157,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Destroyer [1]",
+              "producesId": 13161,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Inferno [1]",
+              "producesId": 13162,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Fuuma",
-          "shops": []
+          "shops": [
+            {
+              "name": "Huuma Wing Shuriken",
+              "producesId": 13300,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Huuma Giant Wheel Shuriken [4]",
+              "producesId": 13302,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Huuma Blaze Shuriken",
+              "producesId": 13303,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Huuma Calm Mind [2]",
+              "producesId": 13304,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "One-Handed Swords",
-          "shops": []
+          "shops": [
+            {
+              "name": "Blade [4]",
+              "producesId": 1108,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Falchion [4]",
+              "producesId": 1105,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Haedonggum [2]",
+              "producesId": 1128,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Rapier [3]",
+              "producesId": 1111,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Ring Pommel Saber [3]",
+              "producesId": 1125,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Scimiter [3]",
+              "producesId": 1114,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Sword [4]",
+              "producesId": 1102,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Tsurugi [2]",
+              "producesId": 1120,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Bastard Sword [3]",
+              "producesId": 1155,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Broad Sword [2]",
+              "producesId": 1162,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Claymore [2]",
+              "producesId": 1172,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Katana [4]",
+              "producesId": 1117,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Slayer [3]",
+              "producesId": 1152,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Two-handed Sword [2]",
+              "producesId": 1158,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Zweihander [2]",
+              "producesId": 1171,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Two-Handed Swords",
-          "shops": []
+          "shops": [
+            {
+              "name": "Blade [4]",
+              "producesId": 1108,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Falchion [4]",
+              "producesId": 1105,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Haedonggum [2]",
+              "producesId": 1128,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Rapier [3]",
+              "producesId": 1111,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Ring Pommel Saber [3]",
+              "producesId": 1125,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Scimiter [3]",
+              "producesId": 1114,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Sword [4]",
+              "producesId": 1102,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Tsurugi [2]",
+              "producesId": 1120,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Bastard Sword [3]",
+              "producesId": 1155,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Broad Sword [2]",
+              "producesId": 1162,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Claymore [2]",
+              "producesId": 1172,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Katana [4]",
+              "producesId": 1117,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Slayer [3]",
+              "producesId": 1152,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Two-handed Sword [2]",
+              "producesId": 1158,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Zweihander [2]",
+              "producesId": 1171,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Spears",
-          "shops": []
+          "shops": [
+            {
+              "name": "Javelin [4]",
+              "producesId": 1402,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Pike [4]",
+              "producesId": 1408,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Spear [4]",
+              "producesId": 1405,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Glaive [3]",
+              "producesId": 1455,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Guisarme [3]",
+              "producesId": 1452,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Hallberd [2]",
+              "producesId": 1464,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Lance",
+              "producesId": 1411,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Partizan [2]",
+              "producesId": 1458,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Trident [3]",
+              "producesId": 1461,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Dagger",
-          "shops": []
+          "shops": [
+            {
+              "name": "Asura [3]",
+              "producesId": 13011,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Cowardice Blade [2]",
+              "producesId": 13004,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Cutter [4]",
+              "producesId": 1205,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Dagger [3]",
+              "producesId": 1214,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Damascus [2]",
+              "producesId": 1226,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Dirk [3]",
+              "producesId": 1211,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Gladius [3]",
+              "producesId": 1220,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Hakujin [1]",
+              "producesId": 13015,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Jitte [1]",
+              "producesId": 13008,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Knife [4]",
+              "producesId": 1202,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Main Gauche [4]",
+              "producesId": 1208,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Stiletto [3]",
+              "producesId": 1217,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Sucsamad [1]",
+              "producesId": 13018,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Axes",
-          "shops": []
+          "shops": [
+            {
+              "name": "Axe [4]",
+              "producesId": 1302,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Battle Axe [4]",
+              "producesId": 1352,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Buster [2]",
+              "producesId": 1358,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Hammer [3]",
+              "producesId": 1355,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Two-handed Axe [2]",
+              "producesId": 1361,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Bows",
-          "shops": []
+          "shops": [
+            {
+              "name": "Arbalest Bow [2]",
+              "producesId": 1715,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Bow [4]",
+              "producesId": 1702,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Composite Bow [4]",
+              "producesId": 1705,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Cross Bow [3]",
+              "producesId": 1711,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Gakkung Bow [2]",
+              "producesId": 1716,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Great Bow [3]",
+              "producesId": 1708,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Hunter Bow [1]",
+              "producesId": 1726,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Staffs",
-          "shops": []
+          "shops": [
+            {
+              "name": "Arc Wand [2]",
+              "producesId": 1611,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Rod [4]",
+              "producesId": 1602,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Staff [3]",
+              "producesId": 1608,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Wand [3]",
+              "producesId": 1605,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Lightsabers",
-          "shops": []
+          "shops": [
+            {
+              "name": "Yellow Lightsaber [4]",
+              "producesId": 3506,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 50000000
+                }
+              ]
+            },
+            {
+              "name": "Green Lightsaber [4]",
+              "producesId": 3507,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                }
+              ]
+            },
+            {
+              "name": "Purple Lightsaber [4]",
+              "producesId": 3508,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 150000000
+                }
+              ]
+            },
+            {
+              "name": "Red Lightsaber [4]",
+              "producesId": 3509,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                }
+              ]
+            },
+            {
+              "name": "Uber Yellow Lightsaber [4]",
+              "producesId": 3511,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                }
+              ]
+            },
+            {
+              "name": "Uber Purple Lightsaber [4]",
+              "producesId": 3513,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                }
+              ]
+            },
+            {
+              "name": "Uber Red Lightsaber [4]",
+              "producesId": 3514,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                }
+              ]
+            },
+            {
+              "name": "Uber Green Lightsaber [4]",
+              "producesId": 3512,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 400000000
+                }
+              ]
+            }
+          ]
         }
       ],
       "caption": "@npc 16"
