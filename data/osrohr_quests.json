@@ -7734,6 +7734,140 @@
             }
           ],
           "caption": "@npc 4"
+        },
+        {
+          "name": "Master Brewer",
+          "quests": [
+            {
+              "name": "Dried Yggdrasil Berry",
+              "producesId": 12293,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 713,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 970,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 607,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 905,
+                  "amount": 5
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Dark Box of Thunder",
+              "producesId": 3140,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 12016,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 662,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 12028,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 905,
+                  "amount": 5
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Dried Yggdrasil Seed",
+              "producesId": 6272,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 713,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 970,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 608,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 905,
+                  "amount": 5
+                },
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Alcohol",
+              "producesId": 970,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 1092,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 713,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7033,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 905,
+                  "amount": 5
+                },
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            }
+          ],
+          "caption": "@npc 16"
         }
       ],
       "caption": "OSRO Recipes"
