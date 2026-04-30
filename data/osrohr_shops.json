@@ -1861,27 +1861,814 @@
       "subgroups": [
         {
           "name": "Armor",
-          "shops": []
+          "shops": [
+            {
+              "name": "Adventurer's Suit [1]",
+              "producesId": 2306,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Chain Mail [1]",
+              "producesId": 2315,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 65000
+                }
+              ]
+            },
+            {
+              "name": "Coat [1]",
+              "producesId": 2310,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 22000
+                }
+              ]
+            },
+            {
+              "name": "Formal Suit [1]",
+              "producesId": 2320,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20
+                }
+              ]
+            },
+            {
+              "name": "Full Plate [1]",
+              "producesId": 2317,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 80000
+                }
+              ]
+            },
+            {
+              "name": "Glittering Jacket [1]",
+              "producesId": 2319,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20
+                }
+              ]
+            },
+            {
+              "name": "Mantle [1]",
+              "producesId": 2308,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Padded Armor [1]",
+              "producesId": 2313,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 48000
+                }
+              ]
+            },
+            {
+              "name": "Saint's Robe [1]",
+              "producesId": 2326,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 54000
+                }
+              ]
+            },
+            {
+              "name": "Scapulare [1]",
+              "producesId": 2324,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 6500
+                }
+              ]
+            },
+            {
+              "name": "Silk Robe [1]",
+              "producesId": 2322,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 8000
+                }
+              ]
+            },
+            {
+              "name": "Silver Robe [1]",
+              "producesId": 2333,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 7000
+                }
+              ]
+            },
+            {
+              "name": "Thief Clothes [1]",
+              "producesId": 2336,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 74000
+                }
+              ]
+            },
+            {
+              "name": "Tights [1]",
+              "producesId": 2331,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 71000
+                }
+              ]
+            },
+            {
+              "name": "Wooden Mail [1]",
+              "producesId": 2329,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5500
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Shield",
-          "shops": []
+          "shops": [
+            {
+              "name": "Buckler [1]",
+              "producesId": 2104,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 14000
+                }
+              ]
+            },
+            {
+              "name": "Guard [1]",
+              "producesId": 2102,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500
+                }
+              ]
+            },
+            {
+              "name": "Mirror Shield [1]",
+              "producesId": 2108,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 60000
+                }
+              ]
+            },
+            {
+              "name": "Shield [1]",
+              "producesId": 2106,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 56000
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Footgear",
-          "shops": []
+          "shops": [
+            {
+              "name": "Boots [1]",
+              "producesId": 2406,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 18000
+                }
+              ]
+            },
+            {
+              "name": "Sandals [1]",
+              "producesId": 2402,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 400
+                }
+              ]
+            },
+            {
+              "name": "Shoes [1]",
+              "producesId": 2404,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3500
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Garments",
-          "shops": []
+          "shops": [
+            {
+              "name": "Hood [1]",
+              "producesId": 2502,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Manteau [1]",
+              "producesId": 2506,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 32000
+                }
+              ]
+            },
+            {
+              "name": "Muffler [1]",
+              "producesId": 2504,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000
+                }
+              ]
+            },
+            {
+              "name": "Pauldron [1]",
+              "producesId": 2514,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20
+                }
+              ]
+            },
+            {
+              "name": "Undershirt [1]",
+              "producesId": 2523,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Headgears",
-          "shops": []
+          "shops": [
+            {
+              "name": "Sunglasses [1]",
+              "producesId": 2202,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Glasses [1]",
+              "producesId": 2204,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Blinker [1]",
+              "producesId": 2295,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Sakkat",
+              "producesId": 2280,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Ayam [1]",
+              "producesId": 5174,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Magistrate Hat [1]",
+              "producesId": 5173,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Angel Wing",
+              "producesId": 2254,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Army Cap",
+              "producesId": 2261,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Pipe",
+              "producesId": 2268,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Cigarette",
+              "producesId": 2267,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Romantic Flower",
+              "producesId": 2269,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Romantic Leaf",
+              "producesId": 2270,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Assassin Mask",
+              "producesId": 5096,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Apple of Archer",
+              "producesId": 2285,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Sunday Hat",
+              "producesId": 5032,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Elven Ears [1]",
+              "producesId": 2286,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Smiling Mask",
+              "producesId": 5203,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Black Cat Ears",
+              "producesId": 5057,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Feather Beret",
+              "producesId": 5170,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Hot-blooded Headband",
+              "producesId": 5070,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Indian Fillet",
+              "producesId": 5010,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Evil Wing Ears [1]",
+              "producesId": 5068,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Angel Wing Ears [1]",
+              "producesId": 5074,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Crunch Toast",
+              "producesId": 5107,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Party Hat",
+              "producesId": 5060,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Straw Hat",
+              "producesId": 5062,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Cowboy Hat",
+              "producesId": 5075,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Sombrero",
+              "producesId": 5067,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Beanie",
+              "producesId": 5076,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Drooping Cat",
+              "producesId": 5058,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Smokie Leaf",
+              "producesId": 5064,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Lazy Smokie",
+              "producesId": 5084,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Blue Fish",
+              "producesId": 5065,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Kitsune Mask",
+              "producesId": 5069,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            },
+            {
+              "name": "Decorative Golden Bell",
+              "producesId": 5091,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000000
+                }
+              ]
+            },
+            {
+              "name": "Bunny Band",
+              "producesId": 2214,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000000
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Accessories",
-          "shops": []
+          "shops": [
+            {
+              "name": "Belt [1]",
+              "producesId": 2627,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000
+                }
+              ]
+            },
+            {
+              "name": "Brooch [1]",
+              "producesId": 2625,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Clip [1]",
+              "producesId": 2607,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Earring [1]",
+              "producesId": 2622,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Glove [1]",
+              "producesId": 2624,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Necklace [1]",
+              "producesId": 2623,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Ring [1]",
+              "producesId": 2621,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Rosary [1]",
+              "producesId": 2626,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 15000
+                }
+              ]
+            }
+          ]
         }
       ],
       "caption": "@npc 16"
