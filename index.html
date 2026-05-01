@@ -63,6 +63,22 @@
               </div>
             </div>
             <div class="settings-row">
+              <div class="settings-label">Discount</div>
+              <div class="sec-btn-group">
+                <button id="discBtn_off" class="sec-btn" onclick="settingSetDiscount(0)">Off</button>
+                <button id="discBtn_24"  class="sec-btn sec-btn--off" onclick="settingSetDiscount(0.24)">24% Merc</button>
+                <button id="discBtn_25"  class="sec-btn sec-btn--off" onclick="settingSetDiscount(0.25)">25% Stalk</button>
+              </div>
+            </div>
+            <div class="settings-row">
+              <div class="settings-label">Value Display</div>
+              <div class="sec-btn-group">
+                <button id="vmBtn_zeny"   class="sec-btn sec-btn--off" onclick="settingSetValueMode('zeny')">Zeny</button>
+                <button id="vmBtn_credit" class="sec-btn sec-btn--off" onclick="settingSetValueMode('credit')">Credit</button>
+                <button id="vmBtn_mixed"  class="sec-btn" onclick="settingSetValueMode('mixed')">Mixed</button>
+              </div>
+            </div>
+            <div class="settings-row">
               <a href="https://github.com/torrq/osro-quests-hr" class="settings-link" target="_blank" rel="noopener">
                 <img src="image/github.png" alt="GitHub" width="20" height="20" />
                 GitHub

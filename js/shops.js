@@ -405,6 +405,14 @@ function renderShopRequirementsFlat(shop) {
 
     if (req.type === 'zeny') {
       icon = renderItemIcon(1);
+      const discounted = applyDiscount(eff);
+      if (state.discount && discounted !== eff) {
+        const origFmt = eff >= 1e6 ? formatZenyCompact(eff) : eff >= 1000 ? eff.toLocaleString() : String(eff);
+        const discFmt = discounted >= 1e6 ? formatZenyCompact(discounted) : discounted >= 1000 ? discounted.toLocaleString() : String(discounted);
+        name = `Zeny <span class="disc-badge">${Math.round(state.discount * 100)}%</span>`;
+        // Override fmtAmt inline by patching the row specially
+        return _matRow({ icon, name, amt: `<span class="disc-original">${origFmt}</span> <span class="disc-price">${discFmt}</span>`, aside: '', asideType: 'loc', immune: immuneHtml });
+      }
       name = 'Zeny';
     } else if (req.type === 'credit') {
       icon = renderItemIcon(SPECIAL_ITEMS.CREDIT);
@@ -424,7 +432,7 @@ function renderShopRequirementsFlat(shop) {
 
     // Zeny sub-value line
     let zenyVal = 0;
-    if (req.type === 'zeny')        zenyVal = eff;
+    if (req.type === 'zeny')        zenyVal = applyDiscount(eff);
     else if (req.type === 'gold')   zenyVal = eff * getGoldValue();
     else if (req.type === 'credit') zenyVal = eff * getCreditValue();
     else if (req.type === 'item') {
@@ -743,7 +751,7 @@ function shopCalculateFullRequirements(shopIndex, shopChoices) {
 }
 
 function shopCalculateZenyValue(req, amount) {
-  if (req.type === "zeny") return amount;
+  if (req.type === "zeny") return applyDiscount(amount);
   if (req.type === "credit") return amount * getCreditValue();
   if (req.type === "gold") return amount * getGoldValue();
   if (req.type === "item") return amount * (getItem(req.id).value || 0);
@@ -806,8 +814,8 @@ function renderShopSummaryItems(entries, totalZeny) {
   if (totalZeny > 0) {
     html += `
       <div class="tot-row tot-row--total">
-        <span class="tot-label">Total Zeny Value</span>
-        <span class="tot-amt">${formatZenyCompact(totalZeny)}</span>
+        <span class="tot-label">Total Value</span>
+        <span class="tot-amt">${formatValue(totalZeny)}</span>
       </div>`;
   }
 
@@ -841,7 +849,7 @@ function renderShopSummaryItems(entries, totalZeny) {
     else                              zenyVal = entry.amount * entry.value;
 
     const subLine = (entry.type !== "zeny" && zenyVal > 0)
-      ? `<div class="mat-row-sub mat-row-sub--val">${formatZenyCompact(zenyVal)} zeny</div>`
+      ? `<div class="mat-row-sub mat-row-sub--val">${formatValue(zenyVal)}</div>`
       : "";
 
     return `

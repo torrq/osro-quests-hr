@@ -832,7 +832,7 @@ function renderMultiOptionSummary(multiQuestItems, questIndex) {
         ${unique.map(({ totalZeny }, idx) => `
           <div class="summary-tab ${idx === 0 ? "active" : ""}" 
                onclick="switchSummaryTab(${idx})">
-            ${formatZenyCompact(totalZeny)}
+            ${formatValue(totalZeny)}
           </div>
         `).join("")}
       </div>
@@ -879,7 +879,9 @@ function shopZenyCostPerUnit(shop) {
   let zeny = 0;
   if (!Array.isArray(shop.requirements)) return 0;
   shop.requirements.forEach(req => {
-    zeny += calculateZenyValue(req, Number(req.amount) || 0);
+    const raw = calculateZenyValue(req, Number(req.amount) || 0);
+    // Zeny reqs here are shop purchase prices — apply discount
+    zeny += req.type === 'zeny' ? applyDiscount(raw) : raw;
   });
   return zeny;
 }
@@ -1032,8 +1034,8 @@ function renderSummaryItems(entries, totalZeny) {
   if (totalZeny > 0) {
     html += `
       <div class="tot-row tot-row--total">
-        <span class="tot-label">Total Zeny Value</span>
-        <span class="tot-amt">${formatZenyCompact(totalZeny)}</span>
+        <span class="tot-label">Total Value</span>
+        <span class="tot-amt">${formatValue(totalZeny)}</span>
       </div>`;
   }
 
@@ -1072,7 +1074,7 @@ function renderSummaryItems(entries, totalZeny) {
     else                              zenyVal = entry.amount * entry.value;
 
     const subLine = (entry.type !== "zeny" && zenyVal > 0)
-      ? `<div class="mat-row-sub mat-row-sub--val">${formatZenyCompact(zenyVal)} zeny</div>`
+      ? `<div class="mat-row-sub mat-row-sub--val">${formatValue(zenyVal)}</div>`
       : "";
 
     return `

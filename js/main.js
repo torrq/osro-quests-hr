@@ -50,7 +50,9 @@ window.state = {
   selectedGroupForShopEdit: null,
   shopSearchFilter: "",
   expandedShopGroups: new Set(),
-  expandedShopSubgroups: new Set()
+  expandedShopSubgroups: new Set(),
+  discount: 0,        // 0 = off, 0.24 = merchant, 0.25 = stalker
+  valueMode: 'mixed', // 'zeny' | 'credit' | 'mixed'
 };
 
 // Ensure all 10 autoloot slots exist
@@ -130,6 +132,32 @@ function initSecretEditorToggle() {
 }
 
 
+
+// ===== VALUE / DISCOUNT HELPERS =====
+
+function getDiscountMult() {
+  return 1 - (state.discount || 0);
+}
+
+function applyDiscount(zeny) {
+  if (!state.discount) return zeny;
+  return Math.floor(zeny * getDiscountMult());
+}
+
+// Format a zeny total according to current value display mode
+function formatValue(zeny) {
+  const v = state.valueMode;
+  if (v === 'credit' || (v === 'mixed' && zeny >= MIXED_CREDIT_THRESHOLD)) {
+    const credits = zeny / getCreditValue();
+    const fmt = formatZenyCompact(credits);
+    return fmt + (credits === 1 ? ' credit' : ' credits');
+  }
+  return formatZenyCompact(zeny) + ' zeny';
+}
+
+window.applyDiscount = applyDiscount;
+window.formatValue   = formatValue;
+
 // ===== SETTINGS =====
 
 function loadConfig() {
@@ -155,10 +183,42 @@ function initSettings() {
       if (cfg.sections[k] !== undefined) state.sections[k] = cfg.sections[k];
     });
   }
+  if (cfg.discount !== undefined)  state.discount  = cfg.discount;
+  if (cfg.valueMode !== undefined) state.valueMode = cfg.valueMode;
   const sl = document.getElementById('settingShowLocation');
   if (sl) sl.checked = state.showLocation;
   syncSectionButtons();
+  syncValueButtons();
 }
+
+function syncValueButtons() {
+  ['off','24','25'].forEach(v => {
+    const btn = document.getElementById(`discBtn_${v}`);
+    const active = v === 'off' ? !state.discount : state.discount === parseFloat('0.' + v);
+    if (btn) btn.classList.toggle('sec-btn--off', !active);
+  });
+  ['zeny','credit','mixed'].forEach(v => {
+    const btn = document.getElementById(`vmBtn_${v}`);
+    if (btn) btn.classList.toggle('sec-btn--off', state.valueMode !== v);
+  });
+}
+
+function settingSetDiscount(val) {
+  state.discount = val;
+  saveConfig({ discount: val });
+  syncValueButtons();
+  render();
+}
+
+function settingSetValueMode(mode) {
+  state.valueMode = mode;
+  saveConfig({ valueMode: mode });
+  syncValueButtons();
+  render();
+}
+
+window.settingSetDiscount  = settingSetDiscount;
+window.settingSetValueMode = settingSetValueMode;
 
 function syncSectionButtons() {
   SECTION_KEYS.forEach(k => {

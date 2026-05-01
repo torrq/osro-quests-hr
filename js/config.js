@@ -49,6 +49,14 @@ const AUTO_IMPORT_URLS = Object.fromEntries(
   Object.entries(FILES).map(([k, f]) => [k, prefix + f])
 );
 
+// === VALUE DISPLAY CONSTANTS ===
+
+// Zeny value of 1 Credit (used as fallback if not in item database)
+const CREDIT_ZENY_VALUE = 10_000_000;
+
+// In 'mixed' mode, show credits above this threshold (zeny)
+const MIXED_CREDIT_THRESHOLD = 10_000_000;
+
 // === SPECIAL ITEM IDS ===
 
 // These items are used as currency in the game
@@ -95,7 +103,7 @@ const GUILD_CONTRIBUTION_CARD_ART_IDS = [
  * @returns {number} Zeny value per Credit
  */
 function getCreditValue() {
-  return DATA.items[SPECIAL_ITEMS.CREDIT]?.value || 0;
+  return DATA.items[SPECIAL_ITEMS.CREDIT]?.value || CREDIT_ZENY_VALUE;
 }
 
 /**
