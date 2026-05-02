@@ -831,8 +831,23 @@ function renderValuesManagerRow(id, item, mode) {
         aria-label="${label} value for ${escapeHtml(name)}"
       />
       <div class="values-manager-row-actions">
-        <button class="btn btn-sm" onclick="valuesManagerOpenItem(${id})" title="Open item page">Open</button>
-        <button class="btn btn-sm btn-danger" onclick="deleteValuesManagerItem(${id})" title="Delete value">Delete</button>
+        <button class="btn btn-sm btn-icon" onclick="valuesManagerOpenItem(${id})" title="Open item page" aria-label="Open item page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 3h7v7"></path>
+            <path d="M10 14L21 3"></path>
+            <path d="M21 14v7h-7"></path>
+            <path d="M3 10v11h11"></path>
+          </svg>
+        </button>
+        <button class="btn btn-sm btn-danger btn-icon" onclick="deleteValuesManagerItem(${id})" title="Delete value" aria-label="Delete value">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 6h18"></path>
+            <path d="M8 6V4h8v2"></path>
+            <path d="M19 6l-1 16H6L5 6"></path>
+            <path d="M10 11v6"></path>
+            <path d="M14 11v6"></path>
+          </svg>
+        </button>
       </div>
     </div>
   `;

@@ -127,10 +127,44 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .values-manager-controls-spacer {
   flex: 1;
+}
+
+.values-manager-controls-right {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.btn-icon {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+@media (max-width: 560px) {
+  .values-manager-controls-spacer {
+    flex-basis: 100%;
+    height: 0;
+  }
+  .values-manager-controls-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
 }
 
 .values-manager-control {
