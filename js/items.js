@@ -367,6 +367,7 @@ function renderItemsCore() {
 }
 
 function selectItem(id, pushToHistory = true) {
+  if (valuesManagerState?.open) closeValuesManager(false);
   state.selectedItemId = id;
   
   // Update URL with item ID for sharing and browser history
@@ -581,3 +582,444 @@ window.toggleNewItemsFilter = toggleNewItemsFilter;
 
 window.SEARCH_INDEX_NAME = SEARCH_INDEX_NAME;
 window.SEARCH_INDEX_DESC = SEARCH_INDEX_DESC;
+
+// ===== VALUES MANAGER PANE =====
+
+const valuesManagerState = {
+  open: false,
+  mode: 'zeny', // 'zeny' | 'credit'
+  sortKey: 'name', // 'name' | 'id' | 'value'
+  sortDir: 'asc',  // 'asc' | 'desc'
+  initDone: false,
+  tracked: new Set(), // keeps rows visible even when value == 0
+  searchDebounce: null,
+};
+
+function loadValuesManagerConfig() {
+  let cfg = {};
+  if (typeof loadConfig === 'function') {
+    cfg = loadConfig() || {};
+  } else {
+    try { cfg = JSON.parse(localStorage.getItem(LOCAL_STORAGE.config)) || {}; } catch { cfg = {}; }
+  }
+
+  const vm = cfg.valuesManager || {};
+  const mode = vm.mode === 'credit' ? 'credit' : 'zeny';
+  const trackedIds = Array.isArray(vm.trackedIds)
+    ? vm.trackedIds
+    : (Array.isArray(vm.pinnedIds) ? vm.pinnedIds : []); // legacy support
+
+  const sortKey = (vm.sortKey === 'id' || vm.sortKey === 'value') ? vm.sortKey : 'name';
+  const sortDir = vm.sortDir === 'desc' ? 'desc' : 'asc';
+
+  valuesManagerState.mode = mode;
+  valuesManagerState.sortKey = sortKey;
+  valuesManagerState.sortDir = sortDir;
+  valuesManagerState.tracked = new Set(
+    trackedIds.map(n => Number(n)).filter(n => Number.isFinite(n))
+  );
+}
+
+function saveValuesManagerConfig(patch) {
+  let cfg = {};
+  if (typeof loadConfig === 'function') {
+    cfg = loadConfig() || {};
+  } else {
+    try { cfg = JSON.parse(localStorage.getItem(LOCAL_STORAGE.config)) || {}; } catch { cfg = {}; }
+  }
+
+  const current = cfg.valuesManager || {};
+  const next = { ...current, ...patch };
+
+  if (typeof saveConfig === 'function') {
+    saveConfig({ valuesManager: next });
+  } else {
+    try {
+      localStorage.setItem(LOCAL_STORAGE.config, JSON.stringify({ ...cfg, valuesManager: next }));
+    } catch {
+      // ignore storage failures
+    }
+  }
+}
+
+function ensureValuesManagerInit() {
+  if (valuesManagerState.initDone) return;
+  valuesManagerState.initDone = true;
+
+  const input = document.getElementById('valuesManagerAddInput');
+  const results = document.getElementById('valuesManagerAddResults');
+  if (!input || !results) return;
+
+  const hideResults = () => {
+    results.classList.add('hidden');
+    results.innerHTML = '';
+  };
+
+  input.addEventListener('input', () => {
+    clearTimeout(valuesManagerState.searchDebounce);
+    valuesManagerState.searchDebounce = setTimeout(() => {
+      renderValuesManagerAddResults(input.value);
+    }, 80);
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      input.value = '';
+      hideResults();
+    }
+  });
+
+  // Click-away to close the add results dropdown
+  document.addEventListener('click', (e) => {
+    const pane = document.getElementById('valuesManagerPane');
+    if (!pane) return;
+    if (!pane.contains(e.target)) hideResults();
+  });
+}
+
+function openValuesManager(pushToHistory = true) {
+  if (valuesManagerState.open) return;
+  valuesManagerState.open = true;
+
+  loadValuesManagerConfig();
+  ensureValuesManagerInit();
+  const pane = document.getElementById('valuesManagerPane');
+  if (pane) {
+    pane.classList.remove('hidden');
+    pane.setAttribute('aria-hidden', 'false');
+  }
+
+  setValuesManagerMode(valuesManagerState.mode || 'zeny');
+  syncValuesManagerSortUI();
+  syncValuesManagerNotice();
+  renderValuesManager();
+
+  if (typeof updateURL === 'function') {
+    updateURL(null, null, pushToHistory);
+  }
+}
+
+function closeValuesManager(pushToHistory = true) {
+  valuesManagerState.open = false;
+  const pane = document.getElementById('valuesManagerPane');
+  if (pane) {
+    pane.classList.add('hidden');
+    pane.setAttribute('aria-hidden', 'true');
+  }
+
+  const results = document.getElementById('valuesManagerAddResults');
+  if (results) {
+    results.classList.add('hidden');
+    results.innerHTML = '';
+  }
+
+  if (typeof updateURL === 'function' && pushToHistory) {
+    updateURL(null, null, true);
+  }
+}
+
+function setValuesManagerMode(mode) {
+  valuesManagerState.mode = mode === 'credit' ? 'credit' : 'zeny';
+  saveValuesManagerConfig({
+    mode: valuesManagerState.mode,
+    trackedIds: Array.from(valuesManagerState.tracked),
+    sortKey: valuesManagerState.sortKey,
+    sortDir: valuesManagerState.sortDir,
+  });
+
+  const btnZ = document.getElementById('vmgrModeZeny');
+  const btnC = document.getElementById('vmgrModeCredit');
+  if (btnZ && btnC) {
+    btnZ.classList.toggle('sec-btn--off', valuesManagerState.mode !== 'zeny');
+    btnC.classList.toggle('sec-btn--off', valuesManagerState.mode !== 'credit');
+  }
+
+  syncValuesManagerNotice();
+  if (valuesManagerState.open) renderValuesManager();
+}
+
+function renderValuesManager() {
+  const list = document.getElementById('valuesManagerList');
+  if (!list) return;
+
+  const activeSet = valuesManagerState.tracked;
+  const mode = valuesManagerState.mode;
+
+  // Always show items that already have a value, plus anything the user added.
+  const ids = new Set(activeSet);
+  Object.entries(DATA.items || {}).forEach(([id, item]) => {
+    const n = Number(id);
+    if (!item) return;
+    if ((item.value || 0) > 0) ids.add(n);
+  });
+
+  const idArr = Array.from(ids).filter((id) => DATA.items && DATA.items[id]);
+
+  if (idArr.length === 0) {
+    list.innerHTML = `<div class="values-manager-empty">No values yet. Add an item above to start.</div>`;
+    return;
+  }
+
+  // Stable sort: user-selected primary, then name asc, then id asc
+  idArr.sort((a, b) => {
+    const av = Number(DATA.items[a]?.value || 0);
+    const bv = Number(DATA.items[b]?.value || 0);
+    const an = (getItemDisplayName(DATA.items[a]) || '').toLowerCase();
+    const bn = (getItemDisplayName(DATA.items[b]) || '').toLowerCase();
+
+    const dir = valuesManagerState.sortDir === 'desc' ? -1 : 1;
+    const key = valuesManagerState.sortKey || 'name';
+
+    if (key === 'value') {
+      if (av !== bv) return (av - bv) * dir;
+    } else if (key === 'id') {
+      if (a !== b) return (a - b) * dir;
+    } else {
+      if (an < bn) return -1 * dir;
+      if (an > bn) return 1 * dir;
+    }
+
+    if (an < bn) return -1;
+    if (an > bn) return 1;
+    return a - b;
+  });
+
+  list.innerHTML = idArr.map((id) => renderValuesManagerRow(id, DATA.items[id], mode)).join('');
+}
+
+function renderValuesManagerRow(id, item, mode) {
+  const name = getItemDisplayName(item) || '<unnamed>';
+  const isCreditItem = typeof SPECIAL_ITEMS !== 'undefined' && id === SPECIAL_ITEMS.CREDIT;
+  const creditZeny = (typeof getCreditValue === 'function') ? getCreditValue() : 0;
+
+  let label = 'Zeny';
+  let shown = Number(item.value || 0);
+  let inputStep = '1';
+
+  if (mode === 'credit' && !isCreditItem) {
+    label = 'Credits';
+    inputStep = '0.01';
+    shown = creditZeny > 0 ? (Number(item.value || 0) / creditZeny) : 0;
+  } else if (mode === 'credit' && isCreditItem) {
+    label = 'Zeny / Credit';
+    shown = Number(item.value || 0);
+  }
+
+  const safeShown = Number.isFinite(shown) ? shown : 0;
+  const valueText = Number(item.value || 0) > 0 ? `${formatZenyCompact(Number(item.value || 0))} zeny` : '0 zeny';
+  const disableCreditEdit = (mode === 'credit' && isCreditItem);
+  const inputDisabledAttr = disableCreditEdit ? 'disabled' : '';
+  const inputTitle = disableCreditEdit ? 'Disabled in Credits mode' : '';
+
+  return `
+    <div class="values-manager-row">
+      ${renderItemIcon(id, 24)}
+      <div class="values-manager-row-main">
+        <div class="values-manager-row-name">${escapeHtml(name)}</div>
+        <div class="values-manager-row-sub">#${id} • ${valueText}</div>
+      </div>
+      <input
+        class="values-manager-value-input"
+        type="number"
+        step="${inputStep}"
+        inputmode="decimal"
+        value="${mode === 'credit' && !isCreditItem ? safeShown : Math.round(safeShown)}"
+        onchange="updateValuesManagerValue(${id}, this.value)"
+        placeholder="0"
+        ${inputDisabledAttr}
+        title="${inputTitle}"
+        aria-label="${label} value for ${escapeHtml(name)}"
+      />
+      <div class="values-manager-row-actions">
+        <button class="btn btn-sm" onclick="valuesManagerOpenItem(${id})" title="Open item page">Open</button>
+        <button class="btn btn-sm btn-danger" onclick="deleteValuesManagerItem(${id})" title="Delete value">Delete</button>
+      </div>
+    </div>
+  `;
+}
+
+function valuesManagerOpenItem(id) {
+  closeValuesManager(false);
+  navigateToItem(id);
+}
+
+function addToValuesManager(id) {
+  valuesManagerState.tracked.add(Number(id));
+  saveValuesManagerConfig({
+    mode: valuesManagerState.mode,
+    trackedIds: Array.from(valuesManagerState.tracked),
+    sortKey: valuesManagerState.sortKey,
+    sortDir: valuesManagerState.sortDir,
+  });
+  renderValuesManager();
+}
+
+function updateValuesManagerValue(id, raw) {
+  const itemId = Number(id);
+  const v = Number(raw);
+  if (!Number.isFinite(v) || v < 0) return;
+
+  const isCreditItem = typeof SPECIAL_ITEMS !== 'undefined' && itemId === SPECIAL_ITEMS.CREDIT;
+  if (valuesManagerState.mode === 'credit' && isCreditItem) return;
+
+  let zenyValue = v;
+  if (valuesManagerState.mode === 'credit' && !isCreditItem) {
+    const creditZeny = (typeof getCreditValue === 'function') ? getCreditValue() : 0;
+    zenyValue = creditZeny > 0 ? Math.round(v * creditZeny) : 0;
+  } else {
+    zenyValue = Math.round(v);
+  }
+
+  addToValuesManager(itemId);
+  updateItemValue(itemId, zenyValue);
+  renderValuesManager();
+
+  // Keep item view in sync if open
+  if (state.currentTab === 'items' && state.selectedItemId === itemId && typeof renderItemContent === 'function') {
+    renderItemContent();
+  }
+}
+
+function deleteValuesManagerItem(id) {
+  const itemId = Number(id);
+  const item = DATA.items?.[itemId];
+  const name = item ? (getItemDisplayName(item) || `#${itemId}`) : `#${itemId}`;
+
+  const ok = window.confirm(`Delete value for ${name}? This sets it to 0.`);
+  if (!ok) return;
+
+  valuesManagerState.tracked.delete(itemId);
+  saveValuesManagerConfig({
+    mode: valuesManagerState.mode,
+    trackedIds: Array.from(valuesManagerState.tracked),
+    sortKey: valuesManagerState.sortKey,
+    sortDir: valuesManagerState.sortDir,
+  });
+
+  updateItemValue(itemId, 0);
+  renderValuesManager();
+
+  if (state.currentTab === 'items' && state.selectedItemId === itemId && typeof renderItemContent === 'function') {
+    renderItemContent();
+  }
+}
+
+function renderValuesManagerAddResults(query) {
+  const results = document.getElementById('valuesManagerAddResults');
+  if (!results) return;
+
+  const q = (query || '').trim();
+  if (!q) {
+    results.classList.add('hidden');
+    results.innerHTML = '';
+    return;
+  }
+
+  const all = getAllItems();
+  const lower = q.toLowerCase();
+
+  let matches = [];
+  if (/^\\d+$/.test(lower)) {
+    matches = all.filter(it => it.id.toString().includes(lower));
+  } else {
+    matches = all.filter(it => (getItemDisplayName(it) || '').toLowerCase().includes(lower));
+  }
+
+  matches = matches.slice(0, 20);
+  if (matches.length === 0) {
+    results.classList.remove('hidden');
+    results.innerHTML = `<div class="values-manager-result"><span>No matches</span><span></span></div>`;
+    return;
+  }
+
+  results.classList.remove('hidden');
+  results.innerHTML = matches.map(it => `
+    <div class="values-manager-result" onclick="valuesManagerAddPick(${it.id})">
+      <span style="display:flex;align-items:center;gap:8px;min-width:0;">
+        ${renderItemIcon(it.id, 24)}
+        <span style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${escapeHtml(getItemDisplayName(it) || '<unnamed>')}</span>
+      </span>
+      <span style="color:var(--text-muted);font-size:12px;">#${it.id}</span>
+    </div>
+  `).join('');
+}
+
+function valuesManagerAddPick(id) {
+  addToValuesManager(Number(id));
+  const input = document.getElementById('valuesManagerAddInput');
+  const results = document.getElementById('valuesManagerAddResults');
+  if (input) input.value = '';
+  if (results) {
+    results.classList.add('hidden');
+    results.innerHTML = '';
+  }
+  renderValuesManager();
+}
+
+function setValuesManagerSort(key) {
+  valuesManagerState.sortKey = (key === 'id' || key === 'value') ? key : 'name';
+  saveValuesManagerConfig({
+    mode: valuesManagerState.mode,
+    trackedIds: Array.from(valuesManagerState.tracked),
+    sortKey: valuesManagerState.sortKey,
+    sortDir: valuesManagerState.sortDir,
+  });
+  syncValuesManagerSortUI();
+  renderValuesManager();
+}
+
+function toggleValuesManagerSortDir() {
+  valuesManagerState.sortDir = valuesManagerState.sortDir === 'desc' ? 'asc' : 'desc';
+  saveValuesManagerConfig({
+    mode: valuesManagerState.mode,
+    trackedIds: Array.from(valuesManagerState.tracked),
+    sortKey: valuesManagerState.sortKey,
+    sortDir: valuesManagerState.sortDir,
+  });
+  syncValuesManagerSortUI();
+  renderValuesManager();
+}
+
+function syncValuesManagerSortUI() {
+  const sel = document.getElementById('valuesManagerSortKey');
+  if (sel) sel.value = valuesManagerState.sortKey || 'name';
+
+  const btn = document.getElementById('valuesManagerSortDir');
+  if (!btn) return;
+
+  const key = valuesManagerState.sortKey || 'name';
+  const dir = valuesManagerState.sortDir === 'desc' ? 'desc' : 'asc';
+
+  let label = dir === 'desc' ? 'Z→A' : 'A→Z';
+  if (key === 'id') label = dir === 'desc' ? 'ID↓' : 'ID↑';
+  if (key === 'value') label = dir === 'desc' ? 'V↓' : 'V↑';
+  btn.textContent = label;
+}
+
+function syncValuesManagerNotice() {
+  const notice = document.getElementById('valuesManagerNotice');
+  if (!notice) return;
+
+  const isCreditMode = valuesManagerState.mode === 'credit';
+  if (!isCreditMode) {
+    notice.classList.add('hidden');
+    notice.textContent = '';
+    return;
+  }
+
+  notice.classList.remove('hidden');
+  notice.textContent = 'Credits mode: editing the Credit item value is disabled to avoid confusing “credits-per-credit” behavior. Switch to Zeny mode to edit it.';
+}
+
+// Expose pane controls for inline handlers
+window.openValuesManager = openValuesManager;
+window.closeValuesManager = closeValuesManager;
+window.setValuesManagerMode = setValuesManagerMode;
+window.updateValuesManagerValue = updateValuesManagerValue;
+window.addToValuesManager = addToValuesManager;
+window.valuesManagerAddPick = valuesManagerAddPick;
+window.valuesManagerOpenItem = valuesManagerOpenItem;
+window.deleteValuesManagerItem = deleteValuesManagerItem;
+window.setValuesManagerSort = setValuesManagerSort;
+window.toggleValuesManagerSortDir = toggleValuesManagerSortDir;
+window.isValuesManagerOpen = () => valuesManagerState.open;

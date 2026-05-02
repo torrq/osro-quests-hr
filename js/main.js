@@ -946,6 +946,11 @@ function switchTab(tabName, pushState = true) {
   updateTabButtons(tabName);
   hideAllElements();
   showTabElements(tabName);
+
+  // Close the Values Manager when leaving Items tab
+  if (tabName !== 'items' && typeof window.closeValuesManager === 'function') {
+    window.closeValuesManager();
+  }
   
   // Auto-select first item when switching to a tab with no selection
   // This ensures browser history works properly
@@ -1266,7 +1271,14 @@ function handleURLNavigation() {
   }
   // Priority 2: Pure Tab Navigation (Only if no entity is linked)
   else if (tab) {
-    ensureTab(tab);
+    if (tab === 'values') {
+      ensureTab('items');
+      if (typeof window.openValuesManager === 'function') {
+        window.openValuesManager(false);
+      }
+    } else {
+      ensureTab(tab);
+    }
   }
 }
 
@@ -1290,12 +1302,19 @@ function updateURL(entityId = null, entityType = null, pushState = true) {
   // 3. If no entity is selected, we rely on the tab parameter
   else if (state.currentTab !== 'quests') {
     // Only set tab if it's not the default "quests" tab
-    url.searchParams.set('tab', state.currentTab);
+    const valuesOpen = state.currentTab === 'items'
+      && typeof window.isValuesManagerOpen === 'function'
+      && window.isValuesManagerOpen();
+    url.searchParams.set('tab', valuesOpen ? 'values' : state.currentTab);
   }
   
   // 4. Create state object for history
   const historyState = {
-    tab: state.currentTab,
+    tab: (state.currentTab === 'items'
+      && typeof window.isValuesManagerOpen === 'function'
+      && window.isValuesManagerOpen())
+      ? 'values'
+      : state.currentTab,
     questId: entityType === 'quest' ? entityId : null,
     itemId: entityType === 'item' ? entityId : null,
     autolootSlot: entityType === 'autoloot' ? entityId : null
@@ -1489,8 +1508,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.state) {
       const { tab, questId, itemId, autolootSlot } = event.state;
       
-      if (tab && tab !== state.currentTab) {
-        switchTab(tab, false);
+      if (tab === 'values') {
+        if (state.currentTab !== 'items') switchTab('items', false);
+        if (typeof window.openValuesManager === 'function') window.openValuesManager(false);
+      } else {
+        if (tab && tab !== state.currentTab) {
+          switchTab(tab, false);
+        }
+        if (tab === 'items' && typeof window.closeValuesManager === 'function') {
+          window.closeValuesManager(false);
+        }
       }
       
       if (questId) {

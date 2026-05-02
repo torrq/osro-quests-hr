@@ -136,8 +136,7 @@
                 <input type="checkbox" id="showValuesOnly" onchange="toggleValuesFilter(this.checked)" autocomplete="off">
                 <span>Zeny Values</span>
               </label>
-              <button class="btn btn-sm" onclick="importItemValues()" title="Import Zeny Values">Import</button>
-              <button class="btn btn-sm" onclick="exportValues()" title="Export Zeny Values">Export</button>
+              <button class="btn btn-sm" onclick="openValuesManager()" title="Manage item values">Manage Values</button>
             </div>
           </div>
           <div class="toolbar">
@@ -166,10 +165,51 @@
         <div class="autoloot-list hidden" id="autolootList"></div>
         <div class="lab-list hidden" id="labList"></div>
       </div>
-      <div class="main-content" id="mainContent">
-        <div class="empty-state">
-          <h2>No Quest Selected</h2>
-          <p>Select a quest from the sidebar</p>
+      <div class="right-pane" id="rightPane">
+        <div class="main-content" id="mainContent">
+          <div class="empty-state">
+            <h2>No Quest Selected</h2>
+            <p>Select a quest from the sidebar</p>
+          </div>
+        </div>
+
+        <div id="valuesManagerPane" class="values-manager-pane hidden" aria-hidden="true">
+        <div class="values-manager-header">
+          <div class="values-manager-title">Manage Values</div>
+          <div class="values-manager-header-actions">
+            <div class="values-manager-mode">
+              <button id="vmgrModeZeny" class="btn btn-sm sec-btn" onclick="setValuesManagerMode('zeny')" title="Edit in zeny">Zeny</button>
+              <button id="vmgrModeCredit" class="btn btn-sm sec-btn sec-btn--off" onclick="setValuesManagerMode('credit')" title="Edit in credits">Credits</button>
+            </div>
+            <button class="btn btn-sm" onclick="closeValuesManager()" title="Close">×</button>
+          </div>
+        </div>
+
+        <div class="values-manager-body">
+          <div class="values-manager-add">
+            <input id="valuesManagerAddInput" class="search-input" type="text" placeholder="Add item by name or ID..." autocomplete="off" />
+            <div id="valuesManagerAddResults" class="values-manager-results hidden"></div>
+          </div>
+
+          <div class="values-manager-controls">
+            <label class="values-manager-control">
+              <span class="values-manager-control-label">Sort</span>
+              <select id="valuesManagerSortKey" class="values-manager-select" onchange="setValuesManagerSort(this.value)">
+                <option value="name">Name</option>
+                <option value="id">Item ID</option>
+                <option value="value">Value</option>
+              </select>
+            </label>
+            <button id="valuesManagerSortDir" class="btn btn-sm" onclick="toggleValuesManagerSortDir()" title="Toggle sort direction">A→Z</button>
+
+            <div class="values-manager-controls-spacer"></div>
+            <button class="btn btn-sm" onclick="importItemValues()" title="Import Zeny Values">Import</button>
+            <button class="btn btn-sm" onclick="exportValues()" title="Export Zeny Values">Export</button>
+          </div>
+
+          <div id="valuesManagerNotice" class="values-manager-notice hidden"></div>
+          <div id="valuesManagerList" class="values-manager-list"></div>
+        </div>
         </div>
       </div>
     </div>
