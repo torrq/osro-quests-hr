@@ -5234,6 +5234,116 @@
       "caption": "@npc 16"
     },
     {
+      "name": "Ninja Shop",
+      "subgroups": [
+        {
+          "name": "Ninja Shop",
+          "shops": [
+            {
+              "name": "Arm Guard",
+              "producesId": 2117,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Flame Stone",
+              "producesId": 7521,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Ice Stone",
+              "producesId": 7522,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Wind Stone",
+              "producesId": 7523,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Shadow Orb",
+              "producesId": 7524,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Charm Fire",
+              "producesId": 6512,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Charm Ice",
+              "producesId": 6513,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Charm Wind",
+              "producesId": 6514,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Charm Earth",
+              "producesId": 6515,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "caption": "@npc 16"
+    },
+    {
       "name": "Kafra Point Shop",
       "subgroups": [
         {
