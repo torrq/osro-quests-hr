@@ -816,7 +816,7 @@ function renderValuesManagerRow(id, item, mode) {
       ${renderItemIcon(id, 24)}
       <div class="values-manager-row-main">
         <div class="values-manager-row-name">${escapeHtml(name)}</div>
-        <div class="values-manager-row-sub">#${id} • ${valueText}</div>
+        <div class="values-manager-row-sub" title="${escapeHtml(valueText)}">#${id}</div>
       </div>
       <input
         class="values-manager-value-input"
