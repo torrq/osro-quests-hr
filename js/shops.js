@@ -805,7 +805,7 @@ function renderShopSummaryItems(entries, totalZeny) {
   // If the only cost is zeny and totalZeny equals that zeny requirement,
   // the value section would just repeat the requirement — suppress it.
   const onlyZeny = valued.length === 1 && valued[0].type === "zeny";
-  if (onlyZeny && valued[0].amount === totalZeny) {
+  if (onlyZeny && applyDiscount(valued[0].amount) === totalZeny) {
     return '<div class="tot-empty">No zeny-valued materials</div>';
   }
 
@@ -820,9 +820,10 @@ function renderShopSummaryItems(entries, totalZeny) {
   }
 
   html += valued.map(entry => {
-    const fmtAmt = entry.amount >= 1e6 ? formatZenyCompact(entry.amount)
-                 : entry.amount >= 1000 ? entry.amount.toLocaleString()
-                 : entry.amount;
+    const displayAmt = entry.type === "zeny" ? applyDiscount(entry.amount) : entry.amount;
+    const fmtAmt = displayAmt >= 1e6 ? formatZenyCompact(displayAmt)
+                 : displayAmt >= 1000 ? displayAmt.toLocaleString()
+                 : displayAmt;
 
     const slot = entry.type === "item" && entry.slot > 0
       ? `<span class="mat-slot">[${entry.slot}]</span>` : "";
@@ -843,7 +844,7 @@ function renderShopSummaryItems(entries, totalZeny) {
     }
 
     let zenyVal = 0;
-    if (entry.type === "zeny")        zenyVal = entry.amount;
+    if (entry.type === "zeny")        zenyVal = applyDiscount(entry.amount);
     else if (entry.type === "gold")   zenyVal = entry.amount * getGoldValue();
     else if (entry.type === "credit") zenyVal = entry.amount * getCreditValue();
     else                              zenyVal = entry.amount * entry.value;

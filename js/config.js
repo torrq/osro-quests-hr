@@ -61,7 +61,7 @@ const MIXED_CREDIT_THRESHOLD = 10_000_000;
 
 // These items are used as currency in the game
 const SPECIAL_ITEMS = {
-  CREDIT: 40001,  // Credits
+  CREDIT: 3100,  // Credits
   GOLD: 969,      // Gold
 };
 

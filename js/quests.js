@@ -898,7 +898,13 @@ function calculateDirectRequirements(questIndex = null) {
       const sources = questIndex.get(req.id);
       const shopSrc = sources.find(s => s.type === 'shop');
       if (shopSrc) {
-        const shopZenyPerUnit = shopZenyCostPerUnit(shopSrc.source);
+        // Get per-unit cost from shop requirements (already applies discount for zeny type)
+        let shopZenyPerUnit = shopZenyCostPerUnit(shopSrc.source);
+        // Fallback: shop has no explicit requirements — treat item.value as shop price with discount
+        if (shopZenyPerUnit === 0) {
+          const itemVal = getItem(req.id)?.value || 0;
+          if (itemVal > 0) shopZenyPerUnit = applyDiscount(itemVal);
+        }
         if (shopZenyPerUnit > 0) {
           totalZeny += shopZenyPerUnit * effectiveAmount;
           const item = getItem(req.id);
@@ -956,13 +962,40 @@ function calculateFullRequirements(questIndex, questChoices) {
         if (chosenSourceObj.type === 'quest') {
           accumulate(chosenSourceObj.source, effectiveAmount, questPath);
         } else if (chosenSourceObj.type === 'shop') {
-          // For shops, add the shop's requirements directly (don't recurse)
+          // Shops are terminal — treat like direct mode: show item with discounted shop cost.
+          // Only quest sources recurse; this keeps "Include Sub-Quests" about quests only.
           const shop = chosenSourceObj.source;
-          shop.requirements.forEach(shopReq => {
-            const shopEffectiveAmount = (Number(shopReq.amount) || 0) * effectiveAmount;
-            totalZeny += calculateZenyValue(shopReq, shopEffectiveAmount);
-            accumulateRequirement(totals, shopReq, shopEffectiveAmount);
-          });
+          let shopZenyPerUnit = 0;
+          if (Array.isArray(shop.requirements)) {
+            shop.requirements.forEach(shopReq => {
+              const raw = calculateZenyValue(shopReq, Number(shopReq.amount) || 0);
+              shopZenyPerUnit += shopReq.type === 'zeny' ? applyDiscount(raw) : raw;
+            });
+          }
+          if (shopZenyPerUnit === 0) {
+            const itemVal = getItem(req.id)?.value || 0;
+            if (itemVal > 0) shopZenyPerUnit = applyDiscount(itemVal);
+          }
+          if (shopZenyPerUnit > 0) {
+            totalZeny += shopZenyPerUnit * effectiveAmount;
+            const item = getItem(req.id);
+            const key = `item_${req.id}`;
+            if (!totals[key]) {
+              totals[key] = {
+                name: item?.name || 'Unknown',
+                amount: 0,
+                type: 'item',
+                itemId: req.id,
+                slot: Number(item?.slot) || 0,
+                value: shopZenyPerUnit
+              };
+            }
+            totals[key].amount += effectiveAmount;
+          } else {
+            // No zeny cost — just accumulate the item at face value
+            totalZeny += calculateZenyValue(req, effectiveAmount);
+            accumulateRequirement(totals, req, effectiveAmount);
+          }
         }
       } else {
         totalZeny += calculateZenyValue(req, effectiveAmount);
@@ -1210,9 +1243,22 @@ function buildQuestIndex() {
 
 function hasNestedQuests(questIndex) {
   if (!state.selectedQuest) return false;
-  return state.selectedQuest.requirements.some(
-    req => req.type === "item" && questIndex.has(req.id)
-  );
+
+  function checkSource(quest, visited = new Set()) {
+    if (visited.has(quest)) return false;
+    visited.add(quest);
+    return quest.requirements.some(req => {
+      if (req.type !== "item" || !questIndex.has(req.id)) return false;
+      const sources = questIndex.get(req.id);
+      // Only quest sources (not shops) make the toggle meaningful
+      const questSources = sources.filter(s => s.type === 'quest');
+      if (questSources.length > 0) return true;
+      // Recurse into any shop sources' sub-items? No — shops are terminal.
+      return false;
+    });
+  }
+
+  return checkSource(state.selectedQuest);
 }
 
 function toggleTotals() {

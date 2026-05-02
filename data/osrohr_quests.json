@@ -2205,8 +2205,7 @@
                   "amount": 10
                 },
                 {
-                  "type": "item",
-                  "id": 3100,
+                  "type": "credit",
                   "amount": 10
                 },
                 {

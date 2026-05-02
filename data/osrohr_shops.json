@@ -5260,6 +5260,226 @@
                   "amount": 150
                 }
               ]
+            },
+            {
+              "name": "Heart Necklace [1]",
+              "producesId": 3294,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Empyrean Brooch [1]",
+              "producesId": 3298,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Fur Earrings [1]",
+              "producesId": 3297,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Eclipse Ring [1]",
+              "producesId": 3296,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Shadow Pendant [1]",
+              "producesId": 3299,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Odin's Blessing [1]",
+              "producesId": 2353,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Vidar's Boots [1]",
+              "producesId": 2418,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Vali's Manteau [1]",
+              "producesId": 2517,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Shadow Guard [1]",
+              "producesId": 2135,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Anime Face 1",
+              "producesId": 20732,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Anime Face 2",
+              "producesId": 20733,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Anime Face 3",
+              "producesId": 20734,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Anime Face 4",
+              "producesId": 20735,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Sleeping Suit Blue",
+              "producesId": 20854,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Sleeping Suit Pink",
+              "producesId": 20855,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Lucky d Doggo",
+              "producesId": 20617,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Chiby Dancing",
+              "producesId": 20950,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 2999
+                }
+              ]
+            },
+            {
+              "name": "Chiby Glasses Character",
+              "producesId": 20951,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 2999
+                }
+              ]
+            },
+            {
+              "name": "Chiby Laughing",
+              "producesId": 20952,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 2999
+                }
+              ]
+            },
+            {
+              "name": "Captain Shinigami Cloak",
+              "producesId": 20561,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "vote_points",
+                  "amount": 2999
+                }
+              ]
             }
           ]
         },
@@ -5287,6 +5507,127 @@
                   "amount": 150
                 }
               ]
+            },
+            {
+              "name": "Buff Scroll",
+              "producesId": 3250,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Gym Pass",
+              "producesId": 7776,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 40
+                }
+              ]
+            },
+            {
+              "name": "Field Manual",
+              "producesId": 12263,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Field Manual 300%",
+              "producesId": 14545,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 40
+                }
+              ]
+            },
+            {
+              "name": "Bubble Gum",
+              "producesId": 12210,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 40
+                }
+              ]
+            },
+            {
+              "name": "Steamed Tongue",
+              "producesId": 12075,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Dragon Breath Cocktail",
+              "producesId": 12080,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Immortal Stew",
+              "producesId": 12085,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Steamed Desert Scorpions",
+              "producesId": 12090,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Hwergelmir's Tonic",
+              "producesId": 12095,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Cooked Nine Tail's Tails",
+              "producesId": 12100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "activity_points",
+                  "amount": 5
+                }
+              ]
             }
           ]
         },
@@ -5296,7 +5637,7 @@
             {
               "name": "Yggdrasil Berry (10)",
               "producesId": 3121,
-              "accountBound": false,
+              "accountBound": true,
               "requirements": [
                 {
                   "type": "hourly_points",
@@ -5307,7 +5648,7 @@
             {
               "name": "Yggdrasil Seed (10)",
               "producesId": 3122,
-              "accountBound": false,
+              "accountBound": true,
               "requirements": [
                 {
                   "type": "hourly_points",
@@ -5318,11 +5659,451 @@
             {
               "name": "Box of Thunder (10)",
               "producesId": 3123,
-              "accountBound": false,
+              "accountBound": true,
               "requirements": [
                 {
                   "type": "hourly_points",
                   "amount": 2
+                }
+              ]
+            },
+            {
+              "name": "Dark Box of Thunder",
+              "producesId": 3140,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 2
+                }
+              ]
+            },
+            {
+              "name": "Steamed Tongue",
+              "producesId": 12075,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Dragon Breath Cocktail",
+              "producesId": 12080,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Immortal Stew",
+              "producesId": 12085,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Steamed Desert Scorpions",
+              "producesId": 12090,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Hwergelmir's Tonic",
+              "producesId": 12095,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Cooked Nine Tail's Tails",
+              "producesId": 12100,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 5
+                }
+              ]
+            },
+            {
+              "name": "Headgear Point Ticket",
+              "producesId": 8351,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 48
+                }
+              ]
+            },
+            {
+              "name": "Credit",
+              "producesId": 3100,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 48
+                }
+              ]
+            },
+            {
+              "name": "Gacha Coin",
+              "producesId": 3134,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 96
+                }
+              ]
+            },
+            {
+              "name": "Enriched Elunium",
+              "producesId": 7619,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 96
+                }
+              ]
+            },
+            {
+              "name": "Enriched Oridecon",
+              "producesId": 7620,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 96
+                }
+              ]
+            },
+            {
+              "name": "+5 Weapon Refine Deed",
+              "producesId": 3166,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "+5 Armor Refine Deed",
+              "producesId": 3174,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "+5 Accessory Refine Deed",
+              "producesId": 30201,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 300
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake",
+              "producesId": 40053,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 96
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+12 STR)",
+              "producesId": 40054,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 12
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+13 STR)",
+              "producesId": 40055,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 24
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+14 STR)",
+              "producesId": 40056,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 36
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+15 STR)",
+              "producesId": 40057,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 48
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+12 AGI)",
+              "producesId": 40058,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 12
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+13 AGI)",
+              "producesId": 40059,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 24
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+14 AGI)",
+              "producesId": 40060,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 36
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+15 AGI)",
+              "producesId": 40061,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 48
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+12 VIT)",
+              "producesId": 40062,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 12
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+13 VIT)",
+              "producesId": 40063,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 24
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+14 VIT)",
+              "producesId": 40064,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 36
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+15 VIT)",
+              "producesId": 40065,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 48
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+12 INT)",
+              "producesId": 40066,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 12
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+13 INT)",
+              "producesId": 40067,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 24
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+14 INT)",
+              "producesId": 40068,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 36
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+15 INT)",
+              "producesId": 40069,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 48
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+12 DEX)",
+              "producesId": 40070,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 12
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+13 DEX)",
+              "producesId": 40071,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 24
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+14 DEX)",
+              "producesId": 40072,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 36
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+15 DEX)",
+              "producesId": 40073,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 48
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+12 LUK)",
+              "producesId": 40074,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 12
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+13 LUK)",
+              "producesId": 40075,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 24
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+14 LUK)",
+              "producesId": 40076,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 36
+                }
+              ]
+            },
+            {
+              "name": "Poring Cake Slice (+15 LUK)",
+              "producesId": 40077,
+              "accountBound": true,
+              "requirements": [
+                {
+                  "type": "hourly_points",
+                  "amount": 48
                 }
               ]
             }
