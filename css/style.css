@@ -30,6 +30,7 @@ body {
   background: var(--bg);
   color: var(--text);
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -40,6 +41,7 @@ body {
   display: grid;
   grid-template-columns: 280px 1fr;
   height: 100vh;
+  height: 100dvh;
 }
 
 .main-content {
@@ -175,12 +177,6 @@ body {
     padding: 6px 7px;
     gap: 7px;
   }
-
-  /* Prevent last row being hidden behind mobile browser UI / safe area */
-  .values-manager-list {
-    padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
-    padding-bottom: calc(64px + constant(safe-area-inset-bottom, 0px));
-  }
 }
 
 .values-manager-control {
@@ -246,6 +242,16 @@ body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  /* Mobile: keep last row fully reachable */
+  .values-manager-list {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(72px + constant(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+    scroll-padding-bottom: calc(72px + constant(safe-area-inset-bottom, 0px));
+  }
 }
 
 .values-manager-row {
