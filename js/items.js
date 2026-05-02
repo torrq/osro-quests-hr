@@ -1006,9 +1006,6 @@ function syncValuesManagerNotice() {
     notice.textContent = '';
     return;
   }
-
-  notice.classList.remove('hidden');
-  notice.textContent = 'Credits mode: editing the Credit item value is disabled to avoid confusing “credits-per-credit” behavior. Switch to Zeny mode to edit it.';
 }
 
 // Expose pane controls for inline handlers
