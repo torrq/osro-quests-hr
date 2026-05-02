@@ -177,6 +177,19 @@ body {
     padding: 6px 7px;
     gap: 7px;
   }
+
+  /* Reduce outer gutters so rows can hug screen edges */
+  .values-manager-add,
+  .values-manager-controls,
+  .values-manager-notice {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .values-manager-list {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
 }
 
 .values-manager-control {
