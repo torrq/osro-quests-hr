@@ -988,18 +988,29 @@ function switchTab(tabName, pushState = true) {
 
   // Close the Values Manager when leaving Items tab
   if (tabName !== 'items' && typeof window.closeValuesManager === 'function') {
-    window.closeValuesManager();
+    window.closeValuesManager(false);
   }
   
-  // Auto-select first item when switching to a tab with no selection
-  // This ensures browser history works properly
-  if (pushState) {
-    setTimeout(() => {
-      if (previousTab !== tabName) {
-        // Tab switched but item already selected - still update URL
-        updateURL(null, null, pushState);
-      }
-    }, 50);
+  // Update URL when switching tabs (avoid racing user clicks)
+  if (pushState && previousTab !== tabName && typeof updateURL === 'function') {
+    let entityType = null;
+    let entityId = null;
+
+    if (tabName === 'quests' && state.selectedQuest?.producesId) {
+      entityType = 'quest';
+      entityId = state.selectedQuest.producesId.toString();
+    } else if (tabName === 'shops' && state.selectedShop?.producesId) {
+      entityType = 'shop';
+      entityId = state.selectedShop.producesId.toString();
+    } else if (tabName === 'items' && state.selectedItemId) {
+      entityType = 'item';
+      entityId = state.selectedItemId.toString();
+    } else if (tabName === 'autoloot' && state.selectedAutolootSlot) {
+      entityType = 'autoloot';
+      entityId = state.selectedAutolootSlot.toString();
+    }
+
+    updateURL(entityId, entityType, true);
   }
 }
 

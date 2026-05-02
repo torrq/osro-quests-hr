@@ -49,11 +49,17 @@ body {
   padding-left: 14px;
   padding-right: 24px;
   padding-bottom: 80px;
+  flex: 1;
+  min-height: 0;
 }
 
 .right-pane {
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
 }
 
 .values-manager-pane {

@@ -700,6 +700,9 @@ function openValuesManager(pushToHistory = true) {
 }
 
 function closeValuesManager(pushToHistory = true) {
+  const wasOpen = valuesManagerState.open;
+  if (!wasOpen) return;
+
   valuesManagerState.open = false;
   const pane = document.getElementById('valuesManagerPane');
   if (pane) {
