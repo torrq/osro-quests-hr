@@ -475,6 +475,45 @@ function importItemValues() {
   input.click();
 }
 
+async function resetItemValuesToDefaults() {
+  const ok = window.confirm('Reset item values to server defaults? This will overwrite your current values.');
+  if (!ok) return;
+
+  try {
+    const defaults = await fetchJSON(AUTO_IMPORT_URLS.values);
+    if (!defaults) {
+      showToast('Failed to load default values from server', 'error', 5000);
+      return;
+    }
+
+    // Clear all existing values first, then apply the defaults set.
+    Object.values(DATA.items || {}).forEach((item) => {
+      if (item) item.value = 0;
+    });
+
+    applyItemValues(defaults);
+    saveItemValuesToStorage();
+
+    if (window.initState) {
+      window.initState.userHasEditedValues = true;
+    }
+
+    showToast(`Restored ${Object.keys(defaults).length} default item values`, 'success');
+
+    if (state.currentTab === 'items') {
+      renderItems();
+      if (state.selectedItemId) renderItemContent();
+    }
+
+    if (typeof window.renderValuesManagerPane === 'function') {
+      window.renderValuesManagerPane();
+    }
+  } catch (err) {
+    console.error('[Values] Reset to defaults failed:', err);
+    showToast('Failed to reset values to defaults', 'error', 5000);
+  }
+}
+
 function toggleValuesFilter(checked) {
   state.showValuesOnly = checked;
   renderItems();
@@ -1747,6 +1786,7 @@ window.switchTab = switchTab;
 window.clearItemSearch = clearItemSearch;
 window.clearQuestSearch = clearQuestSearch;
 window.importItemValues = importItemValues;
+window.resetItemValuesToDefaults = resetItemValuesToDefaults;
 window.toggleValuesFilter = toggleValuesFilter;
 window.exportQuests = exportQuests;
 window.exportShops = exportShops;

@@ -1023,3 +1023,6 @@ window.deleteValuesManagerItem = deleteValuesManagerItem;
 window.setValuesManagerSort = setValuesManagerSort;
 window.toggleValuesManagerSortDir = toggleValuesManagerSortDir;
 window.isValuesManagerOpen = () => valuesManagerState.open;
+window.renderValuesManagerPane = () => {
+  if (valuesManagerState.open) renderValuesManager();
+};
