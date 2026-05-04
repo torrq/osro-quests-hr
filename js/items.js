@@ -882,11 +882,11 @@ function renderValuesManagerRow(id, item, mode) {
   let inputStep = '1';
 
   if (mode === 'credit' && !isCreditItem) {
-    label = 'Credits';
+    label = 'Credit';
     inputStep = '0.01';
     shown = creditZeny > 0 ? (Number(item.value || 0) / creditZeny) : 0;
   } else if (mode === 'credit' && isCreditItem) {
-    label = 'Zeny / Credit';
+    label = 'Zeny&nbsp;&nbsp;';
     shown = Number(item.value || 0);
   }
 
