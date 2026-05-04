@@ -933,17 +933,152 @@ function renderValuesManagerAddResults(query) {
     return;
   }
 
-  const all = getAllItems();
-  const lower = q.toLowerCase();
+  const stripColorCodes = (text) => {
+    if (!text) return '';
+    return text.replace(/\^[0-9A-Fa-f]{6}/g, '');
+  };
 
+  const all = getAllItems();
   let matches = [];
-  if (/^\\d+$/.test(lower)) {
-    matches = all.filter(it => it.id.toString().includes(lower));
+
+  const queryNum = parseInt(q, 10);
+  const isExactNumeric = !isNaN(queryNum) && q === queryNum.toString();
+
+  if (isExactNumeric) {
+    // Exact ID match pinned first (mirrors setupAutocomplete behaviour)
+    const exactMatch = all.find(it => it.id === queryNum);
+    const rest = all.filter(it =>
+      it.id !== queryNum &&
+      (it.id.toString().includes(q) || (getItemDisplayName(it) || '').toLowerCase().includes(q))
+    ).slice(0, exactMatch ? 19 : 20);
+    matches = exactMatch ? [exactMatch, ...rest] : rest;
+
+  } else if (/^\d+$/.test(q)) {
+    // Partial numeric — match by ID substring, exact ID first if present
+    const exactMatch = all.find(it => it.id === queryNum);
+    const rest = all.filter(it => it.id !== (exactMatch?.id ?? -1) && it.id.toString().includes(q)).slice(0, exactMatch ? 19 : 20);
+    matches = exactMatch ? [exactMatch, ...rest] : rest;
+
   } else {
-    matches = all.filter(it => (getItemDisplayName(it) || '').toLowerCase().includes(lower));
+    // Text query — use SEARCH_INDEX_NAME for word/phrase/exclude logic
+    const lower = q.toLowerCase();
+    const includePhrases = [];
+    const includeWords = [];
+    const excludePhrases = [];
+    const excludeWords = [];
+
+    let remaining = lower.replace(/-?"([^"]+)"/g, (match, phrase) => {
+      if (match.startsWith('-')) {
+        excludePhrases.push(phrase);
+      } else {
+        includePhrases.push(phrase);
+      }
+      return '';
+    });
+
+    remaining.split(/\s+/).forEach(word => {
+      if (word.length > 0) {
+        if (word.startsWith('-') && word.length > 1) {
+          excludeWords.push(word.substring(1));
+        } else if (!word.startsWith('-')) {
+          includeWords.push(word);
+        }
+      }
+    });
+
+    // Include words via index
+    const includeMatchSets = includeWords.map(word => {
+      const matchingIds = new Set();
+      const cleanWord = word.replace(/[^\w]/g, '');
+      Object.keys(SEARCH_INDEX_NAME).forEach(indexTerm => {
+        if (indexTerm.includes(cleanWord)) {
+          SEARCH_INDEX_NAME[indexTerm].forEach(id => matchingIds.add(id));
+        }
+      });
+      return matchingIds;
+    });
+
+    // Include phrases via index + exact verify
+    const includePhraseMatchSets = includePhrases.map(phrase => {
+      const matchingIds = new Set();
+      const phraseWords = phrase.split(/\s+/);
+      const wordSets = phraseWords.map(word => {
+        const wordIds = new Set();
+        const cleanWord = word.replace(/[^\w]/g, '');
+        Object.keys(SEARCH_INDEX_NAME).forEach(indexTerm => {
+          if (indexTerm.includes(cleanWord)) {
+            SEARCH_INDEX_NAME[indexTerm].forEach(id => wordIds.add(id));
+          }
+        });
+        return wordIds;
+      });
+      const candidates = Array.from(wordSets[0] || []).filter(id =>
+        wordSets.every(set => set.has(id))
+      );
+      candidates.forEach(id => {
+        const item = DATA.items[id];
+        if (!item) return;
+        if (stripColorCodes(item.name || '').toLowerCase().includes(phrase)) matchingIds.add(id);
+      });
+      return matchingIds;
+    });
+
+    const allIncludeMatchSets = [...includeMatchSets, ...includePhraseMatchSets];
+
+    // Exclude words via index
+    const excludeIds = new Set();
+    excludeWords.forEach(word => {
+      const cleanWord = word.replace(/[^\w]/g, '');
+      Object.keys(SEARCH_INDEX_NAME).forEach(indexTerm => {
+        if (indexTerm.includes(cleanWord)) {
+          SEARCH_INDEX_NAME[indexTerm].forEach(id => excludeIds.add(id));
+        }
+      });
+    });
+
+    // Exclude phrases via exact verify
+    excludePhrases.forEach(phrase => {
+      const phraseWords = phrase.split(/\s+/);
+      const wordSets = phraseWords.map(word => {
+        const wordIds = new Set();
+        const cleanWord = word.replace(/[^\w]/g, '');
+        Object.keys(SEARCH_INDEX_NAME).forEach(indexTerm => {
+          if (indexTerm.includes(cleanWord)) {
+            SEARCH_INDEX_NAME[indexTerm].forEach(id => wordIds.add(id));
+          }
+        });
+        return wordIds;
+      });
+      const candidates = Array.from(wordSets[0] || []).filter(id =>
+        wordSets.every(set => set.has(id))
+      );
+      candidates.forEach(id => {
+        const item = DATA.items[id];
+        if (!item) return;
+        if (stripColorCodes(item.name || '').toLowerCase().includes(phrase)) excludeIds.add(id);
+      });
+    });
+
+    matches = all.filter(it => {
+      const matchesAllIncludes = allIncludeMatchSets.length === 0 ||
+        allIncludeMatchSets.every(matchSet => matchSet.has(it.id));
+      return matchesAllIncludes && !excludeIds.has(it.id);
+    });
+
+    // Relevance sort: exact name > starts-with > rest (by id) — mirrors setupAutocomplete
+    matches.sort((a, b) => {
+      const an = (getItemDisplayName(a) || '').toLowerCase();
+      const bn = (getItemDisplayName(b) || '').toLowerCase();
+      if (an === lower && bn !== lower) return -1;
+      if (bn === lower && an !== lower) return 1;
+      if (an.startsWith(lower) && !bn.startsWith(lower)) return -1;
+      if (bn.startsWith(lower) && !an.startsWith(lower)) return 1;
+      return a.id - b.id;
+    });
+
+    matches = matches.slice(0, 20);
   }
 
-  matches = matches.slice(0, 20);
   if (matches.length === 0) {
     results.classList.remove('hidden');
     results.innerHTML = `<div class="values-manager-result"><span>No matches</span><span></span></div>`;

@@ -94,8 +94,8 @@
   --badge-shadow: rgba(238, 90, 111, 0.3);
 
  /* Material Tree - dark theme connectors */
-  --mat-connector:      #2d3748;   /* subtle dark blue-gray spine */
-  --mat-connector-opts: #2d3748;
+  --mat-connector:      #2f4b30;   /* subtle dark blue-gray spine */
+  --mat-connector-opts: #1c241c;
 
   /* ⚠ options badge — amber on dark */
   --mat-opts-bg:     rgba(210, 153, 34, 0.12);
