@@ -498,26 +498,6 @@ function renderItemContentCore() {
           }</div>` : ""}
       </div>
 
-      <div class="panel-section">
-        <div class="form-group">
-          <span class="item-label">Zeny Value:</span>
-          <div class="form-row-1">
-            ${state.valueSource === 'custom'
-              ? `<input type="number"
-                         placeholder="0"
-                         value="${item.value || 0}"
-                         onchange="updateItemValue(${id}, this.value)"
-                         class="zeny-input-large">`
-              : `<input type="number"
-                         placeholder="0"
-                         value="${item.value || 0}"
-                         class="zeny-input-large"
-                         disabled
-                         title="Default values are read-only. Enable Custom values in Settings to edit.">`}
-          </div>
-        </div>
-      </div>
-
       ${renderUsageSection(id)}
 
     </div>
