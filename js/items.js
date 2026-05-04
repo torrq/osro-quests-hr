@@ -8,6 +8,7 @@ let SEARCH_INDEX_DESC = {};
 let saveValueTimeout = null;
 
 function debouncedSaveItemValues() {
+  if (state?.valueSource !== 'custom') return;
   clearTimeout(saveValueTimeout);
   saveValueTimeout = setTimeout(() => {
     saveItemValuesToStorage();
@@ -501,11 +502,18 @@ function renderItemContentCore() {
         <div class="form-group">
           <span class="item-label">Zeny Value:</span>
           <div class="form-row-1">
-            <input type="number"
-                   placeholder="0"
-                   value="${item.value || 0}"
-                   onchange="updateItemValue(${id}, this.value)"
-                   class="zeny-input-large">
+            ${state.valueSource === 'custom'
+              ? `<input type="number"
+                         placeholder="0"
+                         value="${item.value || 0}"
+                         onchange="updateItemValue(${id}, this.value)"
+                         class="zeny-input-large">`
+              : `<input type="number"
+                         placeholder="0"
+                         value="${item.value || 0}"
+                         class="zeny-input-large"
+                         disabled
+                         title="Default values are read-only. Enable Custom values in Settings to edit.">`}
           </div>
         </div>
       </div>
@@ -517,6 +525,10 @@ function renderItemContentCore() {
 }
 
 function updateItemValue(id, value) {
+  if (state?.valueSource !== 'custom') {
+    if (typeof showToast === 'function') showToast('Values are read-only (Default). Enable Custom values in Settings to edit.', 'info', 3500);
+    return;
+  }
   if (DATA.items[id]) {
     if (window.initState) {
       window.initState.userHasEditedValues = true;
@@ -682,6 +694,12 @@ function ensureValuesManagerInit() {
 }
 
 function openValuesManager(pushToHistory = true) {
+  // Mobile: this is a button action, so always close sidebar even if already open
+  if (window.innerWidth <= 768 && typeof toggleSidebar === 'function') {
+    const sb = document.getElementById('sidebar');
+    if (sb && sb.classList.contains('open')) toggleSidebar();
+  }
+
   if (valuesManagerState.open) return;
   valuesManagerState.open = true;
 

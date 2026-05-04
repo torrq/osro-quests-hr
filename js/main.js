@@ -203,6 +203,10 @@ function syncValueButtons() {
     const btn = document.getElementById(`vmBtn_${v}`);
     if (btn) btn.classList.toggle('sec-btn--off', state.valueMode !== v);
   });
+  ['default','custom'].forEach(v => {
+    const btn = document.getElementById(`vsBtn_${v}`);
+    if (btn) btn.classList.toggle('sec-btn--off', state.valueSource !== v);
+  });
 }
 
 function settingSetDiscount(val) {
@@ -219,8 +223,28 @@ function settingSetValueMode(mode) {
   render();
 }
 
+function settingSetValueSource(source) {
+  state.valueSource = source === 'custom' ? 'custom' : 'default';
+  saveConfig({ valueSource: state.valueSource });
+  syncValueButtons();
+
+  // Keep Values Manager source toggle in sync
+  if (typeof window.setValuesManagerSource === 'function') {
+    window.setValuesManagerSource(state.valueSource);
+  }
+
+  // Reload values according to the new source, then re-render
+  loadItemValuesFromStorage()
+    .then(() => {
+      render();
+      if (typeof window.renderValuesManagerPane === 'function') window.renderValuesManagerPane();
+    })
+    .catch(() => render());
+}
+
 window.settingSetDiscount  = settingSetDiscount;
 window.settingSetValueMode = settingSetValueMode;
+window.settingSetValueSource = settingSetValueSource;
 
 function syncSectionButtons() {
   SECTION_KEYS.forEach(k => {
@@ -375,24 +399,21 @@ function loadItemValuesFromStorage() {
     return loadItemValuesFromRemote(false); // false = don't save to localStorage
   }
 
-  // Custom mode: prefer localStorage, fall back to remote
-  const stored = localStorage.getItem(LOCAL_STORAGE.item_values);
-  if (stored) {
-    try {
-      const values = JSON.parse(stored);
-      applyItemValues(values);
-      initState.valuesLoaded = true;
-      console.log(`[Init] Loaded ${Object.keys(values).length} item values from localStorage`);
-      return Promise.resolve();
-    } catch (err) {
-      console.error("[Init] Failed to parse stored item values:", err);
-      localStorage.removeItem(LOCAL_STORAGE.item_values);
-      return loadItemValuesFromRemote(true);
-    }
-  } else {
-    console.log("[Init] No stored item values found. Loading from remote...");
-    return loadItemValuesFromRemote(true);
-  }
+  // Custom mode: load canonical remote defaults, then overlay localStorage (if any)
+  return loadItemValuesFromRemote(false)
+    .then(() => {
+      const stored = localStorage.getItem(LOCAL_STORAGE.item_values);
+      if (!stored) return;
+      try {
+        const values = JSON.parse(stored);
+        applyItemValues(values);
+        initState.valuesLoaded = true;
+        console.log(`[Init] Overlayed ${Object.keys(values).length} custom item values from localStorage`);
+      } catch (err) {
+        console.error("[Init] Failed to parse stored item values:", err);
+        localStorage.removeItem(LOCAL_STORAGE.item_values);
+      }
+    });
 }
 
 function loadItemValuesFromRemote(saveToStorage = true) {
