@@ -3917,9 +3917,6 @@ body.viewer-mode .editor-quest select {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding-top: 6px;
-  margin-top: 6px;
-  border-top: 1px solid var(--border);
 }
 
 .values-manager-source-label {
