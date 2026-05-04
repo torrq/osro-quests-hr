@@ -7394,31 +7394,1315 @@
         },
         {
           "name": "Headgears",
-          "quests": []
+          "quests": [
+            {
+              "name": "Evil Majestic I [1]",
+              "producesId": 8140,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "item",
+                  "id": 3662,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3007,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4058,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4121,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4198,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 750,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7297,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7082,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 30
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Black Helm I [1]",
+              "producesId": 8141,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "item",
+                  "id": 3659,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3005,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4058,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4121,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4198,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 10020,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7023,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7084,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 30
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Kakashi Head Protector I [1]",
+              "producesId": 8142,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "item",
+                  "id": 3017,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3005,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4058,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4121,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4198,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 751,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7292,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7080,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 982,
+                  "amount": 30
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Traveler Hat I [1]",
+              "producesId": 8143,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "item",
+                  "id": 3018,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3008,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4058,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4121,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4198,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 5102,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7295,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7081,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 30
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Cygnus Helm I [1]",
+              "producesId": 20710,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "item",
+                  "id": 3677,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3013,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7095,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7116,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 963,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 4131,
+                  "amount": 10
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Large Baphomet Horns I [1]",
+              "producesId": 30067,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 5518,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5495,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3663,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3015,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3009,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 752,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7293,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7081,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 982,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Lord Kaho's Horn I [1]",
+              "producesId": 20714,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 5013,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4419,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4474,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4425,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4374,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4198,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 600
+                }
+              ]
+            },
+            {
+              "name": "Evil Majestic II [1]",
+              "producesId": 20165,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 3662,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 8140,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3016,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3843,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4147,
+                  "amount": 9
+                },
+                {
+                  "type": "item",
+                  "id": 750,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7291,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7082,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
+            },
+            {
+              "name": "Black Helm II [1]",
+              "producesId": 20700,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 3659,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 8141,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3005,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4419,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 4148,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 4198,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 10020,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7023,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7084,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
+            },
+            {
+              "name": "Kakashi Head Protector II [1]",
+              "producesId": 20701,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 3017,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 8142,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3005,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4058,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 4374,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 4198,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 751,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7292,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7080,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 982,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
+            },
+            {
+              "name": "Traveler Hat II [1]",
+              "producesId": 20702,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 3018,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 8143,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3008,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4419,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 4411,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 4198,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 5102,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7295,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7081,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Accessories",
-          "quests": []
+          "quests": [
+            {
+              "name": "Heart Necklace I [1]",
+              "producesId": 3739,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Empyrean Brooch I [1]",
+              "producesId": 3742,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Eclipse Ring I [1]",
+              "producesId": 3740,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Fur Earrings I [1]",
+              "producesId": 3741,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Pendant I [1]",
+              "producesId": 3743,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Deviruchi Brooch I [1]",
+              "producesId": 8768,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Heart Necklace II [1]",
+              "producesId": 8761,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Empyrean Brooch II [1]",
+              "producesId": 8762,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Eclipse Ring II [1]",
+              "producesId": 8763,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Fur Earrings II [1]",
+              "producesId": 8764,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Pendant II [1]",
+              "producesId": 8765,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Deviruchi Brooch II [1]",
+              "producesId": 20166,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Heart Necklace III [1]",
+              "producesId": 20703,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Empyrean Brooch III [1]",
+              "producesId": 20704,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Eclipse Ring III [1]",
+              "producesId": 20705,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Fur Earrings III [1]",
+              "producesId": 20706,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Pendant III [1]",
+              "producesId": 20707,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Deviruchi Brooch III [1]",
+              "producesId": 20708,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         },
         {
           "name": "Weapons",
-          "quests": []
+          "quests": [
+            {
+              "name": "Grimtooth I [1]",
+              "producesId": 8247,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Combat Knife I [1]",
+              "producesId": 8246,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Balmung I [4]",
+              "producesId": 8766,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Skewer I [4]",
+              "producesId": 30068,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Grimtooth II [1]",
+              "producesId": 20713,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Combat Knife II [1]",
+              "producesId": 20712,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Balmung II [4]",
+              "producesId": 20167,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         },
         {
           "name": "Boarding Halter - Mount",
-          "quests": []
+          "quests": [
+            {
+              "name": "Boarding Halter I",
+              "producesId": 12623,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Boarding Halter II",
+              "producesId": 12624,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Boarding Halter III",
+              "producesId": 12625,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         },
         {
           "name": "Artifacts I",
-          "quests": []
+          "quests": [
+            {
+              "name": "Artifact of Alchemists I",
+              "producesId": 44516,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Artists I",
+              "producesId": 44517,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Assassins I",
+              "producesId": 44518,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Blacksmiths I",
+              "producesId": 44519,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Crusaders I",
+              "producesId": 44520,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Force I",
+              "producesId": 44521,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Gunslingers I",
+              "producesId": 44522,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Hunters I",
+              "producesId": 44523,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Knights I",
+              "producesId": 44524,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Monks I",
+              "producesId": 44525,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Necromancers I",
+              "producesId": 44526,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Ninja I",
+              "producesId": 44527,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Priests I",
+              "producesId": 44528,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Rogues I",
+              "producesId": 44529,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Sages I",
+              "producesId": 44530,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Wizards I",
+              "producesId": 44531,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         },
         {
           "name": "Artifacts II",
-          "quests": []
+          "quests": [
+            {
+              "name": "Artifact of Alchemists II",
+              "producesId": 44532,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Artists II",
+              "producesId": 44533,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Assassins II",
+              "producesId": 44534,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Blacksmiths II",
+              "producesId": 44535,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Crusaders II",
+              "producesId": 44536,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Force II",
+              "producesId": 44537,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Gunslingers II",
+              "producesId": 44538,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Hunters II",
+              "producesId": 44539,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Knights II",
+              "producesId": 44540,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Monks II",
+              "producesId": 44541,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Necromancers II",
+              "producesId": 44542,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Ninja II",
+              "producesId": 44543,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Priests II",
+              "producesId": 44544,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Rogues II",
+              "producesId": 44545,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Sages II",
+              "producesId": 44546,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Wizards II",
+              "producesId": 44547,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         },
         {
           "name": "Artifacts III",
-          "quests": []
+          "quests": [
+            {
+              "name": "Artifact of Alchemists III",
+              "producesId": 44548,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Artists III",
+              "producesId": 44549,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Assassins III",
+              "producesId": 44550,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Blacksmiths III",
+              "producesId": 44551,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Crusaders III",
+              "producesId": 44552,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Force III",
+              "producesId": 44553,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Gunslingers III",
+              "producesId": 44554,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Hunters III",
+              "producesId": 44555,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Knights III",
+              "producesId": 44556,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Monks III",
+              "producesId": 44557,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Necromancers III",
+              "producesId": 44558,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Ninja III",
+              "producesId": 44559,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Priests III",
+              "producesId": 44560,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Rogues III",
+              "producesId": 44561,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Sages III",
+              "producesId": 44562,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Artifact of Wizards III",
+              "producesId": 44563,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         }
       ],
       "caption": "@quest"
