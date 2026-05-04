@@ -897,6 +897,9 @@ function renderValuesManagerRow(id, item, mode) {
   const inputTitle = disableCreditEdit ? 'Disabled in Credits mode' : '';
 
   const isDefault = valuesManagerState.source === 'default';
+  const nameCell = isDefault
+    ? `<button class="values-manager-name-link" onclick="valuesManagerOpenItem(${id})" title="Open item page">${escapeHtml(name)}</button>`
+    : `<div class="values-manager-row-name">${escapeHtml(name)}</div>`;
 
   const valueCell = isDefault
     ? `<span class="values-manager-value-readonly">${mode === 'credit' && !isCreditItem ? safeShown.toFixed(2) : Math.round(safeShown).toLocaleString()} <span class="values-manager-value-unit">${label.toLowerCase()}</span></span>`
@@ -914,14 +917,7 @@ function renderValuesManagerRow(id, item, mode) {
       />`;
 
   const actionsCell = isDefault
-    ? `<div class="values-manager-row-actions">
-        <button class="btn btn-sm btn-icon" onclick="valuesManagerOpenItem(${id})" title="Open item page" aria-label="Open item page">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14 3h7v7"></path><path d="M10 14L21 3"></path>
-            <path d="M21 14v7h-7"></path><path d="M3 10v11h11"></path>
-          </svg>
-        </button>
-      </div>`
+    ? ``
     : `<div class="values-manager-row-actions">
         <button class="btn btn-sm btn-icon" onclick="valuesManagerOpenItem(${id})" title="Open item page" aria-label="Open item page">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -939,10 +935,10 @@ function renderValuesManagerRow(id, item, mode) {
       </div>`;
 
   return `
-    <div class="values-manager-row">
+    <div class="values-manager-row${isDefault ? ' values-manager-row--readonly' : ''}">
       ${renderItemIcon(id, 24)}
       <div class="values-manager-row-main">
-        <div class="values-manager-row-name">${escapeHtml(name)}</div>
+        ${nameCell}
         <div class="values-manager-row-sub" title="${escapeHtml(valueText)}">#${id}</div>
       </div>
       ${valueCell}

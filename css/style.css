@@ -284,6 +284,10 @@ body {
   gap: 8px;
 }
 
+.values-manager-row--readonly {
+  grid-template-columns: auto 1fr auto;
+}
+
 .values-manager-row:hover {
   border-color: var(--border-light);
   background: var(--panel-hover, color-mix(in srgb, var(--panel) 90%, transparent));
@@ -302,6 +306,26 @@ body {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.values-manager-name-link {
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.values-manager-name-link:hover {
+  color: var(--accent);
 }
 
 .values-manager-row-sub {
@@ -3930,7 +3954,7 @@ body.viewer-mode .editor-quest select {
 
 /* Read-only value cell in default mode */
 .values-manager-value-readonly {
-  font-size: 12px;
+  font-size: 16px;
   font-family: monospace;
   color: var(--text);
   text-align: right;
@@ -3939,7 +3963,7 @@ body.viewer-mode .editor-quest select {
 }
 
 .values-manager-value-unit {
-  font-size: 10px;
+  font-size: 14px;
   color: var(--text-muted);
   margin-left: 2px;
 }
