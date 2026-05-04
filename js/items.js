@@ -901,8 +901,15 @@ function renderValuesManagerRow(id, item, mode) {
     ? `<button class="values-manager-name-link" onclick="valuesManagerOpenItem(${id})" title="Open item page">${escapeHtml(name)}</button>`
     : `<div class="values-manager-row-name">${escapeHtml(name)}</div>`;
 
+  const formatCreditsForDisplay = (num) => {
+    const n = Number(num);
+    if (!Number.isFinite(n)) return '0';
+    // Keep up to 2 decimals, but hide trailing zeros (e.g. 3.00 -> 3, 14.10 -> 14.1)
+    return n.toFixed(2).replace(/\.?0+$/, '');
+  };
+
   const valueCell = isDefault
-    ? `<span class="values-manager-value-readonly">${mode === 'credit' && !isCreditItem ? safeShown.toFixed(2) : Math.round(safeShown).toLocaleString()} <span class="values-manager-value-unit">${label.toLowerCase()}</span></span>`
+    ? `<span class="values-manager-value-readonly">${mode === 'credit' && !isCreditItem ? formatCreditsForDisplay(safeShown) : Math.round(safeShown).toLocaleString()} <span class="values-manager-value-unit">${label.toLowerCase()}</span></span>`
     : `<input
         class="values-manager-value-input"
         type="number"
