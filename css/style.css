@@ -3905,3 +3905,44 @@ body.viewer-mode .editor-quest select {
   letter-spacing: 0.03em;
   opacity: 0.85;
 }
+
+/* ── Values Manager: source switcher ── */
+.values-manager-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.values-manager-source-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 6px;
+  margin-top: 6px;
+  border-top: 1px solid var(--border);
+}
+
+.values-manager-source-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Read-only value cell in default mode */
+.values-manager-value-readonly {
+  font-size: 12px;
+  font-family: monospace;
+  color: var(--text);
+  text-align: right;
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.values-manager-value-unit {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-left: 2px;
+}

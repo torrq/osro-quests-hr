@@ -175,18 +175,27 @@
 
         <div id="valuesManagerPane" class="values-manager-pane hidden" aria-hidden="true">
         <div class="values-manager-header">
-          <div class="values-manager-title">Manage Values</div>
-          <div class="values-manager-header-actions">
-            <div class="values-manager-mode">
-              <button id="vmgrModeZeny" class="btn btn-sm sec-btn" onclick="setValuesManagerMode('zeny')" title="Edit in zeny">Zeny</button>
-              <button id="vmgrModeCredit" class="btn btn-sm sec-btn sec-btn--off" onclick="setValuesManagerMode('credit')" title="Edit in credits">Credits</button>
+          <div class="values-manager-header-top">
+            <div class="values-manager-title">Values</div>
+            <div class="values-manager-header-actions">
+              <div class="values-manager-mode">
+                <button id="vmgrModeZeny" class="btn btn-sm sec-btn" onclick="setValuesManagerMode('zeny')" title="Display in zeny">Zeny</button>
+                <button id="vmgrModeCredit" class="btn btn-sm sec-btn sec-btn--off" onclick="setValuesManagerMode('credit')" title="Display in credits">Credits</button>
+              </div>
+              <button class="btn btn-sm" onclick="closeValuesManager()" title="Close">×</button>
             </div>
-            <button class="btn btn-sm" onclick="closeValuesManager()" title="Close">×</button>
+          </div>
+          <div class="values-manager-source-row">
+            <span class="values-manager-source-label">Source</span>
+            <div class="sec-btn-group">
+              <button id="vmgrSrcDefault" class="sec-btn" onclick="setValuesManagerSource('default')" title="Use official values from the server">Default</button>
+              <button id="vmgrSrcCustom" class="sec-btn sec-btn--off" onclick="setValuesManagerSource('custom')" title="Use your own custom values">Custom</button>
+            </div>
           </div>
         </div>
 
         <div class="values-manager-body">
-          <div class="values-manager-add">
+          <div id="valuesManagerAddRow" class="values-manager-add vmgr-custom-only hidden">
             <input id="valuesManagerAddInput" class="search-input" type="text" placeholder="Add item by name or ID..." autocomplete="off" />
             <div id="valuesManagerAddResults" class="values-manager-results hidden"></div>
           </div>
@@ -203,10 +212,10 @@
             <button id="valuesManagerSortDir" class="btn btn-sm" onclick="toggleValuesManagerSortDir()" title="Toggle sort direction">A→Z</button>
 
             <div class="values-manager-controls-spacer"></div>
-            <div class="values-manager-controls-right">
-              <button class="btn btn-sm" onclick="resetItemValuesToDefaults()" title="Restore item values from server defaults">Reset to defaults</button>
-              <button class="btn btn-sm" onclick="importItemValues()" title="Import Zeny Values">Import</button>
-              <button class="btn btn-sm" onclick="exportValues()" title="Export Zeny Values">Export</button>
+            <div class="values-manager-controls-right vmgr-custom-only hidden">
+              <button class="btn btn-sm" onclick="loadDefaultValuesIntoCustom().then(() => renderValuesManagerPane())" title="Merge server default values into custom (keeps your extra items)">Load Defaults</button>
+              <button class="btn btn-sm" onclick="importItemValues()" title="Import values JSON">Import</button>
+              <button class="btn btn-sm" onclick="exportValues()" title="Export values JSON">Export</button>
             </div>
           </div>
 

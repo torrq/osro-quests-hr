@@ -588,6 +588,7 @@ window.SEARCH_INDEX_DESC = SEARCH_INDEX_DESC;
 const valuesManagerState = {
   open: false,
   mode: 'zeny', // 'zeny' | 'credit'
+  source: 'default', // 'default' | 'custom'
   sortKey: 'name', // 'name' | 'id' | 'value'
   sortDir: 'asc',  // 'asc' | 'desc'
   initDone: false,
@@ -612,6 +613,7 @@ function loadValuesManagerConfig() {
   const sortKey = (vm.sortKey === 'id' || vm.sortKey === 'value') ? vm.sortKey : 'name';
   const sortDir = vm.sortDir === 'desc' ? 'desc' : 'asc';
 
+  valuesManagerState.source = (vm.source === 'custom') ? 'custom' : 'default';
   valuesManagerState.mode = mode;
   valuesManagerState.sortKey = sortKey;
   valuesManagerState.sortDir = sortDir;
@@ -630,6 +632,8 @@ function saveValuesManagerConfig(patch) {
 
   const current = cfg.valuesManager || {};
   const next = { ...current, ...patch };
+  // Always persist current source
+  if (!('source' in patch)) next.source = valuesManagerState.source;
 
   if (typeof saveConfig === 'function') {
     saveConfig({ valuesManager: next });
@@ -691,6 +695,7 @@ function openValuesManager(pushToHistory = true) {
 
   setValuesManagerMode(valuesManagerState.mode || 'zeny');
   syncValuesManagerSortUI();
+  syncValuesManagerSource();
   syncValuesManagerNotice();
   renderValuesManager();
 
@@ -741,10 +746,69 @@ function setValuesManagerMode(mode) {
   if (valuesManagerState.open) renderValuesManager();
 }
 
+function setValuesManagerSource(src) {
+  const isCustom = src === 'custom';
+  valuesManagerState.source = isCustom ? 'custom' : 'default';
+
+  // Persist
+  saveValuesManagerConfig({ source: valuesManagerState.source });
+
+  // Also update global state & config so loadItemValuesFromStorage re-runs correctly
+  if (typeof saveConfig === 'function') saveConfig({ valueSource: valuesManagerState.source });
+  if (typeof state !== 'undefined') state.valueSource = valuesManagerState.source;
+
+  // Reload values for the new mode
+  if (isCustom) {
+    // Switch to custom: load from localStorage (or remote if none)
+    const stored = localStorage.getItem(LOCAL_STORAGE.item_values);
+    if (stored) {
+      try {
+        const values = JSON.parse(stored);
+        if (typeof applyItemValues === 'function') applyItemValues(values);
+      } catch {}
+    }
+  } else {
+    // Switch to default: reload from remote without saving to localStorage
+    if (typeof loadDefaultValuesIntoView === 'function') loadDefaultValuesIntoView();
+    else if (typeof fetchJSON === 'function') {
+      fetchJSON(AUTO_IMPORT_URLS.values).then(v => {
+        if (v && typeof applyItemValues === 'function') applyItemValues(v);
+        renderValuesManager();
+      });
+    }
+  }
+
+  syncValuesManagerSource();
+  syncValuesManagerControlsVisibility();
+  renderValuesManager();
+}
+
+function syncValuesManagerSource() {
+  const isCustom = valuesManagerState.source === 'custom';
+  const dBtn = document.getElementById('vmgrSrcDefault');
+  const cBtn = document.getElementById('vmgrSrcCustom');
+  if (dBtn) dBtn.classList.toggle('sec-btn--off', isCustom);
+  if (cBtn) cBtn.classList.toggle('sec-btn--off', !isCustom);
+}
+
+function syncValuesManagerControlsVisibility() {
+  const isCustom = valuesManagerState.source === 'custom';
+  // Controls that only appear in custom mode
+  const customOnly = document.querySelectorAll('.vmgr-custom-only');
+  customOnly.forEach(el => el.classList.toggle('hidden', !isCustom));
+  // Controls that only appear in default mode
+  const defaultOnly = document.querySelectorAll('.vmgr-default-only');
+  defaultOnly.forEach(el => el.classList.toggle('hidden', isCustom));
+  // Add-item input row
+  const addRow = document.getElementById('valuesManagerAddRow');
+  if (addRow) addRow.classList.toggle('hidden', !isCustom);
+}
+
 function renderValuesManager() {
   const list = document.getElementById('valuesManagerList');
   if (!list) return;
 
+  syncValuesManagerControlsVisibility();
   const activeSet = valuesManagerState.tracked;
   const mode = valuesManagerState.mode;
 
@@ -814,14 +878,11 @@ function renderValuesManagerRow(id, item, mode) {
   const inputDisabledAttr = disableCreditEdit ? 'disabled' : '';
   const inputTitle = disableCreditEdit ? 'Disabled in Credits mode' : '';
 
-  return `
-    <div class="values-manager-row">
-      ${renderItemIcon(id, 24)}
-      <div class="values-manager-row-main">
-        <div class="values-manager-row-name">${escapeHtml(name)}</div>
-        <div class="values-manager-row-sub" title="${escapeHtml(valueText)}">#${id}</div>
-      </div>
-      <input
+  const isDefault = valuesManagerState.source === 'default';
+
+  const valueCell = isDefault
+    ? `<span class="values-manager-value-readonly">${mode === 'credit' && !isCreditItem ? safeShown.toFixed(2) : Math.round(safeShown).toLocaleString()} <span class="values-manager-value-unit">${label.toLowerCase()}</span></span>`
+    : `<input
         class="values-manager-value-input"
         type="number"
         step="${inputStep}"
@@ -832,26 +893,42 @@ function renderValuesManagerRow(id, item, mode) {
         ${inputDisabledAttr}
         title="${inputTitle}"
         aria-label="${label} value for ${escapeHtml(name)}"
-      />
-      <div class="values-manager-row-actions">
+      />`;
+
+  const actionsCell = isDefault
+    ? `<div class="values-manager-row-actions">
         <button class="btn btn-sm btn-icon" onclick="valuesManagerOpenItem(${id})" title="Open item page" aria-label="Open item page">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M14 3h7v7"></path>
-            <path d="M10 14L21 3"></path>
-            <path d="M21 14v7h-7"></path>
-            <path d="M3 10v11h11"></path>
+            <path d="M14 3h7v7"></path><path d="M10 14L21 3"></path>
+            <path d="M21 14v7h-7"></path><path d="M3 10v11h11"></path>
+          </svg>
+        </button>
+      </div>`
+    : `<div class="values-manager-row-actions">
+        <button class="btn btn-sm btn-icon" onclick="valuesManagerOpenItem(${id})" title="Open item page" aria-label="Open item page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 3h7v7"></path><path d="M10 14L21 3"></path>
+            <path d="M21 14v7h-7"></path><path d="M3 10v11h11"></path>
           </svg>
         </button>
         <button class="btn btn-sm btn-danger btn-icon" onclick="deleteValuesManagerItem(${id})" title="Delete value" aria-label="Delete value">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 6h18"></path>
-            <path d="M8 6V4h8v2"></path>
+            <path d="M3 6h18"></path><path d="M8 6V4h8v2"></path>
             <path d="M19 6l-1 16H6L5 6"></path>
-            <path d="M10 11v6"></path>
-            <path d="M14 11v6"></path>
+            <path d="M10 11v6"></path><path d="M14 11v6"></path>
           </svg>
         </button>
+      </div>`;
+
+  return `
+    <div class="values-manager-row">
+      ${renderItemIcon(id, 24)}
+      <div class="values-manager-row-main">
+        <div class="values-manager-row-name">${escapeHtml(name)}</div>
+        <div class="values-manager-row-sub" title="${escapeHtml(valueText)}">#${id}</div>
       </div>
+      ${valueCell}
+      ${actionsCell}
     </div>
   `;
 }
@@ -1162,6 +1239,7 @@ function syncValuesManagerNotice() {
 }
 
 // Expose pane controls for inline handlers
+window.setValuesManagerSource = setValuesManagerSource;
 window.openValuesManager = openValuesManager;
 window.closeValuesManager = closeValuesManager;
 window.setValuesManagerMode = setValuesManagerMode;

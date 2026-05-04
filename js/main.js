@@ -53,6 +53,7 @@ window.state = {
   expandedShopSubgroups: new Set(),
   discount: 0,        // 0 = off, 0.24 = merchant, 0.25 = stalker
   valueMode: 'mixed', // 'zeny' | 'credit' | 'mixed'
+  valueSource: 'default', // 'default' | 'custom'
 };
 
 // Ensure all 10 autoloot slots exist
@@ -183,8 +184,9 @@ function initSettings() {
       if (cfg.sections[k] !== undefined) state.sections[k] = cfg.sections[k];
     });
   }
-  if (cfg.discount !== undefined)  state.discount  = cfg.discount;
-  if (cfg.valueMode !== undefined) state.valueMode = cfg.valueMode;
+  if (cfg.discount !== undefined)    state.discount    = cfg.discount;
+  if (cfg.valueMode !== undefined)   state.valueMode   = cfg.valueMode;
+  if (cfg.valueSource !== undefined) state.valueSource = cfg.valueSource;
   const sl = document.getElementById('settingShowLocation');
   if (sl) sl.checked = state.showLocation;
   syncSectionButtons();
@@ -367,10 +369,15 @@ function loadItems(items) {
 }
 
 function loadItemValuesFromStorage() {
+  // Default mode: always use the canonical remote JSON, never read/write localStorage for values
+  if (state.valueSource === 'default') {
+    console.log("[Init] Default value source — loading from remote");
+    return loadItemValuesFromRemote(false); // false = don't save to localStorage
+  }
+
+  // Custom mode: prefer localStorage, fall back to remote
   const stored = localStorage.getItem(LOCAL_STORAGE.item_values);
-  
   if (stored) {
-    // Load from localStorage
     try {
       const values = JSON.parse(stored);
       applyItemValues(values);
@@ -379,40 +386,33 @@ function loadItemValuesFromStorage() {
       return Promise.resolve();
     } catch (err) {
       console.error("[Init] Failed to parse stored item values:", err);
-      console.warn("[Init] Corrupt localStorage detected. Attempting to load from remote...");
-      // Clear corrupt data
       localStorage.removeItem(LOCAL_STORAGE.item_values);
-      // Load from remote and return the promise
-      return loadItemValuesFromRemote();
+      return loadItemValuesFromRemote(true);
     }
   } else {
-    // No localStorage, load from remote
     console.log("[Init] No stored item values found. Loading from remote...");
-    return loadItemValuesFromRemote();
+    return loadItemValuesFromRemote(true);
   }
 }
 
-function loadItemValuesFromRemote() {
+function loadItemValuesFromRemote(saveToStorage = true) {
   return fetchJSON(AUTO_IMPORT_URLS.values)
     .then(values => {
       if (values) {
-        // Check if user has already edited values during initialization
-        if (initState.userHasEditedValues) {
+        if (saveToStorage && initState.userHasEditedValues) {
           console.warn("[Init] User has already edited values. Skipping remote import to preserve user changes.");
           return;
         }
-        
         applyItemValues(values);
-        saveItemValuesToStorage();
+        if (saveToStorage) saveItemValuesToStorage();
         initState.valuesLoaded = true;
-        console.log(`[Init] Loaded ${Object.keys(values).length} item values from remote and saved to localStorage`);
+        console.log(`[Init] Loaded ${Object.keys(values).length} item values from remote${saveToStorage ? " and saved to localStorage" : ""}`);
       } else {
         console.warn("[Init] No item values data received from remote");
       }
     })
     .catch(err => {
       console.error("[Init] Failed to load item values from remote:", err);
-      // Don't throw - allow app to continue with no values
     });
 }
 
@@ -425,6 +425,22 @@ function applyItemValues(values) {
     }
   });
 }
+
+
+function loadDefaultValuesIntoCustom() {
+  return fetchJSON(AUTO_IMPORT_URLS.values).then(remote => {
+    if (!remote) { showToast('Could not reach default values', 'error'); return; }
+    // Merge: remote values overwrite matching ids, custom-only items are preserved
+    const stored = localStorage.getItem(LOCAL_STORAGE.item_values);
+    let existing = {};
+    try { existing = stored ? JSON.parse(stored) : {}; } catch { existing = {}; }
+    const merged = { ...existing, ...remote };
+    applyItemValues(merged);
+    localStorage.setItem(LOCAL_STORAGE.item_values, JSON.stringify(merged));
+    showToast(`Loaded ${Object.keys(remote).length} default values`, 'success');
+  }).catch(() => showToast('Failed to load default values', 'error'));
+}
+window.loadDefaultValuesIntoCustom = loadDefaultValuesIntoCustom;
 
 function saveItemValuesToStorage() {
   const values = {};
