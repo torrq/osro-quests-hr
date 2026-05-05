@@ -210,17 +210,17 @@
           </div>
 
           <div class="values-manager-controls">
-            <label class="values-manager-control">
-              <span class="values-manager-control-label">Sort</span>
-              <select id="valuesManagerSortKey" class="values-manager-select" onchange="setValuesManagerSort(this.value)">
-                <option value="name">Name</option>
-                <option value="id">Item ID</option>
-                <option value="value">Value</option>
-              </select>
-            </label>
-            <button id="valuesManagerSortDir" class="btn btn-sm" onclick="toggleValuesManagerSortDir()" title="Toggle sort direction">A→Z</button>
-
-            <div class="values-manager-controls-spacer"></div>
+            <div class="values-manager-controls-left">
+              <label class="values-manager-control">
+                <span class="values-manager-control-label">Sort</span>
+                <select id="valuesManagerSortKey" class="values-manager-select" onchange="setValuesManagerSort(this.value)">
+                  <option value="name">Name</option>
+                  <option value="id">Item ID</option>
+                  <option value="value">Value</option>
+                </select>
+              </label>
+              <button id="valuesManagerSortDir" class="btn btn-sm" onclick="toggleValuesManagerSortDir()" title="Toggle sort direction">A→Z</button>
+            </div>
             <div class="values-manager-controls-right vmgr-custom-only hidden">
               <button class="btn btn-sm" onclick="loadDefaultValuesIntoCustom().then(() => renderValuesManagerPane())" title="Merge server default values into custom (keeps your extra items)">Load Defaults</button>
               <button class="btn btn-sm" onclick="importItemValues()" title="Import values JSON">Import</button>
