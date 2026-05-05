@@ -146,6 +146,11 @@ body {
   gap: 8px;
 }
 
+.values-manager-controls-left button {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
 .values-manager-controls-right {
   display: inline-flex;
   align-items: center;
