@@ -884,8 +884,8 @@ function renderValuesManagerRow(id, item, mode) {
   const formatCreditsForDisplay = (num) => {
     const n = Number(num);
     if (!Number.isFinite(n)) return '0';
-    // Keep up to 2 decimals, but hide trailing zeros (e.g. 3.00 -> 3, 14.10 -> 14.1)
-    return n.toFixed(2).replace(/\.?0+$/, '');
+    // Keep up to 4 decimals, but hide trailing zeros (e.g. 3.0000 -> 3, 0.0124 -> 0.0124)
+    return n.toFixed(4).replace(/\.?0+$/, '');
   };
 
   const valueCell = isDefault
