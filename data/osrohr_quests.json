@@ -7000,6 +7000,901 @@
       "caption": "@quest"
     },
     {
+      "name": "Break the Seal",
+      "subgroups": [
+        {
+          "name": "BTS - Quest Items",
+          "quests": [
+            {
+              "name": "Artifact Ticket",
+              "producesId": 44154,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 44156,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7111,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Costume Ticket",
+              "producesId": 3135,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 30
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Hydra Costume Weapon Ticket",
+              "producesId": 3144,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Full Buffs Potion",
+              "producesId": 3162,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 333
+                },
+                {
+                  "type": "item",
+                  "id": 3160,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3161,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 33
+                },
+                {
+                  "type": "credit",
+                  "amount": 333
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3333
+                }
+              ]
+            },
+            {
+              "name": "Nile Rose [1]",
+              "producesId": 2647,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7073,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7091,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 7211,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Armor [1]",
+              "producesId": 2357,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7090,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7077,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Manteau [1]",
+              "producesId": 2524,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7089,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7035,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Shield [1]",
+              "producesId": 2115,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7078,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7088,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Shoes [1]",
+              "producesId": 2421,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7083,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7092,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Sleipnir",
+              "producesId": 2410,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 918,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7166,
+                  "amount": 250
+                },
+                {
+                  "type": "item",
+                  "id": 7079,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7080,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Carnation [1]",
+              "producesId": 2646,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7075,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 7087,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 7211,
+                  "amount": 15
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 100
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Deviruchi Brooch [1]",
+              "producesId": 8767,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 8761,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7291,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7214,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7067,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12075,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4419,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4008,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "BTS2 - Quest Items",
+          "quests": [
+            {
+              "name": "Shadow Garb [1]",
+              "producesId": 2554,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Boots",
+              "producesId": 2423,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Armor [1]",
+              "producesId": 20722,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Buckler [1]",
+              "producesId": 20723,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Class Mastery Rune",
+              "producesId": 3192,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
+        },
+        {
+          "name": "BTS2 - Otherworld Set",
+          "quests": [
+            {
+              "name": "Otherworld Armor [1]",
+              "producesId": 30069,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Shoes [1]",
+              "producesId": 30070,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Robe [1]",
+              "producesId": 30071,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Shield [1]",
+              "producesId": 30072,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Ring [1]",
+              "producesId": 30213,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
+        },
+        {
+          "name": "BTS2 - Divine Set",
+          "quests": [
+            {
+              "name": "Divine Armor [1]",
+              "producesId": 40084,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Divine Boots [1]",
+              "producesId": 40085,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Divine Manteau [1]",
+              "producesId": 40086,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Divine Shield [1]",
+              "producesId": 40087,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Divine Glove [1]",
+              "producesId": 40088,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
+        },
+        {
+          "name": "BTS2 - Class Figures",
+          "quests": [
+            {
+              "name": "Assassin Cross Figure",
+              "producesId": 30214,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Champion Figure",
+              "producesId": 30215,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Clown &amp; Gypsy Figure",
+              "producesId": 30216,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "High Priest Figure",
+              "producesId": 30217,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "High Wizard Figure",
+              "producesId": 30218,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Lord Knight Figure",
+              "producesId": 30219,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Paladin Figure",
+              "producesId": 30220,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Professor Figure",
+              "producesId": 30221,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Sniper Figure",
+              "producesId": 30222,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Stalker Figure",
+              "producesId": 30223,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Whitesmith Figure",
+              "producesId": 30224,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Creator Figure",
+              "producesId": 30420,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
+        },
+        {
+          "name": "BTS2 - Hydra Weapons",
+          "quests": [
+            {
+              "name": "W Hydra Dragon Axe [4]",
+              "producesId": 30463,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Bow [4]",
+              "producesId": 30464,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Chakram [4]",
+              "producesId": 30465,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Dagger [4]",
+              "producesId": 30466,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Guitar [4]",
+              "producesId": 30467,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Katar [4]",
+              "producesId": 30468,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Knuckle [4]",
+              "producesId": 30469,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Revolver [4]",
+              "producesId": 30470,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Shuriken [4]",
+              "producesId": 30471,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Spear [4]",
+              "producesId": 30472,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Spear Shielder [4]",
+              "producesId": 30473,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Spell Rod [4]",
+              "producesId": 30474,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "W Hydra Dragon Sword [4]",
+              "producesId": 30475,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
+        }
+      ],
+      "caption": "@quest"
+    },
+    {
       "name": "Tyr: Tier Upgrader (Shop 1)",
       "subgroups": [
         {
