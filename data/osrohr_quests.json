@@ -7594,35 +7594,355 @@
               "producesId": 2554,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 6091,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 12114,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 12115,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 12116,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 12117,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7091,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 7075,
+                  "amount": 7
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Shadow Boots",
               "producesId": 2423,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 6091,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7120,
+                  "amount": 700
+                },
+                {
+                  "type": "item",
+                  "id": 918,
+                  "amount": 1300
+                },
+                {
+                  "type": "item",
+                  "id": 7166,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7440,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7078,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 7079,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 7080,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 7082,
+                  "amount": 3
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Shadow Armor [1]",
               "producesId": 20722,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 2357,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6225,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4419,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7074,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7091,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 6091,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Shadow Buckler [1]",
               "producesId": 20723,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 2115,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6225,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4374,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7075,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7092,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 6091,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Class Mastery Rune",
               "producesId": 3192,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 6091,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             }
           ]
         },
@@ -7634,35 +7954,295 @@
               "producesId": 30069,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7090,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7077,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 300
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Otherworld Shoes [1]",
               "producesId": 30070,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7083,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7092,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 300
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Otherworld Robe [1]",
               "producesId": 30071,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7089,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7035,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Otherworld Shield [1]",
               "producesId": 30072,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7078,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7088,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "amount": 300,
+                  "id": 7444
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Otherworld Ring [1]",
               "producesId": 30213,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7085,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 300
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             }
           ]
         },
