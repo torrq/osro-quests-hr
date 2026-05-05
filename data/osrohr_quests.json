@@ -8254,35 +8254,295 @@
               "producesId": 40084,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7090,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7077,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 888
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 777
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 666
+                },
+                {
+                  "type": "gold",
+                  "amount": 6666
+                },
+                {
+                  "type": "credit",
+                  "amount": 333
+                }
+              ]
             },
             {
               "name": "Divine Boots [1]",
               "producesId": 40085,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7083,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7092,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 888
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 777
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 666
+                },
+                {
+                  "type": "gold",
+                  "amount": 6666
+                },
+                {
+                  "type": "credit",
+                  "amount": 333
+                }
+              ]
             },
             {
               "name": "Divine Manteau [1]",
               "producesId": 40086,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7089,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 888
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 777
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 666
+                },
+                {
+                  "type": "gold",
+                  "amount": 6666
+                },
+                {
+                  "type": "credit",
+                  "amount": 333
+                }
+              ]
             },
             {
               "name": "Divine Shield [1]",
               "producesId": 40087,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7078,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7088,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 888
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 777
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 666
+                },
+                {
+                  "type": "gold",
+                  "amount": 6666
+                },
+                {
+                  "type": "credit",
+                  "amount": 333
+                }
+              ]
             },
             {
               "name": "Divine Glove [1]",
               "producesId": 40088,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7085,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 888
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 777
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 666
+                },
+                {
+                  "type": "gold",
+                  "amount": 6666
+                },
+                {
+                  "type": "credit",
+                  "amount": 333
+                }
+              ]
             }
           ]
         },
