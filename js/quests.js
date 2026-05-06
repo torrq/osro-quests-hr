@@ -354,9 +354,10 @@ function renderQuestViewerHeader(quest, item) {
     : `<span class="qvh-rate qvh-rate--full">100% Success</span>`;
   const boundBadge = quest.accountBound ? `<span class="qvh-bound">Account Bound</span>` : '';
   return renderViewerHeader(quest.producesId, item, {
-    meta:  rate + boundBadge,
-    loc:   findQuestLocation(quest),
-    bound: !!quest.accountBound
+    meta:       rate + boundBadge,
+    loc:        findQuestLocation(quest),
+    bound:      !!quest.accountBound,
+    listBadges: (typeof renderItemListBadges === 'function' ? renderItemListBadges(quest.producesId) : '')
   });
 }
 

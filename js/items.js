@@ -16,6 +16,23 @@ function debouncedSaveItemValues() {
 }
 
 function renderItemsCore() {
+  // Populate list select (idempotent)
+  const listSel = document.getElementById('itemListSelect');
+  if (listSel && DATA.itemLists) {
+    const currentVal = listSel.value;
+    // Only rebuild if options are stale
+    if (listSel.options.length !== DATA.itemLists.length + 1) {
+      listSel.innerHTML = '<option value="-1">All Items</option>';
+      DATA.itemLists.forEach((list, idx) => {
+        const opt = document.createElement('option');
+        opt.value = idx;
+        opt.textContent = list.name;
+        listSel.appendChild(opt);
+      });
+    }
+    listSel.value = state.selectedItemList >= 0 ? String(state.selectedItemList) : '-1';
+  }
+
   const container = document.getElementById("itemsList");
   
   if (!container) {
@@ -111,11 +128,17 @@ function renderItemsCore() {
   }
 
   // 2. Filter items
-  // If showAllItems is true, show everything.
-  // Otherwise, only show items that are in the usedItemIds whitelist.
-  let items = state.showAllItems 
-    ? getAllItems() 
-    : getAllItems().filter((item) => usedItemIds.has(item.id));
+  // If a list is selected, show exactly those items regardless of showAllItems.
+  // Otherwise: showAllItems = everything, default = usedItemIds whitelist.
+  let items;
+  if (state.selectedItemList >= 0 && DATA.itemLists?.[state.selectedItemList]) {
+    const listIds = new Set(DATA.itemLists[state.selectedItemList].items.map(Number));
+    items = getAllItems().filter(item => listIds.has(item.id));
+  } else {
+    items = state.showAllItems
+      ? getAllItems()
+      : getAllItems().filter((item) => usedItemIds.has(item.id));
+  }
 
   // Apply value filter
   if (state.showValuesOnly) {
@@ -430,7 +453,8 @@ function highlightSearchTerm(text, searchQuery) {
   });
 }
 
-function renderItemViewerHeader(id, item) {
+function renderItemViewerHeader(id, item, { showExtLinks = true, listBadges = null } = {}) {
+  const resolvedListBadges = listBadges ?? (typeof renderItemListBadges === "function" ? renderItemListBadges(id) : "");
   // Items tab: name may have search highlights — override display inline
   const displayName = state.itemSearchFilter
     ? highlightSearchTerm(getItemDisplayName(item), state.itemSearchFilter)
@@ -446,7 +470,8 @@ function renderItemViewerHeader(id, item) {
 
   return renderViewerHeader(id, itemProxy, {
     meta: newBadge + valBadge,
-    showExtLinks: true
+    showExtLinks: true,
+    listBadges: resolvedListBadges
   });
 }
 
@@ -571,6 +596,13 @@ window.selectItemById = selectItemById;
 window.updateItemValue = updateItemValue;
 window.navigateToItem = navigateToItem;
 window.toggleNewItemsFilter = toggleNewItemsFilter;
+
+function selectItemList(idx) {
+  state.selectedItemList = parseInt(idx);
+  renderItems();
+  updateURL(null, null, true);
+}
+window.selectItemList = selectItemList;
 
 window.SEARCH_INDEX_NAME = SEARCH_INDEX_NAME;
 window.SEARCH_INDEX_DESC = SEARCH_INDEX_DESC;

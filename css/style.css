@@ -3968,3 +3968,38 @@ body.viewer-mode .editor-quest select {
   color: var(--text-muted);
   margin-left: 2px;
 }
+
+/* ── Item list badges in viewer header ── */
+.qvh-list-badges {
+  display: inline-flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-left: 6px;
+}
+
+.item-list-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 7px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: var(--accent-bg);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.item-list-badge:hover {
+  background: var(--accent);
+  color: var(--btn-text);
+}
+
+/* Item list select in search row */
+.item-list-select {
+  font-size: 12px;
+  cursor: pointer;
+  padding-right: 6px;
+}

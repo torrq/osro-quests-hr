@@ -32,6 +32,7 @@ const FILES = {
   searchIndexName: "osrohr_search_index_name.json",
   searchIndexDesc: "osrohr_search_index_desc.json",
   spriteMap:       "osrohr_sprite_map.json",
+  itemLists:       "osrohr_item_lists.json",
 };
 
 const LOCAL_STORAGE = {

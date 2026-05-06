@@ -140,13 +140,16 @@
                 <input type="checkbox" id="showNewItemsOnly" onchange="toggleNewItemsFilter(this.checked)" autocomplete="off">
                 <span>New</span>
               </label>
-            </div>
-            <div class="market-row">
               <label class="checkbox-label">
                 <input type="checkbox" id="showValuesOnly" onchange="toggleValuesFilter(this.checked)" autocomplete="off">
-                <span>Zeny Values</span>
+                <span>Has Value</span>
               </label>
-              <button class="btn btn-sm" onclick="openValuesManager()" title="Manage item values">Manage Values</button>
+            </div>
+            <div class="market-row">
+              <select id="itemListSelect" class="item-list-select" onchange="selectItemList(this.value)">
+                <option value="-1">All Items</option>
+              </select>
+              <button class="btn btn-sm" onclick="openValuesManager()" title="Manage item values">Values</button>
             </div>
           </div>
           <div class="toolbar">

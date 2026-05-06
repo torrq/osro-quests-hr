@@ -23,6 +23,7 @@ window.state = {
   draggedQuest: null,
   draggedFrom: null,
   itemSearchFilter: "",
+  selectedItemList: -1, // -1 = All, 0+ = index into DATA.itemLists
   questSearchFilter: "",
   editorMode: false,
   showLocation: true,
@@ -343,9 +344,10 @@ function initializeData() {
     fetchJSON(AUTO_IMPORT_URLS.searchIndexName),
     fetchJSON(AUTO_IMPORT_URLS.searchIndexDesc),
     fetchJSON(AUTO_IMPORT_URLS.newItems),
-    fetchJSON(AUTO_IMPORT_URLS.spriteMap)
+    fetchJSON(AUTO_IMPORT_URLS.spriteMap),
+    fetchJSON(AUTO_IMPORT_URLS.itemLists).catch(() => [])
   ])
-    .then(([items, quests, shops, icons, searchName, searchDesc, newItems, spriteMap]) => {
+    .then(([items, quests, shops, icons, searchName, searchDesc, newItems, spriteMap, itemLists]) => {
       loadItems(items);
       loadQuests(quests);
       loadShops(shops);
@@ -353,6 +355,7 @@ function initializeData() {
       loadSearchIndices(searchName, searchDesc);
       loadNewItems(newItems);
       loadSpriteMap(spriteMap);
+      DATA.itemLists = Array.isArray(itemLists) ? itemLists : [];
       return loadItemValuesFromStorage();
     })
     .then(() => {
@@ -501,7 +504,7 @@ function importItemValues() {
       showToast(`Imported ${Object.keys(values).length} item values`, 'success');
       
       if (state.currentTab === 'items') {
-        renderItems();
+        window.renderItems?.();
         if (state.selectedItemId) renderItemContent();
       }
     } catch (err) {
@@ -538,7 +541,7 @@ async function resetItemValuesToDefaults() {
     showToast(`Restored ${Object.keys(defaults).length} default item values`, 'success');
 
     if (state.currentTab === 'items') {
-      renderItems();
+      window.renderItems?.();
       if (state.selectedItemId) renderItemContent();
     }
 
@@ -553,7 +556,7 @@ async function resetItemValuesToDefaults() {
 
 function toggleValuesFilter(checked) {
   state.showValuesOnly = checked;
-  renderItems();
+  window.renderItems?.();
 }
 
 function loadQuests(quests) {
@@ -1300,12 +1303,12 @@ function clearShopSearch() {
 
 function toggleDescSearch(checked) {
   state.searchDescriptions = checked;
-  renderItems();
+  window.renderItems?.();
 }
 
 function toggleShowAllItems(checked) {
   state.showAllItems = checked;
-  renderItems();
+  window.renderItems?.();
 }
 
 window.toggleShowAllItems = toggleShowAllItems;
@@ -1320,6 +1323,15 @@ function handleURLNavigation() {
   const itemId = urlParams.get('item');
   const autolootSlot = urlParams.get('autoloot');
   const tab = urlParams.get('tab');
+  const ilParam = urlParams.get('il');
+  if (ilParam !== null) {
+    const idx = parseInt(ilParam);
+    state.selectedItemList = Number.isFinite(idx) ? idx : -1;
+  }
+  if (urlParams.get('ia') === '1') state.showAllItems = true;
+  if (urlParams.get('in') === '1') state.showNewItemsOnly = true;
+  if (urlParams.get('iv') === '1') state.showValuesOnly = true;
+  if (urlParams.get('id') === '1') state.searchDescriptions = true;
   
   // Helper to ensure tab is active before selection
   const ensureTab = (tabName) => {
@@ -1407,6 +1419,23 @@ function updateURL(entityId = null, entityType = null, pushState = true) {
     autolootSlot: entityType === 'autoloot' ? entityId : null
   };
   
+  // Persist items-tab search state in URL
+  if (state.currentTab === 'items' || entityType === 'item') {
+    if (state.selectedItemList >= 0) url.searchParams.set('il', state.selectedItemList);
+    else url.searchParams.delete('il');
+    if (state.showAllItems)      url.searchParams.set('ia', '1');
+    else                         url.searchParams.delete('ia');
+    if (state.showNewItemsOnly)  url.searchParams.set('in', '1');
+    else                         url.searchParams.delete('in');
+    if (state.showValuesOnly)    url.searchParams.set('iv', '1');
+    else                         url.searchParams.delete('iv');
+    if (state.searchDescriptions) url.searchParams.set('id', '1');
+    else                          url.searchParams.delete('id');
+  } else {
+    // Clean up items params when not on items tab
+    ['il','ia','in','iv','id'].forEach(k => url.searchParams.delete(k));
+  }
+
   if (pushState) {
     window.history.pushState(historyState, '', url);
   } else {
@@ -1631,7 +1660,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===== SHARED VIEWER HEADER =====
 
-function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = false, bound = false } = {}) {
+function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = false, bound = false, listBadges = '' } = {}) {
   const icon48  = itemId ? renderItemIcon(itemId, 48) : '';
   const idBadge = itemId ? `<span class="qvh-id">#${itemId}</span>` : '';
   const slot    = item && Number(item.slot) > 0
@@ -1654,14 +1683,15 @@ function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = 
       <a class="qvh-ext-link" href="https://pre.pservero.com/item/${itemId}" target="_blank" rel="noopener">rAthenaDB</a>
     </span>` : '';
 
-  // Location breadcrumb + external links share the same row
+  // Location breadcrumb + external links + list badges share the same row
   let bottomRow = '';
-  if (loc || extLinks) {
+  if (loc || extLinks || listBadges) {
     const [locGroup, locSub] = loc ? loc.split(' / ') : ['', ''];
     const breadcrumb = loc
       ? `<span>${locGroup}</span><span class="qvh-loc-sep">›</span><span>${locSub}</span>`
       : '';
-    bottomRow = `<div class="qvh-loc">${breadcrumb}${extLinks}</div>`;
+    const listBadgesHtml = listBadges ? `<span class="qvh-list-badges">${listBadges}</span>` : '';
+    bottomRow = `<div class="qvh-loc">${breadcrumb}${extLinks}${listBadgesHtml}</div>`;
   }
 
   return `
@@ -1677,6 +1707,35 @@ function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = 
 }
 
 window.renderViewerHeader = renderViewerHeader;
+
+
+// ===== ITEM LISTS HELPERS =====
+
+function getListsForItem(itemId) {
+  if (!DATA.itemLists) return [];
+  return DATA.itemLists
+    .map((list, idx) => ({ idx, name: list.name, items: list.items }))
+    .filter(l => l.items.includes(Number(itemId)));
+}
+
+function renderItemListBadges(itemId) {
+  const lists = getListsForItem(itemId);
+  if (!lists.length) return '';
+  return lists.map(l =>
+    `<a class="item-list-badge" href="?tab=items&il=${l.idx}" onclick="event.preventDefault(); navigateToItemList(${l.idx})" title="View list: ${escapeHtml(l.name)}">${escapeHtml(l.name)}</a>`
+  ).join('');
+}
+
+function navigateToItemList(idx) {
+  state.selectedItemList = idx;
+  switchTab('items');
+  if (typeof renderItems === 'function') renderItems();
+  updateURL(null, null, true);
+}
+
+window.getListsForItem     = getListsForItem;
+window.renderItemListBadges = renderItemListBadges;
+window.navigateToItemList  = navigateToItemList;
 
 // ===== SHARED USAGE LOOKUP & RENDERING =====
 

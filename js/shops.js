@@ -384,9 +384,10 @@ function renderShopContentCore() {
 function renderShopViewerHeader(shop, item) {
   const boundBadge = shop.accountBound ? `<span class="qvh-bound">Account Bound</span>` : '';
   return renderViewerHeader(shop.producesId, item, {
-    meta:  boundBadge,
-    loc:   findShopLocation(shop),
-    bound: !!shop.accountBound
+    meta:       boundBadge,
+    loc:        findShopLocation(shop),
+    bound:      !!shop.accountBound,
+    listBadges: (typeof renderItemListBadges === 'function' ? renderItemListBadges(shop.producesId) : '')
   });
 }
 
