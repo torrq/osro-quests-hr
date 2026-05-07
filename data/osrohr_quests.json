@@ -11315,7 +11315,7 @@
               "name": "Boarding Halter I",
               "producesId": 12623,
               "successRate": 100,
-              "accountBound": false,
+              "accountBound": true,
               "requirements": [
                 {
                   "type": "zeny",
@@ -11381,7 +11381,7 @@
               "name": "Boarding Halter II",
               "producesId": 12624,
               "successRate": 100,
-              "accountBound": false,
+              "accountBound": true,
               "requirements": [
                 {
                   "type": "zeny",
@@ -11452,7 +11452,7 @@
               "name": "Boarding Halter III",
               "producesId": 12625,
               "successRate": 100,
-              "accountBound": false,
+              "accountBound": true,
               "requirements": [
                 {
                   "type": "zeny",
@@ -11527,114 +11527,1314 @@
             {
               "name": "Artifact of Alchemists I",
               "producesId": 44516,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44500,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Artists I",
               "producesId": 44517,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44501,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Assassins I",
               "producesId": 44518,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44502,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Blacksmiths I",
               "producesId": 44519,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44503,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Crusaders I",
               "producesId": 44520,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44504,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Force I",
               "producesId": 44521,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44505,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Gunslingers I",
               "producesId": 44522,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44506,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Hunters I",
               "producesId": 44523,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44507,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Knights I",
               "producesId": 44524,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44508,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Monks I",
               "producesId": 44525,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44509,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Necromancers I",
               "producesId": 44526,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44510,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Ninja I",
               "producesId": 44527,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44511,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Priests I",
               "producesId": 44528,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44512,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Rogues I",
               "producesId": 44529,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44513,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Sages I",
               "producesId": 44530,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44514,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Artifact of Wizards I",
               "producesId": 44531,
-              "successRate": 100,
+              "successRate": 60,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44515,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             }
           ]
         },
@@ -11644,114 +12844,1314 @@
             {
               "name": "Artifact of Alchemists II",
               "producesId": 44532,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44516,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Artists II",
               "producesId": 44533,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44517,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Assassins II",
               "producesId": 44534,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44518,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Blacksmiths II",
               "producesId": 44535,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44519,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Crusaders II",
               "producesId": 44536,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44520,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Force II",
               "producesId": 44537,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44521,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Gunslingers II",
               "producesId": 44538,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44522,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Hunters II",
               "producesId": 44539,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44523,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Knights II",
               "producesId": 44540,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44524,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Monks II",
               "producesId": 44541,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44525,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Necromancers II",
               "producesId": 44542,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44526,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Ninja II",
               "producesId": 44543,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44527,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Priests II",
               "producesId": 44544,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44528,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Rogues II",
               "producesId": 44545,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44529,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Sages II",
               "producesId": 44546,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44530,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Artifact of Wizards II",
               "producesId": 44547,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44531,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "amount": 30000,
+                  "id": 8880
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             }
           ]
         },
@@ -11761,114 +14161,1314 @@
             {
               "name": "Artifact of Alchemists III",
               "producesId": 44548,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44532,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Artists III",
               "producesId": 44549,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44533,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Assassins III",
               "producesId": 44550,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44534,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Blacksmiths III",
               "producesId": 44551,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44535,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Crusaders III",
               "producesId": 44552,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44536,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Force III",
               "producesId": 44553,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44537,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Gunslingers III",
               "producesId": 44554,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44538,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Hunters III",
               "producesId": 44555,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44539,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Knights III",
               "producesId": 44556,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44540,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Monks III",
               "producesId": 44557,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44541,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Necromancers III",
               "producesId": 44558,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44542,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Ninja III",
               "producesId": 44559,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44543,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Priests III",
               "producesId": 44560,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44544,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Rogues III",
               "producesId": 44561,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44545,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Sages III",
               "producesId": 44562,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44546,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Artifact of Wizards III",
               "producesId": 44563,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 44547,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 44155,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 40112,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 40111,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 900
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             }
           ]
         }
