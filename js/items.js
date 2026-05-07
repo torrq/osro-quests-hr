@@ -127,6 +127,15 @@ function renderItemsCore() {
     });
   }
 
+  // 1e. Add items from saved lists
+  if (Array.isArray(DATA.itemLists)) {
+    DATA.itemLists.forEach(list => {
+      if (Array.isArray(list.items)) {
+        list.items.forEach(id => usedItemIds.add(Number(id)));
+      }
+    });
+  }
+
   // 2. Filter items
   // If a list is selected, show exactly those items regardless of showAllItems.
   // Otherwise: showAllItems = everything, default = usedItemIds whitelist.

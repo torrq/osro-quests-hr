@@ -10871,49 +10871,440 @@
               "producesId": 8247,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 1237,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7023,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 12020,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7511,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 4133,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 4174,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 4047,
+                  "amount": 3
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Combat Knife I [1]",
               "producesId": 8246,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 1228,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7023,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 12020,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7511,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 4058,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 4168,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 4169,
+                  "amount": 3
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Balmung I [4]",
               "producesId": 8766,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 1161,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7079,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 7089,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 7088,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 3500,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1135,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1133,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1131,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1141,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1136,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Skewer I [4]",
               "producesId": 30068,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 3504,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3003,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3002,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7079,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 7089,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 7088,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 3529,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 400
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Grimtooth II [1]",
               "producesId": 20713,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 8247,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7023,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 12020,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 4174,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 4047,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 600
+                }
+              ]
             },
             {
               "name": "Combat Knife II [1]",
               "producesId": 20712,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 8246,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7023,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 12020,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 4168,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 4169,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 600
+                }
+              ]
             },
             {
               "name": "Balmung II [4]",
               "producesId": 20167,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 8766,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 1161,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7083,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 7084,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 7085,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 3500,
+                  "amount": 6
+                },
+                {
+                  "type": "item",
+                  "id": 7023,
+                  "amount": 400
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 400
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             }
           ]
         },
