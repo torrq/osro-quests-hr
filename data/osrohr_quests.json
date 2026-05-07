@@ -9885,126 +9885,981 @@
               "producesId": 3739,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 3294,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7291,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7214,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7067,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12075,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 4008,
+                  "amount": 1
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Empyrean Brooch I [1]",
               "producesId": 3742,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 3298,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7290,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7064,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7101,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 924,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12095,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4094,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Eclipse Ring I [1]",
               "producesId": 3740,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 3296,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7063,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 1003,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 1059,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12085,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4022,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Fur Earrings I [1]",
               "producesId": 3741,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 3297,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7020,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7441,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7048,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 1058,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12080,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4279,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Shadow Pendant I [1]",
               "producesId": 3743,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 20000000
+                },
+                {
+                  "type": "item",
+                  "id": 3295,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7513,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7445,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7027,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7026,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3110,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12100,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4006,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Deviruchi Brooch I [1]",
               "producesId": 8768,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 8767,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7291,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7214,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7067,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12075,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4419,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4008,
+                  "amount": 4
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Heart Necklace II [1]",
               "producesId": 8761,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3739,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7291,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7214,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7067,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12075,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4008,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Empyrean Brooch II [1]",
               "producesId": 8762,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3742,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7290,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7064,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7101,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 924,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12095,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4094,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Eclipse Ring II [1]",
               "producesId": 8763,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3740,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7063,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 1003,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 1059,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12085,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4022,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Fur Earrings II [1]",
               "producesId": 8764,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3741,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7020,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7441,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7048,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 1058,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12080,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4279,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Shadow Pendant II [1]",
               "producesId": 8765,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3743,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7513,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7445,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7027,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7026,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3110,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12100,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4006,
+                  "amount": 2
+                },
+                {
+                  "type": "gold",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Deviruchi Brooch II [1]",
               "producesId": 20166,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 8767,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 8768,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7291,
+                  "amount": 40
+                },
+                {
+                  "type": "item",
+                  "id": 7214,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 7067,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 12075,
+                  "amount": 4
+                },
+                {
+                  "type": "item",
+                  "id": 4419,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 4008,
+                  "amount": 8
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 600
+                }
+              ]
             },
             {
               "name": "Heart Necklace III [1]",
               "producesId": 20703,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "item",
+                  "id": 8761,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7291,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7214,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7067,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12075,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4008,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Empyrean Brooch III [1]",
               "producesId": 20704,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "item",
+                  "id": 8762,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7290,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7064,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7101,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 924,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12095,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4094,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Eclipse Ring III [1]",
               "producesId": 20705,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "item",
+                  "id": 8763,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7063,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 1003,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 1059,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12085,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4022,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Fur Earrings III [1]",
               "producesId": 20706,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "item",
+                  "id": 8764,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7020,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7441,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7048,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 1058,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12080,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4279,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Shadow Pendant III [1]",
               "producesId": 20707,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 100000000
+                },
+                {
+                  "type": "item",
+                  "id": 8765,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7513,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7445,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7027,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7026,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 3110,
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 12100,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 4006,
+                  "amount": 5
+                },
+                {
+                  "type": "gold",
+                  "amount": 300
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Deviruchi Brooch III [1]",
               "producesId": 20708,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 20166,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7291,
+                  "amount": 40
+                },
+                {
+                  "type": "item",
+                  "id": 7214,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 7067,
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7053,
+                  "amount": 600
+                },
+                {
+                  "type": "item",
+                  "id": 4419,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 6226,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "credit",
+                  "amount": 600
+                }
+              ]
             }
           ]
         },
