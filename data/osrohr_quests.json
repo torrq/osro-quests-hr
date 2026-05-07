@@ -11316,21 +11316,208 @@
               "producesId": 12623,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 12622,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 333
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 333
+                },
+                {
+                  "type": "item",
+                  "id": 7293,
+                  "amount": 33
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 33
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 333
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Boarding Halter II",
               "producesId": 12624,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "monster_arena_points",
+                  "amount": 60000
+                },
+                {
+                  "type": "item",
+                  "id": 12623,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 666
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 666
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 666
+                },
+                {
+                  "type": "item",
+                  "id": 7293,
+                  "amount": 66
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 66
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 666
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 200
+                }
+              ]
             },
             {
               "name": "Boarding Halter III",
               "producesId": 12625,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "monster_arena_points",
+                  "amount": 90000
+                },
+                {
+                  "type": "item",
+                  "id": 12624,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 7
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 7293,
+                  "amount": 99
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 99
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             }
           ]
         },

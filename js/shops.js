@@ -532,7 +532,7 @@ const SHOP_SHOP_REQ_TYPE_OPTIONS = [
   { value: 'hourly_points', label: 'Hourly Points' },
   { value: 'activity_points', label: 'Activity Points' },
   { value: 'instance_points', label: 'Instance Points' },
-  { value: 'monster_arena_points', label: 'MA Points' },
+  { value: 'monster_arena_points', label: 'Arena Points' },
   { value: 'otherworld_points', label: 'Otherworld Points' },
   { value: 'hall_of_heritage_points', label: 'HoH Points' },
   { value: 'token_points', label: 'Token Points' },

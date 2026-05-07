@@ -359,7 +359,7 @@ function renderItemsCore() {
 
   // 4. Render
   const totalFound = items.length;
-  const limit = 2000;
+  const limit = 4000;
   const displayedItems = items.slice(0, limit);
 
   let html = "";
