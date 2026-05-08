@@ -4320,9 +4320,9 @@ body.viewer-mode .editor-quest select {
 }
 
 .ca-passport-req--zeny {
-  margin-top: 2px;
+  margin-top: 4px;
   border-top: 1px solid var(--border);
-  padding-top: 4px;
+  padding-top: 6px;
 }
 
 .ca-passport-req-amt {
