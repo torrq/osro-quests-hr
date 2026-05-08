@@ -15480,7 +15480,566 @@
       "subgroups": [
         {
           "name": "Gacha Weapons",
-          "quests": []
+          "quests": [
+            {
+              "name": "Tempest Surge I",
+              "producesId": 30073,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3538,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Undead Shot I",
+              "producesId": 30074,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3539,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Viridian Heart Staff I",
+              "producesId": 30075,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3540,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Arch Rifle I",
+              "producesId": 30076,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3541,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Blazing Piercer I",
+              "producesId": 30077,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3542,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Blood Shot I",
+              "producesId": 30078,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3543,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Crimson Gemini I",
+              "producesId": 30079,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3544,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Crimson Gemini Black I",
+              "producesId": 30080,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3545,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Diamond Edge I",
+              "producesId": 30081,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3546,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Firefly I",
+              "producesId": 30082,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3547,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Fire Tomes I",
+              "producesId": 30083,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3548,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Quantum Blaster I",
+              "producesId": 30084,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3549,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Red Velvet I",
+              "producesId": 30085,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3550,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Repentance I",
+              "producesId": 30086,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3551,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Scarab Fang I",
+              "producesId": 30087,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3552,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Shi I",
+              "producesId": 30088,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3553,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Silver Trumpet I",
+              "producesId": 30089,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3554,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Sword Storm I",
+              "producesId": 30091,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3556,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 30
+                },
+                {
+                  "type": "item",
+                  "id": 7620,
+                  "amount": 5
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Quest Costume Weapons",
