@@ -110,11 +110,12 @@ function gcRenderMain() {
 
         <div class="lab-section-header">
           <div class="lab-section-title">
-            <svg class="lab-section-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 3h6M8 3l-4 9h16L16 3"/><path d="M4 12c0 4.4 3.6 8 8 8s8-3.6 8-8"/>
-              <circle cx="9" cy="17" r="1" fill="currentColor" stroke="none"/>
-              <circle cx="14" cy="15" r="1.2" fill="currentColor" stroke="none"/>
-              <circle cx="16" cy="18" r="0.8" fill="currentColor" stroke="none"/>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5"></circle>
+              <circle cx="12" cy="12" r="5.5"></circle>
+              <path d="M12 7.8v8.4"></path>
+              <path d="M8.8 10.2h6.4"></path>
+              <path d="M9 16.5h6"></path>
             </svg>
             Guild Contribution
           </div>
@@ -461,12 +462,13 @@ window.registerLabExperiment?.('lab-gc', {
   title: 'Guild Contribution',
   sidebarLabel: 'Guild Contribution',
   sidebarIcon: `
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M9 3h6M8 3l-4 9h16L16 3"/><path d="M4 12c0 4.4 3.6 8 8 8s8-3.6 8-8"/>
-      <circle cx="9" cy="17" r="1" fill="currentColor" stroke="none" opacity="0.6"/>
-      <circle cx="14" cy="15" r="1.2" fill="currentColor" stroke="none" opacity="0.5"/>
-      <circle cx="16" cy="18" r="0.8" fill="currentColor" stroke="none" opacity="0.4"/>
-    </svg>`,
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <circle cx="12" cy="12" r="8.5"></circle>
+  <circle cx="12" cy="12" r="5.5"></circle>
+  <path d="M12 7.8v8.4"></path>
+  <path d="M8.8 10.2h6.4"></path>
+  <path d="M9 16.5h6"></path>
+</svg>`,
   renderMain: gcRenderMain,
 });
 
