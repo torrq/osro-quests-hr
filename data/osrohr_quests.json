@@ -14243,7 +14243,7 @@
             {
               "name": "Artifact of Artists III",
               "producesId": 44549,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -14325,7 +14325,7 @@
             {
               "name": "Artifact of Assassins III",
               "producesId": 44550,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -14407,7 +14407,7 @@
             {
               "name": "Artifact of Blacksmiths III",
               "producesId": 44551,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -14489,7 +14489,7 @@
             {
               "name": "Artifact of Crusaders III",
               "producesId": 44552,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -14571,7 +14571,7 @@
             {
               "name": "Artifact of Force III",
               "producesId": 44553,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -14653,7 +14653,7 @@
             {
               "name": "Artifact of Gunslingers III",
               "producesId": 44554,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -14735,7 +14735,7 @@
             {
               "name": "Artifact of Hunters III",
               "producesId": 44555,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -14817,7 +14817,7 @@
             {
               "name": "Artifact of Knights III",
               "producesId": 44556,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -14899,7 +14899,7 @@
             {
               "name": "Artifact of Monks III",
               "producesId": 44557,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -14981,7 +14981,7 @@
             {
               "name": "Artifact of Necromancers III",
               "producesId": 44558,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -15063,7 +15063,7 @@
             {
               "name": "Artifact of Ninja III",
               "producesId": 44559,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -15145,7 +15145,7 @@
             {
               "name": "Artifact of Priests III",
               "producesId": 44560,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -15227,7 +15227,7 @@
             {
               "name": "Artifact of Rogues III",
               "producesId": 44561,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -15309,7 +15309,7 @@
             {
               "name": "Artifact of Sages III",
               "producesId": 44562,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
@@ -15391,7 +15391,7 @@
             {
               "name": "Artifact of Wizards III",
               "producesId": 44563,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
               "requirements": [
                 {
