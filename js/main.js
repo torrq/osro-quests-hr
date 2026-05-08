@@ -504,7 +504,7 @@ function importItemValues() {
       showToast(`Imported ${Object.keys(values).length} item values`, 'success');
       
       if (state.currentTab === 'items') {
-        window.renderItems?.();
+        renderItems();
         if (state.selectedItemId) renderItemContent();
       }
     } catch (err) {
@@ -541,7 +541,7 @@ async function resetItemValuesToDefaults() {
     showToast(`Restored ${Object.keys(defaults).length} default item values`, 'success');
 
     if (state.currentTab === 'items') {
-      window.renderItems?.();
+      renderItems();
       if (state.selectedItemId) renderItemContent();
     }
 
@@ -556,7 +556,7 @@ async function resetItemValuesToDefaults() {
 
 function toggleValuesFilter(checked) {
   state.showValuesOnly = checked;
-  window.renderItems?.();
+  renderItems();
 }
 
 function loadQuests(quests) {
@@ -1012,6 +1012,10 @@ const TAB_ELEMENTS = {
   'lab-gc': {
     sidebar: "labList",
     render: ["renderLabSidebar", "renderLabMain"]
+  },
+  'lab-credit': {
+    sidebar: "labList",
+    render: ["renderLabSidebar", "renderLabMain"]
   }
 };
 
@@ -1303,12 +1307,12 @@ function clearShopSearch() {
 
 function toggleDescSearch(checked) {
   state.searchDescriptions = checked;
-  window.renderItems?.();
+  renderItems();
 }
 
 function toggleShowAllItems(checked) {
   state.showAllItems = checked;
-  window.renderItems?.();
+  renderItems();
 }
 
 window.toggleShowAllItems = toggleShowAllItems;

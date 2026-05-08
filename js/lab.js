@@ -34,13 +34,19 @@ function renderLabSidebar() {
     return;
   }
 
-  el.innerHTML = `
-    <div class="lab-sidebar-content">
-      <div class="lab-sidebar-section active" onclick="switchTab('${experiment.tabId || LAB_DEFAULT_EXPERIMENT}')">
-        <span class="lab-sidebar-icon">${experiment.sidebarIcon || ''}</span>
-        ${experiment.sidebarLabel || experiment.title || LAB_DEFAULT_EXPERIMENT}
-      </div>
-    </div>`;
+  const currentTab = window.state?.currentTab || LAB_DEFAULT_EXPERIMENT;
+  // Render all registered experiments in registration order
+  const entries = Object.values(window.LAB_EXPERIMENTS);
+  const rows = entries.map(exp => {
+    const isActive = currentTab === exp.tabId;
+    return `
+      <div class="lab-sidebar-section ${isActive ? 'active' : ''}" onclick="switchTab('${exp.tabId}')">
+        <span class="lab-sidebar-icon">${exp.sidebarIcon || ''}</span>
+        ${exp.sidebarLabel || exp.title || exp.tabId}
+      </div>`;
+  }).join('');
+
+  el.innerHTML = `<div class="lab-sidebar-content">${rows}</div>`;
 }
 
 function renderLabMain() {

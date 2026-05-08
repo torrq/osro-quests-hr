@@ -4003,3 +4003,332 @@ body.viewer-mode .editor-quest select {
   cursor: pointer;
   padding-right: 6px;
 }
+
+/* =========================================
+   LAB: CREDIT AGENT
+   ========================================= */
+
+.ca-main {
+  padding: 12px 10px;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Header */
+.ca-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ca-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ca-header-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.ca-rare-btn {
+  border-color: #a855f7 !important;
+  background: rgba(168, 85, 247, 0.12) !important;
+  color: #c084fc !important;
+}
+
+.ca-rare-btn:hover {
+  background: #a855f7 !important;
+  color: #fff !important;
+}
+
+/* Empty state */
+.ca-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 32px 0;
+  color: var(--text-muted);
+}
+
+.ca-empty-text {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.ca-empty-sub {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Timer cards */
+.ca-timers {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ca-timer {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ca-timer--credit {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--panel) 90%, var(--accent));
+}
+
+.ca-timer--rare {
+  border-color: #a855f7;
+  background: color-mix(in srgb, var(--panel) 90%, #a855f7);
+}
+
+/* Timer top row */
+.ca-timer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ca-timer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ca-name-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 2px 4px;
+  min-width: 0;
+  flex: 1;
+  border-radius: 0;
+  outline: none;
+}
+
+.ca-name-input:focus {
+  border-bottom-color: var(--accent);
+}
+
+.ca-type-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ca-type-badge--credit {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.ca-type-badge--rare {
+  background: rgba(168, 85, 247, 0.12);
+  color: #c084fc;
+  border: 1px solid #a855f7;
+}
+
+.ca-delete-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.ca-delete-btn:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+  background: rgba(248, 81, 73, 0.08);
+}
+
+/* Timer display */
+.ca-timer-display {
+  text-align: center;
+  font-family: monospace;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  line-height: 1;
+  padding: 4px 0;
+}
+
+.ca-timer-sep {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin: 0 2px;
+}
+
+.ca-timer-idle {
+  color: var(--text-muted);
+  font-size: 32px;
+}
+
+.ca-timer-ready {
+  color: var(--success);
+  font-size: 28px;
+  letter-spacing: 0.05em;
+}
+
+/* Slider */
+.ca-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--border);
+  outline: none;
+  cursor: pointer;
+}
+
+.ca-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+
+.ca-timer--rare .ca-slider::-webkit-slider-thumb {
+  background: #a855f7;
+}
+
+.ca-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+  border: 2px solid var(--bg);
+}
+
+.ca-timer--rare .ca-slider::-moz-range-thumb {
+  background: #a855f7;
+}
+
+/* Actions */
+.ca-timer-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.ca-timer-actions .btn {
+  min-width: 100px;
+  padding: 8px 20px;
+  font-size: 14px;
+}
+
+/* Passport info section */
+.ca-info-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+@media (max-width: 480px) {
+  .ca-info-section {
+    grid-template-columns: 1fr;
+  }
+
+  .ca-timer-display {
+    font-size: 30px;
+  }
+}
+
+.ca-passport {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ca-passport--rare {
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+.ca-passport-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.ca-passport-meta {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+}
+
+.ca-passport-reqs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ca-passport-req {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text);
+}
+
+.ca-passport-req--zeny {
+  margin-top: 2px;
+  border-top: 1px solid var(--border);
+  padding-top: 4px;
+}
+
+.ca-passport-req-amt {
+  font-weight: 600;
+  font-family: monospace;
+  color: var(--warning);
+  font-size: 11px;
+}
+
+.ca-passport-req-name {
+  color: var(--text-muted);
+  font-size: 11px;
+}
