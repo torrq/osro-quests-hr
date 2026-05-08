@@ -11,7 +11,7 @@ const CA_PASSPORT_INFO = {
     label:    'Credit Passport',
     duration: '14 days · per account',
     limit:    '100 credits/day',
-    cost:     '200,000,000 z',
+    cost:     '200M zeny',
     items: [
       { id: 4054, amount: 2,  name: 'Angeling Card' },
       { id: 4174, amount: 2,  name: 'Deviling Card' },
@@ -25,7 +25,7 @@ const CA_PASSPORT_INFO = {
     label:    'Rare Credit Passport',
     duration: '7 days · per account',
     limit:    '100 rare credits/day',
-    cost:     '400,000,000 z',
+    cost:     '400M zeny',
     items: [
       { id: 3100, amount: 20, name: 'Credit' },
       { id: 3134, amount: 20, name: 'Gacha Coin' },
