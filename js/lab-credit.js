@@ -108,8 +108,10 @@ function caTimerCard(t) {
   const typeClass = isRare ? 'ca-timer--rare' : 'ca-timer--credit';
   const typeLabel = isRare ? 'Rare Credit' : 'Credit';
   const running   = !!t.startedAt;
+  const done      = !!t.finishedAt && !running;
+  const doneClass = done ? ' ca-timer--done' : '';
   return `
-    <div class="ca-timer ${typeClass}" data-id="${t.id}">
+    <div class="ca-timer ${typeClass}${doneClass}" data-id="${t.id}">
       <div class="ca-timer-top">
         <div class="ca-timer-left">
           <input class="ca-name-input" value="${escapeHtml(t.name)}"
@@ -127,11 +129,11 @@ function caTimerCard(t) {
       </div>
 
       <div class="ca-timer-display" id="ca-display-${t.id}">
-        ${running ? caFormatRemaining(t.startedAt) : '<span class="ca-timer-idle">—</span>'}
+        ${running ? caFormatRemaining(t.startedAt) : done ? caFormatFinished(t.finishedAt) : '<span class="ca-timer-idle">—</span>'}
       </div>
 
       <input type="range" class="ca-slider" min="0" max="${CA_TIMER_MS}" step="60000"
-             value="${running ? Math.max(0, CA_TIMER_MS - (Date.now() - t.startedAt)) : CA_TIMER_MS}"
+             value="${running ? Math.max(0, CA_TIMER_MS - (Date.now() - t.startedAt)) : done ? 0 : CA_TIMER_MS}"
              oninput="caSliderInput('${t.id}', this.value)"
              onchange="caSliderCommit('${t.id}', this.value)"
              title="Adjust remaining time"/>
@@ -139,7 +141,10 @@ function caTimerCard(t) {
       <div class="ca-timer-actions">
         ${running
           ? `<button class="btn btn-sm" onclick="caStopTimer('${t.id}')">Stop</button>`
-          : `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${t.id}')">Start</button>`}
+          : done
+            ? `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${t.id}')">Start</button>
+               <button class="btn btn-sm" onclick="caResetTimer('${t.id}')">Reset</button>`
+            : `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${t.id}')">Start</button>`}
       </div>
     </div>`;
 }
@@ -173,7 +178,7 @@ function caAddTimer(type) {
   const data = caLoad();
   const id = 'ca_' + Date.now();
   const count = data.timers.filter(t => t.type === type).length + 1;
-  data.timers.push({ id, type, name: `Account ${count}`, startedAt: null });
+  data.timers.push({ id, type, name: `Account ${count}`, startedAt: null, finishedAt: null });
   caSave(data);
   caRenderMain();
 }
@@ -198,10 +203,12 @@ function caStartTimer(id) {
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
   t.startedAt = Date.now();
+  t.finishedAt = null;
   caSave(data);
   // Update card UI
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (card) {
+    card.classList.remove('ca-timer--done');
     const actionsEl = card.querySelector('.ca-timer-actions');
     if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-sm" onclick="caStopTimer('${id}')">Stop</button>`;
     const slider = card.querySelector('.ca-slider');
@@ -217,9 +224,11 @@ function caStopTimer(id) {
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
   t.startedAt = null;
+  t.finishedAt = null;
   caSave(data);
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (card) {
+    card.classList.remove('ca-timer--done');
     const disp = card.querySelector(`#ca-display-${id}`);
     if (disp) disp.innerHTML = '<span class="ca-timer-idle">—</span>';
     const actionsEl = card.querySelector('.ca-timer-actions');
@@ -231,7 +240,7 @@ function caStopTimer(id) {
 
 function caStopAll() {
   const data = caLoad();
-  data.timers.forEach(t => { t.startedAt = null; });
+  data.timers.forEach(t => { t.startedAt = null; t.finishedAt = null; });
   caSave(data);
   Object.keys(caIntervals).forEach(id => { clearInterval(caIntervals[id]); delete caIntervals[id]; });
   caRenderMain();
@@ -255,14 +264,19 @@ function caStartTick(id) {
     const remaining = CA_TIMER_MS - (Date.now() - t.startedAt);
 
     if (remaining <= 0) {
-      if (disp) disp.innerHTML = '<span class="ca-timer-ready">Ready!</span>';
+      const finishedAt = t.startedAt + CA_TIMER_MS;
+      t.startedAt = null;
+      t.finishedAt = finishedAt;
+      caSave(data);
+
+      const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
+      if (card) card.classList.add('ca-timer--done');
+      if (disp) disp.innerHTML = caFormatFinished(finishedAt);
       if (slider) slider.value = 0;
       clearInterval(caIntervals[id]);
       delete caIntervals[id];
-      t.startedAt = null;
-      caSave(data);
       const actionsEl = document.querySelector(`.ca-timer[data-id="${id}"] .ca-timer-actions`);
-      if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${id}')">Start</button>`;
+      if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${id}')">Start</button><button class="btn btn-sm" onclick="caResetTimer('${id}')">Reset</button>`;
     } else {
       if (disp) disp.innerHTML = caFormatRemaining(t.startedAt);
       if (slider) slider.value = Math.max(0, remaining);
@@ -291,17 +305,26 @@ function caSliderCommit(id, val) {
   delete caIntervals[id];
 
   if (remaining <= 0) {
+    if (t.startedAt) t.finishedAt = t.startedAt + CA_TIMER_MS;
     t.startedAt = null;
     const actionsEl = document.querySelector(`.ca-timer[data-id="${id}"] .ca-timer-actions`);
-    if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${id}')">Start</button>`;
+    if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${id}')">Start</button>${t.finishedAt ? `<button class="btn btn-sm" onclick="caResetTimer('${id}')">Reset</button>` : ''}`;
     const disp = document.getElementById(`ca-display-${id}`);
-    if (disp) disp.innerHTML = '<span class="ca-timer-idle">—</span>';
+    if (disp) disp.innerHTML = t.finishedAt ? caFormatFinished(t.finishedAt) : '<span class="ca-timer-idle">—</span>';
+    const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
+    if (card) {
+      if (t.finishedAt) card.classList.add('ca-timer--done');
+      else card.classList.remove('ca-timer--done');
+    }
   } else {
     // Back-calculate startedAt so remaining matches
     t.startedAt = Date.now() - (CA_TIMER_MS - remaining);
+    t.finishedAt = null;
     caStartTick(id);
     const actionsEl = document.querySelector(`.ca-timer[data-id="${id}"] .ca-timer-actions`);
     if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-sm" onclick="caStopTimer('${id}')">Stop</button>`;
+    const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
+    if (card) card.classList.remove('ca-timer--done');
   }
   caSave(data);
 }
@@ -314,6 +337,11 @@ function caFormatRemaining(startedAt) {
   return caFormatMs(remaining);
 }
 
+function caFormatFinished(finishedAt) {
+  const when = new Date(finishedAt).toLocaleString();
+  return `<span class="ca-timer-ready">Ready!</span><div class="ca-timer-finished-at">Finished ${escapeHtml(when)}</div>`;
+}
+
 function caFormatMs(ms) {
   const h = Math.floor(ms / 3600000);
   const m = Math.floor((ms % 3600000) / 60000);
@@ -321,6 +349,28 @@ function caFormatMs(ms) {
   return `<span class="ca-timer-h">${h}</span><span class="ca-timer-sep">h</span>`
        + `<span class="ca-timer-m">${String(m).padStart(2,'0')}</span><span class="ca-timer-sep">m</span>`
        + `<span class="ca-timer-s">${String(s).padStart(2,'0')}</span><span class="ca-timer-sep">s</span>`;
+}
+
+function caResetTimer(id) {
+  clearInterval(caIntervals[id]);
+  delete caIntervals[id];
+  const data = caLoad();
+  const t = data.timers.find(t => t.id === id);
+  if (!t) return;
+  t.startedAt = null;
+  t.finishedAt = null;
+  caSave(data);
+
+  const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
+  if (card) {
+    card.classList.remove('ca-timer--done');
+    const disp = document.getElementById(`ca-display-${id}`);
+    if (disp) disp.innerHTML = '<span class="ca-timer-idle">—</span>';
+    const actionsEl = card.querySelector('.ca-timer-actions');
+    if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${id}')">Start</button>`;
+    const slider = card.querySelector('.ca-slider');
+    if (slider) slider.value = CA_TIMER_MS;
+  }
 }
 
 // ===== REGISTRATION =====
@@ -345,3 +395,4 @@ window.caStopAll     = caStopAll;
 window.caRenameTimer = caRenameTimer;
 window.caSliderInput = caSliderInput;
 window.caSliderCommit = caSliderCommit;
+window.caResetTimer  = caResetTimer;

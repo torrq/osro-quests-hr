@@ -125,8 +125,10 @@ function gemEmptyState() {
 
 function gemTimerCard(t) {
   const running = !!t.startedAt;
+  const done = !!t.finishedAt && !running;
+  const doneClass = done ? ' ca-timer--done' : '';
   return `
-    <div class="ca-timer ca-timer--gem" data-id="${t.id}">
+    <div class="ca-timer ca-timer--gem${doneClass}" data-id="${t.id}">
       <div class="ca-timer-top">
         <div class="ca-timer-left">
           <input class="ca-name-input" value="${escapeHtml(t.name)}"
@@ -144,11 +146,11 @@ function gemTimerCard(t) {
       </div>
 
       <div class="ca-timer-display" id="gem-display-${t.id}">
-        ${running ? gemFormatRemaining(t.startedAt) : '<span class="ca-timer-idle">—</span>'}
+        ${running ? gemFormatRemaining(t.startedAt) : done ? gemFormatFinished(t.finishedAt) : '<span class="ca-timer-idle">—</span>'}
       </div>
 
       <input type="range" class="ca-slider gem-slider" min="0" max="${GEM_TIMER_MS}" step="60000"
-             value="${running ? Math.max(0, GEM_TIMER_MS - (Date.now() - t.startedAt)) : GEM_TIMER_MS}"
+             value="${running ? Math.max(0, GEM_TIMER_MS - (Date.now() - t.startedAt)) : done ? 0 : GEM_TIMER_MS}"
              oninput="gemSliderInput('${t.id}', this.value)"
              onchange="gemSliderCommit('${t.id}', this.value)"
              title="Adjust remaining time"/>
@@ -156,7 +158,10 @@ function gemTimerCard(t) {
       <div class="ca-timer-actions">
         ${running
           ? `<button class="btn btn-sm" onclick="gemStopTimer('${t.id}')">Stop</button>`
-          : `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${t.id}')">Start</button>`}
+          : done
+            ? `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${t.id}')">Start</button>
+               <button class="btn btn-sm" onclick="gemResetTimer('${t.id}')">Reset</button>`
+            : `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${t.id}')">Start</button>`}
       </div>
     </div>`;
 }
@@ -267,7 +272,7 @@ function gemAddTimer() {
   const data = gemLoad();
   const id = 'gem_' + Date.now();
   const count = data.timers.length + 1;
-  data.timers.push({ id, name: `Account ${count}`, startedAt: null });
+  data.timers.push({ id, name: `Account ${count}`, startedAt: null, finishedAt: null });
   gemSave(data);
   gemRenderMain();
 }
@@ -289,9 +294,11 @@ function gemStartTimer(id) {
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
   t.startedAt = Date.now();
+  t.finishedAt = null;
   gemSave(data);
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (card) {
+    card.classList.remove('ca-timer--done');
     card.querySelector('.ca-timer-actions').innerHTML =
       `<button class="btn btn-sm" onclick="gemStopTimer('${id}')">Stop</button>`;
     const sl = card.querySelector('.ca-slider');
@@ -307,9 +314,11 @@ function gemStopTimer(id) {
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
   t.startedAt = null;
+  t.finishedAt = null;
   gemSave(data);
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (card) {
+    card.classList.remove('ca-timer--done');
     const disp = document.getElementById(`gem-display-${id}`);
     if (disp) disp.innerHTML = '<span class="ca-timer-idle">—</span>';
     card.querySelector('.ca-timer-actions').innerHTML =
@@ -321,7 +330,7 @@ function gemStopTimer(id) {
 
 function gemStopAll() {
   const data = gemLoad();
-  data.timers.forEach(t => { t.startedAt = null; });
+  data.timers.forEach(t => { t.startedAt = null; t.finishedAt = null; });
   gemSave(data);
   Object.keys(gemIntervals).forEach(id => { clearInterval(gemIntervals[id]); delete gemIntervals[id]; });
   gemRenderMain();
@@ -343,14 +352,19 @@ function gemStartTick(id) {
     const sl   = document.querySelector(`.ca-timer[data-id="${id}"] .ca-slider`);
     const remaining = GEM_TIMER_MS - (Date.now() - t.startedAt);
     if (remaining <= 0) {
-      if (disp) disp.innerHTML = '<span class="ca-timer-ready">Ready!</span>';
+      const finishedAt = t.startedAt + GEM_TIMER_MS;
+      t.startedAt = null;
+      t.finishedAt = finishedAt;
+      gemSave(data);
+
+      const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
+      if (card) card.classList.add('ca-timer--done');
+      if (disp) disp.innerHTML = gemFormatFinished(finishedAt);
       if (sl)   sl.value = 0;
       clearInterval(gemIntervals[id]);
       delete gemIntervals[id];
-      t.startedAt = null;
-      gemSave(data);
       const act = document.querySelector(`.ca-timer[data-id="${id}"] .ca-timer-actions`);
-      if (act) act.innerHTML = `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${id}')">Start</button>`;
+      if (act) act.innerHTML = `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${id}')">Start</button><button class="btn btn-sm" onclick="gemResetTimer('${id}')">Reset</button>`;
     } else {
       if (disp) disp.innerHTML = gemFormatRemaining(t.startedAt);
       if (sl)   sl.value = Math.max(0, remaining);
@@ -375,18 +389,23 @@ function gemSliderCommit(id, val) {
   delete gemIntervals[id];
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (remaining <= 0) {
+    if (t.startedAt) t.finishedAt = t.startedAt + GEM_TIMER_MS;
     t.startedAt = null;
     if (card) {
       card.querySelector('.ca-timer-actions').innerHTML =
-        `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${id}')">Start</button>`;
+        `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${id}')">Start</button>${t.finishedAt ? `<button class="btn btn-sm" onclick="gemResetTimer('${id}')">Reset</button>` : ''}`;
       const disp = document.getElementById(`gem-display-${id}`);
-      if (disp) disp.innerHTML = '<span class="ca-timer-idle">—</span>';
+      if (disp) disp.innerHTML = t.finishedAt ? gemFormatFinished(t.finishedAt) : '<span class="ca-timer-idle">—</span>';
+      if (t.finishedAt) card.classList.add('ca-timer--done');
+      else card.classList.remove('ca-timer--done');
     }
   } else {
     t.startedAt = Date.now() - (GEM_TIMER_MS - remaining);
+    t.finishedAt = null;
     gemStartTick(id);
     if (card) card.querySelector('.ca-timer-actions').innerHTML =
       `<button class="btn btn-sm" onclick="gemStopTimer('${id}')">Stop</button>`;
+    if (card) card.classList.remove('ca-timer--done');
   }
   gemSave(data);
 }
@@ -399,6 +418,11 @@ function gemFormatRemaining(startedAt) {
   return gemFormatMs(remaining);
 }
 
+function gemFormatFinished(finishedAt) {
+  const when = new Date(finishedAt).toLocaleString();
+  return `<span class="ca-timer-ready">Ready!</span><div class="ca-timer-finished-at">Finished ${escapeHtml(when)}</div>`;
+}
+
 function gemFormatMs(ms) {
   const h = Math.floor(ms / 3600000);
   const m = Math.floor((ms % 3600000) / 60000);
@@ -406,6 +430,28 @@ function gemFormatMs(ms) {
   return `<span class="ca-timer-h">${h}</span><span class="ca-timer-sep">h</span>`
        + `<span class="ca-timer-m">${String(m).padStart(2,'0')}</span><span class="ca-timer-sep">m</span>`
        + `<span class="ca-timer-s">${String(s).padStart(2,'0')}</span><span class="ca-timer-sep">s</span>`;
+}
+
+function gemResetTimer(id) {
+  clearInterval(gemIntervals[id]);
+  delete gemIntervals[id];
+  const data = gemLoad();
+  const t = data.timers.find(t => t.id === id);
+  if (!t) return;
+  t.startedAt = null;
+  t.finishedAt = null;
+  gemSave(data);
+
+  const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
+  if (card) {
+    card.classList.remove('ca-timer--done');
+    const disp = document.getElementById(`gem-display-${id}`);
+    if (disp) disp.innerHTML = '<span class="ca-timer-idle">—</span>';
+    card.querySelector('.ca-timer-actions').innerHTML =
+      `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${id}')">Start</button>`;
+    const sl = card.querySelector('.ca-slider');
+    if (sl) sl.value = GEM_TIMER_MS;
+  }
 }
 
 // ===== REGISTRATION =====
@@ -429,3 +475,4 @@ window.gemStopAll     = gemStopAll;
 window.gemRenameTimer = gemRenameTimer;
 window.gemSliderInput = gemSliderInput;
 window.gemSliderCommit = gemSliderCommit;
+window.gemResetTimer  = gemResetTimer;

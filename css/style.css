@@ -4104,6 +4104,11 @@ body.viewer-mode .editor-quest select {
   background: color-mix(in srgb, var(--panel) 90%, #a855f7);
 }
 
+.ca-timer--done {
+  border-color: var(--warning);
+  background: color-mix(in srgb, var(--panel) 88%, var(--warning));
+}
+
 /* Timer top row */
 .ca-timer-top {
   display: flex;
@@ -4210,6 +4215,20 @@ body.viewer-mode .editor-quest select {
   letter-spacing: 0.05em;
 }
 
+.ca-timer--done .ca-timer-ready {
+  color: var(--warning);
+}
+
+.ca-timer-finished-at {
+  margin-top: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: normal;
+  line-height: 1.2;
+}
+
 /* Slider */
 .ca-slider {
   -webkit-appearance: none;
@@ -4255,6 +4274,8 @@ body.viewer-mode .editor-quest select {
 .ca-timer-actions {
   display: flex;
   justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 .ca-timer-actions .btn {
