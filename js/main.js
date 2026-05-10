@@ -55,6 +55,7 @@ window.state = {
   discount: 0,        // 0 = off, 0.24 = merchant, 0.25 = stalker
   valueMode: 'mixed', // 'zeny' | 'credit' | 'mixed'
   valueSource: 'default', // 'default' | 'custom'
+  activeLabExperiment: null,   // last active lab sub-tab (e.g. 'lab-credit')
 };
 
 // Ensure all 10 autoloot slots exist
@@ -1022,7 +1023,10 @@ const TAB_ELEMENTS = {
 function switchTab(tabName, pushState = true) {
   // 'lab' is a namespace — redirect to the active experiment tab
   if (tabName === 'lab') {
-    tabName = (window.LAB_DEFAULT_EXPERIMENT) || 'lab-gc';
+      tabName = state.activeLabExperiment || (window.LAB_DEFAULT_EXPERIMENT) || 'lab-gc';
+  }
+  if (tabName.startsWith('lab-')) {
+      state.activeLabExperiment = tabName;
   }
   const previousTab = state.currentTab;
   state.currentTab = tabName;
