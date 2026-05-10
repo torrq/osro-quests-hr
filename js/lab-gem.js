@@ -84,11 +84,7 @@ function gemRenderMain() {
 
       <div class="ca-header">
         <div class="ca-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M2 12 12 2l10 10-10 10L2 12z"/>
-            <path d="M12 2v20M2 12h20" opacity="0.4"/>
-          </svg>
+          ${window.SVG_ICONS?.gem18 || ''}
           Gem Quest
         </div>
         <div class="ca-header-actions">
@@ -114,10 +110,7 @@ function gemRenderMain() {
 function gemEmptyState() {
   return `
     <div class="ca-empty">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.35">
-        <path d="M2 12 12 2l10 10-10 10L2 12z"/>
-      </svg>
+      ${window.SVG_ICONS?.gem32Muted || ''}
       <div class="ca-empty-text">No timers yet</div>
       <div class="ca-empty-sub">Add a timer per account using the button above</div>
     </div>`;
@@ -138,10 +131,7 @@ function gemTimerCard(t) {
           <span class="ca-type-badge ca-type-badge--gem">Gem Quest</span>
         </div>
         <button class="ca-delete-btn" onclick="gemDeleteTimer('${t.id}')" title="Delete timer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 6h18M8 6V4h8v2M19 6l-1 16H6L5 6"/>
-          </svg>
+          ${window.SVG_ICONS?.trashNoX14 || ''}
         </button>
       </div>
 
@@ -249,11 +239,11 @@ function gemHowTo() {
                           const encMap = encodeURIComponent(m);
                           const label = m.replace(/^tha_/, '').toUpperCase();
                           const sep = idx === 0 ? '' : '<span class="gem-map-sep">/</span>';
-                          return `${sep}<button class="gem-map-btn" onclick="gemCopyWarp(decodeURIComponent('${encMap}'))" title="Copy @warp ${m}">${m}</button>`;
+                          return `${sep}<button class="gem-map-btn" onclick="gemCopyWarp(decodeURIComponent('${encMap}'))" title="Copy ${m}">${m}</button>`;
                         }).join('');
                       }
                       const enc = encodeURIComponent(l.map);
-                      return `<button class="gem-map-btn" onclick="gemCopyWarp(decodeURIComponent('${enc}'))" title="Copy @warp ${l.map}">${l.map}</button>`;
+                      return `<button class="gem-map-btn" onclick="gemCopyWarp(decodeURIComponent('${enc}'))" title="Copy ${l.map}">${l.map}</button>`;
                     })()}
                   </div>
                   <div class="gem-line-note"></div>
@@ -460,10 +450,7 @@ window.registerLabExperiment?.('lab-gem', {
   tabId:        'lab-gem',
   title:        'Gem Quest',
   sidebarLabel: 'Gem Quest',
-  sidebarIcon: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M2 12 12 2l10 10-10 10L2 12z"/>
-  </svg>`,
+  sidebarIcon: window.SVG_ICONS?.gem14 || '',
   renderMain: gemRenderMain,
 });
 

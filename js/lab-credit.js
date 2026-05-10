@@ -61,11 +61,7 @@ function caRenderMain() {
 
       <div class="ca-header">
         <div class="ca-title">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M12 6v6l4 2"/>
-          </svg>
+          ${window.SVG_ICONS?.clock18 || ''}
           Credit Agent
         </div>
         <div class="ca-header-actions">
@@ -94,10 +90,7 @@ function caRenderMain() {
 function caEmptyState() {
   return `
     <div class="ca-empty">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.35">
-        <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-      </svg>
+      ${window.SVG_ICONS?.clock32Muted || ''}
       <div class="ca-empty-text">No timers yet</div>
       <div class="ca-empty-sub">Add a Credit or Rare Credit timer above</div>
     </div>`;
@@ -121,10 +114,7 @@ function caTimerCard(t) {
           <span class="ca-type-badge ca-type-badge--${t.type}">${typeLabel}</span>
         </div>
         <button class="ca-delete-btn" onclick="caDeleteTimer('${t.id}')" title="Delete timer">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-               stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 6h18M8 6V4h8v2M19 6l-1 16H6L5 6"/>
-          </svg>
+          ${window.SVG_ICONS?.trashNoX14 || ''}
         </button>
       </div>
 
@@ -379,11 +369,7 @@ window.registerLabExperiment?.('lab-credit', {
   tabId:        'lab-credit',
   title:        'Credit Agent',
   sidebarLabel: 'Credit Agent',
-  sidebarIcon: `
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
-    </svg>`,
+  sidebarIcon: window.SVG_ICONS?.clock14 || '',
   renderMain: caRenderMain,
 });
 

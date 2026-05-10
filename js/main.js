@@ -1606,6 +1606,8 @@ window.showToast = showToast;
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  window.applySvgIcons?.();
+
   const logo = document.getElementById("osro-quests-logo");
   if (logo) {
         logo.title = `OSRO Quests v${VERSION} (${FLAVOR})`;
