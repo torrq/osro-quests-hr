@@ -4014,6 +4014,11 @@ body.viewer-mode .editor-quest select {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin: 0 auto;
+}
+
+.ca-main--wide {
+  max-width: 1180px;
 }
 
 /* Header */
@@ -4265,6 +4270,10 @@ body.viewer-mode .editor-quest select {
   gap: 10px;
 }
 
+.ca-info-section--single {
+  grid-template-columns: 1fr;
+}
+
 @media (max-width: 480px) {
   .ca-info-section {
     grid-template-columns: 1fr;
@@ -4336,3 +4345,144 @@ body.viewer-mode .editor-quest select {
   color: var(--text-muted);
   font-size: 14px;
 }
+
+/* ── Gem Quest ── */
+.ca-timer--gem {
+  border-color: var(--success);
+  background: color-mix(in srgb, var(--panel) 90%, var(--success));
+}
+
+.ca-passport--gem {
+  border-color: rgba(34, 197, 94, 0.28);
+  background-color: rgba(34, 197, 94, 0.055);
+}
+
+.gem-grid {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .gem-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gem-card {
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--border) 80%, transparent);
+  border-radius: 10px;
+  padding: 10px 10px 8px 10px;
+}
+
+.gem-locs {
+  margin-top: 6px;
+}
+
+.gem-line {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(180px, 32%, 420px);
+  gap: 12px;
+  align-items: center;
+}
+
+.gem-line + .gem-line {
+  margin-top: 8px;
+}
+
+.gem-line-left {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.gem-item-link {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.gem-line--item .ca-passport-req-name {
+  color: var(--text);
+}
+
+.gem-line-note {
+  color: var(--text-muted);
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: right;
+  justify-self: end;
+  width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.gem-line--loc {
+  margin-top: 6px;
+}
+
+.gem-copy-btn {
+  padding: 4px 8px;
+}
+
+.gem-map-btn {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--panel) 92%, transparent);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 6px 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.gem-map-btn:hover {
+  border-color: var(--accent);
+}
+
+.gem-map-sep {
+  margin: 0 6px;
+  color: var(--text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.gem-req-icon--missing {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--panel);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.ca-type-badge--gem {
+  background: color-mix(in srgb, var(--success) 12%, transparent);
+  color: var(--success);
+  border: 1px solid var(--success);
+}
+
+.gem-start-btn {
+  border-color: var(--success) !important;
+  background: color-mix(in srgb, var(--success) 15%, transparent) !important;
+  color: var(--success) !important;
+}
+
+.gem-start-btn:hover {
+  background: var(--success) !important;
+  color: var(--btn-text) !important;
+}
+
+.gem-slider::-webkit-slider-thumb { background: var(--success); }
+.gem-slider::-moz-range-thumb     { background: var(--success); }

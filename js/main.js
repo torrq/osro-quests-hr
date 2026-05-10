@@ -1017,6 +1017,10 @@ const TAB_ELEMENTS = {
   'lab-credit': {
     sidebar: "labList",
     render: ["renderLabSidebar", "renderLabMain"]
+  },
+  'lab-gem': {
+    sidebar: "labList",
+    render: ["renderLabSidebar", "renderLabMain"]
   }
 };
 
