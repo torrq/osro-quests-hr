@@ -57,7 +57,7 @@ function caRenderMain() {
   const data = caLoad();
 
   container.innerHTML = `
-    <div class="ca-main">
+    <div class="ca-main ca-main--wide">
 
       <div class="ca-header">
         <div class="ca-title">
@@ -75,7 +75,7 @@ function caRenderMain() {
         ${data.timers.length === 0 ? caEmptyState() : data.timers.map(caTimerCard).join('')}
       </div>
 
-      <div class="ca-info-section">
+      <div class="ca-info-section ca-info-section--contained">
         ${caPassportInfo('credit')}
         ${caPassportInfo('rare')}
       </div>

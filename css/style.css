@@ -4310,6 +4310,12 @@ body.viewer-mode .editor-quest select {
   grid-template-columns: 1fr;
 }
 
+.ca-info-section--contained {
+  max-width: 700px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 @media (max-width: 480px) {
   .ca-info-section {
     grid-template-columns: 1fr;
