@@ -6223,6 +6223,496 @@
       "caption": "@inn"
     },
     {
+      "name": "Donate Manager",
+      "subgroups": [
+        {
+          "name": "Rare Shop",
+          "shops": [
+            {
+              "name": "Angelic Valkyrie Armor",
+              "producesId": 8423,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Angelic Valkyrie Boots",
+              "producesId": 8424,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Angelic Valkyrie Manteau",
+              "producesId": 8425,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Angelic Valkyrie Shield",
+              "producesId": 8426,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Otherworld Armor [1]",
+              "producesId": 30069,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Otherworld Shoes [1]",
+              "producesId": 30070,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Otherworld Robe [1]",
+              "producesId": 30071,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Otherworld Shield [1]",
+              "producesId": 30072,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Otherworld Ring [1]",
+              "producesId": 30213,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Eira Egg",
+              "producesId": 9426,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Eleanor Egg",
+              "producesId": 9427,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Bayeri Egg",
+              "producesId": 9428,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Dieter Egg",
+              "producesId": 9429,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 150
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Misc Shop",
+          "shops": []
+        },
+        {
+          "name": "Equipment Shop",
+          "shops": []
+        },
+        {
+          "name": "Headgear Point Shop",
+          "shops": []
+        },
+        {
+          "name": "Dragon Weapon Shop",
+          "shops": []
+        },
+        {
+          "name": "Rare Costume Shop",
+          "shops": []
+        },
+        {
+          "name": "Weapon Costume Shop",
+          "shops": []
+        },
+        {
+          "name": "Class Manual Shop",
+          "shops": []
+        }
+      ],
+      "caption": "@npc 9"
+    },
+    {
+      "name": "Mine Craft",
+      "subgroups": [
+        {
+          "name": "Buy Mining Tools",
+          "shops": [
+            {
+              "name": "Pick Axe",
+              "producesId": 6010,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 50000
+                }
+              ]
+            },
+            {
+              "name": "Mine Hat",
+              "producesId": 5031,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 10000000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Mithril Ore Shop",
+          "shops": [
+            {
+              "name": "Enriched Elunium",
+              "producesId": 7619,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7233,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Enriched Oridecon",
+              "producesId": 7620,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7233,
+                  "amount": 1000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pure Mithril Shop",
+          "shops": [
+            {
+              "name": "Bradium",
+              "producesId": 6224,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "HD Bradium",
+              "producesId": 6226,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 5000
+                }
+              ]
+            },
+            {
+              "name": "HD Carnium",
+              "producesId": 6225,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 5000
+                }
+              ]
+            },
+            {
+              "name": "Aquastone Ingot",
+              "producesId": 44151,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 500
+                }
+              ]
+            },
+            {
+              "name": "Dragonstone Ingot",
+              "producesId": 44152,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 500
+                }
+              ]
+            },
+            {
+              "name": "Flamestone Ingot",
+              "producesId": 44153,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 500
+                }
+              ]
+            },
+            {
+              "name": "Transfer Scroll",
+              "producesId": 3165,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Scroll of Protection",
+              "producesId": 7304,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Armor Enchant Scroll",
+              "producesId": 3141,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Refine Remover Scroll",
+              "producesId": 3164,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 2000
+                }
+              ]
+            },
+            {
+              "name": "Enchant Remover Scroll",
+              "producesId": 3163,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Costume Enchant Scroll",
+              "producesId": 3159,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1250
+                }
+              ]
+            },
+            {
+              "name": "Armor Option Scroll",
+              "producesId": 3193,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Shield Option Scroll",
+              "producesId": 3194,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Garment Option Scroll",
+              "producesId": 3195,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Footgear Option Scroll",
+              "producesId": 3196,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Headgear Option Scroll",
+              "producesId": 3197,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Weapon Option Scroll",
+              "producesId": 3198,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Accessory Option Scroll",
+              "producesId": 3199,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 7757,
+                  "amount": 1500
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "caption": "@npc 37"
+    },
+    {
       "name": "Vanilla NPCs",
       "subgroups": [
         {
