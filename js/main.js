@@ -346,9 +346,10 @@ function initializeData() {
     fetchJSON(AUTO_IMPORT_URLS.searchIndexDesc),
     fetchJSON(AUTO_IMPORT_URLS.newItems),
     fetchJSON(AUTO_IMPORT_URLS.spriteMap),
-    fetchJSON(AUTO_IMPORT_URLS.itemLists).catch(() => [])
+    fetchJSON(AUTO_IMPORT_URLS.itemLists).catch(() => []),
+    fetchJSON(AUTO_IMPORT_URLS.pointLinks).catch(() => ({}))
   ])
-    .then(([items, quests, shops, icons, searchName, searchDesc, newItems, spriteMap, itemLists]) => {
+    .then(([items, quests, shops, icons, searchName, searchDesc, newItems, spriteMap, itemLists, pointLinks]) => {
       loadItems(items);
       loadQuests(quests);
       loadShops(shops);
@@ -357,6 +358,7 @@ function initializeData() {
       loadNewItems(newItems);
       loadSpriteMap(spriteMap);
       DATA.itemLists = Array.isArray(itemLists) ? itemLists : [];
+      loadPointLinks(pointLinks);
       return loadItemValuesFromStorage();
     })
     .then(() => {
@@ -639,6 +641,25 @@ function loadSpriteMap(spriteMap) {
     console.warn("[Init] No sprite map data received - falling back to individual icons");
   }
 }
+
+function loadPointLinks(raw) {
+  const links = raw && typeof raw === 'object' ? raw : {};
+  const typeToTicket = {};
+  Object.entries(links).forEach(([ticketIdStr, type]) => {
+    const ticketId = Number(ticketIdStr);
+    if (!Number.isFinite(ticketId) || ticketId <= 0) return;
+    if (typeof type !== 'string' || !type) return;
+    typeToTicket[type] = ticketId;
+  });
+  DATA.pointTicketLinks = links;
+  DATA.pointTypeToTicket = typeToTicket;
+}
+
+function getTicketIdForRequirementType(reqType) {
+  return DATA.pointTypeToTicket?.[reqType] || null;
+}
+
+window.getTicketIdForRequirementType = getTicketIdForRequirementType;
 
 function handleInitError(err) {
   console.error("[Init] Auto-import failed:", err);

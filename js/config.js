@@ -26,6 +26,7 @@ const FILES = {
   items:           "osrohr_items.json",
   newItems:        "osrohr_items_new.json",
   values:          "osrohr_item_values.json",
+  pointLinks:      "osrohr_point_links.json",
   quests:          "osrohr_quests.json",
   shops:           "osrohr_shops.json",
   icons:           "osrohr_item_icons.json",
@@ -95,6 +96,56 @@ const GUILD_CONTRIBUTION_ITEMS = [
 
 const GUILD_CONTRIBUTION_CARD_ART_IDS = [
   4002, 4003, 4006, 4008, 4009, 4010, 4021,
+];
+
+
+// === CURRENCY NAMES ===
+// Shared lookup for all requirement types → display labels
+const CURRENCY_NAMES = {
+  zeny:                    'Zeny',
+  credit:                  'Credit',
+  gold:                    'Gold',
+  vote_points:             'Vote Points',
+  activity_points:         'Activity Points',
+  instance_points:         'Instance Points',
+  hourly_points:           'Hourly Points',
+  donate_points:           'Donate Points',
+  koe_points:              'KoE Points',
+  woe_points:              'WoE Points',
+  headgear_points:         'Headgear Points',
+  aura_points:             'Aura Points',
+  monster_arena_points:    'Monster Arena Points',
+  otherworld_points:       'Otherworld Points',
+  hall_of_heritage_points: 'Hall of Heritage Points',
+  token_points:            'Token Points',
+  cardo_points:            'Cardo Points',
+  event_points:            'Event Points',
+};
+
+// === REQUIREMENT / CURRENCY TYPE OPTIONS ===
+
+// Used by both Quests and Shops editors.
+const REQ_TYPE_OPTIONS = [
+  { value: 'item', label: 'Item' },
+  { value: 'zeny', label: 'Zeny' },
+  { value: 'gold', label: 'Gold' },
+  { value: 'credit', label: 'Credit' },
+
+  { value: 'vote_points', label: 'Vote Points' },
+  { value: 'hourly_points', label: 'Hourly Points' },
+  { value: 'activity_points', label: 'Activity Points' },
+  { value: 'instance_points', label: 'Instance Points' },
+  { value: 'donate_points', label: 'Donate Points' },
+  { value: 'koe_points', label: 'KoE Points' },
+  { value: 'woe_points', label: 'WoE Points' },
+  { value: 'headgear_points', label: 'Headgear Points' },
+  { value: 'aura_points', label: 'Aura Points' },
+
+  { value: 'monster_arena_points', label: 'Arena Points' },
+  { value: 'otherworld_points', label: 'Otherworld Points' },
+  { value: 'hall_of_heritage_points', label: 'HoH Points' },
+  { value: 'token_points', label: 'Token Points' },
+  { value: 'cardo_points', label: 'Cardo Points' },
 ];
 
 // === HELPER FUNCTIONS ===

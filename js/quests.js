@@ -440,22 +440,6 @@ function renderTotalsHeader(questIndex) {
 
 // ===== REQUIREMENT RENDERING =====
 
-const REQ_TYPE_OPTIONS = [
-  { value: 'item', label: 'Item' },
-  { value: 'zeny', label: 'Zeny' },
-  { value: 'gold', label: 'Gold' },
-  { value: 'credit', label: 'Credit' },
-  { value: 'vote_points', label: 'Vote Points' },
-  { value: 'hourly_points', label: 'Hourly Points' },
-  { value: 'activity_points', label: 'Activity Points' },
-  { value: 'instance_points', label: 'Instance Points' },
-  { value: 'monster_arena_points', label: 'MA Points' },
-  { value: 'otherworld_points', label: 'Otherworld Points' },
-  { value: 'hall_of_heritage_points', label: 'HoH Points' },
-  { value: 'token_points', label: 'Token Points' },
-  { value: 'cardo_points', label: 'Cardo Points'}
-];
-
 function renderRequirement(req, idx) {
   const isItem = req.type === "item";
   const item = isItem ? getItem(req.id) : null;
@@ -513,21 +497,6 @@ function renderItemRequirement(req, idx, item) {
 
 // ===== MATERIAL TREE =====
 
-const CURRENCY_NAMES = {
-  zeny: 'Zeny',
-  credit: 'Credit',
-  gold: 'Gold',
-  vote_points: 'Vote Points',
-  activity_points: 'Activity Points',
-  instance_points: 'Instance Points',
-  hourly_points: 'Hourly Points',
-  monster_arena_points: 'Monster Arena Points',
-  otherworld_points: 'Otherworld Points',
-  hall_of_heritage_points: 'Hall of Heritage Points',
-  cardo_points: 'Cardo Points',
-  token_points: 'Token Points',
-  event_points: 'Event Points'
-};
 
 function renderMaterialTree(questIndex) {
 
@@ -1016,10 +985,17 @@ function calculateZenyValue(req, amount) {
   if (req.type === "credit") return amount * getCreditValue();
   if (req.type === "gold") return amount * getGoldValue();
   if (req.type === "item") return amount * (getItem(req.id).value || 0);
+
+  const ticketId = window.getTicketIdForRequirementType?.(req.type);
+  if (ticketId) return amount * (getItem(ticketId)?.value || 0);
+
   return 0;
 }
 
 function accumulateRequirement(totals, req, effectiveAmount) {
+  const linkedTicketId = req.type !== 'item' ? window.getTicketIdForRequirementType?.(req.type) : null;
+  const isLinkedPoints = !!linkedTicketId;
+
   const key = req.type === "item" ? `item_${req.id}` : req.type;
   const item = req.type === "item" ? getItem(req.id) : null;
   const name = CURRENCY_NAMES[req.type] || (req.type === "item" ? (item?.name || "Unknown") : req.type);
@@ -1029,9 +1005,9 @@ function accumulateRequirement(totals, req, effectiveAmount) {
       name,
       amount: 0,
       type: req.type,
-      itemId: req.type === "item" ? req.id : null,
+      itemId: req.type === "item" ? req.id : (isLinkedPoints ? linkedTicketId : null),
       slot: req.type === "item" ? (Number(item?.slot) || 0) : 0,
-      value: req.type === "item" ? (item?.value || 0) : 0
+      value: req.type === "item" ? (item?.value || 0) : (isLinkedPoints ? (getItem(linkedTicketId)?.value || 0) : 0)
     };
   }
   totals[key].amount += effectiveAmount;
@@ -1056,7 +1032,7 @@ function renderSummaryItems(entries, totalZeny) {
   // Only show entries that have a known zeny value
   const zenyCurrencies = new Set(["zeny", "gold", "credit"]);
   const valued = entries.filter(e =>
-    zenyCurrencies.has(e.type) || (e.type === "item" && e.value > 0)
+    zenyCurrencies.has(e.type) || e.value > 0
   );
 
   if (valued.length === 0) {

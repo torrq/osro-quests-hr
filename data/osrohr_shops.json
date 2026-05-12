@@ -6234,8 +6234,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6246,8 +6245,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6258,8 +6256,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6270,8 +6267,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6282,8 +6278,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6294,8 +6289,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6306,8 +6300,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6318,8 +6311,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6330,8 +6322,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6342,8 +6333,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 150
                 }
               ]
@@ -6354,8 +6344,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 150
                 }
               ]
@@ -6366,8 +6355,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 150
                 }
               ]
@@ -6378,8 +6366,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 150
                 }
               ]
@@ -6395,8 +6382,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 1
                 }
               ]
@@ -6407,8 +6393,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 2
                 }
               ]
@@ -6419,8 +6404,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 25
                 }
               ]
@@ -6431,8 +6415,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 50
                 }
               ]
@@ -6443,8 +6426,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 35
                 }
               ]
@@ -6455,8 +6437,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6467,8 +6448,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6479,8 +6459,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 100
                 }
               ]
@@ -6491,8 +6470,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 75
                 }
               ]
@@ -6503,8 +6481,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 150
                 }
               ]
@@ -6515,8 +6492,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 150
                 }
               ]
@@ -6527,8 +6503,7 @@
               "accountBound": false,
               "requirements": [
                 {
-                  "type": "item",
-                  "id": 3101,
+                  "type": "donate_points",
                   "amount": 160
                 }
               ]

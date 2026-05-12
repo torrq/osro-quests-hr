@@ -421,9 +421,9 @@ function renderShopRequirementsFlat(shop) {
     } else if (req.type === 'gold') {
       icon = renderItemIcon(SPECIAL_ITEMS.GOLD);
       name = `<a class="item-link" href="${itemUrl(SPECIAL_ITEMS.GOLD)}" onclick="event.preventDefault(); navigateToItem(${SPECIAL_ITEMS.GOLD})">Gold</a>`;
-    } else if (SHOP_CURRENCY_NAMES[req.type]) {
+    } else if (CURRENCY_NAMES[req.type]) {
       icon = renderItemIcon(2);
-      name = SHOP_CURRENCY_NAMES[req.type];
+      name = CURRENCY_NAMES[req.type];
     } else if (req.type === 'item') {
       const itm = getItem(req.id);
       icon = renderItemIcon(req.id);
@@ -439,6 +439,9 @@ function renderShopRequirementsFlat(shop) {
     else if (req.type === 'item') {
       const itm = getItem(req.id);
       zenyVal = eff * (itm?.value || 0);
+    } else {
+      const ticketId = window.getTicketIdForRequirementType?.(req.type);
+      if (ticketId) zenyVal = eff * (getItem(ticketId)?.value || 0);
     }
 
     return `
@@ -523,22 +526,6 @@ function shopRenderTotalsHeader() {
 
 // ===== REQUIREMENT RENDERING =====
 
-const SHOP_SHOP_REQ_TYPE_OPTIONS = [
-  { value: 'item', label: 'Item' },
-  { value: 'zeny', label: 'Zeny' },
-  { value: 'gold', label: 'Gold' },
-  { value: 'credit', label: 'Credit' },
-  { value: 'vote_points', label: 'Vote Points' },
-  { value: 'hourly_points', label: 'Hourly Points' },
-  { value: 'activity_points', label: 'Activity Points' },
-  { value: 'instance_points', label: 'Instance Points' },
-  { value: 'monster_arena_points', label: 'Arena Points' },
-  { value: 'otherworld_points', label: 'Otherworld Points' },
-  { value: 'hall_of_heritage_points', label: 'HoH Points' },
-  { value: 'token_points', label: 'Token Points' },
-  { value: 'cardo_points', label: 'Cardo Points' }
-];
-
 function shopRenderRequirement(req, idx) {
   const isItem = req.type === "item";
   const item = isItem ? getItem(req.id) : null;
@@ -549,7 +536,7 @@ function shopRenderRequirement(req, idx) {
       
       <div class="req-top-row">
         <select onchange="shopUpdateReqType(${idx}, this.value)">
-          ${SHOP_SHOP_REQ_TYPE_OPTIONS.map(opt => 
+          ${REQ_TYPE_OPTIONS.map(opt => 
             `<option value="${opt.value}" ${req.type === opt.value ? "selected" : ""}>${opt.label}</option>`
           ).join('')}
         </select>
@@ -596,21 +583,6 @@ function shopRenderItemRequirement(req, idx, item) {
 
 // ===== MATERIAL TREE =====
 
-const SHOP_CURRENCY_NAMES = {
-  zeny: 'Zeny',
-  credit: 'Credit',
-  gold: 'Gold',
-  vote_points: 'Vote Points',
-  activity_points: 'Activity Points',
-  instance_points: 'Instance Points',
-  hourly_points: 'Hourly Points',
-  monster_arena_points: 'Monster Arena Points',
-  otherworld_points: 'Otherworld Points',
-  hall_of_heritage_points: 'Hall of Heritage Points',
-  token_points: 'Token Points',
-  cardo_points: 'Cardo Points',
-  event_points: 'Event Points'
-};
 
 // ===== SUMMARY RENDERING =====
 
@@ -756,22 +728,28 @@ function shopCalculateZenyValue(req, amount) {
   if (req.type === "credit") return amount * getCreditValue();
   if (req.type === "gold") return amount * getGoldValue();
   if (req.type === "item") return amount * (getItem(req.id).value || 0);
+
+  const ticketId = window.getTicketIdForRequirementType?.(req.type);
+  if (ticketId) return amount * (getItem(ticketId)?.value || 0);
+
   return 0;
 }
 
 function shopAccumulateRequirement(totals, req, effectiveAmount) {
+  const linkedTicketId = req.type !== 'item' ? window.getTicketIdForRequirementType?.(req.type) : null;
+  const isLinkedPoints = !!linkedTicketId;
   const key = req.type === "item" ? `item_${req.id}` : req.type;
   const item = req.type === "item" ? getItem(req.id) : null;
-  const name = SHOP_CURRENCY_NAMES[req.type] || (req.type === "item" ? (item?.name || "Unknown") : req.type);
+  const name = CURRENCY_NAMES[req.type] || (req.type === "item" ? (item?.name || "Unknown") : req.type);
 
   if (!totals[key]) {
     totals[key] = {
       name,
       amount: 0,
       type: req.type,
-      itemId: req.type === "item" ? req.id : null,  // ADD THIS
+      itemId: req.type === "item" ? req.id : (isLinkedPoints ? linkedTicketId : null),
       slot: req.type === "item" ? (Number(item?.slot) || 0) : 0,  // ADD THIS
-      value: req.type === "item" ? (item?.value || 0) : 0
+      value: req.type === "item" ? (item?.value || 0) : (isLinkedPoints ? (getItem(linkedTicketId)?.value || 0) : 0)
     };
   }
   totals[key].amount += effectiveAmount;
@@ -796,7 +774,7 @@ function renderShopSummaryItems(entries, totalZeny) {
   // Only show entries that have a known zeny value
   const zenyCurrencies = new Set(["zeny", "gold", "credit"]);
   const valued = entries.filter(e =>
-    zenyCurrencies.has(e.type) || (e.type === "item" && e.value > 0)
+    zenyCurrencies.has(e.type) || e.value > 0
   );
 
   if (valued.length === 0) {
