@@ -6388,7 +6388,152 @@
         },
         {
           "name": "Misc Shop",
-          "shops": []
+          "shops": [
+            {
+              "name": "Unlock Bubble Gum",
+              "producesId": 3222,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "name": "Unlock HE Bubble Gum",
+              "producesId": 3223,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 2
+                }
+              ]
+            },
+            {
+              "name": "Job Ticket",
+              "producesId": 3157,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 25
+                }
+              ]
+            },
+            {
+              "name": "Race Ticket",
+              "producesId": 8206,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Cyclops Eye Box",
+              "producesId": 3877,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 35
+                }
+              ]
+            },
+            {
+              "name": "Buffs Potion",
+              "producesId": 3160,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Full Chemical Potion",
+              "producesId": 3161,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Fusion Ticket",
+              "producesId": 44161,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Full Buffs Potion",
+              "producesId": 3162,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Boarding Halter",
+              "producesId": 12622,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Class Mastery Rune",
+              "producesId": 3192,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Tier Upgrade Ticket",
+              "producesId": 3143,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 3101,
+                  "amount": 160
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Equipment Shop",
