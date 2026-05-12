@@ -205,6 +205,13 @@
             <div id="valuesManagerAddResults" class="values-manager-results hidden"></div>
           </div>
 
+          <div class="values-manager-filter-row">
+            <input id="vmgrNameFilter" class="search-input vmgr-filter-input" type="text"
+                   placeholder="Filter by name…"
+                   oninput="setValuesManagerNameFilter(this.value)"
+                   autocomplete="off" />
+            <button class="btn btn-sm" onclick="clearValuesManagerNameFilter()" title="Clear filter">×</button>
+          </div>
           <div class="values-manager-controls">
             <div class="values-manager-controls-left">
               <label class="values-manager-control">

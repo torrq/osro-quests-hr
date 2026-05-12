@@ -627,6 +627,7 @@ const valuesManagerState = {
   initDone: false,
   tracked: new Set(), // keeps rows visible even when value == 0
   searchDebounce: null,
+  nameFilter: '',
 };
 
 function loadValuesManagerConfig() {
@@ -843,6 +844,21 @@ function syncValuesManagerControlsVisibility() {
   if (addRow) addRow.classList.toggle('hidden', !isCustom);
 }
 
+function setValuesManagerNameFilter(val) {
+  valuesManagerState.nameFilter = val;
+  renderValuesManager();
+}
+
+function clearValuesManagerNameFilter() {
+  valuesManagerState.nameFilter = '';
+  const input = document.getElementById('vmgrNameFilter');
+  if (input) input.value = '';
+  renderValuesManager();
+}
+
+window.setValuesManagerNameFilter  = setValuesManagerNameFilter;
+window.clearValuesManagerNameFilter = clearValuesManagerNameFilter;
+
 function renderValuesManager() {
   const list = document.getElementById('valuesManagerList');
   if (!list) return;
@@ -890,7 +906,18 @@ function renderValuesManager() {
     return a - b;
   });
 
-  list.innerHTML = idArr.map((id) => renderValuesManagerRow(id, DATA.items[id], mode)).join('');
+  // Filter by name
+  const nf = valuesManagerState.nameFilter.trim().toLowerCase();
+  const filtered = nf
+    ? idArr.filter(id => (getItemDisplayName(DATA.items[id]) || '').toLowerCase().includes(nf))
+    : idArr;
+
+  if (filtered.length === 0 && nf) {
+    list.innerHTML = `<div class="values-manager-empty">No items match "<em>${escapeHtml(nf)}</em>".</div>`;
+    return;
+  }
+
+  list.innerHTML = filtered.map((id) => renderValuesManagerRow(id, DATA.items[id], mode)).join('');
 }
 
 function renderValuesManagerRow(id, item, mode) {
