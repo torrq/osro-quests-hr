@@ -8554,84 +8554,708 @@
               "producesId": 30214,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Champion Figure",
               "producesId": 30215,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Clown &amp; Gypsy Figure",
               "producesId": 30216,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "High Priest Figure",
               "producesId": 30217,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "High Wizard Figure",
               "producesId": 30218,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Lord Knight Figure",
               "producesId": 30219,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Paladin Figure",
               "producesId": 30220,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Professor Figure",
               "producesId": 30221,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Sniper Figure",
               "producesId": 30222,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Stalker Figure",
               "producesId": 30223,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Whitesmith Figure",
               "producesId": 30224,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "Creator Figure",
               "producesId": 30420,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                }
+              ]
             }
           ]
         },
@@ -8643,91 +9267,845 @@
               "producesId": 30463,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30057,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Bow [4]",
               "producesId": 30464,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30049,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Chakram [4]",
               "producesId": 30465,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30053,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Dagger [4]",
               "producesId": 30466,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30051,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Guitar [4]",
               "producesId": 30467,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30052,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Katar [4]",
               "producesId": 30468,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30047,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Knuckle [4]",
               "producesId": 30469,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30050,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Revolver [4]",
               "producesId": 30470,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30055,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Shuriken [4]",
               "producesId": 30471,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30058,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Spear [4]",
               "producesId": 30472,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30046,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Spear Shielder [4]",
               "producesId": 30473,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30056,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Spell Rod [4]",
               "producesId": 30474,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30048,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             },
             {
               "name": "W Hydra Dragon Sword [4]",
               "producesId": 30475,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "activity_points",
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 30046,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 32
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7443,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 8880,
+                  "amount": 30000
+                },
+                {
+                  "type": "gold",
+                  "amount": 30000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 300
+                }
+              ]
             }
           ]
         }
