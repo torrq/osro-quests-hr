@@ -7341,11 +7341,310 @@
         },
         {
           "name": "Dragon Weapon Shop",
-          "shops": []
+          "shops": [
+            {
+              "name": "Dragon Lightsaber [4]",
+              "producesId": 30481,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 55
+                }
+              ]
+            },
+            {
+              "name": "Dragon Sword [4]",
+              "producesId": 3515,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Katar [4]",
+              "producesId": 3516,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Staff [4]",
+              "producesId": 3517,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Bow [4]",
+              "producesId": 3518,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Claw [4]",
+              "producesId": 3519,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Dagger [4]",
+              "producesId": 3520,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Guitar [4]",
+              "producesId": 3521,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Rope [4]",
+              "producesId": 3522,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Banryu [4]",
+              "producesId": 3523,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Revolver [4]",
+              "producesId": 3524,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Spear [4]",
+              "producesId": 3525,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Dragon Axe [4]",
+              "producesId": 3526,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Shuriken of Ice Dragon [4]",
+              "producesId": 3639,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            },
+            {
+              "name": "Book of Ice Dragon [4]",
+              "producesId": 3640,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 33
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Rare Costume Shop",
-          "shops": []
+          "shops": [
+            {
+              "name": "Spirit of Aquarius",
+              "producesId": 21535,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Aries",
+              "producesId": 21536,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Cancer",
+              "producesId": 21537,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Capricorn",
+              "producesId": 21538,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Gemini",
+              "producesId": 21539,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Leo",
+              "producesId": 21540,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Libra",
+              "producesId": 21541,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Pisces",
+              "producesId": 21542,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Sagittarius",
+              "producesId": 21543,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Scorpio",
+              "producesId": 21544,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Taurus",
+              "producesId": 21545,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Spirit of Virgo",
+              "producesId": 21546,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 200
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Weapon Costume Shop",
