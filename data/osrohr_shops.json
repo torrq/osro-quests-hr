@@ -7648,11 +7648,563 @@
         },
         {
           "name": "Weapon Costume Shop",
-          "shops": []
+          "shops": [
+            {
+              "name": "Blue Lightning Saber [4]",
+              "producesId": 30476,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Cyan Lightning Saber [4]",
+              "producesId": 30477,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Green Lightning Saber [4]",
+              "producesId": 30478,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Orange Lightning Saber [4]",
+              "producesId": 30479,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Red Lightning Saber [4]",
+              "producesId": 30480,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Drake Bow",
+              "producesId": 30389,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Claw",
+              "producesId": 30390,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Crucifix",
+              "producesId": 30391,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Destroyer",
+              "producesId": 30393,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Guitar",
+              "producesId": 30394,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Katar",
+              "producesId": 30395,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Killer",
+              "producesId": 30396,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Kunai",
+              "producesId": 30397,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Mace",
+              "producesId": 30398,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Pistol",
+              "producesId": 30399,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Scythe",
+              "producesId": 30400,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Shotgun",
+              "producesId": 30401,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Spear",
+              "producesId": 30402,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Staff",
+              "producesId": 30403,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Sword",
+              "producesId": 30404,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Trauncheon",
+              "producesId": 30405,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Umbrella",
+              "producesId": 30406,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            },
+            {
+              "name": "Drake Axe",
+              "producesId": 30407,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 140
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Class Manual Shop",
-          "shops": []
+          "shops": [
+            {
+              "name": "Baby High Priest Class Manual",
+              "producesId": 3480,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Whitesmith Class Manual",
+              "producesId": 3481,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby SinX Class Manual",
+              "producesId": 3482,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Paladin Class Manual",
+              "producesId": 3483,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Professor Class Manual",
+              "producesId": 3484,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Clown &amp; Gypsy Class Manual",
+              "producesId": 3485,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Champion Class Manual",
+              "producesId": 3486,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Creator Class Manual",
+              "producesId": 3487,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Stalker Class Manual",
+              "producesId": 3488,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby LK Class Manual",
+              "producesId": 3489,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Sniper Class Manual",
+              "producesId": 3490,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby HW Class Manual",
+              "producesId": 3491,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Super Novice Class Manual",
+              "producesId": 3492,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Rune Knight Class Manual",
+              "producesId": 30189,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Warlock Class Manual",
+              "producesId": 30190,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Ranger Class Manual",
+              "producesId": 30191,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Arch Bishop Class Manual",
+              "producesId": 30192,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Mechanic Class Manual",
+              "producesId": 30193,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Guillotine Cross Class Manual",
+              "producesId": 30194,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Royal Guard Class Manual",
+              "producesId": 30195,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Sorcerer Class Manual",
+              "producesId": 30196,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Minstrel &amp; Wanderer Class Manual",
+              "producesId": 30197,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Sura Class Manual",
+              "producesId": 30198,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Genetic Class Manual",
+              "producesId": 30199,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Shadow Chaser Class Manual",
+              "producesId": 30200,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Star Emperor Class Manual",
+              "producesId": 30231,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Baby Soul Reaper Class Manual",
+              "producesId": 30232,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            }
+          ]
         }
       ],
       "caption": "@npc 9"
