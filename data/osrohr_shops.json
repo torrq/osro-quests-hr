@@ -6979,11 +6979,365 @@
         },
         {
           "name": "Equipment Shop",
-          "shops": []
+          "shops": [
+            {
+              "name": "Wickebine's Ears",
+              "producesId": 5360,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 60
+                }
+              ]
+            },
+            {
+              "name": "Undead Valkyrie Helm [1]",
+              "producesId": 8962,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Asprika",
+              "producesId": 2541,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 70
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Helm [1]",
+              "producesId": 3019,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 25
+                }
+              ]
+            },
+            {
+              "name": "Dragon Wings",
+              "producesId": 3004,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 45
+                }
+              ]
+            },
+            {
+              "name": "Red Valkyrie Helm [1]",
+              "producesId": 3668,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 25
+                }
+              ]
+            },
+            {
+              "name": "Red Dragon Wings",
+              "producesId": 3667,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 45
+                }
+              ]
+            },
+            {
+              "name": "Black Valkyrie Helm [1]",
+              "producesId": 3666,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 25
+                }
+              ]
+            },
+            {
+              "name": "Black Dragon Wings",
+              "producesId": 3665,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 45
+                }
+              ]
+            },
+            {
+              "name": "Ice Valkyrie Helm [1]",
+              "producesId": 3881,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 25
+                }
+              ]
+            },
+            {
+              "name": "Ice Dragon Wing",
+              "producesId": 3880,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 45
+                }
+              ]
+            },
+            {
+              "name": "Gladiator Valkyrie Helm [1]",
+              "producesId": 8088,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 25
+                }
+              ]
+            },
+            {
+              "name": "Gladiator Dragon Wing",
+              "producesId": 8087,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 45
+                }
+              ]
+            },
+            {
+              "name": "Venom Valkyrie Helm [1]",
+              "producesId": 8090,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 25
+                }
+              ]
+            },
+            {
+              "name": "Venom Dragon Wing",
+              "producesId": 8089,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 45
+                }
+              ]
+            },
+            {
+              "name": "Geo Valkyrie Helm [1]",
+              "producesId": 8213,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 25
+                }
+              ]
+            },
+            {
+              "name": "Geo Dragon Wing",
+              "producesId": 8212,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 45
+                }
+              ]
+            },
+            {
+              "name": "Shadow Garb [1]",
+              "producesId": 2554,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 22
+                }
+              ]
+            },
+            {
+              "name": "Shadow Boots",
+              "producesId": 2423,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 22
+                }
+              ]
+            },
+            {
+              "name": "Cyclop's Eye [1]",
+              "producesId": 5135,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 35
+                }
+              ]
+            },
+            {
+              "name": "Black Cyclop's Eye [1]",
+              "producesId": 3746,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 35
+                }
+              ]
+            },
+            {
+              "name": "Black Devil Mask [1]",
+              "producesId": 3747,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 35
+                }
+              ]
+            },
+            {
+              "name": "3D Glasses [1]",
+              "producesId": 5788,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 35
+                }
+              ]
+            },
+            {
+              "name": "Red Cyclop's Eye [1]",
+              "producesId": 8607,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 35
+                }
+              ]
+            },
+            {
+              "name": "Geo Cyclop's Eye [1]",
+              "producesId": 8868,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 35
+                }
+              ]
+            },
+            {
+              "name": "Medal of STR [1]",
+              "producesId": 2720,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Medal of AGI [1]",
+              "producesId": 2721,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Medal of VIT [1]",
+              "producesId": 2722,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Medal of INT [1]",
+              "producesId": 2723,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Medal of DEX [1]",
+              "producesId": 2724,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 75
+                }
+              ]
+            },
+            {
+              "name": "Medal of LUK [1]",
+              "producesId": 2725,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "donate_points",
+                  "amount": 75
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Headgear Point Shop",
-          "shops": []
+          "shops": [
+            {
+              "name": "Note Headphone [1]",
+              "producesId": 5151,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "headgear_points",
+                  "amount": 300
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Dragon Weapon Shop",
