@@ -6223,6 +6223,473 @@
       "caption": "@inn"
     },
     {
+      "name": "Arena Gate Keeper",
+      "subgroups": [
+        {
+          "name": "Arena Equip Shop",
+          "shops": [
+            {
+              "name": "Ainz Mask [1]",
+              "producesId": 8486,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Danzo's Bandage [1]",
+              "producesId": 8614,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Tobi Mask [1]",
+              "producesId": 8631,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Full Hollow Mask [1]",
+              "producesId": 8618,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Full Hollow Mask v2 [1]",
+              "producesId": 8619,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Hollow Mask [1]",
+              "producesId": 3676,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 10000
+                }
+              ]
+            },
+            {
+              "name": "Large Baphomet Horns [1]",
+              "producesId": 5518,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 35000
+                }
+              ]
+            },
+            {
+              "name": "Black Helm [1]",
+              "producesId": 3659,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Evil Majestic [1]",
+              "producesId": 3662,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Traveler's Hat [1]",
+              "producesId": 3018,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Kakashi's Head Protector [1]",
+              "producesId": 3017,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Neptune Protector [1]",
+              "producesId": 3663,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 35000
+                }
+              ]
+            },
+            {
+              "name": "Power Of Thor [1]",
+              "producesId": 5495,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 35000
+                }
+              ]
+            },
+            {
+              "name": "Jaguar Hat [1]",
+              "producesId": 5539,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Cat Ear Beret [1]",
+              "producesId": 18600,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Arena Scrolls Shop",
+          "shops": [
+            {
+              "name": "Buff Scroll",
+              "producesId": 3250,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30
+                }
+              ]
+            },
+            {
+              "name": "Divest Amulet",
+              "producesId": 3217,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Divest Protection Amulet",
+              "producesId": 3112,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Life Drain Potion",
+              "producesId": 3114,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 20
+                }
+              ]
+            },
+            {
+              "name": "Mana Burn Bottle",
+              "producesId": 3111,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dispell Potion",
+              "producesId": 3218,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Dispell Resist Potion",
+              "producesId": 3219,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Frost Resist Potion",
+              "producesId": 47097,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 150
+                }
+              ]
+            },
+            {
+              "name": "Cannon Ball",
+              "producesId": 18000,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Holy Cannon Ball",
+              "producesId": 18001,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Dark Cannon Ball",
+              "producesId": 18002,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Soul Cannon Ball",
+              "producesId": 18003,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Iron Cannon Ball",
+              "producesId": 18004,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30000
+                }
+              ]
+            },
+            {
+              "name": "Mistress Scroll",
+              "producesId": 14603,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Storm Gust Scroll",
+              "producesId": 14513,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30
+                }
+              ]
+            },
+            {
+              "name": "Vermilion Scroll",
+              "producesId": 14514,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30
+                }
+              ]
+            },
+            {
+              "name": "Meteor Scroll",
+              "producesId": 14512,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30
+                }
+              ]
+            },
+            {
+              "name": "Quagmire scroll",
+              "producesId": 14594,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30
+                }
+              ]
+            },
+            {
+              "name": "Wind Walk Scroll",
+              "producesId": 12219,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 30
+                }
+              ]
+            },
+            {
+              "name": "Aspersio Scroll",
+              "producesId": 12217,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Amplification Scroll",
+              "producesId": 12740,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "PT Blessing Scroll",
+              "producesId": 14588,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 20
+                }
+              ]
+            },
+            {
+              "name": "PT Agility Scroll",
+              "producesId": 14589,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 20
+                }
+              ]
+            },
+            {
+              "name": "PT Assump Scroll",
+              "producesId": 14590,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Barricade Kit",
+              "producesId": 14287,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 80
+                }
+              ]
+            },
+            {
+              "name": "Guardian Stone Kit",
+              "producesId": 14288,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "monster_arena_points",
+                  "amount": 80
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "caption": "@npc 1"
+    },
+    {
       "name": "Donate Manager",
       "subgroups": [
         {
