@@ -17461,6 +17461,124 @@
       "caption": "@quest"
     },
     {
+      "name": "Lord Kaho Quest",
+      "subgroups": [
+        {
+          "name": "Lord Kaho's Servant",
+          "quests": [
+            {
+              "name": "Lord Kaho's Horn [1]",
+              "producesId": 5013,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "item",
+                  "id": 714,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 7005,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 968,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 923,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 734,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 724,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 2268,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7036,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7020,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5053,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7018,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 741,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 742,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 743,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 750,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 751,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 752,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 753,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 754,
+                  "amount": 1
+                },
+                {
+                  "type": "zeny",
+                  "amount": 5000000
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "caption": "@npc 14"
+    },
+    {
       "name": "Crafting",
       "subgroups": [
         {
