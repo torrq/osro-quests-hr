@@ -17421,7 +17421,728 @@
         },
         {
           "name": "Quest Costume Weapons",
-          "quests": []
+          "quests": [
+            {
+              "name": "Herrit Bow I",
+              "producesId": 30164,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Neo Bloodlord I",
+              "producesId": 30100,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Neo Skyfire I",
+              "producesId": 30101,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Bow of Betrayer I",
+              "producesId": 30102,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Skyfire Hawk Bow I",
+              "producesId": 30103,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Bow of Taut Sinew I",
+              "producesId": 30104,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Blazeguard Sword I",
+              "producesId": 30105,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Vengeful Gladiator I",
+              "producesId": 30106,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Fang of Leviathan I",
+              "producesId": 30107,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Bloodlord's Defender I",
+              "producesId": 30108,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Blinkstrike Sword I",
+              "producesId": 30109,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Warlord's War Staff I",
+              "producesId": 30110,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Glowing Brightwood Staff I",
+              "producesId": 30111,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Staff I",
+              "producesId": 30115,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Fist I",
+              "producesId": 30117,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Bow I",
+              "producesId": 30119,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30017,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 500
+                },
+                {
+                  "type": "credit",
+                  "amount": 100
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Dragon Weapons",
