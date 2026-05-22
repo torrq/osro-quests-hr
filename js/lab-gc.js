@@ -78,6 +78,7 @@ function gcRenderMain() {
   const data        = loadLabData();
   const selected    = new Set(data.gcSelected || []);
   const timerStart  = data.gcTimerStart || null;
+  const notifyOnDone = !!data.gcNotifyOnDone;
   const sortMode    = data.gcSortMode || SORT_AMT_ALPHA;
   const manualOrder = data.gcManualOrder || [];
   const selectedFirst = !!data.gcSelectedFirst;
@@ -124,6 +125,10 @@ function gcRenderMain() {
           <div class="gc-timer-actions">
             <button class="btn btn-primary btn-sm" onclick="gcStartTimer()">Accessed NPC</button>
             <button class="btn btn-sm" onclick="gcClearTimer()">Clear</button>
+            <label class="gc-notify-opt" title="Notify when ready">
+              <input type="checkbox" ${notifyOnDone ? 'checked' : ''} onchange="gcSetNotifyOnDone(this.checked, this)">
+              Notify
+            </label>
           </div>
         </div>
 
@@ -361,6 +366,20 @@ function gcStartTickerIfNeeded(timerStart) {
       el.textContent = 'Ready!';
       el.classList.add('gc-timer--ready');
       el.classList.remove('gc-timer--warn');
+
+      const data = loadLabData();
+      if (!!data.gcNotifyOnDone && data.gcNotifiedForStart !== timerStart) {
+        saveLabData({ gcNotifiedForStart: timerStart });
+        if (typeof window.osroNotifyReady === 'function') {
+          window.osroNotifyReady({
+            section: 'Guild Contribution',
+            body:    'NPC rotation is ready.',
+            tag:     'osrohr_gc_npc_ready',
+            url:     '?tab=lab-gc',
+          });
+        }
+      }
+
       clearInterval(gcTimerInterval);
       gcTimerInterval = null;
     } else {
@@ -374,6 +393,20 @@ function gcStartTickerIfNeeded(timerStart) {
   }
   tick();
   gcTimerInterval = setInterval(tick, 1000);
+}
+
+async function gcSetNotifyOnDone(enabled, el) {
+  const next = !!enabled;
+  if (next && typeof window.osroEnsureNotifyPermission === 'function') {
+    const ok = await window.osroEnsureNotifyPermission();
+    if (!ok) {
+      if (el) el.checked = false;
+      if (typeof showToast === 'function') showToast('Browser notifications are blocked for this site.', 'error', 3000);
+      saveLabData({ gcNotifyOnDone: false });
+      return;
+    }
+  }
+  saveLabData({ gcNotifyOnDone: next });
 }
 
 // ===== ITEM TOGGLE =====
@@ -466,5 +499,6 @@ window.gcClearTimer = gcClearTimer;
 window.gcSetSort = gcSetSort;
 window.gcSetSelectedFirst = gcSetSelectedFirst;
 window.gcSetSize = gcSetSize;
+window.gcSetNotifyOnDone = gcSetNotifyOnDone;
 
 window.addEventListener('keydown', gcHandleKeydown);

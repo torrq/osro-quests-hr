@@ -116,10 +116,17 @@ function gemEmptyState() {
     </div>`;
 }
 
+function gemIdleDisplay(id) {
+  return `<input class="ca-time-input" id="gem-h-${id}" type="number" min="0" max="99" value="24"><span class="ca-timer-sep">h</span>`
+       + `<input class="ca-time-input" id="gem-m-${id}" type="number" min="0" max="59" value="00"><span class="ca-timer-sep">m</span>`
+       + `<input class="ca-time-input" id="gem-s-${id}" type="number" min="0" max="59" value="00"><span class="ca-timer-sep">s</span>`;
+}
+
 function gemTimerCard(t) {
   const running = !!t.startedAt;
   const done = !!t.finishedAt && !running;
   const doneClass = done ? ' ca-timer--done' : '';
+  const notifyOnDone = !!t.notifyOnDone;
   return `
     <div class="ca-timer ca-timer--gem${doneClass}" data-id="${t.id}">
       <div class="ca-timer-top">
@@ -129,6 +136,10 @@ function gemTimerCard(t) {
                  onchange="gemRenameTimer('${t.id}', this.value)"
                  onclick="this.select()"/>
           <span class="ca-type-badge ca-type-badge--gem">Gem Quest</span>
+          <label class="ca-notify-toggle" title="Notify when ready">
+            <input type="checkbox" ${notifyOnDone ? 'checked' : ''} onchange="gemSetNotifyOnDone('${t.id}', this.checked, this)">
+            Notify
+          </label>
         </div>
         <button class="ca-delete-btn" onclick="gemDeleteTimer('${t.id}')" title="Delete timer">
           ${window.SVG_ICONS?.trashNoX14 || ''}
@@ -136,7 +147,7 @@ function gemTimerCard(t) {
       </div>
 
       <div class="ca-timer-display" id="gem-display-${t.id}">
-        ${running ? gemFormatRemaining(t.startedAt) : done ? gemFormatFinished(t.finishedAt) : '<span class="ca-timer-idle">—</span>'}
+        ${running ? gemFormatRemaining(t.startedAt) : done ? gemFormatFinished(t.finishedAt) : gemIdleDisplay(t.id)}
       </div>
 
       <input type="range" class="ca-slider gem-slider" min="0" max="${GEM_TIMER_MS}" step="60000"
@@ -151,7 +162,7 @@ function gemTimerCard(t) {
           : done
             ? `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${t.id}')">Start</button>
                <button class="btn btn-sm" onclick="gemResetTimer('${t.id}')">Reset</button>`
-            : `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${t.id}')">Start</button>`}
+            : `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimerFromDisplay('${t.id}')">Start</button>`}
       </div>
     </div>`;
 }
@@ -262,7 +273,14 @@ function gemAddTimer() {
   const data = gemLoad();
   const id = 'gem_' + Date.now();
   const count = data.timers.length + 1;
-  data.timers.push({ id, name: `Account ${count}`, startedAt: null, finishedAt: null });
+  data.timers.push({
+    id,
+    name: `Account ${count}`,
+    startedAt: null,
+    finishedAt: null,
+    notifyOnDone: false,
+    notifiedForFinishedAt: null,
+  });
   gemSave(data);
   gemRenderMain();
 }
@@ -285,6 +303,7 @@ function gemStartTimer(id) {
   if (!t) return;
   t.startedAt = Date.now();
   t.finishedAt = null;
+  t.notifiedForFinishedAt = null;
   gemSave(data);
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (card) {
@@ -310,9 +329,9 @@ function gemStopTimer(id) {
   if (card) {
     card.classList.remove('ca-timer--done');
     const disp = document.getElementById(`gem-display-${id}`);
-    if (disp) disp.innerHTML = '<span class="ca-timer-idle">—</span>';
+    if (disp) disp.innerHTML = gemIdleDisplay(id);
     card.querySelector('.ca-timer-actions').innerHTML =
-      `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${id}')">Start</button>`;
+      `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimerFromDisplay('${id}')">Start</button>`;
     const sl = card.querySelector('.ca-slider');
     if (sl) sl.value = GEM_TIMER_MS;
   }
@@ -345,6 +364,7 @@ function gemStartTick(id) {
       const finishedAt = t.startedAt + GEM_TIMER_MS;
       t.startedAt = null;
       t.finishedAt = finishedAt;
+      gemMaybeNotifyDone(t, finishedAt);
       gemSave(data);
 
       const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
@@ -367,7 +387,7 @@ function gemStartTick(id) {
 function gemSliderInput(id, val) {
   const remaining = parseInt(val);
   const disp = document.getElementById(`gem-display-${id}`);
-  if (disp) disp.innerHTML = remaining > 0 ? gemFormatMs(remaining) : '<span class="ca-timer-idle">—</span>';
+  if (disp) disp.innerHTML = remaining > 0 ? gemFormatMs(remaining) : gemIdleDisplay(id);
 }
 
 function gemSliderCommit(id, val) {
@@ -381,6 +401,7 @@ function gemSliderCommit(id, val) {
   if (remaining <= 0) {
     if (t.startedAt) t.finishedAt = t.startedAt + GEM_TIMER_MS;
     t.startedAt = null;
+    if (t.finishedAt) gemMaybeNotifyDone(t, t.finishedAt);
     if (card) {
       card.querySelector('.ca-timer-actions').innerHTML =
         `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${id}')">Start</button>${t.finishedAt ? `<button class="btn btn-sm" onclick="gemResetTimer('${id}')">Reset</button>` : ''}`;
@@ -397,6 +418,66 @@ function gemSliderCommit(id, val) {
       `<button class="btn btn-sm" onclick="gemStopTimer('${id}')">Stop</button>`;
     if (card) card.classList.remove('ca-timer--done');
   }
+  gemSave(data);
+}
+
+function gemStartTimerFromDisplay(id) {
+  const h = Math.max(0, parseInt(document.getElementById(`gem-h-${id}`)?.value) || 0);
+  const m = Math.max(0, parseInt(document.getElementById(`gem-m-${id}`)?.value) || 0);
+  const s = Math.max(0, parseInt(document.getElementById(`gem-s-${id}`)?.value) || 0);
+  const remaining = Math.min((h * 3600 + m * 60 + s) * 1000, GEM_TIMER_MS);
+  const data = gemLoad();
+  const t = data.timers.find(t => t.id === id);
+  if (!t) return;
+  t.startedAt = Date.now() - (GEM_TIMER_MS - remaining);
+  t.finishedAt = null;
+  t.notifiedForFinishedAt = null;
+  gemSave(data);
+  const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
+  if (card) {
+    card.classList.remove('ca-timer--done');
+    const actionsEl = card.querySelector('.ca-timer-actions');
+    if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-sm" onclick="gemStopTimer('${id}')">Stop</button>`;
+    const slider = card.querySelector('.ca-slider');
+    if (slider) slider.value = remaining;
+  }
+  gemStartTick(id);
+}
+
+function gemMaybeNotifyDone(t, finishedAt) {
+  if (!t?.notifyOnDone) return;
+  if (!finishedAt) return;
+  if (t.notifiedForFinishedAt === finishedAt) return;
+  t.notifiedForFinishedAt = finishedAt;
+
+  if (typeof window.osroNotifyReady === 'function') {
+    window.osroNotifyReady({
+      section: 'Gem Quest',
+      body:    `${t.name || 'Account'} is ready.`,
+      tag:     `osrohr_gem_${t.id}`,
+      url:     '?tab=lab-gem',
+    });
+  }
+}
+
+async function gemSetNotifyOnDone(id, enabled, el) {
+  const data = gemLoad();
+  const t = data.timers.find(t => t.id === id);
+  if (!t) return;
+
+  const next = !!enabled;
+  if (next && typeof window.osroEnsureNotifyPermission === 'function') {
+    const ok = await window.osroEnsureNotifyPermission();
+    if (!ok) {
+      t.notifyOnDone = false;
+      gemSave(data);
+      if (el) el.checked = false;
+      if (typeof showToast === 'function') showToast('Browser notifications are blocked for this site.', 'error', 3000);
+      return;
+    }
+  }
+
+  t.notifyOnDone = next;
   gemSave(data);
 }
 
@@ -436,9 +517,9 @@ function gemResetTimer(id) {
   if (card) {
     card.classList.remove('ca-timer--done');
     const disp = document.getElementById(`gem-display-${id}`);
-    if (disp) disp.innerHTML = '<span class="ca-timer-idle">—</span>';
+    if (disp) disp.innerHTML = gemIdleDisplay(id);
     card.querySelector('.ca-timer-actions').innerHTML =
-      `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimer('${id}')">Start</button>`;
+      `<button class="btn btn-primary btn-sm gem-start-btn" onclick="gemStartTimerFromDisplay('${id}')">Start</button>`;
     const sl = card.querySelector('.ca-slider');
     if (sl) sl.value = GEM_TIMER_MS;
   }
@@ -457,9 +538,11 @@ window.registerLabExperiment?.('lab-gem', {
 window.gemAddTimer    = gemAddTimer;
 window.gemDeleteTimer = gemDeleteTimer;
 window.gemStartTimer  = gemStartTimer;
+window.gemStartTimerFromDisplay = gemStartTimerFromDisplay;
 window.gemStopTimer   = gemStopTimer;
 window.gemStopAll     = gemStopAll;
 window.gemRenameTimer = gemRenameTimer;
 window.gemSliderInput = gemSliderInput;
 window.gemSliderCommit = gemSliderCommit;
 window.gemResetTimer  = gemResetTimer;
+window.gemSetNotifyOnDone = gemSetNotifyOnDone;

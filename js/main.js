@@ -1918,6 +1918,50 @@ window.questUrl = questUrl;
 window.shopUrl  = shopUrl;
 window.itemUrl  = itemUrl;
 
+// ===== NOTIFICATIONS (optional) =====
+
+function osroCanNotify() {
+  return typeof window !== 'undefined' && 'Notification' in window;
+}
+
+async function osroEnsureNotifyPermission() {
+  if (!osroCanNotify()) return false;
+  if (Notification.permission === 'granted') return true;
+  if (Notification.permission === 'denied') return false;
+  try {
+    const res = await Notification.requestPermission();
+    return res === 'granted';
+  } catch {
+    return false;
+  }
+}
+
+function osroFireNotification({ title, body = '', tag = '', url = '' }) {
+  // Prefer browser notifications; fall back to in-app toast.
+  if (osroCanNotify() && Notification.permission === 'granted') {
+    try {
+      const n = new Notification(title, { body, tag, renotify: false });
+      if (url) {
+        n.onclick = () => { window.focus(); window.location.href = url; };
+      }
+      return true;
+    } catch { /* fall through */ }
+  }
+  if (typeof showToast === 'function') {
+    showToast(body ? `${title} — ${body}` : title, 'info', 3500);
+  }
+  return false;
+}
+
+function osroNotifyReady({ section, body, tag, url = '' }) {
+  osroFireNotification({ title: `OSRO Quests — ${section}`, body, tag, url });
+}
+
+window.osroCanNotify = osroCanNotify;
+window.osroEnsureNotifyPermission = osroEnsureNotifyPermission;
+window.osroFireNotification = osroFireNotification;
+window.osroNotifyReady = osroNotifyReady;
+
 // ===== PUBLIC API EXPOSURE =====
 
 // Explicitly expose functions that may be called from HTML or other scripts

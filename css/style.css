@@ -3577,6 +3577,21 @@ body.viewer-mode .editor-quest select {
   flex-shrink: 0;
 }
 
+.gc-notify-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.gc-notify-opt input {
+  margin: 0;
+}
+
 /* Controls row */
 .gc-controls {
   display: flex;
@@ -4192,6 +4207,21 @@ body.viewer-mode .editor-quest select {
   border: 1px solid #a855f7;
 }
 
+.ca-notify-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  font-size: 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.ca-notify-toggle input {
+  margin: 0;
+}
+
 .ca-delete-btn {
   background: transparent;
   border: 1px solid var(--border);
@@ -4232,6 +4262,26 @@ body.viewer-mode .editor-quest select {
   font-weight: 400;
   color: var(--text-muted);
   margin: 0 2px;
+}
+
+.ca-time-input {
+  width: 2.5ch;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text);
+  font-family: monospace;
+  font-size: 38px;
+  font-weight: 700;
+  text-align: center;
+  padding: 0;
+  -moz-appearance: textfield;
+}
+.ca-time-input::-webkit-outer-spin-button,
+.ca-time-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.ca-time-input:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
 }
 
 .ca-timer-idle {

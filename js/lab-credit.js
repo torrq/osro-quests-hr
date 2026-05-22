@@ -96,6 +96,12 @@ function caEmptyState() {
     </div>`;
 }
 
+function caIdleDisplay(id) {
+  return `<input class="ca-time-input" id="ca-h-${id}" type="number" min="0" max="99" value="24"><span class="ca-timer-sep">h</span>`
+       + `<input class="ca-time-input" id="ca-m-${id}" type="number" min="0" max="59" value="00"><span class="ca-timer-sep">m</span>`
+       + `<input class="ca-time-input" id="ca-s-${id}" type="number" min="0" max="59" value="00"><span class="ca-timer-sep">s</span>`;
+}
+
 function caTimerCard(t) {
   const isRare    = t.type === 'rare';
   const typeClass = isRare ? 'ca-timer--rare' : 'ca-timer--credit';
@@ -103,6 +109,7 @@ function caTimerCard(t) {
   const running   = !!t.startedAt;
   const done      = !!t.finishedAt && !running;
   const doneClass = done ? ' ca-timer--done' : '';
+  const notifyOnDone = !!t.notifyOnDone;
   return `
     <div class="ca-timer ${typeClass}${doneClass}" data-id="${t.id}">
       <div class="ca-timer-top">
@@ -112,6 +119,10 @@ function caTimerCard(t) {
                  onchange="caRenameTimer('${t.id}', this.value)"
                  onclick="this.select()"/>
           <span class="ca-type-badge ca-type-badge--${t.type}">${typeLabel}</span>
+          <label class="ca-notify-toggle" title="Notify when ready">
+            <input type="checkbox" ${notifyOnDone ? 'checked' : ''} onchange="caSetNotifyOnDone('${t.id}', this.checked, this)">
+            Notify
+          </label>
         </div>
         <button class="ca-delete-btn" onclick="caDeleteTimer('${t.id}')" title="Delete timer">
           ${window.SVG_ICONS?.trashNoX14 || ''}
@@ -119,7 +130,7 @@ function caTimerCard(t) {
       </div>
 
       <div class="ca-timer-display" id="ca-display-${t.id}">
-        ${running ? caFormatRemaining(t.startedAt) : done ? caFormatFinished(t.finishedAt) : '<span class="ca-timer-idle">—</span>'}
+        ${running ? caFormatRemaining(t.startedAt) : done ? caFormatFinished(t.finishedAt) : caIdleDisplay(t.id)}
       </div>
 
       <input type="range" class="ca-slider" min="0" max="${CA_TIMER_MS}" step="60000"
@@ -134,7 +145,7 @@ function caTimerCard(t) {
           : done
             ? `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${t.id}')">Start</button>
                <button class="btn btn-sm" onclick="caResetTimer('${t.id}')">Reset</button>`
-            : `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${t.id}')">Start</button>`}
+            : `<button class="btn btn-primary btn-sm" onclick="caStartTimerFromDisplay('${t.id}')">Start</button>`}
       </div>
     </div>`;
 }
@@ -168,7 +179,15 @@ function caAddTimer(type) {
   const data = caLoad();
   const id = 'ca_' + Date.now();
   const count = data.timers.filter(t => t.type === type).length + 1;
-  data.timers.push({ id, type, name: `Account ${count}`, startedAt: null, finishedAt: null });
+  data.timers.push({
+    id,
+    type,
+    name: `Account ${count}`,
+    startedAt: null,
+    finishedAt: null,
+    notifyOnDone: false,
+    notifiedForFinishedAt: null,
+  });
   caSave(data);
   caRenderMain();
 }
@@ -194,6 +213,7 @@ function caStartTimer(id) {
   if (!t) return;
   t.startedAt = Date.now();
   t.finishedAt = null;
+  t.notifiedForFinishedAt = null;
   caSave(data);
   // Update card UI
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
@@ -220,9 +240,9 @@ function caStopTimer(id) {
   if (card) {
     card.classList.remove('ca-timer--done');
     const disp = card.querySelector(`#ca-display-${id}`);
-    if (disp) disp.innerHTML = '<span class="ca-timer-idle">—</span>';
+    if (disp) disp.innerHTML = caIdleDisplay(id);
     const actionsEl = card.querySelector('.ca-timer-actions');
-    if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${id}')">Start</button>`;
+    if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-primary btn-sm" onclick="caStartTimerFromDisplay('${id}')">Start</button>`;
     const slider = card.querySelector('.ca-slider');
     if (slider) slider.value = CA_TIMER_MS;
   }
@@ -257,6 +277,7 @@ function caStartTick(id) {
       const finishedAt = t.startedAt + CA_TIMER_MS;
       t.startedAt = null;
       t.finishedAt = finishedAt;
+      caMaybeNotifyDone(t, finishedAt);
       caSave(data);
 
       const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
@@ -297,6 +318,7 @@ function caSliderCommit(id, val) {
   if (remaining <= 0) {
     if (t.startedAt) t.finishedAt = t.startedAt + CA_TIMER_MS;
     t.startedAt = null;
+    if (t.finishedAt) caMaybeNotifyDone(t, t.finishedAt);
     const actionsEl = document.querySelector(`.ca-timer[data-id="${id}"] .ca-timer-actions`);
     if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${id}')">Start</button>${t.finishedAt ? `<button class="btn btn-sm" onclick="caResetTimer('${id}')">Reset</button>` : ''}`;
     const disp = document.getElementById(`ca-display-${id}`);
@@ -316,6 +338,66 @@ function caSliderCommit(id, val) {
     const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
     if (card) card.classList.remove('ca-timer--done');
   }
+  caSave(data);
+}
+
+function caStartTimerFromDisplay(id) {
+  const h = Math.max(0, parseInt(document.getElementById(`ca-h-${id}`)?.value) || 0);
+  const m = Math.max(0, parseInt(document.getElementById(`ca-m-${id}`)?.value) || 0);
+  const s = Math.max(0, parseInt(document.getElementById(`ca-s-${id}`)?.value) || 0);
+  const remaining = Math.min((h * 3600 + m * 60 + s) * 1000, CA_TIMER_MS);
+  const data = caLoad();
+  const t = data.timers.find(t => t.id === id);
+  if (!t) return;
+  t.startedAt = Date.now() - (CA_TIMER_MS - remaining);
+  t.finishedAt = null;
+  t.notifiedForFinishedAt = null;
+  caSave(data);
+  const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
+  if (card) {
+    card.classList.remove('ca-timer--done');
+    const actionsEl = card.querySelector('.ca-timer-actions');
+    if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-sm" onclick="caStopTimer('${id}')">Stop</button>`;
+    const slider = card.querySelector('.ca-slider');
+    if (slider) slider.value = remaining;
+  }
+  caStartTick(id);
+}
+
+function caMaybeNotifyDone(t, finishedAt) {
+  if (!t?.notifyOnDone) return;
+  if (!finishedAt) return;
+  if (t.notifiedForFinishedAt === finishedAt) return;
+  t.notifiedForFinishedAt = finishedAt;
+
+  if (typeof window.osroNotifyReady === 'function') {
+    window.osroNotifyReady({
+      section: 'Credit Agent',
+      body:    `${t.name || 'Account'} is ready.`,
+      tag:     `osrohr_credit_${t.type || 'credit'}_${t.id}`,
+      url:     '?tab=lab-credit',
+    });
+  }
+}
+
+async function caSetNotifyOnDone(id, enabled, el) {
+  const data = caLoad();
+  const t = data.timers.find(t => t.id === id);
+  if (!t) return;
+
+  const next = !!enabled;
+  if (next && typeof window.osroEnsureNotifyPermission === 'function') {
+    const ok = await window.osroEnsureNotifyPermission();
+    if (!ok) {
+      t.notifyOnDone = false;
+      caSave(data);
+      if (el) el.checked = false;
+      if (typeof showToast === 'function') showToast('Browser notifications are blocked for this site.', 'error', 3000);
+      return;
+    }
+  }
+
+  t.notifyOnDone = next;
   caSave(data);
 }
 
@@ -355,9 +437,9 @@ function caResetTimer(id) {
   if (card) {
     card.classList.remove('ca-timer--done');
     const disp = document.getElementById(`ca-display-${id}`);
-    if (disp) disp.innerHTML = '<span class="ca-timer-idle">—</span>';
+    if (disp) disp.innerHTML = caIdleDisplay(id);
     const actionsEl = card.querySelector('.ca-timer-actions');
-    if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-primary btn-sm" onclick="caStartTimer('${id}')">Start</button>`;
+    if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-primary btn-sm" onclick="caStartTimerFromDisplay('${id}')">Start</button>`;
     const slider = card.querySelector('.ca-slider');
     if (slider) slider.value = CA_TIMER_MS;
   }
@@ -376,9 +458,11 @@ window.registerLabExperiment?.('lab-credit', {
 window.caAddTimer    = caAddTimer;
 window.caDeleteTimer = caDeleteTimer;
 window.caStartTimer  = caStartTimer;
+window.caStartTimerFromDisplay = caStartTimerFromDisplay;
 window.caStopTimer   = caStopTimer;
 window.caStopAll     = caStopAll;
 window.caRenameTimer = caRenameTimer;
 window.caSliderInput = caSliderInput;
 window.caSliderCommit = caSliderCommit;
 window.caResetTimer  = caResetTimer;
+window.caSetNotifyOnDone = caSetNotifyOnDone;
