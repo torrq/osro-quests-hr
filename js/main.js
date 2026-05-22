@@ -1957,10 +1957,100 @@ function osroNotifyReady({ section, body, tag, url = '' }) {
   osroFireNotification({ title: `OSRO Quests — ${section}`, body, tag, url });
 }
 
-window.osroCanNotify = osroCanNotify;
-window.osroEnsureNotifyPermission = osroEnsureNotifyPermission;
-window.osroFireNotification = osroFireNotification;
-window.osroNotifyReady = osroNotifyReady;
+// --- NEW CONSTANTS FOR WEB PUSH ---
+// We will generate this key in the next step. It's safe to be public.
+const VAPID_PUBLIC_KEY = "BAet8Vv5lUgSYaJPGzB25Ehhnze2yF7R541mIyyfEoiMmMbZne8t7ckmfiDnOFYUawtMcmmmznobySm8sh-r4zg"; 
+const CLOUDFLARE_WORKER_URL = "https://osro-push-worker.osro-push-worker.workers.dev";
+
+// --- SERVICE WORKER REGISTRATION ---
+if ('serviceWorker' in navigator && 'PushManager' in window) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/js/sw.js').then(function(registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+
+// Helper to convert VAPID string for the PushManager
+function urlB64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
+// --- UPGRADED PERMISSION HANDLER ---
+async function osroEnsureNotifyPermission() {
+  if (!('Notification' in window) || !('serviceWorker' in navigator)) {
+    return false;
+  }
+
+  let permission = Notification.permission;
+  if (permission !== 'granted') {
+    permission = await Notification.requestPermission();
+  }
+
+  if (permission === 'granted') {
+    // Permission granted, now subscribe to Push
+    const registration = await navigator.serviceWorker.ready;
+    let subscription = await registration.pushManager.getSubscription();
+    
+    if (!subscription) {
+      const applicationServerKey = urlB64ToUint8Array(VAPID_PUBLIC_KEY);
+      subscription = await registration.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: applicationServerKey
+      });
+      // Save subscription locally so timers can use it
+      localStorage.setItem('osro_push_sub', JSON.stringify(subscription));
+    }
+    return true;
+  }
+  return false;
+}
+
+// --- THE CLOUD SCHEDULERS ---
+async function osroScheduleCloudPush(timerId, delayInSeconds, payload) {
+  const subString = localStorage.getItem('osro_push_sub');
+  if (!subString) return null;
+
+  try {
+    const response = await fetch(`${CLOUDFLARE_WORKER_URL}/schedule`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        subscription: JSON.parse(subString),
+        delay: delayInSeconds,
+        payload: payload
+      })
+    });
+    
+    const data = await response.json();
+    return data.messageId; // We need this to cancel it later
+  } catch (err) {
+    console.error("Failed to schedule push:", err);
+    return null;
+  }
+}
+
+async function osroCancelCloudPush(messageId) {
+  if (!messageId) return;
+  try {
+    await fetch(`${CLOUDFLARE_WORKER_URL}/cancel`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messageId })
+    });
+  } catch (err) {
+    console.error("Failed to cancel push:", err);
+  }
+}
 
 // ===== PUBLIC API EXPOSURE =====
 
@@ -1982,3 +2072,7 @@ window.saveData = saveData;
 window.render = render;
 window.toggleDescSearch = toggleDescSearch;
 window.toggleTheme = toggleTheme;
+window.osroCanNotify = osroCanNotify;
+window.osroEnsureNotifyPermission = osroEnsureNotifyPermission;
+window.osroFireNotification = osroFireNotification;
+window.osroNotifyReady = osroNotifyReady;

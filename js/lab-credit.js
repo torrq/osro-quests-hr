@@ -207,15 +207,22 @@ function caDeleteTimer(id) {
   }
 }
 
-function caStartTimer(id) {
+async function caStartTimer(id) {
   const data = caLoad();
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
+
+  // 1. CLEANUP: If there's an old cloud message pending, kill it first
+  if (t.cloudMessageId) {
+      osroCancelCloudPush(t.cloudMessageId);
+      t.cloudMessageId = null;
+  }
+
   t.startedAt = Date.now();
   t.finishedAt = null;
   t.notifiedForFinishedAt = null;
-  caSave(data);
-  // Update card UI
+  
+  // 2. Update UI
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (card) {
     card.classList.remove('ca-timer--done');
@@ -224,6 +231,23 @@ function caStartTimer(id) {
     const slider = card.querySelector('.ca-slider');
     if (slider) slider.value = CA_TIMER_MS;
   }
+
+  // 3. Schedule new notification
+  if (t.notifyOnDone) {
+      const canNotify = await osroEnsureNotifyPermission();
+      
+      if (canNotify) {
+          const delayInSeconds = CA_TIMER_MS / 1000;
+          const msgId = await osroScheduleCloudPush(id, delayInSeconds, {
+              title: "Credit Agent",
+              body: "Your 24-hour credit timer is done!"
+          });
+          
+          if (msgId) t.cloudMessageId = msgId;
+      }
+  }
+  
+  caSave(data);
   caStartTick(id);
 }
 
@@ -429,6 +453,12 @@ function caResetTimer(id) {
   const data = caLoad();
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
+  
+  if (t.cloudMessageId) {
+      osroCancelCloudPush(t.cloudMessageId);
+      t.cloudMessageId = null;
+  }
+  
   t.startedAt = null;
   t.finishedAt = null;
   caSave(data);
