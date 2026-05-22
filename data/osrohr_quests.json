@@ -14304,7 +14304,7 @@
             {
               "name": "Artifact of Artists II",
               "producesId": 44533,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -14386,7 +14386,7 @@
             {
               "name": "Artifact of Assassins II",
               "producesId": 44534,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -14468,7 +14468,7 @@
             {
               "name": "Artifact of Blacksmiths II",
               "producesId": 44535,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -14550,7 +14550,7 @@
             {
               "name": "Artifact of Crusaders II",
               "producesId": 44536,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -14632,7 +14632,7 @@
             {
               "name": "Artifact of Force II",
               "producesId": 44537,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -14714,7 +14714,7 @@
             {
               "name": "Artifact of Gunslingers II",
               "producesId": 44538,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -14796,7 +14796,7 @@
             {
               "name": "Artifact of Hunters II",
               "producesId": 44539,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -14878,7 +14878,7 @@
             {
               "name": "Artifact of Knights II",
               "producesId": 44540,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -14960,7 +14960,7 @@
             {
               "name": "Artifact of Monks II",
               "producesId": 44541,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -15042,7 +15042,7 @@
             {
               "name": "Artifact of Necromancers II",
               "producesId": 44542,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -15124,7 +15124,7 @@
             {
               "name": "Artifact of Ninja II",
               "producesId": 44543,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -15206,7 +15206,7 @@
             {
               "name": "Artifact of Priests II",
               "producesId": 44544,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -15288,7 +15288,7 @@
             {
               "name": "Artifact of Rogues II",
               "producesId": 44545,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -15370,7 +15370,7 @@
             {
               "name": "Artifact of Sages II",
               "producesId": 44546,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -15452,7 +15452,7 @@
             {
               "name": "Artifact of Wizards II",
               "producesId": 44547,
-              "successRate": 100,
+              "successRate": 55,
               "accountBound": false,
               "requirements": [
                 {
@@ -18146,19 +18146,1625 @@
         },
         {
           "name": "Dragon Weapons",
-          "quests": []
+          "quests": [
+            {
+              "name": "Dragon Sword I [4]",
+              "producesId": 30046,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3515,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Katar I [4]",
+              "producesId": 30047,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3516,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Staff I [4]",
+              "producesId": 30048,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3517,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Bow I [4]",
+              "producesId": 30049,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3518,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Claw I [4]",
+              "producesId": 30050,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3519,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Dagger I [4]",
+              "producesId": 30051,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3520,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Guitar I [4]",
+              "producesId": 30052,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3521,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Rope I [4]",
+              "producesId": 30053,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3522,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Banryu I [4]",
+              "producesId": 30054,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3523,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Revolver I [4]",
+              "producesId": 30055,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3524,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Spear I [4]",
+              "producesId": 30056,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3525,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Axe I [4]",
+              "producesId": 30057,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3526,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Shuriken of Ice Dragon I [4]",
+              "producesId": 30058,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3639,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Dragon Lightsaber I [4]",
+              "producesId": 30482,
+              "successRate": 75,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30481,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8349,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 8350,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7451,
+                  "amount": 50
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 50
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 2000
+                },
+                {
+                  "type": "credit",
+                  "amount": 200
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            }
+          ]
         },
         {
           "name": "Equipments",
-          "quests": []
+          "quests": [
+            {
+              "name": "Valkyrie Armor I [1]",
+              "producesId": 30438,
+              "successRate": 50,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2357,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Shield I [1]",
+              "producesId": 30439,
+              "successRate": 50,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2115,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Shoes I [1]",
+              "producesId": 30440,
+              "successRate": 50,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2421,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Valkyrie Manteau I [1]",
+              "producesId": 30441,
+              "successRate": 50,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2524,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
+            },
+            {
+              "name": "Sleipnir I",
+              "producesId": 30060,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 2410,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3001,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3014,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3741,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3842,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 918,
+                  "amount": 1000
+                },
+                {
+                  "type": "item",
+                  "id": 7166,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 7079,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7080,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 400
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
+            },
+            {
+              "name": "Cyclop's Eye I [1]",
+              "producesId": 20163,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 5135,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 8607,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5788,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3677,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 3660,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 980,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7169,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7079,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7080,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
+            },
+            {
+              "name": "Geo Cyclop's Eye I [1]",
+              "producesId": 20161,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Red Cyclop's Eye I [1]",
+              "producesId": 20162,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Black Devil Mask I [1]",
+              "producesId": 20164,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Black Cyclop's Eye I [1]",
+              "producesId": 20160,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Armor I [1]",
+              "producesId": 30442,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Buckler I [1]",
+              "producesId": 30443,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Boots I",
+              "producesId": 30444,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Garb I [1]",
+              "producesId": 30445,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Asprika I",
+              "producesId": 30446,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Wings I [1]",
+              "producesId": 30421,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Valkyrie Helm I [1]",
+              "producesId": 30422,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Black Dragon Wings I [1]",
+              "producesId": 30423,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Black Valkyrie Helm I [1]",
+              "producesId": 30424,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Red Dragon Wings I [1]",
+              "producesId": 30425,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Red Valkyrie Helm I [1]",
+              "producesId": 30426,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Ice Dragon Wing I [1]",
+              "producesId": 30427,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Ice Valkyrie Helm I [1]",
+              "producesId": 30428,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Gladiator Dragon Wing I [1]",
+              "producesId": 30429,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Gladiator Valkyrie Helm I [1]",
+              "producesId": 30430,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Venom Dragon Wing I [1]",
+              "producesId": 30431,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Venom Valkyrie Helm I [1]",
+              "producesId": 30432,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Geo Dragon Wing I [1]",
+              "producesId": 30433,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Geo Valkyrie Helm I [1]",
+              "producesId": 30434,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         },
         {
           "name": "Accessories",
-          "quests": []
+          "quests": [
+            {
+              "name": "Nile Rose I [1]",
+              "producesId": 30059,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of STR I [1]",
+              "producesId": 30061,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of AGI I [1]",
+              "producesId": 30062,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of VIT I [1]",
+              "producesId": 30063,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of INT I [1]",
+              "producesId": 30064,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of DEX I [1]",
+              "producesId": 30065,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of LUK I [1]",
+              "producesId": 30066,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of STR II [1]",
+              "producesId": 40090,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of AGI II [1]",
+              "producesId": 40091,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of VIT II [1]",
+              "producesId": 40092,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of INT II [1]",
+              "producesId": 40093,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of DEX II [1]",
+              "producesId": 40094,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of LUK II [1]",
+              "producesId": 40095,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         },
         {
           "name": "Otherworld Set",
-          "quests": []
+          "quests": [
+            {
+              "name": "Otherworld Armor I [1]",
+              "producesId": 40100,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Shoes I [1]",
+              "producesId": 40101,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Robe I [1]",
+              "producesId": 40102,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Shield I [1]",
+              "producesId": 40103,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Ring I [1]",
+              "producesId": 40104,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         }
       ],
       "caption": "@quest"
