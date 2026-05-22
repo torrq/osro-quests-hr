@@ -1985,41 +1985,54 @@ function urlB64ToUint8Array(base64String) {
   return outputArray;
 }
 
-// --- UPGRADED PERMISSION HANDLER ---
+// --- UPDATED FOR DEBUGGING ---
 async function osroEnsureNotifyPermission() {
+  console.log("Checking permissions...");
   if (!('Notification' in window) || !('serviceWorker' in navigator)) {
+    console.error("Browser does not support notifications or SW.");
     return false;
   }
 
   let permission = Notification.permission;
+  console.log("Current permission:", permission);
+  
   if (permission !== 'granted') {
     permission = await Notification.requestPermission();
+    console.log("Permission requested, result:", permission);
   }
 
   if (permission === 'granted') {
-    // Permission granted, now subscribe to Push
     const registration = await navigator.serviceWorker.ready;
     let subscription = await registration.pushManager.getSubscription();
     
     if (!subscription) {
+      console.log("No subscription found, subscribing...");
       const applicationServerKey = urlB64ToUint8Array(VAPID_PUBLIC_KEY);
-      subscription = await registration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: applicationServerKey
-      });
-      // Save subscription locally so timers can use it
-      localStorage.setItem('osro_push_sub', JSON.stringify(subscription));
+      try {
+        subscription = await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: applicationServerKey
+        });
+        localStorage.setItem('osro_push_sub', JSON.stringify(subscription));
+        console.log("Subscribed successfully!");
+      } catch (e) {
+        console.error("Subscription failed:", e);
+      }
     }
     return true;
   }
   return false;
 }
 
-// --- THE CLOUD SCHEDULERS ---
 async function osroScheduleCloudPush(timerId, delayInSeconds, payload) {
   const subString = localStorage.getItem('osro_push_sub');
-  if (!subString) return null;
+  if (!subString) {
+    console.error("No subscription found in localStorage!");
+    return null;
+  }
 
+  console.log("Attempting to fetch:", `${CLOUDFLARE_WORKER_URL}/schedule`);
+  
   try {
     const response = await fetch(`${CLOUDFLARE_WORKER_URL}/schedule`, {
       method: 'POST',
@@ -2031,10 +2044,12 @@ async function osroScheduleCloudPush(timerId, delayInSeconds, payload) {
       })
     });
     
+    console.log("Worker response status:", response.status);
     const data = await response.json();
-    return data.messageId; // We need this to cancel it later
+    console.log("Worker returned:", data);
+    return data.messageId;
   } catch (err) {
-    console.error("Failed to schedule push:", err);
+    console.error("Fetch request FAILED (Check CORS or Worker URL):", err);
     return null;
   }
 }
