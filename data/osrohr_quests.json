@@ -19472,63 +19472,634 @@
               "producesId": 20161,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 8868,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5135,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5788,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5102,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 3657,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 976,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7114,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7075,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7076,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Red Cyclop's Eye I [1]",
               "producesId": 20162,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 8607,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5135,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5788,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5101,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3657,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7108,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7077,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7078,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Black Devil Mask I [1]",
               "producesId": 20164,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 3747,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5135,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5788,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3842,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 5138,
+                  "amount": 3
+                },
+                {
+                  "type": "item",
+                  "id": 981,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7036,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7081,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7082,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Black Cyclop's Eye I [1]",
               "producesId": 20160,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 3746,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5135,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5788,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 5101,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 3657,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 1029,
+                  "amount": 100
+                },
+                {
+                  "type": "item",
+                  "id": 7073,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7074,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Shadow Armor I [1]",
               "producesId": 30442,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 20722,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Shadow Buckler I [1]",
               "producesId": 30443,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 20723,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Shadow Boots I",
               "producesId": 30444,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2423,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Shadow Garb I [1]",
               "producesId": 30445,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2554,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Asprika I",
               "producesId": 30446,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2541,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 999
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Dragon Wings I [1]",
