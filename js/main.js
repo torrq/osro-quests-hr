@@ -1965,7 +1965,7 @@ const CLOUDFLARE_WORKER_URL = "https://osro-push-worker.osro-push-worker.workers
 // --- SERVICE WORKER REGISTRATION ---
 if ('serviceWorker' in navigator && 'PushManager' in window) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/js/sw.js').then(function(registration) {
+    navigator.serviceWorker.register('/sw.js').then(function(registration) {
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
       console.log('ServiceWorker registration failed: ', err);
