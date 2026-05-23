@@ -6,8 +6,9 @@ self.addEventListener('push', function(event) {
     const options = {
       body: data.body,
       // You can add paths to your actual icons here
-//      icon: '/icon.png', 
-//      badge: '/badge.png',
+      icon: '/osro-quests-hr/image/favicon.png',
+      badge: '/osro-quests-hr/image/favicon.png',
+      image: '/osro-quests-hr/image/osro_quests_logo_v3.png',
       vibrate: [100, 50, 100],
       data: {
         dateOfArrival: Date.now(),

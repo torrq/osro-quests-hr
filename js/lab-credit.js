@@ -239,7 +239,7 @@ async function caStartTimer(id) {
       if (canNotify) {
           const delayInSeconds = CA_TIMER_MS / 1000;
           const msgId = await osroScheduleCloudPush(id, delayInSeconds, {
-              title: "Credit Agent",
+              title: osroNotifyTitle('Credit Agent'),
               body: "Your 24-hour credit timer is done!"
           });
           
@@ -375,7 +375,7 @@ function caSliderCommit(id, val) {
       osroEnsureNotifyPermission().then(canNotify => {
         if (canNotify) {
           osroScheduleCloudPush(id, Math.ceil(remaining / 1000), {
-            title: 'Credit Agent',
+            title: osroNotifyTitle('Credit Agent'),
             body: `${t.name || 'Account'} is ready.`,
           }).then(msgId => {
             if (msgId) {
@@ -422,7 +422,7 @@ async function caStartTimerFromDisplay(id) {
     if (canNotify) {
       const delayInSeconds = Math.ceil(remaining / 1000);
       const msgId = await osroScheduleCloudPush(id, delayInSeconds, {
-        title: 'Credit Agent',
+        title: osroNotifyTitle('Credit Agent'),
         body: `${t.name || 'Account'} is ready.`,
       });
       if (msgId) t.cloudMessageId = msgId;

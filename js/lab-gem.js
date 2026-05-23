@@ -318,7 +318,7 @@ async function gemStartTimer(id) {
     const canNotify = await osroEnsureNotifyPermission();
     if (canNotify) {
       const msgId = await osroScheduleCloudPush(id, GEM_TIMER_MS / 1000, {
-        title: 'Gem Quest',
+        title: osroNotifyTitle('Gem Quest'),
         body:  `${t.name || 'Account'} is ready.`,
       });
       if (msgId) t.cloudMessageId = msgId;
@@ -461,7 +461,7 @@ function gemSliderCommit(id, val) {
       osroEnsureNotifyPermission().then(canNotify => {
         if (canNotify) {
           osroScheduleCloudPush(id, Math.ceil(remaining / 1000), {
-            title: 'Gem Quest',
+            title: osroNotifyTitle('Gem Quest'),
             body:  `${t.name || 'Account'} is ready.`,
           }).then(msgId => {
             if (msgId) {
@@ -507,7 +507,7 @@ async function gemStartTimerFromDisplay(id) {
     if (canNotify) {
       const delayInSeconds = Math.ceil(remaining / 1000);
       const msgId = await osroScheduleCloudPush(id, delayInSeconds, {
-        title: 'Gem Quest',
+        title: osroNotifyTitle('Gem Quest'),
         body:  `${t.name || 'Account'} is ready.`,
       });
       if (msgId) t.cloudMessageId = msgId;
@@ -564,7 +564,7 @@ async function gemSetNotifyOnDone(id, enabled, el) {
       if (remaining > 0) {
         if (t.cloudMessageId) osroCancelCloudPush(t.cloudMessageId);
         const msgId = await osroScheduleCloudPush(id, Math.ceil(remaining / 1000), {
-          title: 'Gem Quest',
+          title: osroNotifyTitle('Gem Quest'),
           body:  `${t.name || 'Account'} is ready.`,
         });
         if (msgId) t.cloudMessageId = msgId;

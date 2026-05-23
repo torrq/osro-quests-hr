@@ -354,7 +354,7 @@ async function gcStartTimer() {
     const canNotify = await osroEnsureNotifyPermission();
     if (canNotify) {
       const msgId = await osroScheduleCloudPush('gc', GC_REFRESH_MS / 1000, {
-        title: 'Guild Contribution',
+        title: osroNotifyTitle('Guild Contribution'),
         body: 'NPC rotation is ready.',
       });
       if (msgId) saveLabData({ gcCloudMessageId: msgId });
@@ -440,7 +440,7 @@ async function gcSetNotifyOnDone(enabled, el) {
       if (remaining > 0) {
         if (data.gcCloudMessageId) osroCancelCloudPush(data.gcCloudMessageId);
         const msgId = await osroScheduleCloudPush('gc', Math.ceil(remaining / 1000), {
-          title: 'Guild Contribution',
+          title: osroNotifyTitle('Guild Contribution'),
           body:  'NPC rotation is ready.',
         });
         if (msgId) saveLabData({ gcCloudMessageId: msgId });

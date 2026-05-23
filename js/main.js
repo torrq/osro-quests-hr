@@ -2101,3 +2101,4 @@ window.osroCanNotify = osroCanNotify;
 window.osroEnsureNotifyPermission = osroEnsureNotifyPermission;
 window.osroFireNotification = osroFireNotification;
 window.osroNotifyReady = osroNotifyReady;
+window.osroNotifyTitle = section => `OSRO Quests (HR) - ${section}`;
