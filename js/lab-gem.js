@@ -320,6 +320,7 @@ async function gemStartTimer(id) {
       const msgId = await osroScheduleCloudPush(id, GEM_TIMER_MS / 1000, {
         title: osroNotifyTitle('Gem Quest'),
         body:  `${t.name || 'Account'} is ready.`,
+        url: 'https://torrq.github.io/osro-quests-hr/?tab=lab-gem',
       });
       if (msgId) t.cloudMessageId = msgId;
     }
@@ -463,6 +464,7 @@ function gemSliderCommit(id, val) {
           osroScheduleCloudPush(id, Math.ceil(remaining / 1000), {
             title: osroNotifyTitle('Gem Quest'),
             body:  `${t.name || 'Account'} is ready.`,
+            url: 'https://torrq.github.io/osro-quests-hr/?tab=lab-gem',
           }).then(msgId => {
             if (msgId) {
               const d = gemLoad();
@@ -509,6 +511,7 @@ async function gemStartTimerFromDisplay(id) {
       const msgId = await osroScheduleCloudPush(id, delayInSeconds, {
         title: osroNotifyTitle('Gem Quest'),
         body:  `${t.name || 'Account'} is ready.`,
+        url: 'https://torrq.github.io/osro-quests-hr/?tab=lab-gem',
       });
       if (msgId) t.cloudMessageId = msgId;
     }
@@ -566,6 +569,7 @@ async function gemSetNotifyOnDone(id, enabled, el) {
         const msgId = await osroScheduleCloudPush(id, Math.ceil(remaining / 1000), {
           title: osroNotifyTitle('Gem Quest'),
           body:  `${t.name || 'Account'} is ready.`,
+          url: 'https://torrq.github.io/osro-quests-hr/?tab=lab-gem',
         });
         if (msgId) t.cloudMessageId = msgId;
       }

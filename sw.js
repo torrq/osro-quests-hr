@@ -12,7 +12,8 @@ self.addEventListener('push', function(event) {
       vibrate: [100, 50, 100],
       data: {
         dateOfArrival: Date.now(),
-        primaryKey: 'osro-timer'
+        primaryKey: 'osro-timer',
+        url: data.url || 'https://torrq.github.io/osro-quests-hr/'
       }
     };
 
@@ -25,17 +26,18 @@ self.addEventListener('push', function(event) {
 // Closes the notification if the user clicks it
 self.addEventListener('notificationclick', function(event) {
   event.notification.close();
+  const targetUrl = event.notification.data?.url || 'https://torrq.github.io/osro-quests-hr/';
   event.waitUntil(
-    clients.matchAll({ type: 'window' }).then(windowClients => {
-      // Focus the tab if it's already open, otherwise open a new one
+    clients.matchAll({ type: 'window', includeUncontrolled: true }).then(windowClients => {
+      // Focus an already-open tab if the URL matches, otherwise open a new one
       for (var i = 0; i < windowClients.length; i++) {
         var client = windowClients[i];
-        if (client.url === '/' && 'focus' in client) {
+        if (client.url === targetUrl && 'focus' in client) {
           return client.focus();
         }
       }
       if (clients.openWindow) {
-        return clients.openWindow('/');
+        return clients.openWindow(targetUrl);
       }
     })
   );

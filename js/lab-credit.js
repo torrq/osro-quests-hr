@@ -240,7 +240,8 @@ async function caStartTimer(id) {
           const delayInSeconds = CA_TIMER_MS / 1000;
           const msgId = await osroScheduleCloudPush(id, delayInSeconds, {
               title: osroNotifyTitle('Credit Agent'),
-              body: "Your 24-hour credit timer is done!"
+              body: "Your 24-hour credit timer is done!",
+              url: 'https://torrq.github.io/osro-quests-hr/?tab=lab-credit',
           });
           
           if (msgId) t.cloudMessageId = msgId;
@@ -377,6 +378,7 @@ function caSliderCommit(id, val) {
           osroScheduleCloudPush(id, Math.ceil(remaining / 1000), {
             title: osroNotifyTitle('Credit Agent'),
             body: `${t.name || 'Account'} is ready.`,
+            url: 'https://torrq.github.io/osro-quests-hr/?tab=lab-credit',
           }).then(msgId => {
             if (msgId) {
               const d = caLoad();
@@ -424,6 +426,7 @@ async function caStartTimerFromDisplay(id) {
       const msgId = await osroScheduleCloudPush(id, delayInSeconds, {
         title: osroNotifyTitle('Credit Agent'),
         body: `${t.name || 'Account'} is ready.`,
+        url: 'https://torrq.github.io/osro-quests-hr/?tab=lab-credit',
       });
       if (msgId) t.cloudMessageId = msgId;
     }
