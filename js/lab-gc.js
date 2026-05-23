@@ -337,14 +337,41 @@ function gcInitGridInteraction(sortMode) {
 
 // ===== TIMER =====
 
-function gcStartTimer() {
+async function gcStartTimer() {
   const now = Date.now();
+
+  // Cancel any pending cloud push from a previous start
+  const existing = loadLabData();
+  if (existing.gcCloudMessageId) {
+    osroCancelCloudPush(existing.gcCloudMessageId);
+    saveLabData({ gcCloudMessageId: null });
+  }
+
   saveLabData({ gcTimerStart: now });
+
+  // Schedule cloud push for 6 hours if notify is enabled
+  if (existing.gcNotifyOnDone) {
+    const canNotify = await osroEnsureNotifyPermission();
+    if (canNotify) {
+      const msgId = await osroScheduleCloudPush('gc', GC_REFRESH_MS / 1000, {
+        title: 'Guild Contribution',
+        body: 'NPC rotation is ready.',
+      });
+      if (msgId) saveLabData({ gcCloudMessageId: msgId });
+    }
+  }
+
   gcStartTickerIfNeeded(now);
   gcRenderMain();
 }
 
 function gcClearTimer() {
+  const data = loadLabData();
+  if (data.gcCloudMessageId) {
+    osroCancelCloudPush(data.gcCloudMessageId);
+    saveLabData({ gcCloudMessageId: null });
+  }
+
   saveLabData({ gcTimerStart: null });
   clearInterval(gcTimerInterval);
   gcTimerInterval = null;
@@ -404,6 +431,27 @@ async function gcSetNotifyOnDone(enabled, el) {
       if (typeof showToast === 'function') showToast('Browser notifications are blocked for this site.', 'error', 3000);
       saveLabData({ gcNotifyOnDone: false });
       return;
+    }
+    // Enabling with an active timer: schedule cloud push for the remaining time
+    const data = loadLabData();
+    if (data.gcTimerStart) {
+      const elapsed    = Date.now() - data.gcTimerStart;
+      const remaining  = GC_REFRESH_MS - elapsed;
+      if (remaining > 0) {
+        if (data.gcCloudMessageId) osroCancelCloudPush(data.gcCloudMessageId);
+        const msgId = await osroScheduleCloudPush('gc', Math.ceil(remaining / 1000), {
+          title: 'Guild Contribution',
+          body:  'NPC rotation is ready.',
+        });
+        if (msgId) saveLabData({ gcCloudMessageId: msgId });
+      }
+    }
+  } else if (!next) {
+    // Disabling: cancel any pending cloud push
+    const data = loadLabData();
+    if (data.gcCloudMessageId) {
+      osroCancelCloudPush(data.gcCloudMessageId);
+      saveLabData({ gcCloudMessageId: null });
     }
   }
   saveLabData({ gcNotifyOnDone: next });

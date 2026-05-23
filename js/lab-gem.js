@@ -280,6 +280,7 @@ function gemAddTimer() {
     finishedAt: null,
     notifyOnDone: false,
     notifiedForFinishedAt: null,
+    cloudMessageId: null,
   });
   gemSave(data);
   gemRenderMain();
@@ -297,13 +298,33 @@ function gemDeleteTimer(id) {
   if (el && !el.querySelector('.ca-timer')) el.innerHTML = gemEmptyState();
 }
 
-function gemStartTimer(id) {
+async function gemStartTimer(id) {
   const data = gemLoad();
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
+
+  // Cancel any existing cloud push before restarting
+  if (t.cloudMessageId) {
+    osroCancelCloudPush(t.cloudMessageId);
+    t.cloudMessageId = null;
+  }
+
   t.startedAt = Date.now();
   t.finishedAt = null;
   t.notifiedForFinishedAt = null;
+
+  // Schedule cloud push if notify is enabled
+  if (t.notifyOnDone) {
+    const canNotify = await osroEnsureNotifyPermission();
+    if (canNotify) {
+      const msgId = await osroScheduleCloudPush(id, GEM_TIMER_MS / 1000, {
+        title: 'Gem Quest',
+        body:  `${t.name || 'Account'} is ready.`,
+      });
+      if (msgId) t.cloudMessageId = msgId;
+    }
+  }
+
   gemSave(data);
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (card) {
@@ -322,6 +343,13 @@ function gemStopTimer(id) {
   const data = gemLoad();
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
+
+  // Cancel any pending cloud push so it doesn't fire after stopping
+  if (t.cloudMessageId) {
+    osroCancelCloudPush(t.cloudMessageId);
+    t.cloudMessageId = null;
+  }
+
   t.startedAt = null;
   t.finishedAt = null;
   gemSave(data);
@@ -339,7 +367,14 @@ function gemStopTimer(id) {
 
 function gemStopAll() {
   const data = gemLoad();
-  data.timers.forEach(t => { t.startedAt = null; t.finishedAt = null; });
+  data.timers.forEach(t => {
+    if (t.cloudMessageId) {
+      osroCancelCloudPush(t.cloudMessageId);
+      t.cloudMessageId = null;
+    }
+    t.startedAt = null;
+    t.finishedAt = null;
+  });
   gemSave(data);
   Object.keys(gemIntervals).forEach(id => { clearInterval(gemIntervals[id]); delete gemIntervals[id]; });
   gemRenderMain();
@@ -397,6 +432,13 @@ function gemSliderCommit(id, val) {
   if (!t) return;
   clearInterval(gemIntervals[id]);
   delete gemIntervals[id];
+
+  // Always cancel any existing cloud push — we'll reschedule if needed
+  if (t.cloudMessageId) {
+    osroCancelCloudPush(t.cloudMessageId);
+    t.cloudMessageId = null;
+  }
+
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (remaining <= 0) {
     if (t.startedAt) t.finishedAt = t.startedAt + GEM_TIMER_MS;
@@ -413,6 +455,25 @@ function gemSliderCommit(id, val) {
   } else {
     t.startedAt = Date.now() - (GEM_TIMER_MS - remaining);
     t.finishedAt = null;
+
+    // Reschedule cloud push with the new remaining time
+    if (t.notifyOnDone) {
+      osroEnsureNotifyPermission().then(canNotify => {
+        if (canNotify) {
+          osroScheduleCloudPush(id, Math.ceil(remaining / 1000), {
+            title: 'Gem Quest',
+            body:  `${t.name || 'Account'} is ready.`,
+          }).then(msgId => {
+            if (msgId) {
+              const d = gemLoad();
+              const timer = d.timers.find(x => x.id === id);
+              if (timer) { timer.cloudMessageId = msgId; gemSave(d); }
+            }
+          });
+        }
+      });
+    }
+
     gemStartTick(id);
     if (card) card.querySelector('.ca-timer-actions').innerHTML =
       `<button class="btn btn-sm" onclick="gemStopTimer('${id}')">Stop</button>`;
@@ -421,7 +482,7 @@ function gemSliderCommit(id, val) {
   gemSave(data);
 }
 
-function gemStartTimerFromDisplay(id) {
+async function gemStartTimerFromDisplay(id) {
   const h = Math.max(0, parseInt(document.getElementById(`gem-h-${id}`)?.value) || 0);
   const m = Math.max(0, parseInt(document.getElementById(`gem-m-${id}`)?.value) || 0);
   const s = Math.max(0, parseInt(document.getElementById(`gem-s-${id}`)?.value) || 0);
@@ -429,9 +490,30 @@ function gemStartTimerFromDisplay(id) {
   const data = gemLoad();
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
+
+  // Cancel any existing cloud push before starting fresh
+  if (t.cloudMessageId) {
+    osroCancelCloudPush(t.cloudMessageId);
+    t.cloudMessageId = null;
+  }
+
   t.startedAt = Date.now() - (GEM_TIMER_MS - remaining);
   t.finishedAt = null;
   t.notifiedForFinishedAt = null;
+
+  // Schedule cloud push if notify is enabled
+  if (t.notifyOnDone) {
+    const canNotify = await osroEnsureNotifyPermission();
+    if (canNotify) {
+      const delayInSeconds = Math.ceil(remaining / 1000);
+      const msgId = await osroScheduleCloudPush(id, delayInSeconds, {
+        title: 'Gem Quest',
+        body:  `${t.name || 'Account'} is ready.`,
+      });
+      if (msgId) t.cloudMessageId = msgId;
+    }
+  }
+
   gemSave(data);
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (card) {
@@ -475,6 +557,25 @@ async function gemSetNotifyOnDone(id, enabled, el) {
       if (typeof showToast === 'function') showToast('Browser notifications are blocked for this site.', 'error', 3000);
       return;
     }
+    // Enabling with an active timer: schedule cloud push for remaining time
+    if (t.startedAt) {
+      const elapsed   = Date.now() - t.startedAt;
+      const remaining = GEM_TIMER_MS - elapsed;
+      if (remaining > 0) {
+        if (t.cloudMessageId) osroCancelCloudPush(t.cloudMessageId);
+        const msgId = await osroScheduleCloudPush(id, Math.ceil(remaining / 1000), {
+          title: 'Gem Quest',
+          body:  `${t.name || 'Account'} is ready.`,
+        });
+        if (msgId) t.cloudMessageId = msgId;
+      }
+    }
+  } else if (!next) {
+    // Disabling: cancel any pending cloud push
+    if (t.cloudMessageId) {
+      osroCancelCloudPush(t.cloudMessageId);
+      t.cloudMessageId = null;
+    }
   }
 
   t.notifyOnDone = next;
@@ -509,6 +610,13 @@ function gemResetTimer(id) {
   const data = gemLoad();
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
+
+  // Cancel any pending cloud push
+  if (t.cloudMessageId) {
+    osroCancelCloudPush(t.cloudMessageId);
+    t.cloudMessageId = null;
+  }
+
   t.startedAt = null;
   t.finishedAt = null;
   gemSave(data);
