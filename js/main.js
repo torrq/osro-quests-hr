@@ -2025,9 +2025,19 @@ async function osroEnsureNotifyPermission() {
 }
 
 async function osroScheduleCloudPush(timerId, delayInSeconds, payload) {
-  const subString = localStorage.getItem('osro_push_sub');
-  if (!subString) {
-    console.error("No subscription found in localStorage!");
+  // Always fetch the live subscription from the SW — localStorage can go stale
+  // (expired subscription, SW re-registered, storage cleared during debugging, etc.)
+  let subscription;
+  try {
+    const registration = await navigator.serviceWorker.ready;
+    subscription = await registration.pushManager.getSubscription();
+  } catch (e) {
+    console.error("Could not get push subscription from SW:", e);
+    return null;
+  }
+
+  if (!subscription) {
+    console.error("No active push subscription — call osroEnsureNotifyPermission first.");
     return null;
   }
 
@@ -2038,7 +2048,7 @@ async function osroScheduleCloudPush(timerId, delayInSeconds, payload) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        subscription: JSON.parse(subString),
+        subscription: subscription.toJSON(),
         delay: delayInSeconds,
         payload: payload
       })

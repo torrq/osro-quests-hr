@@ -257,6 +257,13 @@ function caStopTimer(id) {
   const data = caLoad();
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
+
+  // Cancel any pending cloud push so it doesn't fire after stopping
+  if (t.cloudMessageId) {
+    osroCancelCloudPush(t.cloudMessageId);
+    t.cloudMessageId = null;
+  }
+
   t.startedAt = null;
   t.finishedAt = null;
   caSave(data);
@@ -339,6 +346,12 @@ function caSliderCommit(id, val) {
   clearInterval(caIntervals[id]);
   delete caIntervals[id];
 
+  // Always cancel any existing cloud push — we'll reschedule if needed
+  if (t.cloudMessageId) {
+    osroCancelCloudPush(t.cloudMessageId);
+    t.cloudMessageId = null;
+  }
+
   if (remaining <= 0) {
     if (t.startedAt) t.finishedAt = t.startedAt + CA_TIMER_MS;
     t.startedAt = null;
@@ -356,6 +369,25 @@ function caSliderCommit(id, val) {
     // Back-calculate startedAt so remaining matches
     t.startedAt = Date.now() - (CA_TIMER_MS - remaining);
     t.finishedAt = null;
+
+    // Reschedule cloud push with the new remaining time
+    if (t.notifyOnDone) {
+      osroEnsureNotifyPermission().then(canNotify => {
+        if (canNotify) {
+          osroScheduleCloudPush(id, Math.ceil(remaining / 1000), {
+            title: 'Credit Agent',
+            body: `${t.name || 'Account'} is ready.`,
+          }).then(msgId => {
+            if (msgId) {
+              const d = caLoad();
+              const timer = d.timers.find(x => x.id === id);
+              if (timer) { timer.cloudMessageId = msgId; caSave(d); }
+            }
+          });
+        }
+      });
+    }
+
     caStartTick(id);
     const actionsEl = document.querySelector(`.ca-timer[data-id="${id}"] .ca-timer-actions`);
     if (actionsEl) actionsEl.innerHTML = `<button class="btn btn-sm" onclick="caStopTimer('${id}')">Stop</button>`;
@@ -365,7 +397,7 @@ function caSliderCommit(id, val) {
   caSave(data);
 }
 
-function caStartTimerFromDisplay(id) {
+async function caStartTimerFromDisplay(id) {
   const h = Math.max(0, parseInt(document.getElementById(`ca-h-${id}`)?.value) || 0);
   const m = Math.max(0, parseInt(document.getElementById(`ca-m-${id}`)?.value) || 0);
   const s = Math.max(0, parseInt(document.getElementById(`ca-s-${id}`)?.value) || 0);
@@ -373,9 +405,30 @@ function caStartTimerFromDisplay(id) {
   const data = caLoad();
   const t = data.timers.find(t => t.id === id);
   if (!t) return;
+
+  // Cancel any existing cloud push before starting fresh
+  if (t.cloudMessageId) {
+    osroCancelCloudPush(t.cloudMessageId);
+    t.cloudMessageId = null;
+  }
+
   t.startedAt = Date.now() - (CA_TIMER_MS - remaining);
   t.finishedAt = null;
   t.notifiedForFinishedAt = null;
+
+  // Schedule cloud push if notify is enabled
+  if (t.notifyOnDone) {
+    const canNotify = await osroEnsureNotifyPermission();
+    if (canNotify) {
+      const delayInSeconds = Math.ceil(remaining / 1000);
+      const msgId = await osroScheduleCloudPush(id, delayInSeconds, {
+        title: 'Credit Agent',
+        body: `${t.name || 'Account'} is ready.`,
+      });
+      if (msgId) t.cloudMessageId = msgId;
+    }
+  }
+
   caSave(data);
   const card = document.querySelector(`.ca-timer[data-id="${id}"]`);
   if (card) {
