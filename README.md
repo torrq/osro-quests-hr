@@ -26,6 +26,34 @@ A web-based quest, material and autoloot management tool for [OSRO Highrate](htt
 - **Import/Export**: Save your quest data as JSON or import from others
 - **Drag & Drop**: Reorder quests within subgroups for organization
 
+## 🧪 Lab (Timers)
+
+The Lab tab hosts persistent background timers that survive browser close, backed by push notifications via Cloudflare Worker + Upstash QStash.
+
+| Tab | Timer | Purpose |
+|-----|-------|---------|
+| Guild Contribution (`lab-gc`) | 6 hours | NPC rotation refresh reminder |
+| Gem Quest (`lab-gem`) | 24 hours | Per-account gem quest cooldown |
+| Credit Agent (`lab-credit`) | 24 hours | Per-account credit NPC cooldown |
+
+Each lab module supports multiple accounts, per-timer notify toggles, a drag slider for manual adjustment, and cloud-scheduled push notifications that fire even when the browser is closed.
+
+### Push Notification Architecture
+
+```
+Browser → Cloudflare Worker (osro-push-worker) → Upstash QStash → Mozilla Push Service → sw.js
+```
+
+- **`sw.js`** (repo root): Service worker that handles `push` events and `notificationclick`. Clicking a notification navigates to the correct `?tab=lab-*` URL.
+- **`js/main.js`**: Exports `osroScheduleCloudPush(timerId, delaySeconds, payload)`, `osroCancelCloudPush(messageId)`, `osroEnsureNotifyPermission()`, and `osroNotifyTitle(section)` — all consumed by lab modules.
+- **Cloudflare Worker** (`osro-push-worker`, separate repo): Routes `/schedule` → QStash, `/cancel` → QStash delete, `/webhook` → `web-push` delivery. Env vars: `QSTASH_TOKEN`, `QSTASH_URL`, `QSTASH_MESSAGES_URL`, `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `INTERNAL_SECRET`.
+- **QStash region**: must match the token's region (e.g. `qstash-us-east-1.upstash.io`). `Upstash-Delay` is in **seconds**.
+
+### Notification assets
+
+- Icon/badge: `image/favicon.png` (16×16, upscaled by browser)
+- Preview image: `image/osro_quests_logo_v3.png` (340×125, shown in notification body on Chrome/Android)
+
 ## 📊 Quest Editor Features
 
 ### Basic Information
@@ -72,11 +100,33 @@ The app is fully responsive and optimized for mobile devices:
 
 3. Navigate to `http://localhost:8000`
 
+### Adding a new Lab module
+
+1. Create `js/lab-mymodule.js`. At the bottom, call:
+   ```js
+   window.registerLabExperiment?.('lab-mymodule', {
+     tabId:       'lab-mymodule',
+     title:       'My Module',
+     sidebarLabel:'My Module',
+     sidebarIcon: '🔧',
+     renderMain:  myModuleRenderMain,
+   });
+   ```
+2. Add `<script src="js/lab-mymodule.js"></script>` to `index.html` after `lab.js`.
+3. For push notifications, use the helpers from `main.js`:
+   - `osroNotifyTitle('My Section')` → standardized title string
+   - `osroScheduleCloudPush(id, delaySeconds, { title, body, url })` → returns `messageId`
+   - `osroCancelCloudPush(messageId)` → cancels a pending push
+   - Store `cloudMessageId` on your timer state object and null it after cancel/fire.
+
 ## 🔧 Technologies
 
 - **HTML5**: Semantic markup
 - **CSS3**: Responsive grid and flexbox layout with CSS variables
 - **Vanilla JavaScript**: No dependencies, pure JavaScript implementation
+- **Cloudflare Workers**: Serverless push proxy (separate repo: `osro-push-worker`)
+- **Upstash QStash**: Delayed message queue for persistent timers
+- **Web Push API**: Browser push notifications via service worker
 
 ## 📝 License
 
