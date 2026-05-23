@@ -11,7 +11,7 @@ A web-based quest, material and autoloot management tool for [OSRO Highrate](htt
 </h1>
 <p>&nbsp;</p>
 <p align="center">
-  <img width="1311" height="578" alt="image" src="https://github.com/user-attachments/assets/07a6e8ab-7610-470e-8bb0-62fb0e7f5ad6" />
+  <img width="961" height="616" alt="firefox_xXNBG2Ahp8" src="https://github.com/user-attachments/assets/5ffc7e99-babf-48f0-9226-3b652040148d" />
 </p>
 
 ## ✨ Features
