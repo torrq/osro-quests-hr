@@ -3876,6 +3876,40 @@ body.viewer-mode .editor-quest select {
   overflow: hidden;
   border-radius: 5px;
   pointer-events: none;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+/* Elemental Converter Highlights */
+.gc-card-icon.gc-element--water {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.65) 0%, rgba(59, 130, 246, 0.05) 80%);
+  box-shadow: inset 0 0 5px rgba(59, 130, 246);
+}
+.gc-card-icon.gc-element--water > * {
+  filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.8));
+}
+
+.gc-card-icon.gc-element--earth {
+  background: radial-gradient(circle, rgba(34, 197, 94, 0.65) 0%, rgba(34, 197, 94, 0.05) 80%);
+  box-shadow: inset 0 0 5px rgba(34, 197, 94);
+}
+.gc-card-icon.gc-element--earth > * {
+  filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.8));
+}
+
+.gc-card-icon.gc-element--fire {
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.35) 0%, rgba(239, 68, 68, 0.05) 80%);
+  box-shadow: inset 0 0 5px rgba(239, 68, 68);
+}
+.gc-card-icon.gc-element--fire > * {
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.8));
+}
+
+.gc-card-icon.gc-element--wind {
+  background: radial-gradient(circle, rgba(234, 179, 8, 0.35) 0%, rgba(234, 179, 8, 0.05) 80%);
+  box-shadow: inset 0 0 5px rgba(234, 179, 8);
+}
+.gc-card-icon.gc-element--wind > * {
+  filter: drop-shadow(0 0 6px rgba(234, 179, 8, 0.8));
 }
 
 .gc-card-icon .item-icon,

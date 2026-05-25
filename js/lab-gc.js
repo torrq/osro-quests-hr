@@ -89,10 +89,23 @@ function gcRenderMain() {
     const name = DATA.items?.[item.id]?.name || item.name;
     const icon = renderGcItemVisual(item.id);
     const isOn = selected.has(item.id);
+
+    // Color-code Elemental Converters for better visual recognition
+    let elementClass = '';
+    if (item.id === 12115) {
+      elementClass = 'gc-element--water';
+    } else if (item.id === 12116) {
+      elementClass = 'gc-element--earth';
+    } else if (item.id === 12114) {
+      elementClass = 'gc-element--fire';
+    } else if (item.id === 12117) {
+      elementClass = 'gc-element--wind';
+    }
+
     return `
       <div class="gc-card ${isOn ? 'gc-card--on' : ''} ${sortMode === SORT_MANUAL ? 'gc-card--draggable' : ''}"
            data-id="${item.id}" title="${name}">
-        <div class="gc-card-icon">${icon}</div>
+        <div class="gc-card-icon ${elementClass}">${icon}</div>
         <div class="gc-card-amt">×${item.amount}</div>
         <div class="gc-card-name">${name}</div>
       </div>`;
