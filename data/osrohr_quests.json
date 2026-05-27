@@ -20104,100 +20104,842 @@
             {
               "name": "Dragon Wings I [1]",
               "producesId": 30421,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3030,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Valkyrie Helm I [1]",
               "producesId": 30422,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3019,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Black Dragon Wings I [1]",
               "producesId": 30423,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3038,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Black Valkyrie Helm I [1]",
               "producesId": 30424,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3666,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 983,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Red Dragon Wings I [1]",
               "producesId": 30425,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3039,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Red Valkyrie Helm I [1]",
               "producesId": 30426,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3668,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Ice Dragon Wing I [1]",
               "producesId": 30427,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3040,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Ice Valkyrie Helm I [1]",
               "producesId": 30428,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3881,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 978,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Gladiator Dragon Wing I [1]",
               "producesId": 30429,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3041,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Gladiator Valkyrie Helm I [1]",
               "producesId": 30430,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 8088,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 975,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Venom Dragon Wing I [1]",
               "producesId": 30431,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3042,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 979,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Venom Valkyrie Helm I [1]",
               "producesId": 30432,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 8090,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 979,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Geo Dragon Wing I [1]",
               "producesId": 30433,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3043,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 976,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Geo Valkyrie Helm I [1]",
               "producesId": 30434,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 8213,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 976,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             }
           ]
         },
@@ -20209,91 +20951,848 @@
               "producesId": 30059,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 2647,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 2703,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 2646,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7073,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7091,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7211,
+                  "amount": 60
+                },
+                {
+                  "type": "item",
+                  "id": 7444,
+                  "amount": 200
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Medal of STR I [1]",
               "producesId": 30061,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 2720,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 2647,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 2703,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3003,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3016,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7074,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7092,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 40
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Medal of AGI I [1]",
               "producesId": 30062,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 2721,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 2647,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 2703,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3009,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3015,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7075,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7091,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 40
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Medal of VIT I [1]",
               "producesId": 30063,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 2722,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 2647,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 2703,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3007,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3843,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7073,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7090,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 40
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Medal of INT I [1]",
               "producesId": 30064,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 2723,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 2647,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 2703,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3001,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3842,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7076,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7089,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 40
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Medal of DEX I [1]",
               "producesId": 30065,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 2724,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 2647,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 2703,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3005,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3013,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7077,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7088,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 40
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Medal of LUK I [1]",
               "producesId": 30066,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 2725,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 2647,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 2703,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3008,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3012,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7078,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 7087,
+                  "amount": 8
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7450,
+                  "amount": 40
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 500
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 500
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                }
+              ]
             },
             {
               "name": "Medal of STR II [1]",
               "producesId": 40090,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30061,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Medal of AGI II [1]",
               "producesId": 40091,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30062,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Medal of VIT II [1]",
               "producesId": 40092,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30063,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Medal of INT II [1]",
               "producesId": 40093,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30064,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Medal of DEX II [1]",
               "producesId": 40094,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30065,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             },
             {
               "name": "Medal of LUK II [1]",
               "producesId": 40095,
-              "successRate": 100,
+              "successRate": 50,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30066,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 5
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 333
+                },
+                {
+                  "type": "gold",
+                  "amount": 3000
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "credit",
+                  "amount": 300
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                }
+              ]
             }
           ]
         },
@@ -20303,37 +21802,337 @@
             {
               "name": "Otherworld Armor I [1]",
               "producesId": 40100,
-              "successRate": 100,
+              "successRate": 40,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 30069,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 12210,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Otherworld Shoes I [1]",
               "producesId": 40101,
-              "successRate": 100,
+              "successRate": 40,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 30070,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 12210,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Otherworld Robe I [1]",
               "producesId": 40102,
-              "successRate": 100,
+              "successRate": 40,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 30071,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 12210,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Otherworld Shield I [1]",
               "producesId": 40103,
-              "successRate": 100,
+              "successRate": 40,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 30072,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 12210,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             },
             {
               "name": "Otherworld Ring I [1]",
               "producesId": 40104,
-              "successRate": 100,
+              "successRate": 40,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 300000000
+                },
+                {
+                  "type": "item",
+                  "id": 30213,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 7086,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 3142,
+                  "amount": 10
+                },
+                {
+                  "type": "item",
+                  "id": 8638,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3186,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3191,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 3133,
+                  "amount": 555
+                },
+                {
+                  "type": "item",
+                  "id": 12210,
+                  "amount": 20
+                },
+                {
+                  "type": "item",
+                  "id": 7773,
+                  "amount": 3000
+                },
+                {
+                  "type": "gold",
+                  "amount": 6000
+                },
+                {
+                  "type": "item",
+                  "id": 3187,
+                  "amount": 100
+                }
+              ]
             }
           ]
         }
