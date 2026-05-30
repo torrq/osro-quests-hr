@@ -9367,7 +9367,7 @@
   },
   "3200": {
     "name": "Alchemist Talisman",
-    "desc": "Effect: Soullinks to Alchemists and Creators, giving them special buffs for the skill's duration.\n- Increase Acid Demonstration damage by 5%\n- Increases effectiveness of Potion Pitcher by Soul Linker's BaseLV% (if the Soul Linker is BaseLV 68, Potion Pitcher heals +68%.\n- Allows usage of Berserk Pitcher skill.\n- Alchemists having Pharmacy LV 10 are allowed to use Twilight Alchemy I.\n- If there is a Super Novice in the party the Alchemist is further allowed to use Twilight Alchemy II.\n- Increases effectiveness of Aid Potion by (INT/13)%.\n- All offensive skills and attacks have a (INT/25)% chance of inflicting Burning Status on the target.\n- Acid Terror becomes a splash skill in an area of 4x4 around the targetted player or mob.\n- Increase Cart Cannon damage by 2% per 10 Base Level.\nWeight :^777777 1^000000"
+    "desc": "Effect: Soullinks to Alchemists and Creators, giving them special buffs for the skill's duration.\n- Increase Acid Demonstration damage by 5%\n- Increases effectiveness of Potion Pitcher by Soul Linker's BaseLV% (if the Soul Linker is BaseLV 68, Potion Pitcher heals +68%.\n- Allows usage of Berserk Pitcher skill.\n- Alchemists having Pharmacy LV 10 are allowed to use Twilight Alchemy I.\n- If there is a Super Novice in the party the Alchemist is further allowed to use Twilight Alchemy II.\n- Increases effectiveness of Aid Potion by (INT/13)%.\n- All offensive skills and attacks have a (INT/25)% chance of inflicting Burning Status on the target.\n- Acid Terror becomes a splash skill in an area of 4x4 around the targetted player or mob.\n- Increase Cart Cannon damage by 3% per 10 Base Level.\nWeight :^777777 1^000000"
   },
   "3201": {
     "name": "Monk Talisman",
@@ -9375,7 +9375,7 @@
   },
   "3202": {
     "name": "Jedi Talisman",
-    "desc": "^FF0000Lost Scroll (press Shift when casting.)^000000\nEffect: Soullinks to Jedis, giving twice more time for Force Sacrifice's duration and preventing you from dying.\n- You will lose 50% of your HP when the skill ends and won't be able to use the skill again for 1 minute. Also, the same downside from Berserk will be applied: you won't be able to change your equips for the duration of the soullink.\n- Increase ATK damage% by 2% per 10 Base Level.\n- Increase CRIT damage% by 2% per 10 Job Level.\nWeight :^777777 1^000000"
+    "desc": "^FF0000Lost Scroll (press Shift when casting.)^000000\nEffect: Soullinks to Jedis, giving twice more time for Force Sacrifice's duration and preventing you from dying.\n- You will lose 50% of your HP when the skill ends and won't be able to use the skill again for 1 minute. Also, the same downside from Berserk will be applied: you won't be able to change your equips for the duration of the soullink.\n- Increase ATK damage% by 2% per 12 Base Level.\n- Increase CRIT damage% by 2% per 12 Job Level.\nWeight :^777777 1^000000"
   },
   "3203": {
     "name": "Sage Talisman",
@@ -9383,7 +9383,7 @@
   },
   "3204": {
     "name": "Crusader Talisman",
-    "desc": "Effect: Soullinks to Crusaders and Paladins, making their Shield Boomerang never miss, do double the damage, and halving its after cast delay.\n- Increase Smite damage by 60% per skill Level.\n- Increase Shield Chain damage by 200%.\n- Increase HP by 2%.\n- Crusader Spirit cannot be dispell.\nWeight :^777777 1^000000"
+    "desc": "Effect: Soullinks to Crusaders and Paladins, making their Shield Boomerang never miss, do double the damage, and halving its after cast delay.\n- Increase Smite damage by 60% per skill Level.\n- Increase Shield Chain damage by 200%.\n- Increase HP by 2%.\n- Crusader Spirit cannot be dispell.\n- Adds 25% chance to ignore the HP drain.\n- Adds 25% chance to trigger additional 2 sacrifice hits on the target.\nWeight :^777777 1^000000"
   },
   "3205": {
     "name": "Super Novice Talisman",
@@ -9407,7 +9407,7 @@
   },
   "3210": {
     "name": "Rogue Talisman",
-    "desc": "Effect: Soullinks to Rogues and Stalkers, giving them special buffs for the skill's duration.\n- Dispell no longer removes your buffs.\n- STR bonus from Tunnel Drive will last 5 minutes and walking speed will also increase.\n- Increase Double Strafe damage by (STR/1.5)%.\n- You can divest through Full Protection by consuming one Glistening Coat for each attempt (only when the target has Full Protection activated). It doesn't work with Full Divest but only with Divest Weapon/Shield/Armor/Helm.\n- Rogue Spirit cannot be dispell.\nWeight :^777777 1^000000"
+    "desc": "Effect: Soullinks to Rogues and Stalkers, giving them special buffs for the skill's duration.\n- Dispell no longer removes your buffs.\n- STR bonus from Tunnel Drive will last 5 minutes and walking speed will also increase.\n- Increase Double Strafe damage by (STR/1.5)%.\n- You can divest through Full Protection by consuming one Glistening Coat for each attempt (only when the target has Full Protection activated). It doesn't work with Full Divest but only with Divest Weapon/Shield/Armor/Helm.\n- Rogue Spirit cannot be dispell.\n- Enabled use Grimtooth skill in Hiding and Chase Walk state without weapon restriction.\nWeight :^777777 1^000000"
   },
   "3211": {
     "name": "Assassin Talisman",
@@ -9419,11 +9419,11 @@
   },
   "3213": {
     "name": "Hunter Talisman",
-    "desc": "Effect: Soullinks to Hunters and Snipers, giving them special buffs for the skill's duration.\n- Effectiveness of Beast Bane is increased by Hunters/Snipers STR.\n- If Double Strafing is LV 10, a new skill, Beast Strafing, will be available.\n- There is a low chance of Falcon Assault occurring automatically per shot with a bow.\n- Increase Double Strafe damage by 50%.\n- Hunter Spirit cannot be dispell.\nWeight :^777777 1^000000"
+    "desc": "Effect: Soullinks to Hunters and Snipers, giving them special buffs for the skill's duration.\n- Effectiveness of Beast Bane is increased by Hunters/Snipers STR.\n- If Double Strafing is LV 10, a new skill, Beast Strafing, will be available.\n- There is a low chance of Falcon Assault occurring automatically per shot with a bow.\n- Increase Double Strafe damage by 50%.\n- Hunter Spirit cannot be dispell.\n- Adds 10% chance to inflict Ankle Snare on the target.\n- 10% chance to knockback the enemy by 1 cell.\nWeight :^777777 1^000000"
   },
   "3214": {
     "name": "Sith Talisman",
-    "desc": "^FF0000Lost Scroll (press Shift when casting.)^000000\nEffect: Soullinks to Siths,\n- Cancelling the HP penalty of Force Choke against monsters and bosses.\n- Force Drain will never fail but its after cast delay is doubled.\n- Sleep chance from Force Wave is doubled.\n- Increase ATK damage% by 2% per 10 Base Level.\n- Increase CRIT damage% by 2% per 10 Job Level.\nWeight :^777777 1^000000"
+    "desc": "^FF0000Lost Scroll (press Shift when casting.)^000000\nEffect: Soullinks to Siths,\n- Cancelling the HP penalty of Force Choke against monsters and bosses.\n- Force Drain will never fail but its after cast delay is doubled.\n- Sleep chance from Force Wave is doubled.\n- Increase ATK damage% by 2% per 12 Base Level.\n- Increase CRIT damage% by 2% per 12 Job Level.\nWeight :^777777 1^000000"
   },
   "3215": {
     "name": "Star Gladiator Talisman",
@@ -9431,7 +9431,7 @@
   },
   "3216": {
     "name": "Gunslinger Talisman",
-    "desc": "^FF0000Lost Scroll (press Shift when casting.)^000000\nEffect: Soullinks to Gunslinger,\n- Gains a 10% chance of bypassing Land Protector.\n- Increase Desperado damage by 5% per 10 Agility.\n- Increase Rapid Shower damage by 5% per 10 Vitality.\n- Ignores all the weapon and bullet requirement for all skills.\nWeight :^777777 1^000000"
+    "desc": "^FF0000Lost Scroll (press Shift when casting.)^000000\nEffect: Soullinks to Gunslinger,\n- Gains a 10% chance of bypassing Land Protector.\n- Increase Desperado damage by 5% per 10 Agility.\n- Increase Rapid Shower damage by 5% per 10 Vitality.\n- Ignores all the weapon and bullet requirement for all skills.\n- 10% chance to knockback the enemy by 1 cell.\nWeight :^777777 1^000000"
   },
   "3217": {
     "name": "Divest Amulet",
@@ -13726,7 +13726,7 @@
   },
   "4458": {
     "name": "Eddga Card [Void]",
-    "desc": "Enable effect of the\nEndure skill so long\nas the Footgear to\nwhich this card is\ncompounded is equipped.\nIncreased Max HP by 10%\nMovement Speed + 50%\nGrants a high chance bypassing traps while walking.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nGrants 50% chance bypassing traps while walking\n------------------------\nClass: ^777777Void Card^000000\nCompound on: ^777777Footwear^000000\nWeight: ^7777771^000000"
+    "desc": "Enable effect of the\nEndure skill so long\nas the Footgear to\nwhich this card is\ncompounded is equipped.\nIncreased Max HP by 10%\nMovement Speed + 50%\nGrants 45% chance bypassing traps while walking.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nGrants 45% chance bypassing traps while walking\n------------------------\nClass: ^777777Void Card^000000\nCompound on: ^777777Footwear^000000\nWeight: ^7777771^000000"
   },
   "4459": {
     "name": "Maya Card [Void]",
