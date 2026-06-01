@@ -8609,6 +8609,67 @@
           "caption": "@warp lhz_in02 85 216"
         },
         {
+          "name": "Lighthalzen: Gift Merchant",
+          "shops": [
+            {
+              "name": "Red Frame",
+              "producesId": 734,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3000
+                }
+              ]
+            },
+            {
+              "name": "Chung Jah",
+              "producesId": 735,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 5000
+                }
+              ]
+            },
+            {
+              "name": "China",
+              "producesId": 736,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Black Ladle",
+              "producesId": 737,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 400
+                }
+              ]
+            },
+            {
+              "name": "Glass Bead",
+              "producesId": 746,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1400
+                }
+              ]
+            }
+          ],
+          "caption": "@warp lhz_in02 38 145"
+        },
+        {
           "name": "Morroc Ruins: Butcher",
           "shops": [
             {
