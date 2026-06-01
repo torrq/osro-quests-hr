@@ -8570,6 +8570,45 @@
           "caption": "@warp geffen_in 171 123"
         },
         {
+          "name": "Lighthalzen: Doll Supplier",
+          "shops": [
+            {
+              "name": "Puppet",
+              "producesId": 740,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1000
+                }
+              ]
+            },
+            {
+              "name": "Poring Doll",
+              "producesId": 741,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 1800
+                }
+              ]
+            },
+            {
+              "name": "Chonchon Doll",
+              "producesId": 742,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 3000
+                }
+              ]
+            }
+          ],
+          "caption": "@warp lhz_in02 85 216"
+        },
+        {
           "name": "Morroc Ruins: Butcher",
           "shops": [
             {
