@@ -1059,6 +1059,13 @@ function switchTab(tabName, pushState = true) {
   hideAllElements();
   showTabElements(tabName);
 
+  if (tabName === 'lab-gc') {
+    const labData = window.loadLabData ? window.loadLabData() : {};
+    document.body.classList.toggle('gc-expanded', !!labData.gcHideSidebar);
+  } else {
+    document.body.classList.remove('gc-expanded');
+  }
+
   // Close the Values Manager when leaving Items tab
   if (tabName !== 'items' && typeof window.closeValuesManager === 'function') {
     window.closeValuesManager(false);

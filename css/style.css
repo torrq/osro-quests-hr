@@ -4632,3 +4632,43 @@ body.viewer-mode .editor-quest select {
 
 .gem-slider::-webkit-slider-thumb { background: var(--success); }
 .gem-slider::-moz-range-thumb     { background: var(--success); }
+
+/* ==========================================================
+   LAB: GUILD CONTRIBUTION (TIMER ROW & EXPANDED VIEW)
+   ========================================================== */
+
+/* 1. Main Row Layout */
+.gc-timer-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+}
+
+/* 2. Left Action Items Group */
+.gc-timer-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 3. Text Wrapping & Right Alignment */
+.gc-notify-opt {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gc-expand-toggle {
+  margin-left: auto !important; /* Safely pushes to the absolute right edge of the row */
+}
+
+/* 4. Expanded State Layout Overrides */
+body.gc-expanded .sidebar {
+  display: none !important;
+}
+
+body.gc-expanded .container {
+  grid-template-columns: 1fr !important;
+}

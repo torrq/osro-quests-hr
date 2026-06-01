@@ -79,6 +79,7 @@ function gcRenderMain() {
   const selected    = new Set(data.gcSelected || []);
   const timerStart  = data.gcTimerStart || null;
   const notifyOnDone = !!data.gcNotifyOnDone;
+  const hideSidebar = !!data.gcHideSidebar;
   const sortMode    = data.gcSortMode || SORT_AMT_ALPHA;
   const manualOrder = data.gcManualOrder || [];
   const selectedFirst = !!data.gcSelectedFirst;
@@ -143,6 +144,10 @@ function gcRenderMain() {
               Notify
             </label>
           </div>
+          <label class="gc-notify-opt gc-expand-toggle" title="Hide sidebar for an expanded view">
+            <input type="checkbox" ${hideSidebar ? 'checked' : ''} onchange="gcSetHideSidebar(this.checked)">
+            Hide Sidebar
+          </label>
         </div>
 
         <div class="gc-toolbar">
@@ -181,6 +186,7 @@ function gcRenderMain() {
 
   gcStartTickerIfNeeded(timerStart);
   gcInitGridInteraction(sortMode);
+  document.body.classList.toggle('gc-expanded', hideSidebar);
 }
 
 // ===== SORT =====
@@ -543,6 +549,11 @@ function gcHandleKeydown(e) {
       gcToggleItem(id);
     }
   }
+}
+
+function gcSetHideSidebar(enabled) {
+  saveLabData({ gcHideSidebar: !!enabled });
+  document.body.classList.toggle('gc-expanded', !!enabled);
 }
 
 // ===== REGISTRATION / WINDOW EXPORTS =====
