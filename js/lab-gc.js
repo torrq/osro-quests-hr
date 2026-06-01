@@ -138,7 +138,7 @@ function gcRenderMain() {
           </div>
           <div class="gc-timer-actions">
             <button class="btn btn-primary btn-sm" onclick="gcStartTimer()">Accessed NPC</button>
-            <button class="btn btn-sm" onclick="gcClearTimer()">Clear</button>
+            <button class="btn btn-sm" onclick="gcClearTimer()">Reset Timer</button>
             <label class="gc-notify-opt" title="Notify when ready">
               <input type="checkbox" ${notifyOnDone ? 'checked' : ''} onchange="gcSetNotifyOnDone(this.checked, this)">
               Notify
@@ -157,9 +157,6 @@ function gcRenderMain() {
             ${radio(SORT_ALPHA,     'A–Z')}
             ${radio(SORT_MANUAL,    'Manual')}
           </div>
-          <span class="gc-hotkey-note" title="${selectedFirst ? 'C clears selection.' : '1-9 toggle the first visible items. C clears selection.'}">
-            ${selectedFirst ? 'Hotkey: C clears' : 'Hotkeys: 1-9 toggle, C clears'}
-          </span>
           <div class="gc-toolbar-right">
             <select class="gc-size-select" onchange="gcSetSize(this.value)" aria-label="Item size">
               <option value="${GC_SIZE_SMALL}" ${sizeMode === GC_SIZE_SMALL ? 'selected' : ''}>Small</option>
