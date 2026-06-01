@@ -63,7 +63,7 @@ function selectAutolootSlot(slotNum, pushToHistory = true) {
   
   renderAutolootSidebar();
   renderAutolootMain();
-  if (window.innerWidth <= 768) toggleSidebar();
+  if (window.isMobileSidebarMode && window.isMobileSidebarMode()) toggleSidebar();
 }
 
 // ===== MAIN CONTENT RENDERING =====

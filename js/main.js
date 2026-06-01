@@ -55,6 +55,7 @@ window.state = {
   discount: 0,        // 0 = off, 0.24 = merchant, 0.25 = stalker
   valueMode: 'mixed', // 'zeny' | 'credit' | 'mixed'
   valueSource: 'default', // 'default' | 'custom'
+  forceMobileView: false,
   activeLabExperiment: null,   // last active lab sub-tab (e.g. 'lab-credit')
 };
 
@@ -189,8 +190,12 @@ function initSettings() {
   if (cfg.discount !== undefined)    state.discount    = cfg.discount;
   if (cfg.valueMode !== undefined)   state.valueMode   = cfg.valueMode;
   if (cfg.valueSource !== undefined) state.valueSource = cfg.valueSource;
+  if (cfg.forceMobileView !== undefined) state.forceMobileView = !!cfg.forceMobileView;
   const sl = document.getElementById('settingShowLocation');
   if (sl) sl.checked = state.showLocation;
+  const fmv = document.getElementById('settingForceMobileView');
+  if (fmv) fmv.checked = state.forceMobileView;
+  applyMobileLayoutPreference();
   syncSectionButtons();
   syncValueButtons();
 }
@@ -244,9 +249,26 @@ function settingSetValueSource(source) {
     .catch(() => render());
 }
 
+function applyMobileLayoutPreference() {
+  document.body.classList.toggle('force-mobile-view', !!state.forceMobileView);
+  if (state.forceMobileView) {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) sidebar.classList.remove('open');
+  }
+}
+
+function settingSetForceMobileView(enabled) {
+  state.forceMobileView = !!enabled;
+  saveConfig({ forceMobileView: state.forceMobileView });
+  const toggle = document.getElementById('settingForceMobileView');
+  if (toggle) toggle.checked = state.forceMobileView;
+  applyMobileLayoutPreference();
+}
+
 window.settingSetDiscount  = settingSetDiscount;
 window.settingSetValueMode = settingSetValueMode;
 window.settingSetValueSource = settingSetValueSource;
+window.settingSetForceMobileView = settingSetForceMobileView;
 
 function syncSectionButtons() {
   SECTION_KEYS.forEach(k => {
@@ -1059,13 +1081,6 @@ function switchTab(tabName, pushState = true) {
   hideAllElements();
   showTabElements(tabName);
 
-  if (tabName === 'lab-gc') {
-    const labData = window.loadLabData ? window.loadLabData() : {};
-    document.body.classList.toggle('gc-expanded', !!labData.gcHideSidebar);
-  } else {
-    document.body.classList.remove('gc-expanded');
-  }
-
   // Close the Values Manager when leaving Items tab
   if (tabName !== 'items' && typeof window.closeValuesManager === 'function') {
     window.closeValuesManager(false);
@@ -1173,6 +1188,10 @@ function render() {
 
 function toggleSidebar() {
   document.getElementById("sidebar").classList.toggle("open");
+}
+
+function isMobileSidebarMode() {
+  return window.innerWidth <= 768 || !!state.forceMobileView;
 }
 
 // ── Mobile FAB: hide on scroll-down, show on scroll-up ──────────────────────
@@ -2089,6 +2108,7 @@ async function osroCancelCloudPush(messageId) {
 // Explicitly expose functions that may be called from HTML or other scripts
 // This ensures compatibility even if loaded as a module
 window.toggleSidebar = toggleSidebar;
+window.isMobileSidebarMode = isMobileSidebarMode;
 window.toggleEditorMode = toggleEditorMode;
 window.switchTab = switchTab;
 window.clearItemSearch = clearItemSearch;

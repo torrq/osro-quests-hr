@@ -230,7 +230,7 @@ function createShopElement(group, subgroup, shop, groupIdx, subIdx, shopIdx) {
 
   shopDiv.querySelector(".shop-name").onclick = () => {
     selectShop(group, subgroup, shop);
-    if (window.innerWidth <= 768) toggleSidebar();
+    if (window.isMobileSidebarMode && window.isMobileSidebarMode()) toggleSidebar();
   };
 
   return shopDiv;

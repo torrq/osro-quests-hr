@@ -420,6 +420,47 @@ body {
   pointer-events: none;
 }
 
+body.force-mobile-view .container {
+  grid-template-columns: 1fr;
+}
+
+body.force-mobile-view .sidebar {
+  position: fixed;
+  left: -100%;
+  top: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 320px;
+  z-index: 999;
+  transition: left 0.3s;
+  box-shadow: 4px 0 12px var(--shadow);
+}
+
+body.force-mobile-view .sidebar.open {
+  left: 0;
+}
+
+body.force-mobile-view .mobile-toggle {
+  display: block;
+}
+
+body.force-mobile-view .requirements-grid {
+  grid-template-columns: 1fr;
+}
+
+body.force-mobile-view .main-content {
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 80px;
+}
+
+body.force-mobile-view .desc-box-icon {
+  position: static;
+  float: right;
+  margin-left: 12px;
+  margin-bottom: 8px;
+}
+
 /* =========================================
    3. SIDEBAR & NAVIGATION
    ========================================= */
@@ -4644,17 +4685,4 @@ body.viewer-mode .editor-quest select {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-}
-
-.gc-expand-toggle {
-  margin-left: auto !important; /* Safely pushes to the absolute right edge of the row */
-}
-
-/* 4. Expanded State Layout Overrides */
-body.gc-expanded .sidebar {
-  display: none !important;
-}
-
-body.gc-expanded .container {
-  grid-template-columns: 1fr !important;
 }

@@ -410,7 +410,7 @@ function selectItem(id, pushToHistory = true) {
   
   renderItems();
   renderItemContent();
-  if (window.innerWidth <= 768) toggleSidebar();
+  if (window.isMobileSidebarMode && window.isMobileSidebarMode()) toggleSidebar();
 }
 
 // Select an item by ID (for URL navigation)
@@ -717,7 +717,7 @@ function ensureValuesManagerInit() {
 
 function openValuesManager(pushToHistory = true) {
   // Mobile: this is a button action, so always close sidebar even if already open
-  if (window.innerWidth <= 768 && typeof toggleSidebar === 'function') {
+  if (window.isMobileSidebarMode && window.isMobileSidebarMode() && typeof toggleSidebar === 'function') {
     const sb = document.getElementById('sidebar');
     if (sb && sb.classList.contains('open')) toggleSidebar();
   }

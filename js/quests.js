@@ -187,7 +187,7 @@ function createQuestElement(group, subgroup, quest, groupIdx, subIdx, questIdx) 
 
   questDiv.querySelector(".quest-name").onclick = () => {
     selectQuest(group, subgroup, quest);
-    if (window.innerWidth <= 768) toggleSidebar();
+    if (window.isMobileSidebarMode && window.isMobileSidebarMode()) toggleSidebar();
   };
 
   return questDiv;
