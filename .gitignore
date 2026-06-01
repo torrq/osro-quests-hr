@@ -7,3 +7,5 @@ helpers/item.rar
 /helpers/.vs
 helpers/osrohr_items.json
 helpers/itemInfo_custom.lub
+/helpers/item_png
+helpers/unreferenced_bmps.txt
