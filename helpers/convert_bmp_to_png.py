@@ -19,6 +19,7 @@ Case-insensitive BMP matching is used.
 
 import re
 import json
+import unicodedata
 from pathlib import Path
 from PIL import Image
 
@@ -31,6 +32,35 @@ OUTPUT_DIR = SCRIPT_DIR / "item_png"
 ITEM_START_RE = re.compile(r"\[(\d+)\]\s*=\s*{")
 KEY_VALUE_RE = re.compile(r"^(\w+)\s*=\s*(.+?)(?:,\s*)?$")
 STRING_RE = re.compile(r'"((?:[^"\\]|\\.)*)"')
+
+
+
+def norm(s):
+    """Normalize strings for reliable comparisons"""
+    if not s:
+        return ""
+    return unicodedata.normalize("NFC", s).casefold()
+
+def korean_to_mojibake(s):
+    """
+    Convert Korean text into the mojibake commonly seen when
+    CP949 filenames are interpreted as Windows-1252.
+    """
+    try:
+        return s.encode("cp949").decode("cp1252")
+    except Exception:
+        return None
+
+def generate_name_variants(name):
+    variants = set()
+    if not name:
+        return variants
+    variants.add(norm(name))
+    mojibake = korean_to_mojibake(name)
+    if mojibake:
+        variants.add(norm(mojibake))
+    return variants
+
 
 def parse_lua_string(value):
     """Extract a single string value"""
@@ -165,10 +195,18 @@ def main():
     OUTPUT_DIR.mkdir(exist_ok=True)
 
     # Get all existing BMP files (case-insensitive lookup)
-    bmp_lookup = {}  # lowercase_name -> actual_filename
+    bmp_lookup = {}
     if ITEM_DIR.exists():
         for f in ITEM_DIR.glob("*.bmp"):
-            bmp_lookup[f.stem.lower()] = f.stem
+            stem = f.stem
+
+            bmp_lookup[norm(stem)] = stem
+
+            try:
+                korean = stem.encode("cp1252").decode("cp949")
+                bmp_lookup[norm(korean)] = stem
+            except Exception:
+                pass
     print(f"Found {len(bmp_lookup)} BMP files in {ITEM_DIR}\n")
 
     # Track conversions and misses
@@ -185,13 +223,19 @@ def main():
         used_fallback = False
         
         if identified_res:
-            actual_bmp_name = bmp_lookup.get(identified_res.lower())
+            for variant in generate_name_variants(identified_res):
+                actual_bmp_name = bmp_lookup.get(variant)
+                if actual_bmp_name:
+                    break
             if actual_bmp_name:
                 used_bmps.add(actual_bmp_name)
         
         # Fall back to unidentified if identified doesn't exist
         if not actual_bmp_name and unidentified_res:
-            actual_bmp_name = bmp_lookup.get(unidentified_res.lower())
+            for variant in generate_name_variants(unidentified_res):
+                actual_bmp_name = bmp_lookup.get(variant)
+                if actual_bmp_name:
+                    break
             if actual_bmp_name:
                 used_bmps.add(actual_bmp_name)
                 used_fallback = True
