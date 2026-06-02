@@ -22144,15 +22144,347 @@
       "subgroups": [
         {
           "name": "Equipments",
-          "quests": []
+          "quests": [
+            {
+              "name": "Valkyrie Armor I [1]",
+              "producesId": 30438,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Valkyrie Shield I [1]",
+              "producesId": 30439,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Valkyrie Shoes I [1]",
+              "producesId": 30440,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Valkyrie Manteau I [1]",
+              "producesId": 30441,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Armor I [1]",
+              "producesId": 30442,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Buckler I [1]",
+              "producesId": 30443,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Boots I",
+              "producesId": 30444,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shadow Garb I [1]",
+              "producesId": 30445,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Asprika I",
+              "producesId": 30446,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Wings I [1]",
+              "producesId": 30421,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Valkyrie Helm I [1]",
+              "producesId": 30422,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Black Dragon Wings I [1]",
+              "producesId": 30423,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Black Valkyrie Helm I [1]",
+              "producesId": 30424,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Red Dragon Wings I [1]",
+              "producesId": 30425,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Red Valkyrie Helm I [1]",
+              "producesId": 30426,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Ice Dragon Wing I [1]",
+              "producesId": 30427,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Ice Valkyrie Helm I [1]",
+              "producesId": 30428,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Gladiator Dragon Wing I [1]",
+              "producesId": 30429,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Gladiator Valkyrie Helm I [1]",
+              "producesId": 30430,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Venom Dragon Wing I [1]",
+              "producesId": 30431,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Venom Valkyrie Helm I [1]",
+              "producesId": 30432,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Geo Dragon Wing I [1]",
+              "producesId": 30433,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Geo Valkyrie Helm I [1]",
+              "producesId": 30434,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of STR II [1]",
+              "producesId": 40090,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of AGI II [1]",
+              "producesId": 40091,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of VIT II [1]",
+              "producesId": 40092,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of INT II [1]",
+              "producesId": 40093,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of DEX II [1]",
+              "producesId": 40094,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Medal of LUK II [1]",
+              "producesId": 40095,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         },
         {
           "name": "Dragon Weapons",
-          "quests": []
+          "quests": [
+            {
+              "name": "Dragon Sword I [4]",
+              "producesId": 30046,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Katar I [4]",
+              "producesId": 30047,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Staff I [4]",
+              "producesId": 30048,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Bow I [4]",
+              "producesId": 30049,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Claw I [4]",
+              "producesId": 30050,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Dagger I [4]",
+              "producesId": 30051,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Guitar I [4]",
+              "producesId": 30052,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Rope I [4]",
+              "producesId": 30053,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Banryu I [4]",
+              "producesId": 30054,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Revolver I [4]",
+              "producesId": 30055,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Spear I [4]",
+              "producesId": 30056,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Dragon Axe I [4]",
+              "producesId": 30057,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Shuriken of Ice Dragon I [4]",
+              "producesId": 30058,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         },
         {
           "name": "Otherworld Set",
-          "quests": []
+          "quests": [
+            {
+              "name": "Otherworld Armor I [1]",
+              "producesId": 40100,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Shoes I [1]",
+              "producesId": 40101,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Robe I [1]",
+              "producesId": 40102,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Shield I [1]",
+              "producesId": 40103,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            },
+            {
+              "name": "Otherworld Ring I [1]",
+              "producesId": 40104,
+              "successRate": 100,
+              "accountBound": false,
+              "requirements": []
+            }
+          ]
         }
       ],
       "caption": "@quest"
