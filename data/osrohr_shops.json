@@ -5857,7 +5857,7 @@
             {
               "name": "Headgear Point Ticket",
               "producesId": 8351,
-              "accountBound": false,
+              "accountBound": true,
               "requirements": [
                 {
                   "type": "hourly_points",
