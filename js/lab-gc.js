@@ -147,8 +147,8 @@ function gcRenderMain() {
 
         <div class="gc-toolbar">
           <div class="gc-sort-group">
-            ${radio(SORT_AMT_ALPHA, 'Type → Name')}
-            ${radio(SORT_GROUP_ID,  'Type → ItemID')}
+            ${radio(SORT_AMT_ALPHA, 'Type→Name')}
+            ${radio(SORT_GROUP_ID,  'Type→ID')}
             ${radio(SORT_ALPHA,     'A–Z')}
             ${radio(SORT_MANUAL,    'Manual')}
           </div>

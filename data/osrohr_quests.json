@@ -22148,205 +22148,669 @@
             {
               "name": "Valkyrie Armor I [1]",
               "producesId": 30438,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2357,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Valkyrie Shield I [1]",
               "producesId": 30439,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2115,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Valkyrie Shoes I [1]",
               "producesId": 30440,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2421,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Valkyrie Manteau I [1]",
               "producesId": 30441,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2524,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Shadow Armor I [1]",
               "producesId": 30442,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 20722,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Shadow Buckler I [1]",
               "producesId": 30443,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 20723,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Shadow Boots I",
               "producesId": 30444,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2423,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Shadow Garb I [1]",
               "producesId": 30445,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2554,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Asprika I",
               "producesId": 30446,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 2541,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Wings I [1]",
               "producesId": 30421,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3004,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Valkyrie Helm I [1]",
               "producesId": 30422,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3019,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Black Dragon Wings I [1]",
               "producesId": 30423,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3038,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Black Valkyrie Helm I [1]",
               "producesId": 30424,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3666,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Red Dragon Wings I [1]",
               "producesId": 30425,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3039,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Red Valkyrie Helm I [1]",
               "producesId": 30426,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3668,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Ice Dragon Wing I [1]",
               "producesId": 30427,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3040,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Ice Valkyrie Helm I [1]",
               "producesId": 30428,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3881,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Gladiator Dragon Wing I [1]",
               "producesId": 30429,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3041,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Gladiator Valkyrie Helm I [1]",
               "producesId": 30430,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 8088,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Venom Dragon Wing I [1]",
               "producesId": 30431,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3042,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Venom Valkyrie Helm I [1]",
               "producesId": 30432,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 8090,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Geo Dragon Wing I [1]",
               "producesId": 30433,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3043,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Geo Valkyrie Helm I [1]",
               "producesId": 30434,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 8213,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Medal of STR II [1]",
               "producesId": 40090,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30061,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Medal of AGI II [1]",
               "producesId": 40091,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30062,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Medal of VIT II [1]",
               "producesId": 40092,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30063,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Medal of INT II [1]",
               "producesId": 40093,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30064,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Medal of DEX II [1]",
               "producesId": 40094,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30065,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Medal of LUK II [1]",
               "producesId": 40095,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30066,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             }
           ]
         },
@@ -22358,91 +22822,286 @@
               "producesId": 30046,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3515,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Katar I [4]",
               "producesId": 30047,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3516,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Staff I [4]",
               "producesId": 30048,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3517,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Bow I [4]",
               "producesId": 30049,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3518,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Claw I [4]",
               "producesId": 30050,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3519,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Dagger I [4]",
               "producesId": 30051,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3520,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Guitar I [4]",
               "producesId": 30052,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3521,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Rope I [4]",
               "producesId": 30053,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3522,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Banryu I [4]",
               "producesId": 30054,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3523,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Revolver I [4]",
               "producesId": 30055,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3524,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Spear I [4]",
               "producesId": 30056,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3525,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Dragon Axe I [4]",
               "producesId": 30057,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3526,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             },
             {
               "name": "Shuriken of Ice Dragon I [4]",
               "producesId": 30058,
               "successRate": 100,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 3639,
+                  "amount": 1
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 1
+                }
+              ]
             }
           ]
         },
@@ -22452,37 +23111,117 @@
             {
               "name": "Otherworld Armor I [1]",
               "producesId": 40100,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30069,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 2
+                }
+              ]
             },
             {
               "name": "Otherworld Shoes I [1]",
               "producesId": 40101,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30070,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 2
+                }
+              ]
             },
             {
               "name": "Otherworld Robe I [1]",
               "producesId": 40102,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30071,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 2
+                }
+              ]
             },
             {
               "name": "Otherworld Shield I [1]",
               "producesId": 40103,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30072,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 2
+                }
+              ]
             },
             {
               "name": "Otherworld Ring I [1]",
               "producesId": 40104,
-              "successRate": 100,
+              "successRate": 75,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 200000000
+                },
+                {
+                  "type": "item",
+                  "id": 30213,
+                  "amount": 1,
+                  "immune": true
+                },
+                {
+                  "type": "item",
+                  "id": 3143,
+                  "amount": 2
+                }
+              ]
             }
           ]
         }
