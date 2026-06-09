@@ -23737,11 +23737,6 @@
                 {
                   "type": "zeny",
                   "amount": 100
-                },
-                {
-                  "type": "item",
-                  "id": 7134,
-                  "amount": 1
                 }
               ]
             }
