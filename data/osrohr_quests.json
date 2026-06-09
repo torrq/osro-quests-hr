@@ -10616,42 +10616,198 @@
               "producesId": 3038,
               "successRate": 10,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000000
+                },
+                {
+                  "type": "item",
+                  "id": 7233,
+                  "amount": 2000
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7304,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3004,
+                  "amount": 1,
+                  "immune": true
+                }
+              ]
             },
             {
               "name": "Red Dragon Wings [1]",
               "producesId": 3039,
               "successRate": 10,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000000
+                },
+                {
+                  "type": "item",
+                  "id": 7233,
+                  "amount": 2000
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7304,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3004,
+                  "amount": 1,
+                  "immune": true
+                }
+              ]
             },
             {
               "name": "Ice Dragon Wing [1]",
               "producesId": 3040,
               "successRate": 10,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000000
+                },
+                {
+                  "type": "item",
+                  "id": 7233,
+                  "amount": 2000
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7304,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3004,
+                  "amount": 1,
+                  "immune": true
+                }
+              ]
             },
             {
               "name": "Gladiator Dragon Wing [1]",
               "producesId": 3041,
               "successRate": 10,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000000
+                },
+                {
+                  "type": "item",
+                  "id": 7233,
+                  "amount": 2000
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7304,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3004,
+                  "amount": 1,
+                  "immune": true
+                }
+              ]
             },
             {
               "name": "Venom Dragon Wing [1]",
               "producesId": 3042,
               "successRate": 10,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000000
+                },
+                {
+                  "type": "item",
+                  "id": 7233,
+                  "amount": 2000
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7304,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3004,
+                  "amount": 1,
+                  "immune": true
+                }
+              ]
             },
             {
               "name": "Geo Dragon Wing [1]",
               "producesId": 3043,
               "successRate": 10,
               "accountBound": false,
-              "requirements": []
+              "requirements": [
+                {
+                  "type": "zeny",
+                  "amount": 500000000
+                },
+                {
+                  "type": "item",
+                  "id": 7233,
+                  "amount": 2000
+                },
+                {
+                  "type": "item",
+                  "id": 6224,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 7304,
+                  "amount": 2
+                },
+                {
+                  "type": "item",
+                  "id": 3004,
+                  "amount": 1,
+                  "immune": true
+                }
+              ]
             }
           ]
         }
