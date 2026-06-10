@@ -118,7 +118,7 @@ const CURRENCY_NAMES = {
   otherworld_points:       'Otherworld Points',
   hall_of_heritage_points: 'Hall of Heritage Points',
   token_points:            'Token Points',
-  cardo_points:            'Cardo Points',
+  card_points:             'Card Points',
   event_points:            'Event Points',
 };
 
@@ -145,7 +145,7 @@ const REQ_TYPE_OPTIONS = [
   { value: 'otherworld_points', label: 'Otherworld Points' },
   { value: 'hall_of_heritage_points', label: 'HoH Points' },
   { value: 'token_points', label: 'Token Points' },
-  { value: 'cardo_points', label: 'Cardo Points' },
+  { value: 'card_points', label: 'Card Points' },
 ];
 
 // === HELPER FUNCTIONS ===

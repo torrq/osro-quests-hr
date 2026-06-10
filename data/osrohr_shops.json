@@ -8505,6 +8505,248 @@
       "caption": "@npc 37"
     },
     {
+      "name": "Card Trader",
+      "subgroups": [
+        {
+          "name": "Point shop",
+          "shops": [
+            {
+              "name": "Buff Scroll",
+              "producesId": 3250,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Stat Boost 1",
+              "producesId": 13830,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 120
+                }
+              ]
+            },
+            {
+              "name": "Stat Boost 2",
+              "producesId": 13831,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 120
+                }
+              ]
+            },
+            {
+              "name": "Stat Boost 3",
+              "producesId": 13832,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 120
+                }
+              ]
+            },
+            {
+              "name": "Stat Boost 4",
+              "producesId": 13833,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 120
+                }
+              ]
+            },
+            {
+              "name": "Military Ration B",
+              "producesId": 12272,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 600
+                }
+              ]
+            },
+            {
+              "name": "Military Ration C",
+              "producesId": 12273,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 600
+                }
+              ]
+            },
+            {
+              "name": "SP Consumption Reduction Potion",
+              "producesId": 12298,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 600
+                }
+              ]
+            },
+            {
+              "name": "Aloevera",
+              "producesId": 606,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Poison Bottle",
+              "producesId": 678,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 80
+                }
+              ]
+            },
+            {
+              "name": "Box of Resentment",
+              "producesId": 12030,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Box of Gloom",
+              "producesId": 12029,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 50
+                }
+              ]
+            },
+            {
+              "name": "Yggdrasil Berry (10)",
+              "producesId": 3121,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 120
+                }
+              ]
+            },
+            {
+              "name": "Yggdrasil Seed (10)",
+              "producesId": 3122,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 120
+                }
+              ]
+            },
+            {
+              "name": "Box of Thunder (10)",
+              "producesId": 3123,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 120
+                }
+              ]
+            },
+            {
+              "name": "Dark Box of Thunder",
+              "producesId": 3140,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 120
+                }
+              ]
+            },
+            {
+              "name": "Dried Yggdrasil Berry Box (10)",
+              "producesId": 3182,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Dried Yggdrasil Seed Box (10)",
+              "producesId": 3113,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 200
+                }
+              ]
+            },
+            {
+              "name": "Abrasive",
+              "producesId": 12458,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 1250
+                }
+              ]
+            },
+            {
+              "name": "Tyr's Blessing",
+              "producesId": 14601,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 1250
+                }
+              ]
+            },
+            {
+              "name": "Glass of Illusion",
+              "producesId": 14538,
+              "accountBound": false,
+              "requirements": [
+                {
+                  "type": "card_points",
+                  "amount": 1250
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "caption": "@npc 47"
+    },
+    {
       "name": "Vanilla NPCs",
       "subgroups": [
         {
