@@ -4686,3 +4686,9 @@ body.viewer-mode .editor-quest select {
   align-items: center;
   gap: 6px;
 }
+
+/* Match Rare credit primary buttons to the purple theme */
+.ca-timer--rare {
+  --accent: #a855f7;
+  --accent-hover: #9333ea;
+}
