@@ -3566,6 +3566,55 @@ body.viewer-mode .editor-quest select {
   padding-left: 23px;
 }
 
+/* GC page header row with mobile toggle btn */
+.gc-section-header-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.gc-section-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.gc-mobile-btn {
+  flex-shrink: 0;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.gc-mobile-btn:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+  background: var(--panel);
+}
+
+.gc-mobile-btn--active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.gc-mobile-btn--active:hover {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
 /* Timer row */
 .gc-timer-row {
   display: flex;
