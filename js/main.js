@@ -56,6 +56,9 @@ window.state = {
   valueMode: 'mixed', // 'zeny' | 'credit' | 'mixed'
   valueSource: 'default', // 'default' | 'custom'
   forceMobileView: false,
+  bmViewMode: 'card',
+  bmSort: 'id',
+  bmSortDir: 'asc',
   activeLabExperiment: null,   // last active lab sub-tab (e.g. 'lab-credit')
 };
 
@@ -191,6 +194,9 @@ function initSettings() {
   if (cfg.valueMode !== undefined)   state.valueMode   = cfg.valueMode;
   if (cfg.valueSource !== undefined) state.valueSource = cfg.valueSource;
   if (cfg.forceMobileView !== undefined) state.forceMobileView = !!cfg.forceMobileView;
+  if (cfg.bmViewMode) state.bmViewMode = cfg.bmViewMode;
+  if (cfg.bmSort) state.bmSort = cfg.bmSort;
+  if (cfg.bmSortDir) state.bmSortDir = cfg.bmSortDir;
   const sl = document.getElementById('settingShowLocation');
   if (sl) sl.checked = state.showLocation;
   const fmv = document.getElementById('settingForceMobileView');

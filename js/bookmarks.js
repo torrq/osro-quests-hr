@@ -207,6 +207,60 @@ function renderBookmarksMain() {
     if (grouped[b.type]) grouped[b.type].push(b);
   });
 
+  const sortField = typeof state !== 'undefined' ? (state.bmSort || 'id') : 'id';
+  const sortDir = typeof state !== 'undefined' ? (state.bmSortDir || 'asc') : 'asc';
+  const viewMode = typeof state !== 'undefined' ? (state.bmViewMode || 'card') : 'card';
+
+  function computeBmValue(b) {
+    let displayVal = 0;
+    let isCredit = false;
+
+    if (b.type === 'shop') {
+      const usage = typeof window.findItemUsage === 'function' ? window.findItemUsage(b.id) : { produces: [] };
+      const shopMatch = usage.produces.find(u => u.type === 'shop');
+      if (shopMatch && shopMatch.shop && Array.isArray(shopMatch.shop.requirements)) {
+        const zReq = shopMatch.shop.requirements.find(r => r.type === 'zeny');
+        const cReq = shopMatch.shop.requirements.find(r => r.type === 'credit');
+        if (zReq) {
+          displayVal = typeof window.applyDiscount === 'function' ? window.applyDiscount(Number(zReq.amount)||0) : (Number(zReq.amount)||0);
+        } else if (cReq) {
+          isCredit = true;
+          displayVal = Number(cReq.amount)||0;
+        }
+      }
+    } else if (b.type === 'quest') {
+      const usage = typeof window.findItemUsage === 'function' ? window.findItemUsage(b.id) : { produces: [] };
+      const questMatch = usage.produces.find(u => u.type === 'quest');
+      if (questMatch && questMatch.quest && Array.isArray(questMatch.quest.requirements)) {
+        const cReq = questMatch.quest.requirements.find(r => r.type === 'credit');
+        if (cReq) {
+          isCredit = true;
+          displayVal = Number(cReq.amount)||0;
+        }
+      }
+    } else {
+      const itemData = typeof DATA !== 'undefined' && DATA.items && DATA.items[b.id];
+      if (itemData && itemData.value > 0) {
+        const v = typeof state !== 'undefined' ? state.valueMode : 'mixed';
+        const mixedThresh = typeof MIXED_CREDIT_THRESHOLD !== 'undefined' ? MIXED_CREDIT_THRESHOLD : 10000000;
+        if (v === 'credit' || (v === 'mixed' && itemData.value >= mixedThresh)) {
+          isCredit = true;
+          const cv = typeof getCreditValue === 'function' ? getCreditValue() : 10000000;
+          displayVal = itemData.value / cv;
+        } else {
+          displayVal = itemData.value;
+        }
+      }
+    }
+    
+    // For sorting purposes, normalize credits to zeny equivalents
+    if (isCredit) {
+      const cv = typeof getCreditValue === 'function' ? getCreditValue() : 10000000;
+      return displayVal * cv;
+    }
+    return displayVal;
+  }
+
   let html = `
     <div class="bookmarks-main">
       <div class="qvh">
@@ -218,23 +272,58 @@ function renderBookmarksMain() {
           <div class="qvh-meta">Manage your saved quests, shops, and items</div>
         </div>
       </div>
+      <div class="bm-controls-bar">
+        <div class="bm-controls-left">
+          <label>Sort:</label>
+          <select onchange="window.changeBmSort(this.value)" class="bm-select">
+            <option value="id" ${sortField === 'id' ? 'selected' : ''}>ID</option>
+            <option value="name" ${sortField === 'name' ? 'selected' : ''}>Name</option>
+            <option value="value" ${sortField === 'value' ? 'selected' : ''}>Value</option>
+          </select>
+          <button onclick="window.toggleBmSortDir()" class="bm-icon-btn" title="Toggle Sort Direction">
+            ${sortDir === 'asc' ? '↑ Asc' : '↓ Desc'}
+          </button>
+        </div>
+        <div class="bm-controls-right">
+          <button class="bm-icon-btn ${viewMode === 'list' ? 'active' : ''}" onclick="window.toggleBmViewMode('list')" title="List View">
+            List
+          </button>
+          <button class="bm-icon-btn ${viewMode === 'card' ? 'active' : ''}" onclick="window.toggleBmViewMode('card')" title="Card View">
+            Card
+          </button>
+        </div>
+      </div>
   `;
   
   BM_TYPE_ORDER.forEach(type => {
     const items = grouped[type];
     if (!items.length) return;
 
+    items.sort((a, b) => {
+      let cmp = 0;
+      if (sortField === 'name') {
+        cmp = String(a.name).localeCompare(String(b.name));
+      } else if (sortField === 'value') {
+        cmp = computeBmValue(a) - computeBmValue(b);
+      } else {
+        cmp = a.id - b.id;
+      }
+      return sortDir === 'asc' ? cmp : -cmp;
+    });
+
+    const listClass = viewMode === 'list' ? 'bm-main-list list-view' : 'bm-main-list';
+
     html += `
       <div class="bm-main-group">
         <h3>${BM_TYPE_LABELS[type]}</h3>
-        <div class="bm-main-list">
+        <div class="${listClass}">
     `;
 
     items.forEach(b => {
       // 48px icon for detailed view (matching qvh-icon)
       let icon = '';
       if (b.type === 'item' || b.type === 'quest' || b.type === 'shop') {
-        if (typeof renderItemIcon === 'function') icon = renderItemIcon(b.id, 48);
+        if (typeof renderItemIcon === 'function') icon = renderItemIcon(b.id, 48).replace(/title="[^"]+"/g, '');
       }
       if (!icon) icon = window.SVG_ICONS?.bookmark14 || '';
 
@@ -294,8 +383,8 @@ function renderBookmarksMain() {
       if (displayVal > 0) {
         const creditId = typeof SPECIAL_ITEMS !== 'undefined' ? SPECIAL_ITEMS.CREDIT : 3100;
         const iconHtml = isCredit 
-          ? (typeof renderItemIcon === 'function' ? renderItemIcon(creditId, 20) : '')
-          : (typeof renderItemIcon === 'function' ? renderItemIcon(1, 20) : '');
+          ? (typeof renderItemIcon === 'function' ? renderItemIcon(creditId, 20).replace(/title="[^"]+"/g, '') : '')
+          : (typeof renderItemIcon === 'function' ? renderItemIcon(1, 20).replace(/title="[^"]+"/g, '') : '');
           
         const valStr = typeof formatZenyCompact === 'function' ? formatZenyCompact(displayVal) : displayVal.toLocaleString();
         
@@ -313,13 +402,13 @@ function renderBookmarksMain() {
             const isQuest = u.type === 'quest';
             const typeLabel = isQuest ? 'Quest' : 'Shop';
             const sourceName = isQuest ? u.quest.name : u.shop.name;
-            const tooltip = `${typeLabel}: ${sourceName}\n(${u.group.name} › ${u.subgroup.name})`;
+            const tooltip = `${u.subgroup.name} › ${sourceName}`;
             const href = isQuest ? `?quest=${u.quest.producesId}` : `?shop=${u.shop.producesId}`;
             const onclick = isQuest
               ? `window.navigateToQuest(${u.groupIdx}, ${u.subIdx}, ${u.questIdx})`
               : `window.navigateToShop(${u.groupIdx}, ${u.subIdx}, ${u.shopIdx})`;
             const iconId = isQuest ? 3 : 5;
-            const iconStr = typeof renderItemIcon === 'function' ? renderItemIcon(iconId, 20) : `[${typeLabel}]`;
+            const iconStr = typeof renderItemIcon === 'function' ? renderItemIcon(iconId, 20).replace(/title="[^"]+"/g, '') : `[${typeLabel}]`;
             
             return `<a class="bm-main-usage-icon" href="${href}" onclick="event.preventDefault(); ${onclick}" title="${escapeHtml(tooltip)}">${iconStr}</a>`;
           }).join('');
@@ -473,5 +562,30 @@ window.bmNavigateShop    = bmNavigateShop;
 window.bmNavigateItem    = bmNavigateItem;
 window.bmRemoveFromSidebar = bmRemoveFromSidebar;
 window.bmRemoveFromMain  = bmRemoveFromMain;
+
+window.toggleBmViewMode = function(mode) {
+  if (typeof state !== 'undefined' && typeof saveConfig === 'function') {
+    state.bmViewMode = mode;
+    saveConfig({ bmViewMode: mode });
+    renderBookmarksMain();
+  }
+};
+
+window.changeBmSort = function(criteria) {
+  if (typeof state !== 'undefined' && typeof saveConfig === 'function') {
+    state.bmSort = criteria;
+    saveConfig({ bmSort: criteria });
+    renderBookmarksMain();
+  }
+};
+
+window.toggleBmSortDir = function() {
+  if (typeof state !== 'undefined' && typeof saveConfig === 'function') {
+    const newDir = state.bmSortDir === 'asc' ? 'desc' : 'asc';
+    state.bmSortDir = newDir;
+    saveConfig({ bmSortDir: newDir });
+    renderBookmarksMain();
+  }
+};
 window.renderBookmarksSidebar = renderBookmarksSidebar;
 window.renderBookmarksMain = renderBookmarksMain;

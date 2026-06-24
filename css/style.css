@@ -3485,7 +3485,7 @@ body.viewer-mode .editor-quest select {
 /* Tab icon button */
 .tab--icon {
   flex: 0 0 auto;
-  padding: 6px 10px 5px;
+  padding: 6px 8px 5px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4906,6 +4906,112 @@ body.viewer-mode .editor-quest select {
 
 .bookmarks-main {
   /* Flows normally within #mainContent, matching Quests and Autoloot */
+}
+
+/* ── Controls Bar ────────────── */
+.bm-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.bm-controls-left, .bm-controls-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bm-controls-left label {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.bm-select {
+  background: var(--panel-hover);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+}
+
+.bm-icon-btn {
+  background: var(--panel-hover);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.bm-icon-btn:hover {
+  background: var(--button-hover);
+}
+
+.bm-icon-btn.active {
+  background: color-mix(in srgb, var(--accent) 20%, transparent);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── List View Modifiers ────────────── */
+.bm-main-list.list-view {
+  grid-template-columns: 1fr;
+}
+
+.bm-main-list.list-view .bm-main-row {
+  flex-direction: row;
+  align-items: center;
+}
+
+.bm-main-list.list-view .bm-main-row-body {
+  flex: 1;
+  padding: 8px 12px;
+  min-width: 0;
+}
+
+.bm-main-list.list-view .bm-main-info {
+  align-items: center;
+}
+
+.bm-main-list.list-view .bm-main-title-row {
+  flex-direction: row;
+  align-items: center;
+  min-height: auto;
+}
+
+.bm-main-list.list-view .bm-main-desc-container {
+  display: none;
+}
+
+.bm-main-list.list-view .bm-main-footer {
+  border-top: none;
+  background: transparent;
+  padding: 8px 12px;
+  flex: 0 0 auto;
+}
+
+.bm-main-list.list-view .bm-main-icon img,
+.bm-main-list.list-view .bm-main-icon svg {
+  width: 32px;
+  height: 32px;
 }
 
 .bm-main-group {
