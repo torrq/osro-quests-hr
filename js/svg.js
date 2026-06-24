@@ -83,8 +83,27 @@
     '<circle cx="12" cy="12" r="8.5"></circle><circle cx="12" cy="12" r="5.5"></circle><path d="M12 7.8v8.4"></path><path d="M8.8 10.2h6.4"></path><path d="M9 16.5h6"></path>'
   );
 
+  // Bookmark icon (14px): ribbon bookmark used in sidebar rows.
+  const bookmark14 = svg(
+    'width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"',
+    '<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>'
+  );
+
+  // Bookmark icon (14px filled): used for the tab button and "bookmarked" state.
+  const bookmark14Filled = svg(
+    'width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"',
+    '<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>'
+  );
+
+  // Bookmark tab icon (15px): used in the tab bar.
+  const tabBookmarks = svg(
+    'width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"',
+    '<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>'
+  );
+
   window.SVG_ICONS = {
     tabLab: labTab,
+    tabBookmarks,
     openItem,
     trash14,
     trashNoX14,
@@ -95,6 +114,8 @@
     gem32Muted,
     gem14,
     gc14,
+    bookmark14,
+    bookmark14Filled,
   };
 
   window.applySvgIcons = function applySvgIcons(root = document) {

@@ -1064,6 +1064,10 @@ const TAB_ELEMENTS = {
   'lab-gem': {
     sidebar: "labList",
     render: ["renderLabSidebar", "renderLabMain"]
+  },
+  bookmarks: {
+    sidebar: "bookmarksList",
+    render: ["renderBookmarksSidebar", "renderBookmarksMain"]
   }
 };
 
@@ -1124,7 +1128,7 @@ function updateTabButtons(tabName) {
 }
 
 function hideAllElements() {
-  ["treeContainer", "shopsTreeContainer", "itemsList", "groupsList", "autolootList", "labList"].forEach(id => {
+  ["treeContainer", "shopsTreeContainer", "itemsList", "groupsList", "autolootList", "labList", "bookmarksList"].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.add("hidden");
   });
@@ -1555,6 +1559,8 @@ function selectQuestById(questId, pushToHistory = true) {
   }
 }
 
+window.selectQuestById = selectQuestById;
+
 // Expand tree nodes to reveal a specific quest
 function expandTreeToQuest(questId) {
   const result = findQuestById(questId);
@@ -1721,7 +1727,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===== SHARED VIEWER HEADER =====
 
-function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = false, bound = false, listBadges = '' } = {}) {
+function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = false, bound = false, listBadges = '', bmType = null } = {}) {
   const icon48  = itemId ? renderItemIcon(itemId, 48) : '';
   const idBadge = itemId ? `<span class="qvh-id">#${itemId}</span>` : '';
   const slot    = item && Number(item.slot) > 0
@@ -1755,6 +1761,12 @@ function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = 
     bottomRow = `<div class="qvh-loc">${breadcrumb}${extLinks}${listBadgesHtml}</div>`;
   }
 
+  // Bookmark button — only when bmType is provided and bookmarks module is loaded
+  const plainName = String(displayName).replace(/<[^>]+>/g, '');
+  const bmBtn = (bmType && itemId && typeof window.bookmarkButtonHtml === 'function')
+    ? window.bookmarkButtonHtml(bmType, itemId, plainName)
+    : '';
+
   return `
     <div class="qvh">
       <div class="qvh-icon">${icon48}</div>
@@ -1763,6 +1775,7 @@ function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = 
         ${metaRow}
         ${bottomRow}
       </div>
+      ${bmBtn ? `<div class="qvh-bm">${bmBtn}</div>` : ''}
     </div>
   `;
 }

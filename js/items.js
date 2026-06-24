@@ -480,7 +480,8 @@ function renderItemViewerHeader(id, item, { showExtLinks = true, listBadges = nu
   return renderViewerHeader(id, itemProxy, {
     meta: newBadge + valBadge,
     showExtLinks: true,
-    listBadges: resolvedListBadges
+    listBadges: resolvedListBadges,
+    bmType: 'item',
   });
 }
 
