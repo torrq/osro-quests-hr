@@ -4918,7 +4918,7 @@ body.viewer-mode .editor-quest select {
   .qvh-actions .qvh-copy-text {
     display: none;
   }
-  .qvh-copy-btn {
+  .qvh-actions .qvh-copy-btn {
     width: 30px;
     height: 30px;
     padding: 0;
