@@ -46,6 +46,7 @@ body {
 
 .main-content {
   overflow-y: auto;
+  overflow-x: hidden;
   padding-left: 14px;
   padding-right: 24px;
   padding-bottom: 80px;
@@ -2507,6 +2508,12 @@ body.viewer-mode .editor-quest select {
     padding-bottom: 80px;
   }
 
+  .qvh {
+    margin-left: -12px;
+    margin-right: -12px;
+    padding: 10px 12px 10px 16px;
+  }
+
   .desc-box-icon {
     position: static;
     float: right;
@@ -3143,14 +3150,13 @@ body.viewer-mode .editor-quest select {
 .qvh-loc {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 4px;
   margin-top: 4px;
   font-size: 11px;
   color: var(--text-muted);
   opacity: 0.75;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.4;
 }
 
 .qvh-loc-sep {
@@ -4873,6 +4879,8 @@ body.viewer-mode .editor-quest select {
   gap: 8px;
   flex-shrink: 0;
   margin-left: 12px;
+  align-self: flex-start;
+  padding-top: 4px;
 }
 
 .qvh-copy-btn {
@@ -4907,31 +4915,20 @@ body.viewer-mode .editor-quest select {
 }
 
 @media (max-width: 600px) {
-  .qvh-actions {
-    flex-direction: column-reverse;
-    align-items: flex-end;
-    gap: 4px;
-  }
-  
-  .qvh-nav-btns {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
-  }
-
   .qvh-actions .qvh-copy-text {
     display: none;
   }
-  
-  .qvh-bm {
-    padding-top: 0;
+  .qvh-copy-btn {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    justify-content: center;
+    border-radius: 6px;
   }
 }
 
 .qvh-bm {
   flex-shrink: 0;
-  align-self: flex-start;
-  padding-top: 4px;
 }
 
 .bm-toggle-btn {
