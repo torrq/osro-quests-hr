@@ -4901,9 +4901,30 @@ body.viewer-mode .editor-quest select {
   font-size: 14px;
 }
 
+.qvh-nav-btns {
+  display: flex;
+  gap: 8px;
+}
+
 @media (max-width: 600px) {
+  .qvh-actions {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  
+  .qvh-nav-btns {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+
   .qvh-actions .qvh-copy-text {
     display: none;
+  }
+  
+  .qvh-bm {
+    padding-top: 0;
   }
 }
 
