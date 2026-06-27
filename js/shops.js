@@ -386,6 +386,7 @@ function renderShopViewerHeader(shop, item) {
   return renderViewerHeader(shop.producesId, item, {
     meta:       boundBadge,
     loc:        findShopLocation(shop),
+    navCmds:    typeof findShopNavCommands === 'function' ? findShopNavCommands(shop) : [],
     bound:      !!shop.accountBound,
     listBadges: (typeof renderItemListBadges === 'function' ? renderItemListBadges(shop.producesId) : ''),
     bmType:     'shop',

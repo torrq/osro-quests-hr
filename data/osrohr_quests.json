@@ -6997,7 +6997,7 @@
           ]
         }
       ],
-      "caption": "@quest"
+      "custom_command": "@quest"
     },
     {
       "name": "Break the Seal",
@@ -10110,7 +10110,7 @@
           ]
         }
       ],
-      "caption": "@quest"
+      "custom_command": "@quest"
     },
     {
       "name": "Socket Enchant",
@@ -10812,7 +10812,9 @@
           ]
         }
       ],
-      "caption": "@warp prontera 248 197"
+      "map_x": 248,
+      "map_y": 197,
+      "map": "prontera"
     },
     {
       "name": "Tyr: Tier Upgrader (Shop 1)",
@@ -17553,7 +17555,7 @@
           ]
         }
       ],
-      "caption": "@quest"
+      "custom_command": "@quest"
     },
     {
       "name": "Tyr: Tier Upgrader (Shop 2)",
@@ -22839,7 +22841,7 @@
           ]
         }
       ],
-      "caption": "@quest"
+      "custom_command": "@quest"
     },
     {
       "name": "Tyr: Tier Upgrader (Tickets)",
@@ -23928,7 +23930,7 @@
           ]
         }
       ],
-      "caption": "@quest"
+      "custom_command": "@quest"
     },
     {
       "name": "Lord Kaho Quest",
@@ -24046,7 +24048,7 @@
           ]
         }
       ],
-      "caption": "@npc 14"
+      "custom_command": "@npc 14"
     },
     {
       "name": "Crafting",
@@ -24309,7 +24311,7 @@
               ]
             }
           ],
-          "caption": "@npc 4"
+          "custom_command": "@npc 4"
         },
         {
           "name": "Master Brewer",
@@ -24443,7 +24445,7 @@
               ]
             }
           ],
-          "caption": "@npc 16"
+          "custom_command": "@npc 16"
         }
       ],
       "caption": "OSRO Recipes"

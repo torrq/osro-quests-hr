@@ -1733,7 +1733,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ===== SHARED VIEWER HEADER =====
 
-function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = false, bound = false, listBadges = '', bmType = null } = {}) {
+function renderViewerHeader(itemId, item, { meta = '', loc = '', navCmds = [], showExtLinks = false, bound = false, listBadges = '', bmType = null } = {}) {
   const icon48  = itemId ? renderItemIcon(itemId, 48) : '';
   const idBadge = itemId ? `<span class="qvh-id">#${itemId}</span>` : '';
   const slot    = item && Number(item.slot) > 0
@@ -1773,6 +1773,18 @@ function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = 
     ? window.bookmarkButtonHtml(bmType, itemId, plainName)
     : '';
 
+  const navCmdsHtml = (navCmds && navCmds.length > 0)
+    ? navCmds.map(nav => `
+        <button class="qvh-copy-btn" onclick="copyToClipboard('${nav.cmd.replace(/'/g, "\\'")}')" title="Copy command">
+          <span class="qvh-copy-icon">${window.SVG_ICONS?.copy || '📋'}</span> ${escapeHtml(nav.cmd)}
+        </button>
+      `).join('')
+    : '';
+
+  const actionsHtml = (bmBtn || navCmdsHtml) 
+    ? `<div class="qvh-actions">${navCmdsHtml}${bmBtn ? `<div class="qvh-bm">${bmBtn}</div>` : ''}</div>`
+    : '';
+
   return `
     <div class="qvh">
       <div class="qvh-icon">${icon48}</div>
@@ -1781,10 +1793,18 @@ function renderViewerHeader(itemId, item, { meta = '', loc = '', showExtLinks = 
         ${metaRow}
         ${bottomRow}
       </div>
-      ${bmBtn ? `<div class="qvh-bm">${bmBtn}</div>` : ''}
+      ${actionsHtml}
     </div>
   `;
 }
+
+window.copyToClipboard = function(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    if (typeof showToast === 'function') showToast(`Copied to clipboard`, 'success');
+  }).catch(err => {
+    console.error("Failed to copy", err);
+  });
+};
 
 window.renderViewerHeader = renderViewerHeader;
 
@@ -1891,12 +1911,26 @@ function renderUsageSection(itemId, { excludeQuest = null, excludeShop = null } 
     const iconHtml = producesId ? renderItemIcon(producesId, 24) : '<span class="mat-xbtn-ph"></span>';
     const amtHtml = amountStr
       ? `<span class="mat-amt"><span class="mat-x">\u00d7</span>${amountStr}</span>` : '';
+
+    let navHtml = '';
+    if (typeof extractNavCommands === 'function') {
+      const cmds = extractNavCommands(u.group, u.subgroup);
+      if (cmds && cmds.length > 0) {
+        navHtml = `<div class="mat-nav-cmds">` + cmds.map(nav => `
+          <button class="qvh-copy-btn mat-copy-btn" onclick="copyToClipboard('${nav.cmd.replace(/'/g, "\\'")}')" title="Copy command">
+            <span class="qvh-copy-icon">${window.SVG_ICONS?.copy || '📋'}</span> ${escapeHtml(nav.cmd)}
+          </button>
+        `).join('') + `</div>`;
+      }
+    }
+
     if (u.type === 'quest') {
       return `
         <div class="mat-node">
           <div class="mat-row">
             ${iconHtml}
             <span class="mat-name"><a class="item-link tree-item-name" href="${questUrl(u.quest.producesId)}" onclick="event.preventDefault(); navigateToQuest(${u.groupIdx},${u.subIdx},${u.questIdx})">${u.quest.name}</a></span>
+            ${navHtml}
             ${renderItemIcon(3, 24)}
             ${amtHtml}
           </div>
@@ -1908,6 +1942,7 @@ function renderUsageSection(itemId, { excludeQuest = null, excludeShop = null } 
           <div class="mat-row">
             ${iconHtml}
             <span class="mat-name"><a class="item-link tree-item-name" href="${shopUrl(u.shop.producesId)}" onclick="event.preventDefault(); navigateToShop(${u.groupIdx},${u.subIdx},${u.shopIdx})">${u.shop.name}</a></span>
+            ${navHtml}
             ${renderItemIcon(5, 24)}
             ${amtHtml}
           </div>

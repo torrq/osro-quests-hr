@@ -356,6 +356,7 @@ function renderQuestViewerHeader(quest, item) {
   return renderViewerHeader(quest.producesId, item, {
     meta:       rate + boundBadge,
     loc:        findQuestLocation(quest),
+    navCmds:    findQuestNavCommands(quest),
     bound:      !!quest.accountBound,
     listBadges: (typeof renderItemListBadges === 'function' ? renderItemListBadges(quest.producesId) : ''),
     bmType:     'quest',
@@ -712,6 +713,43 @@ function findShopLocation(shop) {
     });
   });
   return location;
+}
+
+function extractNavCommands(group, subgroup) {
+  let cmds = [];
+  const source = (subgroup.map || subgroup.custom_command) ? subgroup : group;
+  
+  if (source.map && typeof source.map_x !== 'undefined' && typeof source.map_y !== 'undefined') {
+    cmds.push({ type: 'warp', cmd: `@warp ${source.map} ${source.map_x} ${source.map_y}` });
+  }
+  if (source.custom_command) {
+    cmds.push({ type: 'custom', cmd: source.custom_command });
+  }
+  return cmds;
+}
+
+function findQuestNavCommands(quest) {
+  let cmds = [];
+  DATA.groups.forEach(group => {
+    group.subgroups.forEach(subgroup => {
+      if (subgroup.quests.includes(quest)) {
+        cmds = extractNavCommands(group, subgroup);
+      }
+    });
+  });
+  return cmds;
+}
+
+function findShopNavCommands(shop) {
+  let cmds = [];
+  DATA.shopGroups.forEach(group => {
+    group.subgroups.forEach(subgroup => {
+      if (subgroup.shops.includes(shop)) {
+        cmds = extractNavCommands(group, subgroup);
+      }
+    });
+  });
+  return cmds;
 }
 
 // ===== ZENY FORMATTING =====
@@ -1489,6 +1527,11 @@ window.selectQuest = selectQuest;
 // Quest editing
 window.addQuest = addQuest;
 window.updateQuestName = updateQuestName;
+window.findQuestLocation = findQuestLocation;
+window.findShopLocation = findShopLocation;
+window.extractNavCommands = extractNavCommands;
+window.findQuestNavCommands = findQuestNavCommands;
+window.findShopNavCommands = findShopNavCommands;
 window.updateProducesId = updateProducesId;
 window.updateSuccessRate = updateSuccessRate;
 window.updateQuestAccountBound = updateQuestAccountBound;

@@ -1854,7 +1854,7 @@
           ]
         }
       ],
-      "caption": "@npc 16"
+      "custom_command": "@npc 16"
     },
     {
       "name": "Armors",
@@ -2671,7 +2671,7 @@
           ]
         }
       ],
-      "caption": "@npc 16"
+      "custom_command": "@npc 16"
     },
     {
       "name": "Weapons",
@@ -4165,7 +4165,7 @@
           ]
         }
       ],
-      "caption": "@npc 16"
+      "custom_command": "@npc 16"
     },
     {
       "name": "Pet Shop",
@@ -5231,7 +5231,7 @@
           ]
         }
       ],
-      "caption": "@npc 16"
+      "custom_command": "@npc 16"
     },
     {
       "name": "Ninja Shop",
@@ -5341,7 +5341,7 @@
           ]
         }
       ],
-      "caption": "@npc 16"
+      "custom_command": "@npc 16"
     },
     {
       "name": "Kafra Point Shop",
@@ -6220,7 +6220,7 @@
           ]
         }
       ],
-      "caption": "@inn"
+      "custom_command": "@inn"
     },
     {
       "name": "Arena Gate Keeper",
@@ -6687,7 +6687,7 @@
           ]
         }
       ],
-      "caption": "@npc 1"
+      "custom_command": "@npc 1"
     },
     {
       "name": "Donate Manager",
@@ -8207,7 +8207,7 @@
           ]
         }
       ],
-      "caption": "@npc 9"
+      "custom_command": "@npc 9"
     },
     {
       "name": "Mine Craft",
@@ -8502,7 +8502,7 @@
           ]
         }
       ],
-      "caption": "@npc 37"
+      "custom_command": "@npc 37"
     },
     {
       "name": "Card Trader",
@@ -8744,7 +8744,7 @@
           ]
         }
       ],
-      "caption": "@npc 47"
+      "custom_command": "@npc 47"
     },
     {
       "name": "Vanilla NPCs",
@@ -8764,7 +8764,9 @@
               ]
             }
           ],
-          "caption": "@warp aldeba_in 94 56"
+          "map": "aldeba_in",
+          "map_x": 94,
+          "map_y": 56
         },
         {
           "name": "Blacksmith Miner",
@@ -8781,7 +8783,9 @@
               ]
             }
           ],
-          "caption": "@warp mjolnir_02 85 362"
+          "map": "mjolnir_02",
+          "map_x": 85,
+          "map_y": 362
         },
         {
           "name": "Geffen Tool Dealer (NW)",
@@ -8809,7 +8813,9 @@
               ]
             }
           ],
-          "caption": "@warp geffen_in 171 123"
+          "map": "geffen_in",
+          "map_x": 171,
+          "map_y": 123
         },
         {
           "name": "Lighthalzen: Doll Supplier",
@@ -8848,7 +8854,9 @@
               ]
             }
           ],
-          "caption": "@warp lhz_in02 85 216"
+          "map": "lhz_in02",
+          "map_x": 85,
+          "map_y": 216
         },
         {
           "name": "Lighthalzen: Gift Merchant",
@@ -8909,7 +8917,9 @@
               ]
             }
           ],
-          "caption": "@warp lhz_in02 38 145"
+          "map": "lhz_in02",
+          "map_x": 38,
+          "map_y": 145
         },
         {
           "name": "Morroc Ruins: Butcher",
@@ -8926,7 +8936,9 @@
               ]
             }
           ],
-          "caption": "@warp moc_ruins 87 109"
+          "map": "moc_ruins",
+          "map_x": 87,
+          "map_y": 109
         },
         {
           "name": "Morroc Ruins: Jeweler 1",
@@ -8987,7 +8999,9 @@
               ]
             }
           ],
-          "caption": "@warp moc_ruins 110 105"
+          "map": "moc_ruins",
+          "map_x": 110,
+          "map_y": 105
         },
         {
           "name": "Morroc Ruins: Jeweler 2",
@@ -9004,7 +9018,9 @@
               ]
             }
           ],
-          "caption": "@warp moc_ruins 52 85"
+          "map": "moc_ruins",
+          "map_x": 52,
+          "map_y": 85
         },
         {
           "name": "Morroc Ruins: Trader 1",
@@ -9021,7 +9037,9 @@
               ]
             }
           ],
-          "caption": "@warp moc_ruins 131 138"
+          "map": "moc_ruins",
+          "map_x": 131,
+          "map_y": 138
         },
         {
           "name": "Morroc Ruins: Trader 2",
@@ -9038,7 +9056,9 @@
               ]
             }
           ],
-          "caption": "@warp moc_ruins 113 126"
+          "map": "moc_ruins",
+          "map_x": 113,
+          "map_y": 126
         },
         {
           "name": "Yuno: Scroll Merchant",
@@ -9055,7 +9075,9 @@
               ]
             }
           ],
-          "caption": "@warp yuno_in03 176 22"
+          "map": "yuno_in03",
+          "map_x": 176,
+          "map_y": 22
         }
       ],
       "caption": ""

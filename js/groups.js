@@ -110,6 +110,18 @@ function renderGroupContentCore() {
         <input type="text" placeholder="e.g., Main Office, Prontera, etc." value="${group.caption || ""}" onchange="updateGroupCaption(${groupIdx}, this.value)">
         <p class="help-text">A short location or description displayed under the group name</p>
       </div>
+
+      <div class="form-group">
+        <span class="item-label">Navigation Command:</span>
+        <div class="nav-inputs-row" style="display: flex; gap: 8px; align-items: center;">
+          <input type="text" placeholder="Map (e.g. prt_fild01)" value="${group.map || ""}" onchange="updateGroupMap(${groupIdx}, this.value)" style="flex: 2;">
+          <input type="number" placeholder="X" value="${group.map_x || ""}" onchange="updateGroupMapX(${groupIdx}, this.value)" style="flex: 1; width: 60px;">
+          <input type="number" placeholder="Y" value="${group.map_y || ""}" onchange="updateGroupMapY(${groupIdx}, this.value)" style="flex: 1; width: 60px;">
+          <span style="font-size: 12px; color: var(--text-muted); font-weight: bold;">OR</span>
+          <input type="text" placeholder="Custom (e.g. @npc 16)" value="${group.custom_command || ""}" onchange="updateGroupCustomCommand(${groupIdx}, this.value)" style="flex: 2;">
+        </div>
+        <p class="help-text">Produces copyable @warp or custom command links. Map name must be lowercase with underscores/hyphens.</p>
+      </div>
       
       <div class="group-ordering-section">
         <span class="item-label">Group Position:</span>
@@ -148,8 +160,15 @@ function renderGroupContentCore() {
             </div>
             <button class="btn btn-sm btn-danger" onclick="deleteSubgroup(${groupIdx}, ${subIdx})">Delete</button>
           </div>
-          <div class="subgroup-edit-caption-row">
+          <div class="subgroup-edit-caption-row" style="display: flex; flex-direction: column; gap: 8px;">
             <input type="text" class="subgroup-edit-caption-input" placeholder="Caption (optional)" value="${subgroup.caption || ''}" onchange="updateSubgroupCaption(${groupIdx}, ${subIdx}, this.value)">
+            <div class="nav-inputs-row" style="display: flex; gap: 8px; align-items: center;">
+              <input type="text" placeholder="Map" value="${subgroup.map || ''}" onchange="updateSubgroupMap(${groupIdx}, ${subIdx}, this.value)" style="flex: 2;">
+              <input type="number" placeholder="X" value="${subgroup.map_x || ''}" onchange="updateSubgroupMapX(${groupIdx}, ${subIdx}, this.value)" style="flex: 1; width: 50px;">
+              <input type="number" placeholder="Y" value="${subgroup.map_y || ''}" onchange="updateSubgroupMapY(${groupIdx}, ${subIdx}, this.value)" style="flex: 1; width: 50px;">
+              <span style="font-size: 11px; color: var(--text-muted); font-weight: bold;">OR</span>
+              <input type="text" placeholder="Custom Command" value="${subgroup.custom_command || ''}" onchange="updateSubgroupCustomCommand(${groupIdx}, ${subIdx}, this.value)" style="flex: 2;">
+            </div>
           </div>
         </div>
       `;
@@ -216,8 +235,37 @@ function updateGroupName(idx, value) {
 
 function updateGroupCaption(idx, value) {
   const groups = groupsTabMode === 'quests' ? DATA.groups : DATA.shopGroups;
-  groups[idx].caption = value.trim();
-  render();
+  groups[idx].caption = value.trim() || undefined;
+  renderGroupContentCore();
+}
+
+function updateGroupMap(idx, value) {
+  const groups = groupsTabMode === 'quests' ? DATA.groups : DATA.shopGroups;
+  const val = value.trim();
+  if (val && !/^[a-z0-9_-]+$/.test(val)) {
+    alert("Invalid map name. Only lowercase alphanumeric, underscores, and hyphens are allowed.");
+    return;
+  }
+  groups[idx].map = val || undefined;
+  renderGroupContentCore();
+}
+
+function updateGroupMapX(idx, value) {
+  const groups = groupsTabMode === 'quests' ? DATA.groups : DATA.shopGroups;
+  groups[idx].map_x = value ? parseInt(value, 10) : undefined;
+  renderGroupContentCore();
+}
+
+function updateGroupMapY(idx, value) {
+  const groups = groupsTabMode === 'quests' ? DATA.groups : DATA.shopGroups;
+  groups[idx].map_y = value ? parseInt(value, 10) : undefined;
+  renderGroupContentCore();
+}
+
+function updateGroupCustomCommand(idx, value) {
+  const groups = groupsTabMode === 'quests' ? DATA.groups : DATA.shopGroups;
+  groups[idx].custom_command = value.trim() || undefined;
+  renderGroupContentCore();
 }
 
 function moveGroup(idx, direction) {
@@ -257,7 +305,36 @@ function updateSubgroupName(groupIdx, subIdx, value) {
 function updateSubgroupCaption(groupIdx, subIdx, value) {
   const groups = groupsTabMode === 'quests' ? DATA.groups : DATA.shopGroups;
   groups[groupIdx].subgroups[subIdx].caption = value.trim() || undefined;
-  render();
+  renderGroupContentCore();
+}
+
+function updateSubgroupMap(groupIdx, subIdx, value) {
+  const groups = groupsTabMode === 'quests' ? DATA.groups : DATA.shopGroups;
+  const val = value.trim();
+  if (val && !/^[a-z0-9_-]+$/.test(val)) {
+    alert("Invalid map name. Only lowercase alphanumeric, underscores, and hyphens are allowed.");
+    return;
+  }
+  groups[groupIdx].subgroups[subIdx].map = val || undefined;
+  renderGroupContentCore();
+}
+
+function updateSubgroupMapX(groupIdx, subIdx, value) {
+  const groups = groupsTabMode === 'quests' ? DATA.groups : DATA.shopGroups;
+  groups[groupIdx].subgroups[subIdx].map_x = value ? parseInt(value, 10) : undefined;
+  renderGroupContentCore();
+}
+
+function updateSubgroupMapY(groupIdx, subIdx, value) {
+  const groups = groupsTabMode === 'quests' ? DATA.groups : DATA.shopGroups;
+  groups[groupIdx].subgroups[subIdx].map_y = value ? parseInt(value, 10) : undefined;
+  renderGroupContentCore();
+}
+
+function updateSubgroupCustomCommand(groupIdx, subIdx, value) {
+  const groups = groupsTabMode === 'quests' ? DATA.groups : DATA.shopGroups;
+  groups[groupIdx].subgroups[subIdx].custom_command = value.trim() || undefined;
+  renderGroupContentCore();
 }
 
 function moveSubgroup(groupIdx, subIdx, direction) {
@@ -328,12 +405,20 @@ window.addGroup = addGroup;
 window.deleteGroup = deleteGroup;
 window.updateGroupName = updateGroupName;
 window.updateGroupCaption = updateGroupCaption;
+window.updateGroupMap = updateGroupMap;
+window.updateGroupMapX = updateGroupMapX;
+window.updateGroupMapY = updateGroupMapY;
+window.updateGroupCustomCommand = updateGroupCustomCommand;
 window.moveGroup = moveGroup;
 
 // Subgroup management
 window.addSubgroup = addSubgroup;
 window.updateSubgroupName = updateSubgroupName;
 window.updateSubgroupCaption = updateSubgroupCaption;
+window.updateSubgroupMap = updateSubgroupMap;
+window.updateSubgroupMapX = updateSubgroupMapX;
+window.updateSubgroupMapY = updateSubgroupMapY;
+window.updateSubgroupCustomCommand = updateSubgroupCustomCommand;
 window.moveSubgroup = moveSubgroup;
 window.deleteSubgroup = deleteSubgroup;
 window.setGroupsTabMode = setGroupsTabMode;
