@@ -1776,7 +1776,7 @@ function renderViewerHeader(itemId, item, { meta = '', loc = '', navCmds = [], s
   const navCmdsHtml = (navCmds && navCmds.length > 0)
     ? navCmds.map(nav => `
         <button class="qvh-copy-btn" onclick="copyToClipboard('${nav.cmd.replace(/'/g, "\\'")}')" title="Copy command">
-          <span class="qvh-copy-icon">${window.SVG_ICONS?.copy || '📋'}</span> ${escapeHtml(nav.cmd)}
+          <span class="qvh-copy-icon">${window.SVG_ICONS?.copy || '📋'}</span> <span class="qvh-copy-text">${escapeHtml(nav.cmd)}</span>
         </button>
       `).join('')
     : '';

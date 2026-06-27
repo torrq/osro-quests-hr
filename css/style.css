@@ -4900,6 +4900,13 @@ body.viewer-mode .editor-quest select {
 .qvh-copy-icon {
   font-size: 14px;
 }
+
+@media (max-width: 600px) {
+  .qvh-actions .qvh-copy-text {
+    display: none;
+  }
+}
+
 .qvh-bm {
   flex-shrink: 0;
   align-self: flex-start;
