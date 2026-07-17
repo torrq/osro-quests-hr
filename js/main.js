@@ -1396,11 +1396,16 @@ function handleURLNavigation() {
   if (ilParam !== null) {
     const idx = parseInt(ilParam);
     state.selectedItemList = Number.isFinite(idx) ? idx : -1;
+  } else {
+    state.selectedItemList = -1;
   }
-  if (urlParams.get('ia') === '1') state.showAllItems = true;
-  if (urlParams.get('in') === '1') state.showNewItemsOnly = true;
-  if (urlParams.get('iv') === '1') state.showValuesOnly = true;
-  if (urlParams.get('id') === '1') state.searchDescriptions = true;
+  state.showAllItems = urlParams.get('ia') === '1';
+  state.showNewItemsOnly = urlParams.get('in') === '1';
+  state.showValuesOnly = urlParams.get('iv') === '1';
+  state.searchDescriptions = urlParams.get('id') === '1';
+  
+  const isParam = urlParams.get('is');
+  state.itemSearchFilter = isParam ? isParam.toLowerCase() : "";
   
   // Helper to ensure tab is active before selection
   const ensureTab = (tabName) => {
@@ -1500,9 +1505,11 @@ function updateURL(entityId = null, entityType = null, pushState = true) {
     else                         url.searchParams.delete('iv');
     if (state.searchDescriptions) url.searchParams.set('id', '1');
     else                          url.searchParams.delete('id');
+    if (state.itemSearchFilter)   url.searchParams.set('is', state.itemSearchFilter);
+    else                          url.searchParams.delete('is');
   } else {
     // Clean up items params when not on items tab
-    ['il','ia','in','iv','id'].forEach(k => url.searchParams.delete(k));
+    ['il','ia','in','iv','id','is'].forEach(k => url.searchParams.delete(k));
   }
 
   if (pushState) {
@@ -1697,6 +1704,23 @@ document.addEventListener("DOMContentLoaded", () => {
     if (event.state) {
       const { tab, questId, itemId, autolootSlot } = event.state;
       
+      // Sync items filters from URL parameters on history change
+      const urlParams = new URLSearchParams(window.location.search);
+      const ilParam = urlParams.get('il');
+      if (ilParam !== null) {
+        const idx = parseInt(ilParam);
+        state.selectedItemList = Number.isFinite(idx) ? idx : -1;
+      } else {
+        state.selectedItemList = -1;
+      }
+      state.showAllItems = urlParams.get('ia') === '1';
+      state.showNewItemsOnly = urlParams.get('in') === '1';
+      state.showValuesOnly = urlParams.get('iv') === '1';
+      state.searchDescriptions = urlParams.get('id') === '1';
+      
+      const isParam = urlParams.get('is');
+      state.itemSearchFilter = isParam ? isParam.toLowerCase() : "";
+
       if (tab === 'values') {
         if (state.currentTab !== 'items') switchTab('items', false);
         if (typeof window.openValuesManager === 'function') window.openValuesManager(false);
