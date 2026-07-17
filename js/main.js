@@ -1428,11 +1428,6 @@ function handleURLNavigation() {
   else if (itemId) {
     ensureTab('items');
     if (window.selectItemById) {
-      // Clear any existing search filter so the deep-linked item is visible
-      if (state.itemSearchFilter) {
-        state.itemSearchFilter = "";
-        document.getElementById("itemSearchInput").value = "";
-      }
       window.selectItemById(itemId, false);
     }
   } 
