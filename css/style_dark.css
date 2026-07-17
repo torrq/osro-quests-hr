@@ -66,9 +66,9 @@
   --active-quest-bg: rgba(88, 166, 255, 0.15);
   
   /* Code blocks */
-  --code-bg: #0d1117;
+  --code-bg: #08120a;
   --code-block-bg: rgba(0, 0, 0, 0.3);
-  --code-text: #79c0ff;
+  --code-text: #76fda8;
   --autocomplete-bg: #1a272b;
   
   /* Item placeholders */
