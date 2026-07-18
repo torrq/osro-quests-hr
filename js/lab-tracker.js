@@ -284,6 +284,19 @@
         continue;
       }
 
+      // All size resist
+      m = part.match(/All\s+size\s+Resist\s*\+\s*(\d+)%/i) ||
+          part.match(/Receive\s+(\d+)%\s+less\s+damage\s+from\s+all\s+size\s+monsters/i);
+      if (m) {
+        const val = parseInt(m[1]);
+        ['Small', 'Medium', 'Large'].forEach(size => {
+          stats[`${size} Monster Resist %`] = (stats[`${size} Monster Resist %`] || 0) + val;
+        });
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
       // Weight limit increase (Weight limit increase +1000)
       m = part.match(/Weight limit increase\s*\+\s*(\d+)/i);
       if (m) {
@@ -322,6 +335,11 @@
           type = `${type} Race`;
         }
         
+        const sizes = ['Small', 'Medium', 'Large'];
+        if (sizes.includes(type)) {
+          type = `${type} Monster`;
+        }
+        
         stats[`${type} Damage %`] = (stats[`${type} Damage %`] || 0) + parseInt(m[2]);
         pendingStats.forEach(s => unparsed.push(s));
         pendingStats = [];
@@ -329,7 +347,8 @@
       }
 
       // After-Cast Delay reduction
-      m = part.match(/Reduces? all skill's after-cast delay by (\d+)%/i);
+      m = part.match(/Reduces? all skill's after-cast delay by (\d+)%/i) ||
+          part.match(/Reduce\s+after\s*cast\s+delay\s+by\s+(\d+)%/i);
       if (m) {
         stats['After-Cast Delay %'] = (stats['After-Cast Delay %'] || 0) - parseInt(m[1]);
         pendingStats.forEach(s => unparsed.push(s));
@@ -337,8 +356,17 @@
         continue;
       }
 
+      // Skill Hard Delay reduction
+      m = part.match(/Reduces?\s+all\s+skill's\s+hard\s+delay\s+by\s+(\d+)%/i);
+      if (m) {
+        stats['Skill Hard Delay %'] = (stats['Skill Hard Delay %'] || 0) - parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
       // Melee Resist (Near attacks resist)
-      m = part.match(/Near attacks resist\s*\+\s*(\d+)%/i) ||
+      m = part.match(/Near attacks?\s*resist\s*\+\s*(\d+)%/i) ||
           part.match(/Reduce damage from near attacks by (\d+)%/i);
       if (m) {
         stats['Melee Resist %'] = (stats['Melee Resist %'] || 0) + parseInt(m[1]);
@@ -407,6 +435,94 @@
         continue;
       }
       
+      // Strip Chance
+      m = part.match(/Increase\s+chance\s+of\s+all\s+Strip\s+skills?\s+by\s+(\d+)%/i) ||
+          part.match(/Increase\s+Strip\s+chance\s+by\s+(\d+)%/i);
+      if (m) {
+        stats['Increase Strip Chance %'] = (stats['Increase Strip Chance %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Dispell Chance
+      m = part.match(/Increase\s+Dispell\s+chance\s+by\s+(\d+)%/i);
+      if (m) {
+        stats['Increase Dispell Chance %'] = (stats['Increase Dispell Chance %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // SP Consumption reduction
+      m = part.match(/SP\s+Consumption\s+when\s+using\s+skills\s*-(\d+)%/i) ||
+          part.match(/Reduce\s+SP\s+Consumption\s+of\s+skills\s+by\s+(\d+)%/i);
+      if (m) {
+        stats['Reduce SP Consumption %'] = (stats['Reduce SP Consumption %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Ignore MDEF of Demihuman
+      m = part.match(/Ignore\s+Magical\s+Defense\s+of\s+Demihumans\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['Ignore MDEF of Demihuman %'] = (stats['Ignore MDEF of Demihuman %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Nullify Magic Spells
+      m = part.match(/Nullify\s+(\d+)%\s+magic\s+spells/i);
+      if (m) {
+        stats['Nullify Magic Spells %'] = (stats['Nullify Magic Spells %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Reduce damage from Demihuman
+      m = part.match(/Reduce\s+damage\s+from\s+Demi-?Humans?\s+by\s+(\d+)%/i);
+      if (m) {
+        stats['Reduce damage from Demihuman %'] = (stats['Reduce damage from Demihuman %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Reduce Defense
+      m = part.match(/Reduce\s+Defense\s+by\s+(\d+)%/i) ||
+          part.match(/Decreases?\s+all\s+defenses?\s+applied\s+to\s+its\s+owner\s+by\s+(\d+)%/i);
+      if (m) {
+        stats['Reduce Defense %'] = (stats['Reduce Defense %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Resistance against All elements
+      m = part.match(/Resistance\s+again[s]?t\s+All\s+elements\s*\+\s*(\d+)%/i);
+      if (m) {
+        const val = parseInt(m[1]);
+        const elements = ['Neutral', 'Water', 'Earth', 'Fire', 'Wind', 'Poison', 'Holy', 'Shadow', 'Ghost', 'Undead'];
+        elements.forEach(el => {
+          stats[`${el} Property Resist %`] = (stats[`${el} Property Resist %`] || 0) + val;
+        });
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+      
+      // Critical wounds on attack
+      m = part.match(/(\d+)%\s+Chance\s+to\s+inflict\s+Critical\s+wounds\s+when\s+attacking/i);
+      if (m) {
+        stats['Chance to inflict Critical wounds when attacking %'] = (stats['Chance to inflict Critical wounds when attacking %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+      
       // Single stat
       m = part.match(/^(HP|SP|ATK|MATK|FLEE|Flee|HIT|STR|AGI|VIT|INT|DEX|LUK|DEF|MDEF|Perfect Dodge|Crit|Critical|(?:Max\s*)?Weight|Max\s*HP|Max\s*SP|Maximum HP|Maximum SP)\s*\+\s*(\d+)(%?)$/i);
       if (m) {
@@ -420,7 +536,7 @@
         const suffix = m[3] || '';
         
         if (stat === 'CRIT' || stat === 'CRITICAL') {
-          stats['CRIT %'] = (stats['CRIT %'] || 0) + val;
+          stats['CRIT'] = (stats['CRIT'] || 0) + val;
           pendingStats.forEach(p => {
             stats[p + suffix] = (stats[p + suffix] || 0) + val;
           });
