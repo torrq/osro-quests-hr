@@ -533,8 +533,13 @@
         const data = parsed[stat];
         const sign = data.value >= 0 ? '+' : '';
         
-        // Sort sources alphabetically by item name
-        const sortedSources = [...data.sources].sort((a, b) => a.itemName.localeCompare(b.itemName));
+        // Sort sources by list name (Deposit first), then alphabetically by item name
+        const sortedSources = [...data.sources].sort((a, b) => {
+          if (a.listName !== b.listName) {
+            return a.listName === 'Deposit List' ? -1 : 1;
+          }
+          return a.itemName.localeCompare(b.itemName);
+        });
         
         statsHtml += `
           <div class="dt-stat-item" onclick="window.toggleTrackerStatDetail(this)">
@@ -557,7 +562,6 @@
                   <div class="dt-unparsed-source" style="font-size: 11px; margin-top: 3px;">
                     <span class="dt-unparsed-icon">${renderItemIcon(src.itemId)}</span>
                     <a href="#" onclick="window.navigateToTrackerItem(${src.itemId}); return false;" class="item-link" style="font-size: 11px;">${src.itemName}</a>
-                    <span class="item-row-id" style="font-size: 10px; margin-left: 4px;">#${src.itemId}</span>
                   </div>
                 </div>
               `).join('')}

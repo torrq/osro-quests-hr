@@ -5530,7 +5530,7 @@ a.bm-main-name:hover {
   padding-top: 8px;
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 4px;
   width: 100%;
 }
 
@@ -5541,6 +5541,9 @@ a.bm-main-name:hover {
 }
 
 @media (min-width: 480px) {
+  .dt-stat-details {
+    gap: 8px;
+  }
   .dt-stat-details .dt-unparsed-card {
     width: calc(50% - 4px);
   }
@@ -5785,13 +5788,20 @@ a.bm-main-name:hover {
   background: rgba(255, 255, 255, 0.015);
   border: 1px solid var(--border);
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 6px 8px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
   transition: all 0.15s ease-in-out;
   word-break: break-word;
   min-width: 0;
+}
+
+@media (min-width: 480px) {
+  .dt-unparsed-card {
+    padding: 10px 12px;
+    gap: 6px;
+  }
 }
 
 .dt-unparsed-card:hover {
