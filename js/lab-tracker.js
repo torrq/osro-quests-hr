@@ -459,7 +459,17 @@
           if (effectText) {
             const { stats, unparsed } = parseEffect(effectText);
             for (const [stat, val] of Object.entries(stats)) {
-              totalStats[stat] = (totalStats[stat] || 0) + val;
+              if (!totalStats[stat]) {
+                totalStats[stat] = { value: 0, sources: [] };
+              }
+              totalStats[stat].value += val;
+              const itemInfo = DATA.items[id];
+              totalStats[stat].sources.push({
+                itemId: id,
+                itemName: itemInfo ? itemInfo.name : `Item #${id}`,
+                listName: listName,
+                value: val
+              });
             }
             unparsed.forEach(u => {
               const itemInfo = DATA.items[id];
@@ -520,12 +530,38 @@
         const isPercent = stat.includes('%');
         const displayName = isPercent ? stat.replace('%', '').trim() : stat;
         const suffix = isPercent ? '%' : '';
-        const value = parsed[stat];
-        const sign = value >= 0 ? '+' : '';
+        const data = parsed[stat];
+        const sign = data.value >= 0 ? '+' : '';
+        
+        // Sort sources alphabetically by item name
+        const sortedSources = [...data.sources].sort((a, b) => a.itemName.localeCompare(b.itemName));
+        
         statsHtml += `
-          <div class="dt-stat-item">
-            <span class="dt-stat-name">${displayName}</span>
-            <span class="dt-stat-val">${sign}${value}${suffix}</span>
+          <div class="dt-stat-item" onclick="window.toggleTrackerStatDetail(this)">
+            <div class="dt-stat-summary">
+              <div class="dt-stat-summary-info">
+                <span class="dt-stat-name">${displayName}</span>
+                <span class="dt-stat-val">${sign}${data.value}${suffix}</span>
+              </div>
+              <span class="dt-stat-summary-arrow">▶</span>
+            </div>
+            <div class="dt-stat-details" style="display: none;">
+              ${sortedSources.map(src => `
+                <div class="dt-unparsed-card" style="margin-top: 4px; padding: 6px 10px; cursor: default;" onclick="event.stopPropagation()">
+                  <div class="dt-unparsed-header" style="font-size: 11px;">
+                    <span class="dt-unparsed-text" style="font-size: 11px; font-weight: normal; color: var(--accent);">${displayName}: ${src.value >= 0 ? '+' : ''}${src.value}${suffix}</span>
+                    <span class="dt-unparsed-badge badge--${src.listName === 'Deposit List' ? 'deposit' : 'unlock'}" style="font-size: 8px; padding: 1px 4px;">
+                      ${src.listName === 'Deposit List' ? 'Deposit' : 'Unlock'}
+                    </span>
+                  </div>
+                  <div class="dt-unparsed-source" style="font-size: 11px; margin-top: 3px;">
+                    <span class="dt-unparsed-icon">${renderItemIcon(src.itemId)}</span>
+                    <a href="#" onclick="window.navigateToTrackerItem(${src.itemId}); return false;" class="item-link" style="font-size: 11px;">${src.itemName}</a>
+                    <span class="item-row-id" style="font-size: 10px; margin-left: 4px;">#${src.itemId}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
           </div>
         `;
       });
@@ -541,7 +577,7 @@
         });
         statsHtml += `
           <div class="dt-other-effects">
-            <div class="dt-unparsed-title">Special / Unparsed Effects</div>
+            <div class="dt-unparsed-title">Special Effects</div>
             <div class="dt-unparsed-list">
               ${sortedUnparsed.map(item => `
                 <div class="dt-unparsed-card">
@@ -605,7 +641,7 @@
             </div>
             
             <div class="dt-stats-summary">
-              <span class="dt-card-title">Aggregated Active Bonuses</span>
+              <span class="dt-card-title">Active Bonuses</span>
               ${statsHtml}
             </div>
           </div>
@@ -782,12 +818,17 @@
     mainContainer.innerHTML = `
       <div class="lab-main">
         <div class="lab-section">
-          <div class="lab-section-header">
-            <span class="lab-section-title">
-              <span class="lab-section-icon" data-svg-icon="tracker14"></span>
-              ${isDeposit ? "Equipment & Costume Deposits" : "Card Unlocks"}
-            </span>
-            <span class="lab-section-meta">${counts.have} of ${counts.total} collected (${pct}%) — ${counts.want} wanted</span>
+          <div class="lab-section-header" style="position: relative; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 16px; width: 100%;">
+            <div style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1;">
+              <span class="lab-section-title">
+                <span class="lab-section-icon" data-svg-icon="tracker14"></span>
+                ${isDeposit ? "Equipment & Costume Deposits" : "Card Unlocks"}
+              </span>
+              <span class="lab-section-meta">${counts.have} of ${counts.total} collected (${pct}%) — ${counts.want} wanted</span>
+            </div>
+            <button class="dt-export-btn" onclick="window.exportTrackerToCsv('${listName}')" style="align-self: flex-start; margin-top: 2px;">
+              Export CSV
+            </button>
           </div>
           
           <div class="dt-toolbar">
@@ -929,6 +970,82 @@
     }
   };
 
+  window.toggleTrackerStatDetail = function(itemEl) {
+    const details = itemEl.querySelector('.dt-stat-details');
+    if (details) {
+      if (details.style.display === 'none') {
+        details.style.display = 'flex';
+        itemEl.classList.add('active');
+      } else {
+        details.style.display = 'none';
+        itemEl.classList.remove('active');
+      }
+    }
+  };
+
+  window.exportTrackerToCsv = function(listName) {
+    loadTrackerState();
+    const subState = listName === "Deposit List" ? trackerState.deposits : trackerState.unlocks;
+    const listData = DATA.itemLists?.find(l => l.name === listName);
+    if (!listData) return;
+    
+    const isDeposit = listName === "Deposit List";
+    
+    // Resolve item details
+    const items = listData.items.map(id => {
+      const itemInfo = DATA.items[id];
+      return {
+        id: id,
+        name: itemInfo ? itemInfo.name : `Item #${id}`,
+        effect: listData.effects?.[id] || "",
+        class: listData.classes?.[id] || "",
+        have: !!subState[id]?.have,
+        want: !!subState[id]?.want
+      };
+    });
+    
+    // Sort by item name ascending
+    items.sort((a, b) => a.name.localeCompare(b.name));
+    
+    // Build CSV
+    const headers = ["Item Name", "ID", "Have", "Want", "Effect"];
+    if (isDeposit) {
+      headers.push("Class");
+    }
+    
+    const rows = [headers];
+    items.forEach(item => {
+      const row = [
+        item.name,
+        item.id,
+        item.have ? "Yes" : "No",
+        item.want ? "Yes" : "No",
+        item.effect
+      ];
+      if (isDeposit) {
+        row.push(getItemCategory(item.id, item.class, item.name));
+      }
+      rows.push(row);
+    });
+    
+    // Convert rows to CSV string
+    const csvContent = rows.map(r => r.map(val => {
+      const str = String(val).replace(/"/g, '""');
+      return `"${str}"`;
+    }).join(",")).join("\n");
+    
+    // Trigger download
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `${listName.replace(/\s+/g, "_").toLowerCase()}_export.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   // Register parent & children tabs under Labs
   window.registerLabExperiment?.('lab-tracker', {
     tabId:        'lab-tracker',
@@ -937,9 +1054,9 @@
     sidebarIcon:  window.SVG_ICONS?.tracker14 || '',
     renderMain:   trackerRenderDashboard,
     children: [
-      { tabId: 'lab-tracker',          sidebarLabel: 'Summary',  renderMain: trackerRenderDashboard },
-      { tabId: 'lab-tracker-deposits', sidebarLabel: 'Deposit List', renderMain: trackerRenderDeposits },
-      { tabId: 'lab-tracker-unlocks',  sidebarLabel: 'Unlock List',  renderMain: trackerRenderUnlocks },
+      { tabId: 'lab-tracker',          sidebarLabel: 'Summary',      sidebarIcon: window.SVG_ICONS?.summary14 || '', renderMain: trackerRenderDashboard },
+      { tabId: 'lab-tracker-deposits', sidebarLabel: 'Deposit List', sidebarIcon: window.SVG_ICONS?.deposit14 || '', renderMain: trackerRenderDeposits },
+      { tabId: 'lab-tracker-unlocks',  sidebarLabel: 'Unlock List',  sidebarIcon: window.SVG_ICONS?.unlock14 || '',  renderMain: trackerRenderUnlocks },
     ]
   });
 })();

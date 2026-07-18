@@ -107,6 +107,24 @@
     '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="9"></line><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line>'
   );
 
+  // Summary icon (14px): grid dashboard layout
+  const summary14 = svg(
+    'width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"',
+    '<rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect>'
+  );
+
+  // Deposit icon (14px): collection book/binder
+  const deposit14 = svg(
+    'width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"',
+    '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>'
+  );
+
+  // Unlock icon (14px): unlocked lock
+  const unlock14 = svg(
+    'width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"',
+    '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path>'
+  );
+
   window.SVG_ICONS = {
     tabLab: labTab,
     tabBookmarks,
@@ -123,6 +141,9 @@
     bookmark14,
     bookmark14Filled,
     tracker14,
+    summary14,
+    deposit14,
+    unlock14,
   };
 
   window.applySvgIcons = function applySvgIcons(root = document) {

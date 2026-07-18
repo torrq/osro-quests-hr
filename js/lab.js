@@ -66,9 +66,10 @@ function renderLabSidebar() {
     if (exp.children && Array.isArray(exp.children)) {
       exp.children.forEach(child => {
         const isThisChildActive = currentTab === child.tabId;
+        const iconHtml = child.sidebarIcon ? `<span class="lab-sidebar-icon">${child.sidebarIcon}</span>` : '';
         rows.push(`
           <div class="lab-sidebar-child ${isThisChildActive ? 'active' : ''}" onclick="switchTab('${child.tabId}')">
-            ${child.sidebarLabel || child.title || child.tabId}
+            ${iconHtml}${child.sidebarLabel || child.title || child.tabId}
           </div>`);
       });
     }
