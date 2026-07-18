@@ -47,11 +47,22 @@
     }
   }
 
-  function getItemCategory(itemClass) {
-    if (!itemClass) return "Equipment";
-    const lower = itemClass.toLowerCase();
-    if (lower.includes("card")) return "Card";
-    if (lower.includes("costume")) return "Costume";
+  function getItemCategory(itemId, itemClass, itemName) {
+    if (!itemClass) itemClass = "";
+    const lowerClass = itemClass.toLowerCase();
+    if (lowerClass.includes("card")) return "Card";
+    if (lowerClass.includes("costume")) return "Costume";
+    
+    const lowerName = (itemName || "").toLowerCase();
+    if (lowerName.includes("costume") || lowerName.includes("chibi")) return "Costume";
+    
+    const idNum = parseInt(itemId);
+    if (idNum >= 20000 && idNum < 30000) {
+      if (!lowerClass.includes("card") && !lowerName.includes("card")) {
+        return "Costume";
+      }
+    }
+    
     return "Equipment";
   }
 
@@ -666,7 +677,7 @@
       
       // Filter category (only for Deposits)
       if (isDeposit && currentClassFilter !== "all") {
-        const cat = getItemCategory(item.class).toLowerCase();
+        const cat = getItemCategory(item.id, item.class, item.name).toLowerCase();
         if (cat !== currentClassFilter) return false;
       }
       
@@ -702,8 +713,8 @@
         valA = a.effect;
         valB = b.effect;
       } else if (sortState.key === "class") {
-        valA = getItemCategory(a.class);
-        valB = getItemCategory(b.class);
+        valA = getItemCategory(a.id, a.class, a.name);
+        valB = getItemCategory(b.id, b.class, b.name);
       } else if (sortState.key === "id") {
         valA = a.id;
         valB = b.id;
@@ -725,7 +736,7 @@
     const tableRows = filtered.map(item => {
       const isHave = !!subState[item.id]?.have;
       const isWant = !!subState[item.id]?.want;
-      const catClass = getItemCategory(item.class);
+      const catClass = getItemCategory(item.id, item.class, item.name);
       
       return `
         <tr class="dt-row ${isHave ? 'dt-row--have' : ''} ${isWant ? 'dt-row--want' : ''}" id="dt-row-${item.id}">
