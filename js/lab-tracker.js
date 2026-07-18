@@ -572,7 +572,7 @@
               <span class="lab-section-icon" data-svg-icon="tracker14"></span>
               Deposit & Unlock Tracker
             </span>
-            <span class="lab-section-meta">Replaces spreadsheets for tracking card unlocks and equipment deposits.</span>
+            <span class="lab-section-meta">Track your card unlocks and equipment deposits!</span>
           </div>
           
           <div class="dt-dashboard">
@@ -933,13 +933,13 @@
   window.registerLabExperiment?.('lab-tracker', {
     tabId:        'lab-tracker',
     title:        'Deposit & Unlock Tracker',
-    sidebarLabel: 'Deposit & Unlock',
+    sidebarLabel: 'Deposit & Unlock Tracker',
     sidebarIcon:  window.SVG_ICONS?.tracker14 || '',
     renderMain:   trackerRenderDashboard,
     children: [
       { tabId: 'lab-tracker',          sidebarLabel: 'Summary',  renderMain: trackerRenderDashboard },
-      { tabId: 'lab-tracker-deposits', sidebarLabel: 'Deposits', renderMain: trackerRenderDeposits },
-      { tabId: 'lab-tracker-unlocks',  sidebarLabel: 'Unlocks',  renderMain: trackerRenderUnlocks },
+      { tabId: 'lab-tracker-deposits', sidebarLabel: 'Deposit List', renderMain: trackerRenderDeposits },
+      { tabId: 'lab-tracker-unlocks',  sidebarLabel: 'Unlock List',  renderMain: trackerRenderUnlocks },
     ]
   });
 })();
