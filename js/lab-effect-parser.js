@@ -58,6 +58,37 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
         continue;
       }
 
+      // Attack +X% Magic Attack +Y%
+      m = part.match(/Attack\s*\+\s*(\d+)%\s+Magic\s+Attack\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['ATK%'] = (stats['ATK%'] || 0) + parseInt(m[1]);
+        stats['MATK%'] = (stats['MATK%'] || 0) + parseInt(m[2]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Single Attack / Magic Attack
+      m = part.match(/^(?:Magic )?Attack\s*\+\s*(\d+)%/i);
+      if (m) {
+        const isMagic = /Magic Attack/i.test(part);
+        stats[isMagic ? 'MATK%' : 'ATK%'] = (stats[isMagic ? 'MATK%' : 'ATK%'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Stat1 & Stat2 + X (e.g. STR & AGI + 1)
+      m = part.match(/([A-Z]{3})\s*(?:&|\/)\s*([A-Z]{3})\s*\+\s*(\d+)/i);
+      if (m && ['STR','AGI','VIT','INT','DEX','LUK'].includes(m[1].toUpperCase()) && ['STR','AGI','VIT','INT','DEX','LUK'].includes(m[2].toUpperCase())) {
+        const val = parseInt(m[3]);
+        stats[m[1].toUpperCase()] = (stats[m[1].toUpperCase()] || 0) + val;
+        stats[m[2].toUpperCase()] = (stats[m[2].toUpperCase()] || 0) + val;
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
       // Magic Critical Rate / Magic Crit
       m = part.match(/Magic (?:Critical|CRIT)(?:\s+Rate)?\s*\+\s*(\d+)%/i);
       if (m) {
@@ -77,9 +108,19 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
       }
 
       // 5% HP -> HP%
-      m = part.match(/^(\d+)%\s+HP$/i);
+      m = part.match(/^(\d+)%\s+HP$/i) || part.match(/^Maximum\s+HP\s*\+\s*(\d+)%/i);
       if (m) {
         stats['HP%'] = (stats['HP%'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Specific edge case: Maximum HP +1% Reduce near attacks by 1%
+      m = part.match(/Maximum HP\s*\+\s*(\d+)%\s+Reduce near attacks(?: by)? (\d+)%/i);
+      if (m) {
+        stats['HP%'] = (stats['HP%'] || 0) + parseInt(m[1]);
+        stats['Melee Resist %'] = (stats['Melee Resist %'] || 0) + parseInt(m[2]);
         pendingStats.forEach(s => unparsed.push(s));
         pendingStats = [];
         continue;
@@ -116,7 +157,8 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
       }
 
       // Physical Reflect -> Melee Reflect %
-      m = part.match(/Physical Reflect\s*\+\s*(\d+)%/i);
+      m = part.match(/Physical Reflect\s*\+\s*(\d+)%/i) ||
+          part.match(/Reflect\s+(\d+)%\s+of\s+all\s+melee\s+physical\s+damage/i);
       if (m) {
         stats['Melee Reflect %'] = (stats['Melee Reflect %'] || 0) + parseInt(m[1]);
         pendingStats.forEach(s => unparsed.push(s));
@@ -125,8 +167,10 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
       }
 
       // Long Range Reflect -> Ranged Reflect %
-      m = part.match(/Long Range Reflect\s*\+\s*(\d+)%/i);
+      m = part.match(/Long Range Reflect\s*\+\s*(\d+)%/i) ||
+          part.match(/Reflect\s+(\d+)%\s+range(?:d)?\s+damage/i);
       if (m) {
+        // The first regex captures in m[1], the second in m[1] as well
         stats['Ranged Reflect %'] = (stats['Ranged Reflect %'] || 0) + parseInt(m[1]);
         pendingStats.forEach(s => unparsed.push(s));
         pendingStats = [];
@@ -134,7 +178,7 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
       }
 
       // Magic Spell Reflect / Magical Reflect
-      m = part.match(/(?:Magic\s+spells?\s+reflect|Magical\s+Reflect)\s*\+\s*(\d+)%/i);
+      m = part.match(/(?:Magic\s+spells?\s+reflect|Magical\s+Reflect|Magic\s+reflect\s+chance|Reflect\s+magic\s+damage)\s*(?:\+|by\s+)?\s*(\d+)%/i);
       if (m) {
         stats['Magic Reflect %'] = (stats['Magic Reflect %'] || 0) + parseInt(m[1]);
         pendingStats.forEach(s => unparsed.push(s));
@@ -142,19 +186,45 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
         continue;
       }
 
-      // Damage to Boss Monsters -> Boss Damage %
-      m = part.match(/Damage to Boss Monsters\s*\+\s*(\d+)%/i);
+      // Damage to Target Monsters -> Target Damage % / Race Damage % / Size Damage % / Element Damage %
+      m = part.match(/(?:Increase )?Damage to ([A-Za-z]+)(?: Monsters?)?(?:\s+by|\s*\+)\s*\+?(\d+)%/i) ||
+          part.match(/([A-Za-z]+)\s+monster(?:s)?\s+damage\s*(?:\+)?\s*(\d+)%/i);
       if (m) {
-        stats['Boss Damage %'] = (stats['Boss Damage %'] || 0) + parseInt(m[1]);
+        let type = m[1].toLowerCase();
+        let statName = type.charAt(0).toUpperCase() + type.slice(1);
+        if (['small', 'medium', 'large'].includes(type)) statName += ' Monster Damage %';
+        else if (['boss'].includes(type)) statName += ' Damage %';
+        else if (['fire', 'water', 'wind', 'earth', 'holy', 'dark', 'ghost', 'undead', 'poison', 'neutral'].includes(type)) statName += ' Element Damage %';
+        else statName += ' Race Damage %';
+        
+        stats[statName] = (stats[statName] || 0) + parseInt(m[2]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+      
+      // Drop Rate
+      m = part.match(/Drop Rate(?: of any items and cards increased)?(?: by |\s*\+\s*)(\d+)%/i);
+      if (m) {
+        stats['Drop Rate %'] = (stats['Drop Rate %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+      
+      // Movespeed Rate
+      m = part.match(/Movespeed Rate\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['Movespeed Rate %'] = (stats['Movespeed Rate %'] || 0) + parseInt(m[1]);
         pendingStats.forEach(s => unparsed.push(s));
         pendingStats = [];
         continue;
       }
 
-      // Critical Rate +1% -> CRIT %
+      // Critical Rate +1% -> CRIT
       m = part.match(/(?:Critical|CRIT)\s+Rate\s*\+\s*(\d+)%/i);
       if (m) {
-        stats['CRIT %'] = (stats['CRIT %'] || 0) + parseInt(m[1]);
+        stats['CRIT'] = (stats['CRIT'] || 0) + parseInt(m[1]);
         pendingStats.forEach(s => unparsed.push(s));
         pendingStats = [];
         continue;
@@ -181,11 +251,30 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
         continue;
       }
 
+      // Nullify Magic Attack
+      m = part.match(/Nullify Magic Attack(?: by)?\s*(\d+)%/i);
+      if (m) {
+        stats['Nullify Magic Attack %'] = (stats['Nullify Magic Attack %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
       // Ranged Defense / Long Range defense
       m = part.match(/Long Range defense\s*\+\s*(\d+)%/i) ||
           part.match(/Reduce damage from (?:long\s+)?range[d]?\s+attacks\s+by\s+(\d+)%/i);
       if (m) {
         stats['Ranged Resist %'] = (stats['Ranged Resist %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Ranged Damage
+      m = part.match(/Range(?:d)?\s+attack\s*\+\s*(\d+)%/i) ||
+          part.match(/Ranged\s+Damage\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['Ranged Damage %'] = (stats['Ranged Damage %'] || 0) + parseInt(m[1]);
         pendingStats.forEach(s => unparsed.push(s));
         pendingStats = [];
         continue;
@@ -200,7 +289,8 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
       if (m) {
         let type = m[1].trim();
         type = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
-        stats[`${type} Property Resist %`] = (stats[`${type} Property Resist %`] || 0) + parseInt(m[2]);
+        if (type === 'Shadow') type = 'Dark';
+        stats[`${type} Element Resist %`] = (stats[`${type} Element Resist %`] || 0) + parseInt(m[2]);
         pendingStats.forEach(s => unparsed.push(s));
         pendingStats = [];
         continue;
@@ -307,10 +397,84 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
         continue;
       }
 
-      // Boss Resist (Reduce damage from Boss by X%)
-      m = part.match(/Reduce damage from Boss by (\d+)%/i);
+      // Ranged Resist
+      m = part.match(/Reduces? damage(?: taken)? from long range(?: physical)? attacks? by (\d+)%/i);
       if (m) {
-        stats['Boss Resist %'] = (stats['Boss Resist %'] || 0) + parseInt(m[1]);
+        stats['Ranged Resist %'] = (stats['Ranged Resist %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Target Resist (Reduce damage from X by Y%)
+      m = part.match(/Reduce(?:s)? damage(?: taken)? from ([A-Za-z]+)(?: monsters?)? by (\d+)%/i);
+      if (m) {
+        let type = m[1].toLowerCase();
+        let statName = type.charAt(0).toUpperCase() + type.slice(1);
+        if (['small', 'medium', 'large'].includes(type)) statName += ' Monster Resist %';
+        else if (['boss'].includes(type)) statName += ' Resist %';
+        else statName += ' Race Resist %';
+        
+        stats[statName] = (stats[statName] || 0) + parseInt(m[2]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Property/Size/Race Resists (e.g. Dark Resist, Demon Resist, Medium Resist)
+      m = part.match(/([A-Za-z]+)\s+Resist\s*\+\s*(\d+)%/i) ||
+          part.match(/Increases? resistance against ([A-Za-z]+) elemental attacks? by (\d+)%/i);
+      if (m) {
+        let type = m[1].toLowerCase();
+        if (type === 'deomn') type = 'demon'; // Typo handler
+        
+        let properType = type.charAt(0).toUpperCase() + type.slice(1);
+        
+        if (['Fire', 'Water', 'Wind', 'Earth', 'Holy', 'Dark', 'Ghost', 'Undead', 'Poison', 'Neutral', 'All'].includes(properType)) {
+          if (properType === 'All') {
+            const val = parseInt(m[2]);
+            const elements = ['Fire', 'Water', 'Wind', 'Earth', 'Holy', 'Dark', 'Ghost', 'Undead', 'Poison', 'Neutral'];
+            elements.forEach(e => {
+              stats[`${e} Element Resist %`] = (stats[`${e} Element Resist %`] || 0) + val;
+            });
+          } else {
+            let statName = `${properType} Element Resist %`;
+            stats[statName] = (stats[statName] || 0) + parseInt(m[2]);
+          }
+        } else if (['Small', 'Medium', 'Large'].includes(properType)) {
+          stats[`${properType} Monster Resist %`] = (stats[`${properType} Monster Resist %`] || 0) + parseInt(m[2]);
+        } else if (['Boss'].includes(properType)) {
+          stats[`Boss Resist %`] = (stats[`Boss Resist %`] || 0) + parseInt(m[2]);
+        } else {
+          stats[`${properType} Race Resist %`] = (stats[`${properType} Race Resist %`] || 0) + parseInt(m[2]);
+        }
+        
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+      
+      // Resist to all element
+      m = part.match(/Resist to all element(?:s)?\s*\+\s*(\d+)%/i);
+      if (m) {
+        const val = parseInt(m[1]);
+        const elements = ['Fire', 'Water', 'Wind', 'Earth', 'Holy', 'Dark', 'Ghost', 'Undead', 'Poison', 'Neutral'];
+        elements.forEach(e => {
+          stats[`${e} Element Resist %`] = (stats[`${e} Element Resist %`] || 0) + val;
+        });
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Resist to all element except neutral
+      m = part.match(/Resist to all element(?:s)? except neutral\s*\+\s*(\d+)%/i);
+      if (m) {
+        const val = parseInt(m[1]);
+        const elements = ['Fire', 'Water', 'Wind', 'Earth', 'Holy', 'Dark', 'Ghost', 'Undead', 'Poison'];
+        elements.forEach(e => {
+          stats[`${e} Element Resist %`] = (stats[`${e} Element Resist %`] || 0) + val;
+        });
         pendingStats.forEach(s => unparsed.push(s));
         pendingStats = [];
         continue;
@@ -388,7 +552,8 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
 
       // SP Consumption reduction
       m = part.match(/SP\s+Consumption\s+when\s+using\s+skills\s*-(\d+)%/i) ||
-          part.match(/Reduce\s+SP\s+Consumption\s+of\s+skills\s+by\s+(\d+)%/i);
+          part.match(/Reduce\s+SP\s+Consumption\s+of\s+skills\s+by\s+(\d+)%/i) ||
+          part.match(/Reduces?\s+SP\s+cost\s+by\s+(\d+)%/i);
       if (m) {
         stats['Reduce SP Consumption %'] = (stats['Reduce SP Consumption %'] || 0) + parseInt(m[1]);
         pendingStats.forEach(s => unparsed.push(s));
@@ -437,9 +602,9 @@ window.parseEffect = // Parse effect text into structured stats and unparsed det
       m = part.match(/Resistance\s+again[s]?t\s+All\s+elements\s*\+\s*(\d+)%/i);
       if (m) {
         const val = parseInt(m[1]);
-        const elements = ['Neutral', 'Water', 'Earth', 'Fire', 'Wind', 'Poison', 'Holy', 'Shadow', 'Ghost', 'Undead'];
+        const elements = ['Neutral', 'Water', 'Earth', 'Fire', 'Wind', 'Poison', 'Holy', 'Dark', 'Ghost', 'Undead'];
         elements.forEach(el => {
-          stats[`${el} Property Resist %`] = (stats[`${el} Property Resist %`] || 0) + val;
+          stats[`${el} Element Resist %`] = (stats[`${el} Element Resist %`] || 0) + val;
         });
         pendingStats.forEach(s => unparsed.push(s));
         pendingStats = [];

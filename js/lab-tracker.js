@@ -452,7 +452,9 @@
               </span>
               <span class="lab-section-meta">${counts.have} of ${counts.total} collected (${pct}%) — ${counts.want} wanted</span>
             </div>
-            <div style="display: flex; gap: 8px; align-self: flex-start; margin-top: 2px;">
+            <div style="display: flex; gap: 8px; align-self: flex-start; margin-top: 2px; align-items: center;">
+              <span style="font-size: 11px; cursor: pointer; color: #50e3c2; text-decoration: underline;" onclick="window.trackerSelectAll('${listName}')" title="Mark all items as Have">Select All</span>
+              <span style="font-size: 11px; cursor: pointer; color: #ff6b6b; text-decoration: underline;" onclick="window.trackerClearAll('${listName}')" title="Mark all items as Not Have">Clear All</span>
               <button class="dt-export-btn" onclick="window.importTrackerFromCsv('${listName}')">
                 Import CSV
               </button>
@@ -588,6 +590,41 @@
     if (searchTimeout) clearTimeout(searchTimeout);
     if (listName === "Deposit List") trackerRenderDeposits();
     else trackerRenderUnlocks();
+  };
+
+  window.trackerSelectAll = function(listName) {
+    if (!confirm(`Are you sure you want to mark ALL items in ${listName} as 'Have'?`)) return;
+    const stateKey = listName === "Deposit List" ? "deposits" : "unlocks";
+    const subState = trackerState[stateKey];
+    const listData = getListData(listName);
+    if (!listData) return;
+    
+    listData.items.forEach(id => {
+      if (!subState[id]) subState[id] = { have: false, want: false };
+      subState[id].have = true;
+    });
+    
+    saveTrackerState();
+    trackerRenderDashboard();
+  };
+
+  window.trackerClearAll = function(listName) {
+    if (!confirm(`Are you sure you want to clear all progress for ${listName}? This action cannot be undone.`)) {
+      return;
+    }
+    const stateKey = listName === "Deposit List" ? "deposits" : "unlocks";
+    const subState = trackerState[stateKey];
+    const listData = getListData(listName);
+    if (!listData) return;
+    
+    listData.items.forEach(id => {
+      if (subState[id]) {
+        subState[id].have = false;
+      }
+    });
+    
+    saveTrackerState();
+    trackerRenderDashboard();
   };
 
   window.setTrackerFilter = function(listName, filter) {

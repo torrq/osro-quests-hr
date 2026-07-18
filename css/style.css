@@ -2584,7 +2584,7 @@ body.viewer-mode .editor-quest select {
 }
 
 .quest-item.active .quest-name,
-.quest-item.active .shop-name {
+.shop-item.active .shop-name {
   color: var(--accent-hover);
 }
 
