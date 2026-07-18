@@ -617,6 +617,11 @@
     const mainContainer = document.getElementById('mainContent');
     if (!mainContainer) return;
     
+    // Check if the search input is currently focused
+    const searchActive = document.activeElement && document.activeElement.classList.contains('dt-search-input');
+    const cursorStart = searchActive ? document.activeElement.selectionStart : 0;
+    const cursorEnd = searchActive ? document.activeElement.selectionEnd : 0;
+    
     const listData = DATA.itemLists?.find(l => l.name === listName);
     if (!listData) {
       mainContainer.innerHTML = `<div class="empty-msg-centered">Error: ${listName} data not loaded.</div>`;
@@ -814,6 +819,14 @@
     `;
     
     if (window.applySvgIcons) window.applySvgIcons(mainContainer);
+    
+    if (searchActive) {
+      const searchInput = mainContainer.querySelector('.dt-search-input');
+      if (searchInput) {
+        searchInput.focus();
+        searchInput.setSelectionRange(cursorStart, cursorEnd);
+      }
+    }
   }
 
   function trackerRenderDeposits() {
