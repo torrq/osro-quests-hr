@@ -433,7 +433,7 @@
     if (isDeposit) {
       classFilterHtml = `
         <div class="dt-class-filters">
-          <button class="dt-class-btn ${currentClassFilter === 'all' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'all')">All Types</button>
+          <button class="dt-class-btn ${currentClassFilter === 'all' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'all')">All</button>
           <button class="dt-class-btn ${currentClassFilter === 'card' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'card')">Cards</button>
           <button class="dt-class-btn ${currentClassFilter === 'equipment' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'equipment')">Equip</button>
           <button class="dt-class-btn ${currentClassFilter === 'costume' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'costume')">Costume</button>
@@ -467,6 +467,8 @@
               <span class="dt-search-icon">🔍</span>
               <input type="text" class="dt-search-input" placeholder="Search by name or ID…" 
                 value="${currentSearchQuery}" oninput="window.handleTrackerSearch('${listName}', this.value)">
+              <button class="btn btn-sm" onclick="window.clearTrackerSearch('${listName}')" 
+                style="padding: 0 5px; height: 20px; line-height: 1; margin-left: 4px; flex-shrink: 0;" title="Clear search">×</button>
             </div>
             
             ${classFilterHtml}
@@ -565,12 +567,27 @@
 
   let searchTimeout = null;
   window.handleTrackerSearch = function(listName, query) {
-    currentSearchQuery = query.toLowerCase().trim();
+    currentSearchQuery = query.toLowerCase();
     if (searchTimeout) clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => {
       if (listName === "Deposit List") trackerRenderDeposits();
       else trackerRenderUnlocks();
+      
+      const input = document.querySelector('.dt-search-input');
+      if (input) {
+        input.focus();
+        const val = input.value;
+        input.value = '';
+        input.value = val;
+      }
     }, 200);
+  };
+
+  window.clearTrackerSearch = function(listName) {
+    currentSearchQuery = "";
+    if (searchTimeout) clearTimeout(searchTimeout);
+    if (listName === "Deposit List") trackerRenderDeposits();
+    else trackerRenderUnlocks();
   };
 
   window.setTrackerFilter = function(listName, filter) {
