@@ -101,6 +101,12 @@
     '<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>'
   );
 
+  // Tracker icon (14px): checklist used in sidebar.
+  const tracker14 = svg(
+    'width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"',
+    '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="9"></line><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="15" y2="17"></line>'
+  );
+
   window.SVG_ICONS = {
     tabLab: labTab,
     tabBookmarks,
@@ -116,6 +122,7 @@
     gc14,
     bookmark14,
     bookmark14Filled,
+    tracker14,
   };
 
   window.applySvgIcons = function applySvgIcons(root = document) {

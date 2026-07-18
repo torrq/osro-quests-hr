@@ -1071,6 +1071,18 @@ const TAB_ELEMENTS = {
     sidebar: "labList",
     render: ["renderLabSidebar", "renderLabMain"]
   },
+  'lab-tracker': {
+    sidebar: "labList",
+    render: ["renderLabSidebar", "renderLabMain"]
+  },
+  'lab-tracker-deposits': {
+    sidebar: "labList",
+    render: ["renderLabSidebar", "renderLabMain"]
+  },
+  'lab-tracker-unlocks': {
+    sidebar: "labList",
+    render: ["renderLabSidebar", "renderLabMain"]
+  },
   bookmarks: {
     sidebar: "bookmarksList",
     render: ["renderBookmarksSidebar", "renderBookmarksMain"]

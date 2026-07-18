@@ -1,0 +1,921 @@
+(function() {
+  const TRACKER_STORAGE_KEY = 'osrohr_lab_tracker_v1';
+  
+  let trackerState = {
+    deposits: {},
+    unlocks: {}
+  };
+  
+  let currentSearchQuery = "";
+  let currentFilter = "all"; // 'all' | 'need' | 'want' | 'done'
+  let currentClassFilter = "all"; // 'all' | 'card' | 'equipment' | 'costume'
+  
+  let sortState = {
+    key: "default", // 'default', 'have', 'want', 'name', 'effect', 'class'
+    dir: "asc"      // 'asc', 'desc'
+  };
+  
+  let lastTab = "";
+  function checkTabChange(currentTabName) {
+    if (lastTab !== currentTabName) {
+      lastTab = currentTabName;
+      currentSearchQuery = "";
+      currentFilter = "all";
+      currentClassFilter = "all";
+      sortState = { key: "default", dir: "asc" };
+    }
+  }
+  
+  function loadTrackerState() {
+    try {
+      const stored = localStorage.getItem(TRACKER_STORAGE_KEY);
+      if (stored) {
+        trackerState = JSON.parse(stored);
+      }
+    } catch (e) {
+      console.error("Failed to load tracker state", e);
+    }
+    if (!trackerState.deposits) trackerState.deposits = {};
+    if (!trackerState.unlocks) trackerState.unlocks = {};
+  }
+  
+  function saveTrackerState() {
+    try {
+      localStorage.setItem(TRACKER_STORAGE_KEY, JSON.stringify(trackerState));
+    } catch (e) {
+      console.error("Failed to save tracker state", e);
+    }
+  }
+
+  function getItemCategory(itemClass) {
+    if (!itemClass) return "Equipment";
+    const lower = itemClass.toLowerCase();
+    if (lower.includes("card")) return "Card";
+    if (lower.includes("costume")) return "Costume";
+    return "Equipment";
+  }
+
+  // Parse effect text into structured stats and unparsed details
+  function parseEffect(text) {
+    const stats = {};
+    const unparsed = [];
+    if (!text) return { stats, unparsed };
+    
+    const clean = text.replace(/\r/g, '').trim();
+    const parts = clean.split(/[,;\n]/);
+    
+    const BARE_STATS_REG = /^(HP|SP|ATK|MATK|FLEE|Flee|HIT|STR|AGI|VIT|INT|DEX|LUK|DEF|MDEF|Perfect Dodge|Crit|Critical)$/i;
+    let pendingStats = [];
+    
+    for (let part of parts) {
+      part = part.trim().replace(/\.$/, '').trim(); // Clean trailing periods and spaces
+      if (!part) continue;
+      
+      let m;
+      if (BARE_STATS_REG.test(part)) {
+        pendingStats.push(part.toUpperCase());
+        continue;
+      }
+      
+      // All Stats +1 / Gives +1 to all status
+      m = part.match(/Gives\s*\+(\d+)\s+to\s+all\s+status/i) ||
+          part.match(/All\s+stats?\s*\+\s*(\d+)/i);
+      if (m) {
+        const val = parseInt(m[1]);
+        const statsList = ['STR', 'AGI', 'VIT', 'INT', 'DEX', 'LUK'];
+        statsList.forEach(s => {
+          stats[s] = (stats[s] || 0) + val;
+        });
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+      
+      // HP & SP / HP/SP combined
+      m = part.match(/(HP\s*(?:&|\/)\s*SP)\s*\+\s*(\d+)(%?)/i);
+      if (m) {
+        const val = parseInt(m[2]);
+        const suffix = m[3] || '';
+        stats['HP' + suffix] = (stats['HP' + suffix] || 0) + val;
+        stats['SP' + suffix] = (stats['SP' + suffix] || 0) + val;
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // ATK & MATK / ATK/MATK combined
+      m = part.match(/(ATK\s*(?:&|\/)\s*MATK)\s*\+\s*(\d+)(%?)/i);
+      if (m) {
+        const val = parseInt(m[2]);
+        const suffix = m[3] || '';
+        stats['ATK' + suffix] = (stats['ATK' + suffix] || 0) + val;
+        stats['MATK' + suffix] = (stats['MATK' + suffix] || 0) + val;
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Magic Critical Rate / Magic Crit
+      m = part.match(/Magic (?:Critical|CRIT)(?:\s+Rate)?\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['Magic CRIT %'] = (stats['Magic CRIT %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Attack Speed / Attack Rate -> ASPD %
+      m = part.match(/(?:Attack Speed|Attack Rate)\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['ASPD %'] = (stats['ASPD %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // 5% HP -> HP%
+      m = part.match(/^(\d+)%\s+HP$/i);
+      if (m) {
+        stats['HP%'] = (stats['HP%'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Bypass Dispell Immunity
+      m = part.match(/Bypass Dispell Immunity\s*\+\s*(\d+)%/i) ||
+          part.match(/Adds\s+a\s+(\d+)%\s+chance\s+to\s+bypass\s+Dispell\s+immunity/i);
+      if (m) {
+        stats['Bypass Dispell Immunity %'] = (stats['Bypass Dispell Immunity %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Bypass Defender Skill
+      m = part.match(/Adds\s+(\d+)%(?:\s+chance)?\s+to\s+bypass\s+Defender\s+skill(?:\s+effect)?/i);
+      if (m) {
+        stats['Bypass Defender Skill %'] = (stats['Bypass Defender Skill %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Physical and Range Reflect combined
+      m = part.match(/Physical and Range Reflect\s*\+\s*(\d+)%/i);
+      if (m) {
+        const val = parseInt(m[1]);
+        stats['Melee Reflect %'] = (stats['Melee Reflect %'] || 0) + val;
+        stats['Ranged Reflect %'] = (stats['Ranged Reflect %'] || 0) + val;
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Physical Reflect -> Melee Reflect %
+      m = part.match(/Physical Reflect\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['Melee Reflect %'] = (stats['Melee Reflect %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Long Range Reflect -> Ranged Reflect %
+      m = part.match(/Long Range Reflect\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['Ranged Reflect %'] = (stats['Ranged Reflect %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Magic Spell Reflect / Magical Reflect
+      m = part.match(/(?:Magic\s+spells?\s+reflect|Magical\s+Reflect)\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['Magic Reflect %'] = (stats['Magic Reflect %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Damage to Boss Monsters -> Boss Damage %
+      m = part.match(/Damage to Boss Monsters\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['Boss Damage %'] = (stats['Boss Damage %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Critical Rate +1% -> CRIT %
+      m = part.match(/(?:Critical|CRIT)\s+Rate\s*\+\s*(\d+)%/i);
+      if (m) {
+        stats['CRIT %'] = (stats['CRIT %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Heal Effectiveness
+      m = part.match(/Heal Effectiveness\s*\+\s*(\d+)%/i) ||
+          part.match(/Increases?\s+effect\s+of\s+Healing\s+skills\s+by\s+(\d+)%/i);
+      if (m) {
+        stats['Heal Effectiveness %'] = (stats['Heal Effectiveness %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Drop Rate % (Drop Rate + 1%, Increase Drop Rate by 1%, Item drop rate increase by 5%)
+      m = part.match(/(?:Increase\s+)?Drop\s*Rate\s*\+\s*(\d+)%/i) || 
+          part.match(/Increase\s+Drop\s*Rate\s+by\s+(\d+)%/i) ||
+          part.match(/Item\s+drop\s+rate\s+increase\s+by\s+(\d+)%/i);
+      if (m) {
+        stats['Drop Rate %'] = (stats['Drop Rate %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Ranged Defense / Long Range defense
+      m = part.match(/Long Range defense\s*\+\s*(\d+)%/i) ||
+          part.match(/Reduce damage from (?:long\s+)?range[d]?\s+attacks\s+by\s+(\d+)%/i);
+      if (m) {
+        stats['Ranged Resist %'] = (stats['Ranged Resist %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Property defense +X% (e.g. Fire Property defense +7%, Earth Property defense +3%)
+      m = part.match(/^(.+?)\s+Property\s+defense\s*\+\s*(\d+)%/i) ||
+          part.match(/^(.+?)\s+Property\s+resistance\s*\+\s*(\d+)%/i) ||
+          part.match(/Adds\s+resist\s+against\s+(.+?)\s+property\s+by\s+(\d+)%/i) ||
+          part.match(/Resistance\s+to\s+(.+?)\s+Property\s*\+\s*(\d+)%/i) ||
+          part.match(/(Ghost|Fire|Water|Earth|Wind|Shadow|Holy|Neutral|Poison|Undead)\s+Resist\s*\+\s*(\d+)%/i);
+      if (m) {
+        let type = m[1].trim();
+        type = type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
+        stats[`${type} Property Resist %`] = (stats[`${type} Property Resist %`] || 0) + parseInt(m[2]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Size monster defense
+      m = part.match(/Reduce damage from (Small|Medium|Large)\s+monsters\s+by\s+(\d+)%/i);
+      if (m) {
+        const size = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+        stats[`${size} Monster Resist %`] = (stats[`${size} Monster Resist %`] || 0) + parseInt(m[2]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Weight limit increase (Weight limit increase +1000)
+      m = part.match(/Weight limit increase\s*\+\s*(\d+)/i);
+      if (m) {
+        stats['Max Weight'] = (stats['Max Weight'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Magic Resist (Reduce damage from magic attacks by X%)
+      m = part.match(/Reduce damage from magic attacks by (\d+)%/i);
+      if (m) {
+        stats['Magic Resist %'] = (stats['Magic Resist %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // X Property/Monster/Skill damage +Y%
+      m = part.match(/^(.+?)(?:\s+monster)?\s+damage\s*\+\s*(\d+)%/i);
+      if (m) {
+        let type = m[1].trim();
+        type = type.split(/\s+/).map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+        if (type === 'Demon Property') type = 'Demon';
+        
+        // Element Damage normalization (e.g. Dark Property -> Dark Element, Fire -> Fire Element)
+        const elements = ['Dark', 'Earth', 'Fire', 'Wind', 'Ghost', 'Holy', 'Neutral', 'Poison', 'Shadow', 'Undead', 'Water'];
+        elements.forEach(el => {
+          if (type === `${el} Property` || type === el) {
+            type = `${el} Element`;
+          }
+        });
+        
+        const races = ['Angel', 'Brute', 'Demihuman', 'Demon', 'Dragon', 'Fish', 'Formless', 'Insect'];
+        if (races.includes(type)) {
+          type = `${type} Race`;
+        }
+        
+        stats[`${type} Damage %`] = (stats[`${type} Damage %`] || 0) + parseInt(m[2]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // After-Cast Delay reduction
+      m = part.match(/Reduces? all skill's after-cast delay by (\d+)%/i);
+      if (m) {
+        stats['After-Cast Delay %'] = (stats['After-Cast Delay %'] || 0) - parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Melee Resist (Near attacks resist)
+      m = part.match(/Near attacks resist\s*\+\s*(\d+)%/i) ||
+          part.match(/Reduce damage from near attacks by (\d+)%/i);
+      if (m) {
+        stats['Melee Resist %'] = (stats['Melee Resist %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Boss Resist (Reduce damage from Boss by X%)
+      m = part.match(/Reduce damage from Boss by (\d+)%/i);
+      if (m) {
+        stats['Boss Resist %'] = (stats['Boss Resist %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Receive X% less damage from Y monsters
+      m = part.match(/Receive\s+(\d+)%\s+less\s+damage\s+from\s+(.+?)(?:\s+monsters)?$/i);
+      if (m) {
+        const val = parseInt(m[1]);
+        let source = m[2].trim();
+        source = source.charAt(0).toUpperCase() + source.slice(1);
+        if (source.toLowerCase() === 'boss') source = 'Boss';
+        if (source.toLowerCase() === 'normal') source = 'Normal Monster';
+        stats[`${source} Resist %`] = (stats[`${source} Resist %`] || 0) + val;
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // CRIT Resist (Decreases Chance of being hit by critical by +X%)
+      m = part.match(/Decreases\s+Chance\s+of\s+being\s+hit\s+by\s+critical\s+by\s*\+?(\d+)%/i);
+      if (m) {
+        stats['CRIT Resist %'] = (stats['CRIT Resist %'] || 0) + parseInt(m[1]);
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Increase physical/magic damage on Y monsters by Z%
+      m = part.match(/Increase\s+(physical|magic)\s+damage\s+on\s+(.+?)\s+monsters\s+by\s+(\d+)%/i);
+      if (m) {
+        const type = m[1].charAt(0).toUpperCase() + m[1].slice(1).toLowerCase();
+        const target = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
+        const val = parseInt(m[3]);
+        stats[`${type} Vs ${target} %`] = (stats[`${type} Vs ${target} %`] || 0) + val;
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+
+      // Y% physical/magic damage against Z
+      m = part.match(/(\d+)%\s+(physical|magic)\s+damage\s+against\s+(.+?)(?:s)?$/i);
+      if (m) {
+        const val = parseInt(m[1]);
+        const type = m[2].charAt(0).toUpperCase() + m[2].slice(1).toLowerCase();
+        let target = m[3].trim();
+        target = target.charAt(0).toUpperCase() + target.slice(1).toLowerCase();
+        if (target.endsWith('s') && target.toLowerCase() !== 'boss') {
+          target = target.slice(0, -1);
+        }
+        stats[`${type} Vs ${target} %`] = (stats[`${type} Vs ${target} %`] || 0) + val;
+        pendingStats.forEach(s => unparsed.push(s));
+        pendingStats = [];
+        continue;
+      }
+      
+      // Single stat
+      m = part.match(/^(HP|SP|ATK|MATK|FLEE|Flee|HIT|STR|AGI|VIT|INT|DEX|LUK|DEF|MDEF|Perfect Dodge|Crit|Critical|(?:Max\s*)?Weight|Max\s*HP|Max\s*SP|Maximum HP|Maximum SP)\s*\+\s*(\d+)(%?)$/i);
+      if (m) {
+        let stat = m[1].toUpperCase().replace(/\s+/g, '');
+        if (stat === 'MAXIMUMHP' || stat === 'MAXHP') stat = 'HP';
+        if (stat === 'MAXIMUMSP' || stat === 'MAXSP') stat = 'SP';
+        if (stat === 'PERFECTDODGE') stat = 'Perfect Dodge';
+        if (stat === 'MAXWEIGHT' || stat === 'WEIGHT') stat = 'Max Weight';
+        
+        const val = parseInt(m[2]);
+        const suffix = m[3] || '';
+        
+        if (stat === 'CRIT' || stat === 'CRITICAL') {
+          stats['CRIT %'] = (stats['CRIT %'] || 0) + val;
+          pendingStats.forEach(p => {
+            stats[p + suffix] = (stats[p + suffix] || 0) + val;
+          });
+          pendingStats = [];
+          continue;
+        }
+        
+        stats[stat + suffix] = (stats[stat + suffix] || 0) + val;
+        pendingStats.forEach(p => {
+          stats[p + suffix] = (stats[p + suffix] || 0) + val;
+        });
+        pendingStats = [];
+        continue;
+      }
+      
+      unparsed.push(part);
+      pendingStats.forEach(s => unparsed.push(s));
+      pendingStats = [];
+    }
+    pendingStats.forEach(s => unparsed.push(s));
+    return { stats, unparsed };
+  }
+
+  // Aggregate stats from checked items in both lists
+  function getAggregatedStats() {
+    const totalStats = {};
+    const totalUnparsed = [];
+
+    const processList = (listName, subState) => {
+      const listData = DATA.itemLists?.find(l => l.name === listName);
+      if (!listData || !listData.items) return;
+      
+      listData.items.forEach(id => {
+        if (subState[id]?.have) {
+          const effectText = listData.effects?.[id];
+          if (effectText) {
+            const { stats, unparsed } = parseEffect(effectText);
+            for (const [stat, val] of Object.entries(stats)) {
+              totalStats[stat] = (totalStats[stat] || 0) + val;
+            }
+            unparsed.forEach(u => {
+              const itemInfo = DATA.items[id];
+              totalUnparsed.push({
+                effectText: u,
+                itemId: id,
+                itemName: itemInfo ? itemInfo.name : `Item #${id}`,
+                listName: listName
+              });
+            });
+          }
+        }
+      });
+    };
+
+    processList("Deposit List", trackerState.deposits);
+    processList("Unlock List", trackerState.unlocks);
+
+    return { parsed: totalStats, unparsed: totalUnparsed };
+  }
+
+  function getListCounts(listName, subState) {
+    const listData = DATA.itemLists?.find(l => l.name === listName);
+    if (!listData || !listData.items) return { have: 0, want: 0, total: 0 };
+    
+    let have = 0;
+    let want = 0;
+    listData.items.forEach(id => {
+      if (subState[id]?.have) have++;
+      if (subState[id]?.want) want++;
+    });
+    
+    return { have, want, total: listData.items.length };
+  }
+
+  // ===== RENDER DASHBOARD =====
+  function trackerRenderDashboard() {
+    checkTabChange("dashboard");
+    loadTrackerState();
+    const mainContainer = document.getElementById('mainContent');
+    if (!mainContainer) return;
+    
+    const depCounts = getListCounts("Deposit List", trackerState.deposits);
+    const unlCounts = getListCounts("Unlock List", trackerState.unlocks);
+    
+    const depPct = depCounts.total ? Math.round((depCounts.have / depCounts.total) * 100) : 0;
+    const unlPct = unlCounts.total ? Math.round((unlCounts.have / unlCounts.total) * 100) : 0;
+    
+    const { parsed, unparsed } = getAggregatedStats();
+    
+    let statsHtml = "";
+    if (Object.keys(parsed).length === 0 && unparsed.length === 0) {
+      statsHtml = `<div class="empty-msg-centered" style="padding: 10px;">Check items as 'Have' in the lists to see aggregated stat bonuses here.</div>`;
+    } else {
+      statsHtml += `<div class="dt-stats-grid">`;
+      const sortedKeys = Object.keys(parsed).sort();
+      sortedKeys.forEach(stat => {
+        const isPercent = stat.includes('%');
+        const displayName = isPercent ? stat.replace('%', '').trim() : stat;
+        const suffix = isPercent ? '%' : '';
+        const value = parsed[stat];
+        const sign = value >= 0 ? '+' : '';
+        statsHtml += `
+          <div class="dt-stat-item">
+            <span class="dt-stat-name">${displayName}</span>
+            <span class="dt-stat-val">${sign}${value}${suffix}</span>
+          </div>
+        `;
+      });
+      statsHtml += `</div>`;
+      
+      if (unparsed.length > 0) {
+        const sortedUnparsed = [...unparsed].sort((a, b) => {
+          const listCompare = a.listName.localeCompare(b.listName);
+          if (listCompare !== 0) return listCompare;
+          const nameCompare = a.itemName.localeCompare(b.itemName);
+          if (nameCompare !== 0) return nameCompare;
+          return a.effectText.localeCompare(b.effectText);
+        });
+        statsHtml += `
+          <div class="dt-other-effects">
+            <div class="dt-unparsed-title">Special / Unparsed Effects</div>
+            <div class="dt-unparsed-list">
+              ${sortedUnparsed.map(item => `
+                <div class="dt-unparsed-card">
+                  <div class="dt-unparsed-header">
+                    <span class="dt-unparsed-text">${item.effectText}</span>
+                    <span class="dt-unparsed-badge badge--${item.listName === 'Deposit List' ? 'deposit' : 'unlock'}">
+                      ${item.listName === 'Deposit List' ? 'Deposit' : 'Unlock'}
+                    </span>
+                  </div>
+                  <div class="dt-unparsed-source">
+                    <span class="dt-unparsed-icon">${renderItemIcon(item.itemId)}</span>
+                    <a href="#" onclick="window.navigateToTrackerItem(${item.itemId}); return false;" class="item-link">${item.itemName}</a>
+                    <span class="item-row-id" style="margin-left: 4px;">#${item.itemId}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    mainContainer.innerHTML = `
+      <div class="lab-main">
+        <div class="lab-section">
+          <div class="lab-section-header">
+            <span class="lab-section-title">
+              <span class="lab-section-icon" data-svg-icon="tracker14"></span>
+              Deposit & Unlock Tracker
+            </span>
+            <span class="lab-section-meta">Replaces spreadsheets for tracking card unlocks and equipment deposits.</span>
+          </div>
+          
+          <div class="dt-dashboard">
+            <div class="dt-cards-container">
+              <!-- Deposits Card -->
+              <div class="dt-progress-card">
+                <span class="dt-card-title">Equipment & Costume Deposits</span>
+                <div class="dt-card-stats">
+                  <span>Progress: <strong>${depCounts.have} / ${depCounts.total}</strong> (${depPct}%)</span>
+                  <span>Want: <strong>${depCounts.want}</strong></span>
+                </div>
+                <div class="dt-progress-bar">
+                  <div class="dt-progress-fill" style="width: ${depPct}%"></div>
+                </div>
+                <a href="#" class="dt-card-link" onclick="switchTab('lab-tracker-deposits'); return false;">View & Edit Deposits →</a>
+              </div>
+              
+              <!-- Unlocks Card -->
+              <div class="dt-progress-card">
+                <span class="dt-card-title">Card Unlocks</span>
+                <div class="dt-card-stats">
+                  <span>Progress: <strong>${unlCounts.have} / ${unlCounts.total}</strong> (${unlPct}%)</span>
+                  <span>Want: <strong>${unlCounts.want}</strong></span>
+                </div>
+                <div class="dt-progress-bar">
+                  <div class="dt-progress-fill" style="width: ${unlPct}%"></div>
+                </div>
+                <a href="#" class="dt-card-link" onclick="switchTab('lab-tracker-unlocks'); return false;">View & Edit Unlocks →</a>
+              </div>
+            </div>
+            
+            <div class="dt-stats-summary">
+              <span class="dt-card-title">Aggregated Active Bonuses</span>
+              ${statsHtml}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    if (window.applySvgIcons) window.applySvgIcons(mainContainer);
+  }
+
+  function getSortIndicator(key) {
+    if (sortState.key !== key) return ' <span class="dt-sort-arrow">↕</span>';
+    return sortState.dir === 'asc' ? ' <span class="dt-sort-arrow">▲</span>' : ' <span class="dt-sort-arrow">▼</span>';
+  }
+
+  // ===== RENDER LIST VIEW =====
+  function trackerRenderList(listName, subState) {
+    checkTabChange(listName);
+    loadTrackerState();
+    const mainContainer = document.getElementById('mainContent');
+    if (!mainContainer) return;
+    
+    const listData = DATA.itemLists?.find(l => l.name === listName);
+    if (!listData) {
+      mainContainer.innerHTML = `<div class="empty-msg-centered">Error: ${listName} data not loaded.</div>`;
+      return;
+    }
+    
+    const isDeposit = listName === "Deposit List";
+    
+    // Resolve all item details
+    const items = listData.items.map(id => {
+      const itemInfo = DATA.items[id];
+      return {
+        id: id,
+        name: itemInfo ? itemInfo.name : `Item #${id}`,
+        desc: itemInfo ? itemInfo.desc : "",
+        effect: listData.effects?.[id] || "",
+        class: listData.classes?.[id] || ""
+      };
+    });
+    
+    // Filter
+    let filtered = items.filter(item => {
+      // Search
+      const searchMatch = !currentSearchQuery || 
+        item.name.toLowerCase().includes(currentSearchQuery) || 
+        item.id.toString().includes(currentSearchQuery) ||
+        item.effect.toLowerCase().includes(currentSearchQuery);
+      
+      if (!searchMatch) return false;
+      
+      // Filter status
+      const isHave = !!subState[item.id]?.have;
+      const isWant = !!subState[item.id]?.want;
+      
+      if (currentFilter === "need") {
+        if (isHave) return false;
+      } else if (currentFilter === "want") {
+        if (!isWant) return false;
+      } else if (currentFilter === "done") {
+        if (!isHave) return false;
+      }
+      
+      // Filter category (only for Deposits)
+      if (isDeposit && currentClassFilter !== "all") {
+        const cat = getItemCategory(item.class).toLowerCase();
+        if (cat !== currentClassFilter) return false;
+      }
+      
+      return true;
+    });
+    
+    // Sort
+    filtered.sort((a, b) => {
+      let valA, valB;
+      
+      if (sortState.key === "default") {
+        const haveA = subState[a.id]?.have ? 1 : 0;
+        const haveB = subState[b.id]?.have ? 1 : 0;
+        if (haveA !== haveB) return haveB - haveA;
+        
+        const wantA = subState[a.id]?.want ? 1 : 0;
+        const wantB = subState[b.id]?.want ? 1 : 0;
+        if (wantA !== wantB) return wantB - wantA;
+        
+        return a.name.localeCompare(b.name);
+      }
+      
+      if (sortState.key === "have") {
+        valA = subState[a.id]?.have ? 1 : 0;
+        valB = subState[b.id]?.have ? 1 : 0;
+      } else if (sortState.key === "want") {
+        valA = subState[a.id]?.want ? 1 : 0;
+        valB = subState[b.id]?.want ? 1 : 0;
+      } else if (sortState.key === "name") {
+        valA = a.name;
+        valB = b.name;
+      } else if (sortState.key === "effect") {
+        valA = a.effect;
+        valB = b.effect;
+      } else if (sortState.key === "class") {
+        valA = getItemCategory(a.class);
+        valB = getItemCategory(b.class);
+      } else if (sortState.key === "id") {
+        valA = a.id;
+        valB = b.id;
+      }
+      
+      if (typeof valA === "string") {
+        const cmp = valA.localeCompare(valB);
+        return sortState.dir === "asc" ? cmp : -cmp;
+      } else {
+        const diff = valA - valB;
+        if (diff !== 0) return sortState.dir === "asc" ? diff : -diff;
+        return a.name.localeCompare(b.name);
+      }
+    });
+    
+    const counts = getListCounts(listName, subState);
+    const pct = counts.total ? Math.round((counts.have / counts.total) * 100) : 0;
+    
+    const tableRows = filtered.map(item => {
+      const isHave = !!subState[item.id]?.have;
+      const isWant = !!subState[item.id]?.want;
+      const catClass = getItemCategory(item.class);
+      
+      return `
+        <tr class="dt-row ${isHave ? 'dt-row--have' : ''} ${isWant ? 'dt-row--want' : ''}" id="dt-row-${item.id}">
+          <td class="dt-col-check">
+            <input type="checkbox" class="dt-checkbox" ${isHave ? 'checked' : ''} 
+              onchange="window.toggleTrackerHave('${listName}', ${item.id}, this.checked)">
+          </td>
+          <td class="dt-col-star">
+            <button class="dt-star-btn ${isWant ? 'active' : ''}" id="dt-star-${item.id}"
+              onclick="window.toggleTrackerWant('${listName}', ${item.id})">
+              ${isWant ? '★' : '☆'}
+            </button>
+          </td>
+          <td class="dt-col-icon">
+            ${renderItemIcon(item.id)}
+          </td>
+          <td class="dt-col-item">
+            <a href="#" onclick="window.navigateToTrackerItem(${item.id}); return false;" class="item-link">${item.name}</a>
+          </td>
+          <td class="dt-col-effect">
+            ${item.effect}
+          </td>
+          <td class="dt-col-id">
+            ${item.id}
+          </td>
+          ${isDeposit ? `<td class="dt-col-class">${catClass}</td>` : ''}
+        </tr>
+      `;
+    }).join('');
+
+    let classFilterHtml = "";
+    if (isDeposit) {
+      classFilterHtml = `
+        <div class="dt-class-filters">
+          <button class="dt-class-btn ${currentClassFilter === 'all' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'all')">All Types</button>
+          <button class="dt-class-btn ${currentClassFilter === 'card' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'card')">Cards</button>
+          <button class="dt-class-btn ${currentClassFilter === 'equipment' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'equipment')">Equip</button>
+          <button class="dt-class-btn ${currentClassFilter === 'costume' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'costume')">Costume</button>
+        </div>
+      `;
+    }
+
+    mainContainer.innerHTML = `
+      <div class="lab-main">
+        <div class="lab-section">
+          <div class="lab-section-header">
+            <span class="lab-section-title">
+              <span class="lab-section-icon" data-svg-icon="tracker14"></span>
+              ${isDeposit ? "Equipment & Costume Deposits" : "Card Unlocks"}
+            </span>
+            <span class="lab-section-meta">${counts.have} of ${counts.total} collected (${pct}%) — ${counts.want} wanted</span>
+          </div>
+          
+          <div class="dt-toolbar">
+            <div class="dt-search-wrapper">
+              <span class="dt-search-icon">🔍</span>
+              <input type="text" class="dt-search-input" placeholder="Search by name or ID…" 
+                value="${currentSearchQuery}" oninput="window.handleTrackerSearch('${listName}', this.value)">
+            </div>
+            
+            ${classFilterHtml}
+            
+            <div class="dt-filter-bar">
+              <button class="dt-filter-btn ${currentFilter === 'all' ? 'active' : ''}" onclick="window.setTrackerFilter('${listName}', 'all')">All</button>
+              <button class="dt-filter-btn ${currentFilter === 'need' ? 'active' : ''}" onclick="window.setTrackerFilter('${listName}', 'need')">Need</button>
+              <button class="dt-filter-btn ${currentFilter === 'want' ? 'active' : ''}" onclick="window.setTrackerFilter('${listName}', 'want')">Want</button>
+              <button class="dt-filter-btn ${currentFilter === 'done' ? 'active' : ''}" onclick="window.setTrackerFilter('${listName}', 'done')">Done</button>
+            </div>
+          </div>
+          
+          <div class="dt-table-wrapper">
+            <table class="dt-table">
+              <thead>
+                <tr>
+                  <th class="dt-col-check dt-sortable" onclick="window.handleTrackerSort('${listName}', 'have')">Have${getSortIndicator('have')}</th>
+                  <th class="dt-col-star dt-sortable" onclick="window.handleTrackerSort('${listName}', 'want')">Want${getSortIndicator('want')}</th>
+                  <th class="dt-col-icon">Icon</th>
+                  <th class="dt-col-item dt-sortable" onclick="window.handleTrackerSort('${listName}', 'name')">Item Name${getSortIndicator('name')}</th>
+                  <th class="dt-col-effect dt-sortable" onclick="window.handleTrackerSort('${listName}', 'effect')">Effect${getSortIndicator('effect')}</th>
+                  <th class="dt-col-id dt-sortable" onclick="window.handleTrackerSort('${listName}', 'id')">ID${getSortIndicator('id')}</th>
+                  ${isDeposit ? `<th class="dt-col-class dt-sortable" onclick="window.handleTrackerSort('${listName}', 'class')">Class${getSortIndicator('class')}</th>` : ''}
+                </tr>
+              </thead>
+              <tbody>
+                ${tableRows || `<tr><td colspan="${isDeposit ? 7 : 6}" class="empty-msg-centered">No items found matching the filter.</td></tr>`}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    if (window.applySvgIcons) window.applySvgIcons(mainContainer);
+  }
+
+  function trackerRenderDeposits() {
+    trackerRenderList("Deposit List", trackerState.deposits);
+  }
+
+  function trackerRenderUnlocks() {
+    trackerRenderList("Unlock List", trackerState.unlocks);
+  }
+
+  // ===== GLOBAL INTERACTION HANDLERS =====
+
+  window.toggleTrackerHave = function(listName, itemId, checked) {
+    loadTrackerState();
+    const subState = listName === "Deposit List" ? trackerState.deposits : trackerState.unlocks;
+    if (!subState[itemId]) subState[itemId] = {};
+    subState[itemId].have = checked;
+    saveTrackerState();
+    
+    const row = document.getElementById(`dt-row-${itemId}`);
+    if (row) {
+      if (checked) row.classList.add('dt-row--have');
+      else row.classList.remove('dt-row--have');
+    }
+  };
+
+  window.toggleTrackerWant = function(listName, itemId) {
+    loadTrackerState();
+    const subState = listName === "Deposit List" ? trackerState.deposits : trackerState.unlocks;
+    if (!subState[itemId]) subState[itemId] = {};
+    
+    const isWant = !subState[itemId].want;
+    subState[itemId].want = isWant;
+    saveTrackerState();
+    
+    const row = document.getElementById(`dt-row-${itemId}`);
+    if (row) {
+      if (isWant) row.classList.add('dt-row--want');
+      else row.classList.remove('dt-row--want');
+    }
+    
+    const starBtn = document.getElementById(`dt-star-${itemId}`);
+    if (starBtn) {
+      if (isWant) {
+        starBtn.classList.add('active');
+        starBtn.textContent = '★';
+      } else {
+        starBtn.classList.remove('active');
+        starBtn.textContent = '☆';
+      }
+    }
+  };
+
+  let searchTimeout = null;
+  window.handleTrackerSearch = function(listName, query) {
+    currentSearchQuery = query.toLowerCase().trim();
+    if (searchTimeout) clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      if (listName === "Deposit List") trackerRenderDeposits();
+      else trackerRenderUnlocks();
+    }, 200);
+  };
+
+  window.setTrackerFilter = function(listName, filter) {
+    currentFilter = filter;
+    if (listName === "Deposit List") trackerRenderDeposits();
+    else trackerRenderUnlocks();
+  };
+
+  window.setTrackerClassFilter = function(listName, filter) {
+    currentClassFilter = filter;
+    trackerRenderDeposits();
+  };
+
+  window.handleTrackerSort = function(listName, key) {
+    if (sortState.key === key) {
+      sortState.dir = sortState.dir === "asc" ? "desc" : "asc";
+    } else {
+      sortState.key = key;
+      sortState.dir = "asc";
+    }
+    if (listName === "Deposit List") trackerRenderDeposits();
+    else trackerRenderUnlocks();
+  };
+
+  window.navigateToTrackerItem = function(itemId) {
+    if (typeof navigateToItem === 'function') {
+      navigateToItem(itemId);
+    }
+  };
+
+  // Register parent & children tabs under Labs
+  window.registerLabExperiment?.('lab-tracker', {
+    tabId:        'lab-tracker',
+    title:        'Deposit & Unlock Tracker',
+    sidebarLabel: 'Deposit & Unlock',
+    sidebarIcon:  window.SVG_ICONS?.tracker14 || '',
+    renderMain:   trackerRenderDashboard,
+    children: [
+      { tabId: 'lab-tracker',          sidebarLabel: 'Summary',  renderMain: trackerRenderDashboard },
+      { tabId: 'lab-tracker-deposits', sidebarLabel: 'Deposits', renderMain: trackerRenderDeposits },
+      { tabId: 'lab-tracker-unlocks',  sidebarLabel: 'Unlocks',  renderMain: trackerRenderUnlocks },
+    ]
+  });
+})();
