@@ -13950,7 +13950,7 @@
   },
   "4515": {
     "name": "Chimera Card [Void]",
-    "desc": "[ ^2EDE28Gunslinger Class^000000 ]\nIncrease ^008800Desperado^000000 and ^008800Rapid Shower^000000 damage by 10%.\n------------------------\nAdds a 20% chance of bypassing ^008800Land Protector^000000 when using ^008800Desperado^000000 skill.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nAdds a 10% chance of bypassing ^008800Land Protector^000000 when using ^008800Desperado^000000 skill.\n------------------------\nClass: ^777777Card^000000\nCompound on: ^777777Accessory^000000\nWeight: ^7777771^000000"
+    "desc": "[ ^2EDE28Gunslinger Class^000000 ]\nIncrease ^008800Desperado^000000 and ^008800Rapid Shower^000000 damage by 15%.\n------------------------\nAdds a 20% chance of bypassing ^008800Land Protector^000000 when using ^008800Desperado^000000 skill.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nAdds a 10% chance of bypassing ^008800Land Protector^000000 when using ^008800Desperado^000000 skill.\n------------------------\nClass: ^777777Card^000000\nCompound on: ^777777Accessory^000000\nWeight: ^7777771^000000"
   },
   "4516": {
     "name": "Owl Baron Card [Void]",
@@ -13994,7 +13994,7 @@
   },
   "4526": {
     "name": "High Wizard I Card",
-    "desc": "Enable to see hidden enemies.\n[ ^2EDE28Wizard Class^000000 ]\nMATK + 7%\nIncrease Jack Frost damage by 7%\nIncrease Jupitel Thunder damage by 10%\nClass: ^777777Card^000000\nCompound on: ^777777Headgear^000000\nWeight: ^7777771^000000"
+    "desc": "Enable to see hidden enemies.\n[ ^2EDE28Wizard Class^000000 ]\nMATK + 7%\nMagic Critical Rate + 1%.\nIncrease Jack Frost damage by 7%\nIncrease Jupitel Thunder damage by 10%\nClass: ^777777Card^000000\nCompound on: ^777777Headgear^000000\nWeight: ^7777771^000000"
   },
   "4527": {
     "name": "Sniper I Card",
@@ -14097,32 +14097,32 @@
     "desc": ""
   },
   "4553": {
-    "name": "Sid Card",
-    "desc": ""
+    "name": "Clown I Card",
+    "desc": "Flee +30\nIncrease ^0000FFArrow Vulcan^000000 damage by 40%.\nIncrease ^008800Severe Rainstorm^000000, ^008800Quiet, I'm Playing^000000 and ^008800Stop Looking At Me^000000 damage by 25%.\n[^880088If base ^006600DEX^000000 at least 150^000000]\nIncrease INT and DEX + 3, per ^885500(Refine Rate)^000000\n[^880088If base ^006600VIT^000000 at least 160^000000]\nIncrease Max HP by 3%, per ^885500(Refine Rate)^000000\n------------------------\n[ ^008000Deposit Effect^000000 ]\nHP +2%\n------------------------\n^FF00002 Clown Card including tier 1 will not work.^000000\nMisc.:^6666CC Card^000000\nCompound on:^00CC33 Headgear^000000\nWeight:^006600 1^000000"
   },
   "4554": {
-    "name": "Diego Card",
-    "desc": ""
+    "name": "Professor I Card",
+    "desc": "MATK +8%\nHard Delay -3%\nHas a chance of auto-casting ^0000FFSpider Web^000000 when attacking & receiving physical damage.\nEnable to use Level 3 ^0000FFDeluge, Violent Gale, Volcano & Land Protector^000000.\n------------------------\n[ ^880088 Sage Class^000000 ]\nIncrease ^008800Psychic Wave^000000 damage by 50%.\nAll bolt skills has a 5% chance to trigger a 2x2 AoE damage effect.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nMATK +1%\n------------------------\n^FF00002 Professor Card including tier 1 will not work.^000000\nMisc.:^6666CC Card^000000\nCompound on:^00CC33 Accessory^000000\nWeight:^006600 1^000000"
   },
   "4555": {
-    "name": "Scrat Card",
-    "desc": ""
+    "name": "Champion I Card",
+    "desc": "Enable to use ^0000FFBody Relocation^000000.\nHas a 0.50% chance of auto casting Level 1 ^885500Critical Explosion^000000.\n------------------------\nIncrease ^0000FFGate of Hell^000000, ^0000FFGuillotine Drop^000000 and ^0000FFSpirit Breaker^000000 damage by 50%.\n------------------------\n[ ^880088 Monk Class^000000 ]\nIncrease damage of ^885500Tiger Knuckle Fist, Triple Attack, Palm Push Strike, Combo Finish & Chain Crush Combo^000000.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nATK +1%\n------------------------\n^FF00002 Champion Card including tier 1 will not work.^000000\nMisc.:^6666CC Card^000000\nCompound on:^00CC33 Weapon^000000\nWeight:^006600 1^000000"
   },
   "4556": {
-    "name": "Fenrir Card",
-    "desc": ""
+    "name": "Creator I Card",
+    "desc": "STR +3, INT +3, VIT +6\nEnable to use ^0000FFCall Homunculus, Rest & Resurrect Homunculus^000000.\nIncrease ^885500Pyro Destruction^000000, ^885500Chemical Explosion^000000, ^885500Acid Demonstration^000000 and ^885500Cart Cannon^000000 damage by 20%.\n------------------------\n^885500Acid Demonstration^000000 and ^885500Pyro Destruction^000000 has a 7% chance to trigger a 2x2 AoE damage effect.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nAcid Demo damage +2%\n------------------------\nMisc.:^6666CC Card^000000\nCompound on:^00CC33 Accessory^000000\nWeight:^006600 1^000000"
   },
   "4557": {
-    "name": "Weakened Fenrir Card",
-    "desc": ""
+    "name": "Stalker I Card",
+    "desc": "Flee +30\nPerfect Dodge +3\nEnable to use Level 5 ^0000FFChase Walk^000000.\n------------------------\n[ ^880088 Stalker Class^000000 ]\nIncrease ^885500Triangle Shot^000000 damage by 20%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nRange Attack +1%\n------------------------\nMisc.:^6666CC Card^000000\nCompound on:^00CC33 Garment^000000\nWeight:^006600 1^000000"
   },
   "4558": {
-    "name": "",
-    "desc": ""
+    "name": "Paladin I Card",
+    "desc": "VIT +6\nEnable to use Level 8 ^0000FFAuto Guard^000000.\n------------------------\nIncrease ^885500Sacrifice^000000, ^885500Shield Chain^000000 and ^885500Zafra Oznerol^000000 damage by 60%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nHP +2%\n------------------------\nMisc.:^6666CC Card^000000\nCompound on:^00CC33 Accessory^000000\nWeight:^006600 1^000000"
   },
   "4559": {
-    "name": "Evil Morocc card",
-    "desc": ""
+    "name": "Gypsy I Card",
+    "desc": "Flee +30\nIncrease ^0000FFThrow Arrow^000000 damage by 40%.\nIncrease ^008800Severe Rainstorm^000000, ^008800Quiet, I'm Playing^000000 and ^008800Stop Looking At Me^000000 damage by 25%.\n[^880088If base ^006600AGI^000000 at least 150^000000]\nIncrease Flee + 5, per ^885500(Refine Rate)^000000\n[^880088If base ^006600LUK^000000 at least 160^000000]\nIncrease Perfect Dodge + 2, per ^885500(Refine Rate)^000000\n------------------------\n[ ^008000Deposit Effect^000000 ]\nFLEE +6, Perfect Dodge +2\n------------------------\n^FF00002 Gypsy Card including tier 1 will not work.^000000\nMisc.:^6666CC Card^000000\nCompound on:^00CC33 Headgear^000000\nWeight:^006600 1^000000"
   },
   "4560": {
     "name": "Clown Card",
