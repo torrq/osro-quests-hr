@@ -2,7 +2,7 @@
 // OSRO Quest Helper - Configuration
 // ============================================================================
 
-const VERSION = 117;
+const VERSION = 118;
 const FLAVOR = 'Highrate';
 
 // === DATA SOURCE CONFIGURATION ===
@@ -30,8 +30,6 @@ const FILES = {
   quests:          "osrohr_quests.json",
   shops:           "osrohr_shops.json",
   icons:           "osrohr_item_icons.json",
-  searchIndexName: "osrohr_search_index_name.json",
-  searchIndexDesc: "osrohr_search_index_desc.json",
   spriteMap:       "osrohr_sprite_map.json",
   itemLists:       "osrohr_item_lists.json",
 };
