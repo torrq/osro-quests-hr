@@ -35,13 +35,40 @@ const FILES = {
 };
 
 const LOCAL_STORAGE = {
-  "config": "osrohr_config",
-  "theme": "osrohr_theme",
-  "autoloot_data": "osrohr_autoloot_data",
+  "config":         "osrohr_config",
+  "theme":          "osrohr_theme",
+  "autoloot_data":  "osrohr_autoloot_data",
   "autoloot_names": "osrohr_autoloot_names",
-  "item_values":   "osrohr_item_values",
-  "lab_data":      "osrohr_lab_data"
+  "item_values":    "osrohr_item_values",
+  "lab_data":       "osrohr_lab_data",
+  "bookmarks":      "osrohr_bookmarks",
+  "lab_gem":        "osrohr_lab_gem_v1",
+  "lab_credit":     "osrohr_lab_credit_v1",
+  "lab_tracker":    "osrohr_lab_tracker_v1"
 };
+
+// Keys synchronized across devices when linked (theme stays per device)
+const SYNC_KEYS = [
+  LOCAL_STORAGE.config,
+  LOCAL_STORAGE.autoloot_data,
+  LOCAL_STORAGE.autoloot_names,
+  LOCAL_STORAGE.item_values,
+  LOCAL_STORAGE.lab_data,
+  LOCAL_STORAGE.bookmarks,
+  LOCAL_STORAGE.lab_gem,
+  LOCAL_STORAGE.lab_credit,
+  LOCAL_STORAGE.lab_tracker
+];
+
+// Cloud worker & sync configuration
+const CLOUDFLARE_WORKER_URL = window.CLOUDFLARE_WORKER_URL || "https://osro-push-worker.osro-push-worker.workers.dev";
+const GOOGLE_CLIENT_ID = window.GOOGLE_CLIENT_ID || ""; // Google OAuth Web Client ID — leave empty to hide Google sign-in
+
+// Top-level const doesn't create window properties, so expose these explicitly
+window.CLOUDFLARE_WORKER_URL = CLOUDFLARE_WORKER_URL;
+window.GOOGLE_CLIENT_ID      = GOOGLE_CLIENT_ID;
+window.SYNC_KEYS             = SYNC_KEYS;
+window.LOCAL_STORAGE         = LOCAL_STORAGE;
 
 const USE_LOCAL_SERVER = isLocalLikeHost(window.location.hostname);
 const prefix = USE_LOCAL_SERVER ? LOCAL_PREFIX : REMOTE_PREFIX;

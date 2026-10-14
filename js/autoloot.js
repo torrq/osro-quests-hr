@@ -13,8 +13,13 @@ const AUTOLOOT_CONFIG = {
 // ===== STORAGE =====
 
 function saveAutoloot() {
-  localStorage.setItem(LOCAL_STORAGE.autoloot_data, JSON.stringify(state.autolootData));
-  localStorage.setItem(LOCAL_STORAGE.autoloot_names, JSON.stringify(state.autolootNames));
+  if (window.osroStore) {
+    osroStore.setItem(LOCAL_STORAGE.autoloot_data, state.autolootData);
+    osroStore.setItem(LOCAL_STORAGE.autoloot_names, state.autolootNames);
+  } else {
+    localStorage.setItem(LOCAL_STORAGE.autoloot_data, JSON.stringify(state.autolootData));
+    localStorage.setItem(LOCAL_STORAGE.autoloot_names, JSON.stringify(state.autolootNames));
+  }
   renderAutolootSidebar();
   renderAutolootMain();
 }
@@ -392,7 +397,11 @@ function updateSlotName(slot, name) {
   } else {
     delete state.autolootNames[slot];
   }
-  localStorage.setItem(LOCAL_STORAGE.autoloot_names, JSON.stringify(state.autolootNames));
+  if (window.osroStore) {
+    osroStore.setItem(LOCAL_STORAGE.autoloot_names, state.autolootNames);
+  } else {
+    localStorage.setItem(LOCAL_STORAGE.autoloot_names, JSON.stringify(state.autolootNames));
+  }
   renderAutolootSidebar();
 }
 

@@ -37,8 +37,8 @@ window.state = {
   },
   expandedTreeItems: new Set(),
   showFullTotals: false,
-  autolootData: JSON.parse(localStorage.getItem(LOCAL_STORAGE.autoloot_data)) || {},
-  autolootNames: JSON.parse(localStorage.getItem(LOCAL_STORAGE.autoloot_names)) || {},
+  autolootData: (window.osroStore ? osroStore.getJson(LOCAL_STORAGE.autoloot_data, {}) : JSON.parse(localStorage.getItem(LOCAL_STORAGE.autoloot_data))) || {},
+  autolootNames: (window.osroStore ? osroStore.getJson(LOCAL_STORAGE.autoloot_names, {}) : JSON.parse(localStorage.getItem(LOCAL_STORAGE.autoloot_names))) || {},
   selectedAutolootSlot: 1,
   selectedItemId: null,
   showValuesOnly: false,
@@ -169,13 +169,17 @@ window.formatValue   = formatValue;
 
 function loadConfig() {
   try {
-    return JSON.parse(localStorage.getItem(LOCAL_STORAGE.config)) || {};
+    return (window.osroStore ? osroStore.getJson(LOCAL_STORAGE.config, {}) : JSON.parse(localStorage.getItem(LOCAL_STORAGE.config))) || {};
   } catch { return {}; }
 }
 
 function saveConfig(patch) {
   const current = loadConfig();
-  localStorage.setItem(LOCAL_STORAGE.config, JSON.stringify({ ...current, ...patch }));
+  if (window.osroStore) {
+    osroStore.setItem(LOCAL_STORAGE.config, { ...current, ...patch });
+  } else {
+    localStorage.setItem(LOCAL_STORAGE.config, JSON.stringify({ ...current, ...patch }));
+  }
 }
 
 const SECTION_KEYS = ['desc', 'notes', 'reqs', 'value', 'requiredby', 'producedby'];
@@ -473,7 +477,7 @@ function loadItemValuesFromStorage() {
   // Custom mode: load canonical remote defaults, then overlay localStorage (if any)
   return loadItemValuesFromRemote(false)
     .then(() => {
-      const stored = localStorage.getItem(LOCAL_STORAGE.item_values);
+      const stored = window.osroStore ? osroStore.getItem(LOCAL_STORAGE.item_values) : localStorage.getItem(LOCAL_STORAGE.item_values);
       if (!stored) return;
       try {
         const values = JSON.parse(stored);
@@ -482,7 +486,8 @@ function loadItemValuesFromStorage() {
         console.log(`[Init] Overlayed ${Object.keys(values).length} custom item values from localStorage`);
       } catch (err) {
         console.error("[Init] Failed to parse stored item values:", err);
-        localStorage.removeItem(LOCAL_STORAGE.item_values);
+        if (window.osroStore) osroStore.removeItem(LOCAL_STORAGE.item_values);
+        else localStorage.removeItem(LOCAL_STORAGE.item_values);
       }
     });
 }
@@ -523,12 +528,11 @@ function loadDefaultValuesIntoCustom() {
   return fetchJSON(AUTO_IMPORT_URLS.values).then(remote => {
     if (!remote) { showToast('Could not reach default values', 'error'); return; }
     // Merge: remote values overwrite matching ids, custom-only items are preserved
-    const stored = localStorage.getItem(LOCAL_STORAGE.item_values);
-    let existing = {};
-    try { existing = stored ? JSON.parse(stored) : {}; } catch { existing = {}; }
+    const existing = window.osroStore ? osroStore.getJson(LOCAL_STORAGE.item_values, {}) : (JSON.parse(localStorage.getItem(LOCAL_STORAGE.item_values) || '{}'));
     const merged = { ...existing, ...remote };
     applyItemValues(merged);
-    localStorage.setItem(LOCAL_STORAGE.item_values, JSON.stringify(merged));
+    if (window.osroStore) osroStore.setItem(LOCAL_STORAGE.item_values, merged);
+    else localStorage.setItem(LOCAL_STORAGE.item_values, JSON.stringify(merged));
     showToast(`Loaded ${Object.keys(remote).length} default values`, 'success');
   }).catch(() => showToast('Failed to load default values', 'error'));
 }
@@ -539,13 +543,19 @@ function saveItemValuesToStorage() {
   Object.entries(DATA.items).forEach(([id, item]) => {
     if (item.value > 0) values[id] = item.value;
   });
-  localStorage.setItem(LOCAL_STORAGE.item_values, JSON.stringify(values));
+  if (window.osroStore) osroStore.setItem(LOCAL_STORAGE.item_values, values);
+  else localStorage.setItem(LOCAL_STORAGE.item_values, JSON.stringify(values));
 }
 
 function saveAutolootData() {
   try {
-    localStorage.setItem(LOCAL_STORAGE.autoloot_data, JSON.stringify(state.autolootData));
-    localStorage.setItem(LOCAL_STORAGE.autoloot_names, JSON.stringify(state.autolootNames));
+    if (window.osroStore) {
+      osroStore.setItem(LOCAL_STORAGE.autoloot_data, state.autolootData);
+      osroStore.setItem(LOCAL_STORAGE.autoloot_names, state.autolootNames);
+    } else {
+      localStorage.setItem(LOCAL_STORAGE.autoloot_data, JSON.stringify(state.autolootData));
+      localStorage.setItem(LOCAL_STORAGE.autoloot_names, JSON.stringify(state.autolootNames));
+    }
     console.log("[Autoloot] Saved autoloot data to localStorage");
   } catch (error) {
     console.error("[Autoloot] Failed to save autoloot data:", error);
@@ -1259,6 +1269,36 @@ function selectFirstItem() {
 function render() {
   switchTab(state.currentTab);
 }
+
+// Called by sync.js after a cloud pull changed local storage. Refreshes the
+// in-memory copies that were read at startup so a later save doesn't write
+// stale data back over the synced values.
+function osroOnSyncedDataChanged(changedKeys = []) {
+  const has = k => changedKeys.includes(k);
+
+  if (has(LOCAL_STORAGE.autoloot_data)) {
+    state.autolootData = osroStore.getJson(LOCAL_STORAGE.autoloot_data, {}) || {};
+    for (let i = 1; i <= 10; i++) {
+      if (!state.autolootData[i]) state.autolootData[i] = [];
+    }
+  }
+  if (has(LOCAL_STORAGE.autoloot_names)) {
+    state.autolootNames = osroStore.getJson(LOCAL_STORAGE.autoloot_names, {}) || {};
+  }
+  if (has(LOCAL_STORAGE.config)) {
+    initSettings();
+  }
+
+  // Before startup finishes, initializeData() reads values and renders with the fresh data.
+  if (!window.initState?.complete) return;
+
+  if (has(LOCAL_STORAGE.config) || has(LOCAL_STORAGE.item_values)) {
+    loadItemValuesFromStorage().then(() => render());
+  } else {
+    render();
+  }
+}
+window.osroOnSyncedDataChanged = osroOnSyncedDataChanged;
 
 function toggleSidebar() {
   document.getElementById("sidebar").classList.toggle("open");
@@ -2139,12 +2179,14 @@ function osroNotifyReady({ section, body, tag, url = '' }) {
 // --- NEW CONSTANTS FOR WEB PUSH ---
 // We will generate this key in the next step. It's safe to be public.
 const VAPID_PUBLIC_KEY = "BAet8Vv5lUgSYaJPGzB25Ehhnze2yF7R541mIyyfEoiMmMbZne8t7ckmfiDnOFYUawtMcmmmznobySm8sh-r4zg"; 
-const CLOUDFLARE_WORKER_URL = "https://osro-push-worker.osro-push-worker.workers.dev";
+// CLOUDFLARE_WORKER_URL is defined in config.js
 
 // --- SERVICE WORKER REGISTRATION ---
 if ('serviceWorker' in navigator && 'PushManager' in window) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/osro-quests-hr/sw.js').then(function(registration) {
+    const isGhPages = window.location.pathname.startsWith('/osro-quests-hr');
+    const swUrl = isGhPages ? '/osro-quests-hr/sw.js' : '/sw.js';
+    navigator.serviceWorker.register(swUrl).then(function(registration) {
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
       console.log('ServiceWorker registration failed: ', err);
@@ -2223,11 +2265,18 @@ async function osroScheduleCloudPush(timerId, delayInSeconds, payload) {
   console.log("Attempting to fetch:", `${CLOUDFLARE_WORKER_URL}/schedule`);
   
   try {
+    const headers = { 'Content-Type': 'application/json' };
+    const sessionToken = window.osroSyncGetSessionToken ? window.osroSyncGetSessionToken() : null;
+    if (sessionToken) {
+      headers['Authorization'] = `Bearer ${sessionToken}`;
+    }
+
     const response = await fetch(`${CLOUDFLARE_WORKER_URL}/schedule`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body: JSON.stringify({
         subscription: subscription.toJSON(),
+        deviceId: window.osroSyncGetDeviceId ? window.osroSyncGetDeviceId() : null,
         delay: delayInSeconds,
         payload: payload
       })

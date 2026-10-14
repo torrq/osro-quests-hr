@@ -635,6 +635,8 @@ function loadValuesManagerConfig() {
   let cfg = {};
   if (typeof loadConfig === 'function') {
     cfg = loadConfig() || {};
+  } else if (window.osroStore) {
+    cfg = osroStore.getJson(LOCAL_STORAGE.config, {});
   } else {
     try { cfg = JSON.parse(localStorage.getItem(LOCAL_STORAGE.config)) || {}; } catch { cfg = {}; }
   }
@@ -661,6 +663,8 @@ function saveValuesManagerConfig(patch) {
   let cfg = {};
   if (typeof loadConfig === 'function') {
     cfg = loadConfig() || {};
+  } else if (window.osroStore) {
+    cfg = osroStore.getJson(LOCAL_STORAGE.config, {});
   } else {
     try { cfg = JSON.parse(localStorage.getItem(LOCAL_STORAGE.config)) || {}; } catch { cfg = {}; }
   }
@@ -672,6 +676,8 @@ function saveValuesManagerConfig(patch) {
 
   if (typeof saveConfig === 'function') {
     saveConfig({ valuesManager: next });
+  } else if (window.osroStore) {
+    osroStore.setItem(LOCAL_STORAGE.config, { ...cfg, valuesManager: next });
   } else {
     try {
       localStorage.setItem(LOCAL_STORAGE.config, JSON.stringify({ ...cfg, valuesManager: next }));
@@ -801,7 +807,7 @@ function setValuesManagerSource(src) {
   // Reload values for the new mode
   if (isCustom) {
     // Switch to custom: load from localStorage (or remote if none)
-    const stored = localStorage.getItem(LOCAL_STORAGE.item_values);
+    const stored = window.osroStore ? osroStore.getItem(LOCAL_STORAGE.item_values) : localStorage.getItem(LOCAL_STORAGE.item_values);
     if (stored) {
       try {
         const values = JSON.parse(stored);

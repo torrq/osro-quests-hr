@@ -1,5 +1,5 @@
 (function() {
-  const TRACKER_STORAGE_KEY = 'osrohr_lab_tracker_v1';
+  const TRACKER_STORAGE_KEY = (typeof LOCAL_STORAGE !== 'undefined' && LOCAL_STORAGE.lab_tracker) || 'osrohr_lab_tracker_v1';
   
   let trackerState = {
     deposits: {},
@@ -28,9 +28,9 @@
   
   function loadTrackerState() {
     try {
-      const stored = localStorage.getItem(TRACKER_STORAGE_KEY);
+      const stored = window.osroStore ? osroStore.getJson(TRACKER_STORAGE_KEY) : JSON.parse(localStorage.getItem(TRACKER_STORAGE_KEY));
       if (stored) {
-        trackerState = JSON.parse(stored);
+        trackerState = stored;
       }
     } catch (e) {
       console.error("Failed to load tracker state", e);
@@ -41,7 +41,11 @@
   
   function saveTrackerState() {
     try {
-      localStorage.setItem(TRACKER_STORAGE_KEY, JSON.stringify(trackerState));
+      if (window.osroStore) {
+        osroStore.setItem(TRACKER_STORAGE_KEY, trackerState);
+      } else {
+        localStorage.setItem(TRACKER_STORAGE_KEY, JSON.stringify(trackerState));
+      }
     } catch (e) {
       console.error("Failed to save tracker state", e);
     }
@@ -522,6 +526,7 @@
     const subState = listName === "Deposit List" ? trackerState.deposits : trackerState.unlocks;
     if (!subState[itemId]) subState[itemId] = {};
     subState[itemId].have = checked;
+    subState[itemId].updatedAt = Date.now();
     saveTrackerState();
     
     const row = document.getElementById(`dt-row-${itemId}`);
@@ -538,6 +543,7 @@
     
     const isWant = !subState[itemId].want;
     subState[itemId].want = isWant;
+    subState[itemId].updatedAt = Date.now();
     saveTrackerState();
     
     const row = document.getElementById(`dt-row-${itemId}`);
@@ -590,9 +596,11 @@
     const listData = getListData(listName);
     if (!listData) return;
     
+    const now = Date.now();
     listData.items.forEach(id => {
       if (!subState[id]) subState[id] = { have: false, want: false };
       subState[id].have = true;
+      subState[id].updatedAt = now;
     });
     
     saveTrackerState();
@@ -608,9 +616,11 @@
     const listData = getListData(listName);
     if (!listData) return;
     
+    const now = Date.now();
     listData.items.forEach(id => {
       if (subState[id]) {
         subState[id].have = false;
+        subState[id].updatedAt = now;
       }
     });
     
@@ -799,7 +809,7 @@
           const want = row[3] === "Yes";
           
           if (have || want) {
-            subState[id] = { have, want };
+            subState[id] = { have, want, updatedAt: Date.now() };
           }
         }
         

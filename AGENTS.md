@@ -22,12 +22,16 @@ css/
   style_dark.css    — dark theme overrides
   style_light.css   — light theme overrides
 js/
-  config.js         — VERSION, FILES, LOCAL_STORAGE keys, value constants (load first)
+  config.js         — VERSION, FILES, LOCAL_STORAGE keys, SYNC_KEYS, value constants (load first)
+  store.js          — centralized storage wrapper with dirty/timestamp tracking (window.osroStore)
+  sync.js           — cloud sync engine, conflict resolution, device push linking (load after store.js)
   main.js           — app state, render, routing, notify/push helpers, window exports
   lab.js            — lab experiment registry (loadLabData, saveLabData, registerLabExperiment)
   lab-gc.js         — Guild Contribution timer (6h, single timer)
   lab-gem.js        — Gem Quest timer (24h, per-account)
   lab-credit.js     — Credit Agent timer (24h, per-account)
+  lab-tracker.js    — Item Tracker / Unlocks
+  bookmarks.js      — quest bookmarks
   quests.js         — quest editor and material tree
   shops.js          — shop viewer
   autoloot.js       — @alootid2 command builder
@@ -40,22 +44,64 @@ image/
   osro_quests_logo_v3.png — 340×125, used as notification image
 ```
 
-**`osro-push-worker`** is a separate Cloudflare Worker repo (not here). It handles `/schedule`, `/cancel`, and `/webhook` routes.
+**`osro-push-worker`** is a separate Cloudflare Worker repo (not here). It handles `/schedule`, `/cancel`, `/webhook`, `/auth/*`, `/sync`, and `/devices` routes with Cloudflare D1 persistence.
 
 ---
 
-## localStorage keys
+## localStorage keys & Cloud Sync
 
 Defined in `config.js` as `LOCAL_STORAGE`:
 
-| Key constant | Storage key | Contents |
-|---|---|---|
-| `config` | `osrohr_config` | user config object |
-| `theme` | `osrohr_theme` | `'dark'` or `'light'` |
-| `autoloot_data` | `osrohr_autoloot_data` | autoloot item sets |
-| `autoloot_names` | `osrohr_autoloot_names` | set name map |
-| `item_values` | `osrohr_item_values` | item zeny value overrides |
-| `lab_data` | `osrohr_lab_data` | all lab timer state (shared flat object patched via `saveLabData`) |
+| Key constant | Storage key | Contents | Synced to Cloud? |
+|---|---|---|---|
+| `config` | `osrohr_config` | user config object | Yes |
+| `theme` | `osrohr_theme` | `'dark'` or `'light'` | **No** (per-device) |
+| `autoloot_data` | `osrohr_autoloot_data` | autoloot item sets | Yes |
+| `autoloot_names` | `osrohr_autoloot_names` | set name map | Yes |
+| `item_values` | `osrohr_item_values` | item zeny value overrides | Yes |
+| `bookmarks` | `osrohr_bookmarks` | pinned quest IDs | Yes |
+| `lab_data` | `osrohr_lab_data` | all lab timer state (shared flat object) | Yes |
+| `lab_gem` | `osrohr_lab_gem_v1` | Gem Quest timers & deleted list | Yes (item-merged) |
+| `lab_credit` | `osrohr_lab_credit_v1` | Credit Agent timers & deleted list | Yes (item-merged) |
+| `lab_tracker` | `osrohr_lab_tracker_v1` | Deposits & unlocks with timestamps | Yes (item-merged) |
+| `sync_meta` | `osrohr_sync_meta` | internal dirty & updatedAt timestamps | **No** (device-local) |
+
+`SYNC_KEYS` (in `config.js`) defines the allowlist of keys synchronized with Cloudflare D1.
+
+### Storage wrapper (`js/store.js`)
+
+All storage mutations for synced keys must route through `window.osroStore`:
+```js
+osroStore.getItem(key)
+osroStore.setItem(key, value, options) // updates local storage and marks dirty
+osroStore.removeItem(key, options)     // marks deleted: true and dirty
+osroStore.getJson(key, fallback)
+osroStore.markDirty(key, updatedAt)    // flags for upload without modifying value
+osroStore.clearDirty(keys)             // clears dirty flags after successful push
+osroStore.applyRemoteUpdate(key, val, ts) // writes remote data and marks clean
+osroStore.onRemoteChange(callback)     // notifies UI when a cloud pull applies updates
+```
+
+---
+
+## Cloud Sync & Multi-Device Push
+
+1. **Authentication:**
+   - **Sync Code:** 16-character alphanumeric code (`XXXX-XXXX-XXXX-XXXX`). No account creation required. Anyone with the code can read/write that profile. Visually ambiguous characters (`O`, `I`, `L`) normalize to `0` and `1`.
+   - **Google Sign-In:** Sign in with Google (GIS library). Can also link Google account to an existing Sync Code profile.
+2. **Synchronization:**
+   - **Pull:** Runs on page load, when switching online, or when clicking "Sync Now".
+   - **Push:** Debounced 3 seconds after local changes, with keepalive flush on `visibilitychange -> hidden`.
+   - **Conflict Resolution on First Link:** If both local storage and cloud profile have existing data, users choose between:
+     - **Merge (Recommended):** Merges both, newest changes win.
+     - **Keep Cloud Data:** Overwrites local storage with cloud profile.
+     - **Keep Device Data:** Overwrites cloud profile with this device's data.
+   - **Granular Merges:** Timers (`lab_gem`, `lab_credit`) and tracker entries (`lab_tracker`) merge individually by timestamp and tombstone IDs.
+3. **Multi-Device Push:**
+   - When linked, `/schedule` passes the session token and `deviceId`.
+   - The worker stores the device's subscription in D1 `devices` table.
+   - When the timer fires, `/webhook` fans out push notifications to **all** registered devices for that account and prunes invalid/expired subscriptions (404/410).
+   - If not linked, single-device direct push behavior is preserved.
 
 ---
 
@@ -134,10 +180,10 @@ data: {
 }
 ```
 
-**Image paths in `sw.js`** (absolute, relative to GitHub Pages root):
+**Image paths in `sw.js`** (dynamically resolved relative to `self.registration.scope` to support both GitHub Pages and localhost/127.0.0.1):
 ```
-/osro-quests-hr/image/favicon.png          (icon + badge)
-/osro-quests-hr/image/osro_quests_logo_v3.png  (image)
+image/favicon.png          (icon + badge)
+image/osro_quests_logo_v3.png  (image)
 ```
 
 ---

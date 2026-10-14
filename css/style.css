@@ -3355,6 +3355,206 @@ body.viewer-mode .editor-quest select {
   opacity: 1;
 }
 
+.settings-row--block {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.settings-sync-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.settings-sync-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.sync-badge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.sync-badge--gray {
+  background: var(--bg-hover);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.sync-badge--green {
+  background: rgba(46, 204, 113, 0.15);
+  color: #2ecc71;
+  border: 1px solid rgba(46, 204, 113, 0.3);
+}
+
+.sync-action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sync-status-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.sync-status-indicator.status--unlinked {
+  display: none;
+}
+
+.sync-status-indicator.status--synced {
+  background: #2ecc71;
+  box-shadow: 0 0 4px #2ecc71;
+}
+
+.sync-status-indicator.status--pending {
+  background: #f39c12;
+  box-shadow: 0 0 4px #f39c12;
+}
+
+.sync-status-indicator.status--syncing {
+  background: #3498db;
+  box-shadow: 0 0 5px #3498db;
+  animation: syncPulse 1s infinite alternate;
+}
+
+.sync-status-indicator.status--error {
+  background: #e74c3c;
+  box-shadow: 0 0 4px #e74c3c;
+}
+
+.sync-status-indicator.status--offline {
+  background: #95a5a6;
+}
+
+@keyframes syncPulse {
+  from { opacity: 0.5; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1.15); }
+}
+
+/* Cloud sync conflict resolution modal */
+.sync-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 16px;
+  backdrop-filter: blur(4px);
+}
+
+.sync-modal-card {
+  background: var(--panel, #1a1e24);
+  border: 1px solid var(--border, #333);
+  border-radius: 12px;
+  max-width: 480px;
+  width: 100%;
+  padding: 24px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sync-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text, #fff);
+}
+
+.sync-modal-desc {
+  font-size: 13px;
+  color: var(--text-muted, #aaa);
+  line-height: 1.5;
+}
+
+.sync-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sync-modal-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 12px 14px;
+  gap: 4px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.sync-modal-btn-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.sync-modal-btn-sub {
+  font-size: 12px;
+  opacity: 0.8;
+  font-weight: normal;
+}
+
+/* Sync QR code modal */
+.sync-qr-card {
+  align-items: center;
+  text-align: center;
+}
+
+.sync-qr-wrapper {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  margin: 6px 0;
+}
+
+.sync-qr-wrapper svg {
+  display: block;
+}
+
+.sync-code-display {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  font-family: monospace;
+  color: var(--accent);
+  user-select: all;
+  margin-bottom: 4px;
+}
+
+.sync-qr-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.header-icon-btn {
+  position: relative;
+}
+
 /* Reusable inline toggle for settings rows */
 .setting-toggle {
   position: relative;

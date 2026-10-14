@@ -18,7 +18,9 @@
               <!-- Remove the old editor toggle div, keep only the github link -->
               <div class="header-controls-row">
                 <button class="header-icon-btn" id="themeToggleBtn" title="Toggle theme" onclick="toggleTheme()">☀</button>
-                <button class="header-icon-btn" id="settingsGearBtn" title="Settings" onclick="toggleSettingsPanel()">⚙</button>
+                <button class="header-icon-btn" id="settingsGearBtn" title="Settings" onclick="toggleSettingsPanel()">
+                  ⚙<span class="sync-status-indicator status--unlinked" id="syncStatusIndicator"></span>
+                </button>
               </div>
               <div id="header-version-tag"></div>
             </div>
@@ -93,6 +95,9 @@
                 <input type="checkbox" id="settingForceMobileView" onchange="settingSetForceMobileView(this.checked)">
                 <span class="setting-toggle-slider"></span>
               </label>
+            </div>
+            <div class="settings-row settings-row--block">
+              <div id="cloudSyncSection"></div>
             </div>
             <div class="settings-row">
               <a href="https://github.com/torrq/osro-quests-hr" class="settings-link" target="_blank" rel="noopener">
@@ -252,6 +257,9 @@
       </div>
     </div>
     <script src="js/config.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/lib/qrcode.min.js"></script>
+    <script src="js/sync.js"></script>
     <script src="js/svg.js"></script>
     <script src="js/main.js"></script>
     <script src="js/items.js"></script>
