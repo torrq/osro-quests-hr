@@ -837,9 +837,7 @@
       initGoogleSignIn();
     } else {
       const isGoogle = session.method === 'google';
-      const label = isGoogle
-        ? `Google: ${session.email || 'Linked'}`
-        : `Sync Code: ${session.code || 'Linked'}`;
+      const accountLabel = (isGoogle && session.email) ? `<strong>${escapeHtml(session.email)}</strong>` : '';
 
       container.innerHTML = `
         <div class="settings-sync-box">
@@ -847,9 +845,7 @@
             <span class="settings-label">Cloud Sync</span>
             <span class="sync-badge sync-badge--green">Linked</span>
           </div>
-          <div class="settings-sublabel" style="margin-bottom: 8px;">
-            <strong>${escapeHtml(label)}</strong>
-          </div>
+          ${accountLabel ? `<div class="settings-sublabel" style="margin-bottom: 8px;">${accountLabel}</div>` : ''}
           <div id="syncStatusText" class="settings-sublabel" style="margin-bottom: 10px;"></div>
 
           <div class="sync-action-buttons">
