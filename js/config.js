@@ -52,8 +52,6 @@ const LOCAL_STORAGE = {
 // Keys synchronized across devices when linked (theme stays per device)
 const SYNC_KEYS = [
   LOCAL_STORAGE.config,
-  LOCAL_STORAGE.autoloot_data,
-  LOCAL_STORAGE.autoloot_names,
   LOCAL_STORAGE.autoloot_v2,
   LOCAL_STORAGE.item_values,
   LOCAL_STORAGE.lab_data,

@@ -1557,8 +1557,7 @@ div.quest-bound, div.shop-bound {
 
 /* Tree Group Styles (Variation A) */
 .autoloot-tree-container {
-  flex: 1;
-  overflow-y: auto;
+  width: 100%;
 }
 
 .al-tree-group {
@@ -1743,6 +1742,18 @@ div.quest-bound, div.shop-bound {
   flex-shrink: 0;
 }
 
+.al-autoload-pill {
+  font-size: 8px;
+  font-weight: 800;
+  color: var(--tab-active-text, #000);
+  background: var(--accent);
+  padding: 1px 4px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+
 .al-tree-set-meta {
   font-size: 10px;
   color: var(--text-muted);
@@ -1851,6 +1862,50 @@ div.quest-bound, div.shop-bound {
   align-items: center;
   gap: 8px;
   margin-top: 10px;
+}
+
+.al-set-options-row {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.al-autoload-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  user-select: none;
+}
+
+.al-autoload-toggle input[type="checkbox"] {
+  cursor: pointer;
+  accent-color: var(--accent);
+  width: 15px;
+  height: 15px;
+  margin: 0;
+}
+
+.al-autoload-preview {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.al-autoload-preview code {
+  font-family: var(--font-mono, monospace);
+  background: var(--code-block-bg, rgba(0, 0, 0, 0.2));
+  color: var(--accent);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 11px;
 }
 
 .btn-gold {

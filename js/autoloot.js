@@ -4,11 +4,26 @@
 
 const AUTOLOOT_CONFIG = {
   MAX_CHARS_PER_LINE: 255,
-  MAX_SLOTS: 9,
+  MAX_SLOTS: 10,
   DEFAULT_LIMIT_HR: 60,
   VIP_LIMIT_HR: 100,
-  COMMANDS_WITH_SLOTS: ["save", "reset", "load", "clear", "add", "remove"]
+  COMMANDS_WITH_SLOTS: ["save", "reset", "load", "clear", "add", "remove", "set"]
 };
+
+// ===== TEXT & HTML SANITIZATION HELPERS =====
+
+function safeHtml(str) {
+  if (typeof escapeHtml === 'function') {
+    return escapeHtml(str);
+  }
+  return String(str || '').replace(/[&<>"']/g, m => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  }[m]));
+}
 
 // ===== CAPACITY HELPERS =====
 
@@ -45,6 +60,7 @@ function initAutolootData() {
     if (!state.autolootV2.archive) {
       state.autolootV2.archive = { sets: [] };
     }
+    ensureSlot10Exists();
     syncLegacyMemoryState();
     selectDefaultInitialSet();
     return;
@@ -52,6 +68,65 @@ function initAutolootData() {
 
   // 3. First-time migration from legacy keys (leaving legacy keys completely untouched as backup!)
   performMigrationFromLegacy();
+}
+
+function ensureSlot10Exists() {
+  if (!state.autolootV2 || !state.autolootV2.slots) return;
+  if (state.autolootV2.slots["10"]) return;
+
+  // 1. Check if slot 10 was previously placed into archive during interim migration
+  let migratedSet = null;
+  if (state.autolootV2.archive && Array.isArray(state.autolootV2.archive.sets)) {
+    const archIdx = state.autolootV2.archive.sets.findIndex(s => s.id === "set_migrated_slot_10" || s.name === "Slot 10 (Archived)");
+    if (archIdx !== -1) {
+      migratedSet = state.autolootV2.archive.sets.splice(archIdx, 1)[0];
+      migratedSet.id = "set_slot_10";
+      if (migratedSet.name === "Slot 10 (Archived)") {
+        migratedSet.name = "Autoloot Slot 10";
+      }
+    }
+  }
+
+  // 2. If not found in archive, check legacy backup data
+  if (!migratedSet) {
+    let legacyData = null;
+    let legacyNames = null;
+    if (window.osroStore) {
+      legacyData = osroStore.getJson(LOCAL_STORAGE.autoloot_data, null);
+      legacyNames = osroStore.getJson(LOCAL_STORAGE.autoloot_names, null);
+    } else {
+      try {
+        const rawD = localStorage.getItem(LOCAL_STORAGE.autoloot_data);
+        if (rawD) legacyData = JSON.parse(rawD);
+      } catch (e) {}
+      try {
+        const rawN = localStorage.getItem(LOCAL_STORAGE.autoloot_names);
+        if (rawN) legacyNames = JSON.parse(rawN);
+      } catch (e) {}
+    }
+    const rawItems = (legacyData && Array.isArray(legacyData["10"])) ? legacyData["10"] : [];
+    const items = rawItems.map(Number).filter(id => Number.isFinite(id) && id > 0);
+    const name = (legacyNames && legacyNames["10"] && legacyNames["10"].trim())
+      ? legacyNames["10"].trim()
+      : "Autoloot Slot 10";
+    migratedSet = {
+      id: "set_slot_10",
+      name: name,
+      items: items,
+      autoload: false
+    };
+  }
+
+  if (typeof migratedSet.autoload === 'undefined') {
+    migratedSet.autoload = false;
+  }
+
+  state.autolootV2.slots["10"] = {
+    defaultSetId: migratedSet.id,
+    sets: [migratedSet]
+  };
+
+  saveAutoloot(false);
 }
 
 function performMigrationFromLegacy() {
@@ -80,9 +155,10 @@ function performMigrationFromLegacy() {
 
   const hasLegacyData = legacyData && typeof legacyData === 'object' && Object.keys(legacyData).length > 0;
 
-  for (let i = 1; i <= 9; i++) {
+  for (let i = 1; i <= AUTOLOOT_CONFIG.MAX_SLOTS; i++) {
     const key = i.toString();
-    const items = (hasLegacyData && Array.isArray(legacyData[key])) ? [...legacyData[key]] : [];
+    const rawItems = (hasLegacyData && Array.isArray(legacyData[key])) ? legacyData[key] : [];
+    const items = rawItems.map(Number).filter(id => Number.isFinite(id) && id > 0);
     const name = (legacyNames && legacyNames[key] && legacyNames[key].trim())
       ? legacyNames[key].trim()
       : `Autoloot Slot ${i}`;
@@ -94,19 +170,11 @@ function performMigrationFromLegacy() {
         {
           id: setId,
           name: name,
-          items: items
+          items: items,
+          autoload: false
         }
       ]
     };
-  }
-
-  // Preserve legacy Slot 10 if it held items
-  if (legacyData && Array.isArray(legacyData["10"]) && legacyData["10"].length > 0) {
-    newV2.archive.sets.push({
-      id: "set_migrated_slot_10",
-      name: (legacyNames && legacyNames["10"] && legacyNames["10"].trim()) || "Slot 10 (Archived)",
-      items: [...legacyData["10"]]
-    });
   }
 
   state.autolootV2 = newV2;
@@ -134,7 +202,7 @@ function syncLegacyMemoryState() {
   state.autolootData = state.autolootData || {};
   state.autolootNames = state.autolootNames || {};
 
-  for (let i = 1; i <= 9; i++) {
+  for (let i = 1; i <= AUTOLOOT_CONFIG.MAX_SLOTS; i++) {
     const slot = state.autolootV2.slots[i.toString()];
     if (!slot) continue;
     const def = slot.sets?.find(s => s.id === slot.defaultSetId) || slot.sets?.[0];
@@ -192,7 +260,7 @@ window.loadAutolootV2FromSync = loadAutolootV2FromSync;
 function findSetInfo(setId) {
   if (!state.autolootV2?.slots) return null;
 
-  for (let slotNum = 1; slotNum <= 9; slotNum++) {
+  for (let slotNum = 1; slotNum <= AUTOLOOT_CONFIG.MAX_SLOTS; slotNum++) {
     const slotKey = slotNum.toString();
     const slot = state.autolootV2.slots[slotKey];
     if (slot && slot.sets) {
@@ -260,7 +328,7 @@ function selectAutolootSet(setId, pushToHistory = true) {
 function selectAutolootSlot(slotNum, pushToHistory = true) {
   if (!state.autolootV2) initAutolootData();
   const num = parseInt(slotNum, 10);
-  if (Number.isFinite(num) && num >= 1 && num <= 9) {
+  if (Number.isFinite(num) && num >= 1 && num <= AUTOLOOT_CONFIG.MAX_SLOTS) {
     const def = getDefaultSetForSlot(num);
     if (def) {
       selectAutolootSet(def.id, pushToHistory);
@@ -275,7 +343,7 @@ function selectAutolootByParam(param, pushToHistory = true) {
   if (!state.autolootV2) initAutolootData();
   if (!param) return;
   const num = parseInt(param, 10);
-  if (num.toString() === param.toString() && num >= 1 && num <= 9) {
+  if (num.toString() === param.toString() && num >= 1 && num <= AUTOLOOT_CONFIG.MAX_SLOTS) {
     selectAutolootSlot(num, pushToHistory);
   } else {
     selectAutolootSet(param.toString(), pushToHistory);
@@ -326,7 +394,8 @@ function renderAutolootSidebar() {
 
     const isCollapsed = !!state.autolootCollapsedGroups[slotNum];
     const defaultSet = getDefaultSetForSlot(slotNum);
-    const groupTitle = defaultSet ? defaultSet.name : `Autoloot Slot ${slotNum}`;
+    const rawTitle = defaultSet ? defaultSet.name : `Autoloot Slot ${slotNum}`;
+    const groupTitle = safeHtml(rawTitle);
     const groupItemCount = defaultSet ? defaultSet.items.length : 0;
     const totalSets = (slot.sets || []).length;
 
@@ -395,14 +464,16 @@ function renderSlotChildSets(slotNum, slot) {
     const isDefault = (s.id === defaultId);
     const isSelected = (state.selectedAutolootSetId === s.id);
     const count = s.items.length;
+    const safeName = safeHtml(s.name);
 
     return `
       <div class="al-tree-set-row ${isDefault ? 'is-default' : ''} ${isSelected ? 'active' : ''}" 
            onclick="selectAutolootSet('${s.id}')">
         <div class="al-tree-set-left">
           ${isDefault ? '<span class="al-default-star">★</span>' : '<span style="color:var(--text-muted); font-size:10px;">↳</span>'}
-          <span class="al-tree-set-name" title="${s.name}">${s.name}</span>
+          <span class="al-tree-set-name" title="${safeName}">${safeName}</span>
           ${isDefault ? '<span class="al-default-pill">DEFAULT</span>' : ''}
+          ${s.autoload ? '<span class="al-autoload-pill" title="Auto-loads at login">⚡ LOGIN</span>' : ''}
         </div>
         <div class="al-tree-set-meta">
           <span>${count} items</span>
@@ -421,12 +492,14 @@ function renderArchiveChildSets() {
   return sets.map(s => {
     const isSelected = (state.selectedAutolootSetId === s.id);
     const count = s.items.length;
+    const safeName = safeHtml(s.name);
 
     return `
       <div class="al-tree-set-row ${isSelected ? 'active' : ''}" onclick="selectAutolootSet('${s.id}')">
         <div class="al-tree-set-left">
           <span style="color:var(--text-muted); font-size:11px;">📦</span>
-          <span class="al-tree-set-name" title="${s.name}">${s.name}</span>
+          <span class="al-tree-set-name" title="${safeName}">${safeName}</span>
+          ${s.autoload ? '<span class="al-autoload-pill" title="Auto-loads at login">⚡ LOGIN</span>' : ''}
         </div>
         <div class="al-tree-set-meta">
           <span>${count} items</span>
@@ -460,6 +533,7 @@ function renderAutolootMain() {
   const maxLimit = getMaxAutolootItems();
   const isMidrate = (typeof FLAVOR !== 'undefined' && FLAVOR === 'Midrate');
   const pct = maxLimit > 0 ? Math.min(100, Math.round((count / maxLimit) * 100)) : 0;
+  const safeSetName = safeHtml(set.name);
 
   let fillClass = '';
   if (count >= maxLimit) fillClass = 'al-capacity-fill--full';
@@ -482,7 +556,7 @@ function renderAutolootMain() {
           <div style="font-size:10px; color:var(--text-muted);">
             ${info.isDefault 
               ? '⭐ This is the active default set used for slot title & in-game commands.' 
-              : (info.isArchived ? 'Assign to a game slot (1–9) to generate in-game load commands.' : `Secondary rotated set under Slot #${info.slotNum}.`)}
+              : (info.isArchived ? 'Assign to a game slot (1–10) to generate in-game load commands.' : `Secondary rotated set under Slot #${info.slotNum}.`)}
           </div>
         </div>
       </div>
@@ -498,7 +572,7 @@ function renderAutolootMain() {
           <span style="font-size:11px; color:var(--text-muted);">Move to:</span>
           <select class="search-input" style="padding:4px 8px; width:130px;" onchange="moveSetToSlot('${set.id}', this.value)">
             <option value="">Move to slot...</option>
-            ${[1,2,3,4,5,6,7,8,9].map(n => `
+            ${Array.from({ length: AUTOLOOT_CONFIG.MAX_SLOTS }, (_, i) => i + 1).map(n => `
               <option value="${n}" ${info.slotNum === n ? 'disabled' : ''}>
                 Slot ${n} (${state.autolootV2.slots[n]?.sets?.length || 0} sets)
               </option>
@@ -512,7 +586,7 @@ function renderAutolootMain() {
 
   // Target slot for command generation
   const commandSlot = info.slotNum || 1;
-  const generatedCmds = generateCommands(commandSlot, set.items, maxLimit);
+  const generatedCmds = generateCommands(commandSlot, set.items, maxLimit, !!set.autoload);
 
   container.innerHTML = `
     <div class="autoloot-main">
@@ -544,7 +618,7 @@ function renderAutolootMain() {
               type="text"
               id="slotNameInput"
               class="al-slot-name-input"
-              value="${set.name}"
+              value="${safeSetName}"
               placeholder="Name this set..."
               onchange="updateSetName('${set.id}', this.value)"
             >
@@ -571,6 +645,23 @@ function renderAutolootMain() {
               <span><strong>${count - 60} items exceed standard 60-slot limit!</strong> They will not be saved in-game without an active 24h VIP ticket.</span>
             </div>
           ` : ''}
+
+          <!-- Auto-load Option Row -->
+          <div class="al-set-options-row">
+            <label class="al-autoload-toggle">
+              <input 
+                type="checkbox" 
+                ${set.autoload ? 'checked' : ''} 
+                onchange="toggleSetAutoload('${set.id}', this.checked)"
+              >
+              <span>⚡ Auto-load this profile at login</span>
+            </label>
+            <div class="al-autoload-preview">
+              ${set.autoload 
+                ? `Appends <code>@alootid2 set ${commandSlot} autoload 1</code> to commands` 
+                : `Optional: loads this slot automatically when logging in`}
+            </div>
+          </div>
 
         </div>
       </div>
@@ -615,9 +706,10 @@ function renderItemCard(setId, id, isVipExceeded) {
   const isUnknown = !item;
   const slotCount = Number(item?.slot) || 0;
   const displayName = slotCount > 0 ? `${name} [${slotCount}]` : name;
+  const safeDisplayName = safeHtml(displayName);
   const nameHtml = isUnknown
-    ? `<span class="al-item-name al-item-name--unknown" title="${displayName}">${displayName}</span>`
-    : `<a class="item-link al-item-name" onclick="navigateToItem(${id})" title="${displayName}">${displayName}</a>`;
+    ? `<span class="al-item-name al-item-name--unknown" title="${safeDisplayName}">${safeDisplayName}</span>`
+    : `<a class="item-link al-item-name" onclick="navigateToItem(${id})" title="${safeDisplayName}">${safeDisplayName}</a>`;
 
   return `
     <div class="al-item-card" ${isVipExceeded ? 'style="border-color:var(--danger); background:rgba(248,81,73,0.08);"' : ''}>
@@ -666,7 +758,7 @@ function renderCommandBox(info, slot, commands) {
             Generated Commands ${info.isArchived ? '(Preview for Slot #1)' : `(Target Slot #${info.slotNum})`}
           </span>
           <div class="al-overflow-hint">
-            Outputs <code>@alootid2 reset ${slot}</code> ➔ burst saves ➔ <code>@alootid2 load ${slot}</code>.
+            Outputs <code>@alootid2 reset ${slot}</code> ➔ burst saves ➔ <code>@alootid2 load ${slot}</code>${info.set?.autoload ? ` ➔ <code>@alootid2 set ${slot} autoload 1</code>` : ''}.
           </div>
         </div>
         ${commands.length > 0 ? `<button class="btn btn-sm btn-primary" onclick="copyAllAutoloot()">Copy All Commands</button>` : ''}
@@ -701,7 +793,7 @@ function renderImportSection(setId) {
 
 // ===== COMMAND GENERATION =====
 
-function generateCommands(slot, items, maxLimit = 60) {
+function generateCommands(slot, items, maxLimit = 60, autoload = false) {
   if (!items || items.length === 0) return [];
 
   const { MAX_CHARS_PER_LINE } = AUTOLOOT_CONFIG;
@@ -751,14 +843,34 @@ function generateCommands(slot, items, maxLimit = 60) {
     commandBlocks.push(`${prefix}${currentChunk.join(" ")}`);
   }
 
-  return [
+  const cmds = [
     `@alootid2 reset ${slot}`,
     ...commandBlocks,
     `@alootid2 load ${slot}`
   ];
+
+  if (autoload) {
+    cmds.push(`@alootid2 set ${slot} autoload 1`);
+  }
+
+  return cmds;
 }
 
 // ===== SET MUTATIONS & ACTIONS =====
+
+function toggleSetAutoload(setId, checked) {
+  const info = findSetInfo(setId);
+  if (info && info.set) {
+    info.set.autoload = !!checked;
+    saveAutoloot(true);
+    if (info.set.autoload) {
+      showToast(`Auto-load enabled for "${safeHtml(info.set.name)}"`, "info");
+    } else {
+      showToast(`Auto-load disabled for "${safeHtml(info.set.name)}"`, "info");
+    }
+  }
+}
+window.toggleSetAutoload = toggleSetAutoload;
 
 function setSlotDefault(slotNum, setId) {
   const slotKey = slotNum.toString();
@@ -767,7 +879,7 @@ function setSlotDefault(slotNum, setId) {
   slot.defaultSetId = setId;
   saveAutoloot(true);
   const info = findSetInfo(setId);
-  showToast(`Set "${info?.set?.name || 'Set'}" is now the Default for Slot #${slotNum}`, "success");
+  showToast(`Set "${safeHtml(info?.set?.name || 'Set')}" is now the Default for Slot #${slotNum}`, "success");
 }
 window.setSlotDefault = setSlotDefault;
 
@@ -794,7 +906,7 @@ function moveSetToSlot(setId, targetValue) {
     state.autolootV2.archive.sets = state.autolootV2.archive.sets || [];
     state.autolootV2.archive.sets.push(theSet);
     state.autolootCollapsedGroups['archive'] = false;
-    showToast(`Moved "${theSet.name}" to Archived Sets`, "info");
+    showToast(`Moved "${safeHtml(theSet.name)}" to Archived Sets`, "info");
   } else {
     const targetSlotNum = parseInt(targetValue, 10);
     const targetSlotKey = targetSlotNum.toString();
@@ -806,7 +918,7 @@ function moveSetToSlot(setId, targetValue) {
         targetSlot.defaultSetId = theSet.id;
       }
       state.autolootCollapsedGroups[targetSlotNum] = false;
-      showToast(`Moved "${theSet.name}" to Slot #${targetSlotNum} Group`, "info");
+      showToast(`Moved "${safeHtml(theSet.name)}" to Slot #${targetSlotNum} Group`, "info");
     }
   }
 
@@ -821,11 +933,12 @@ function addSetToSlot(slotNum, e) {
   const slot = state.autolootV2?.slots?.[slotKey];
   if (!slot) return;
 
-  const newId = `set_${Date.now()}`;
+  const newId = `set_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
   const newSet = {
     id: newId,
     name: `New Slot ${slotNum} Set`,
-    items: []
+    items: [],
+    autoload: false
   };
 
   slot.sets = slot.sets || [];
@@ -844,11 +957,12 @@ window.addSetToSlot = addSetToSlot;
 function addNewArchivedSet(e) {
   if (e) e.stopPropagation();
   state.autolootV2.archive = state.autolootV2.archive || { sets: [] };
-  const newId = `set_${Date.now()}`;
+  const newId = `set_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
   const newSet = {
     id: newId,
     name: `Archived Set ${(state.autolootV2.archive.sets || []).length + 1}`,
-    items: []
+    items: [],
+    autoload: false
   };
 
   state.autolootV2.archive.sets.push(newSet);
@@ -863,11 +977,12 @@ function duplicateSet(setId) {
   const current = findSetInfo(setId);
   if (!current || !current.set) return;
 
-  const newId = `set_${Date.now()}`;
+  const newId = `set_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
   const newSet = {
     id: newId,
     name: `${current.set.name} (Copy)`,
-    items: [...current.set.items]
+    items: [...current.set.items],
+    autoload: !!current.set.autoload
   };
 
   if (!current.isArchived) {
@@ -879,7 +994,7 @@ function duplicateSet(setId) {
 
   state.selectedAutolootSetId = newId;
   saveAutoloot(true);
-  showToast(`Duplicated "${current.set.name}"`, "success");
+  showToast(`Duplicated "${safeHtml(current.set.name)}"`, "success");
 }
 window.duplicateSet = duplicateSet;
 
@@ -887,7 +1002,7 @@ function deleteSet(setId) {
   const current = findSetInfo(setId);
   if (!current || !current.set) return;
 
-  if (!confirm(`Are you sure you want to delete set "${current.set.name}"?`)) {
+  if (typeof window.confirm === 'function' && !window.confirm(`Are you sure you want to delete set "${current.set.name}"?`)) {
     return;
   }
 
@@ -908,7 +1023,11 @@ function deleteSet(setId) {
     }
   } else {
     state.autolootV2.archive.sets = state.autolootV2.archive.sets.filter(s => s.id !== setId);
-    selectDefaultInitialSet();
+    if (state.autolootV2.archive.sets.length > 0) {
+      state.selectedAutolootSetId = state.autolootV2.archive.sets[0].id;
+    } else {
+      selectDefaultInitialSet();
+    }
   }
 
   saveAutoloot(true);
@@ -918,10 +1037,9 @@ window.deleteSet = deleteSet;
 
 function updateSetName(setId, name) {
   const trimmed = name.trim();
-  if (!trimmed) return;
   const info = findSetInfo(setId);
   if (info && info.set) {
-    info.set.name = trimmed;
+    info.set.name = trimmed || (info.isArchived ? 'Archived Set' : `Autoloot Slot ${info.slotNum}`);
     saveAutoloot(true);
   }
 }
@@ -1061,13 +1179,14 @@ function renderSearchResults(resultsDiv, matches, setId) {
     const displayName = slotCount > 0
       ? `${item.name || 'Unknown'} [${slotCount}]`
       : (item.name || 'Unknown');
+    const safeDisplayName = safeHtml(displayName);
     const alreadyAdded = currentItems.includes(item.id);
 
     return `
       <div class="al-result-item ${alreadyAdded ? 'al-result-item--added' : ''}"
            onclick="addToAutoloot('${setId}', ${item.id})">
         ${renderItemIcon(item.id, 24)}
-        <span class="al-result-name">${displayName}</span>
+        <span class="al-result-name">${safeDisplayName}</span>
         <span class="al-result-id">${item.id}</span>
         ${alreadyAdded ? '<span class="al-result-check">✓</span>' : ''}
       </div>
@@ -1092,51 +1211,77 @@ function importAlootCommands(setId) {
   }
 
   const ids = parseAlootCommands(text);
-  if (ids.size === 0) {
+  if (ids.size === 0 && !ids.hasAutoloadCmd) {
     showToast('No valid @alootid2 item IDs found', 'warning');
     return;
+  }
+
+  if (ids.hasAutoloadCmd) {
+    info.set.autoload = true;
   }
 
   const currentItems = info.set.items;
   const maxLimit = getMaxAutolootItems();
   const availableSpace = maxLimit - currentItems.length;
 
-  if (availableSpace <= 0) {
-    showToast(`Set is full — max ${maxLimit} items`, 'warning');
-    return;
-  }
-
   let added = 0;
   let skipped = 0;
 
-  for (const id of ids) {
-    if (currentItems.length >= maxLimit) {
-      skipped = ids.size - added;
-      break;
+  if (ids.size > 0) {
+    if (availableSpace <= 0) {
+      showToast(`Set is full — max ${maxLimit} items`, 'warning');
+      saveAutoloot(true);
+      return;
     }
-    if (!currentItems.includes(id)) {
-      currentItems.push(id);
-      added++;
+
+    for (const id of ids) {
+      if (currentItems.length >= maxLimit) {
+        skipped = ids.size - added;
+        break;
+      }
+      if (!currentItems.includes(id)) {
+        currentItems.push(id);
+        added++;
+      }
     }
   }
 
   saveAutoloot(true);
   textarea.value = "";
-  showToast(`Imported ${added} item${added !== 1 ? 's' : ''}${skipped > 0 ? ` — ${skipped} skipped (set full)` : ''}`, skipped > 0 ? 'warning' : 'success');
+  if (added > 0 || skipped > 0) {
+    showToast(`Imported ${added} item${added !== 1 ? 's' : ''}${skipped > 0 ? ` — ${skipped} skipped (set full)` : ''}${ids.hasAutoloadCmd ? ' (auto-load enabled)' : ''}`, skipped > 0 ? 'warning' : 'success');
+  } else if (ids.hasAutoloadCmd) {
+    showToast('Auto-load on login enabled for this set', 'success');
+  }
 }
 window.importAlootCommands = importAlootCommands;
 
 function parseAlootCommands(text) {
   const lines = text.split(/\r?\n/);
   const ids = new Set();
+  let hasAutoloadCmd = false;
 
   for (let line of lines) {
     line = line.trim();
     if (!line.toLowerCase().startsWith("@alootid2")) continue;
+
+    // Check if line is an autoload configuration: @alootid2 set <slot> autoload 1
+    if (/\bset\s+\d+\s+autoload\s+1\b/i.test(line)) {
+      hasAutoloadCmd = true;
+      continue; // Skip line so '1' is not parsed as item ID
+    }
+
+    // Skip control / configuration commands (set, reset, load)
     const parts = line.split(/\s+/).slice(1);
+    const verb = parts[0]?.toLowerCase();
+    if (verb === 'set' || verb === 'reset' || verb === 'load') {
+      continue;
+    }
+
     extractItemIDs(parts, ids);
   }
 
+  ids.hasAutoloadCmd = hasAutoloadCmd;
   return ids;
 }
 
@@ -1162,3 +1307,12 @@ document.addEventListener("click", e => {
     resultsDiv.classList.add("hidden");
   }
 });
+
+// Auto-initialize autoloot state upon script load
+initAutolootData();
+
+// Expose public API
+window.AUTOLOOT_CONFIG = AUTOLOOT_CONFIG;
+window.initAutolootData = initAutolootData;
+window.renderAutolootSidebar = renderAutolootSidebar;
+window.renderAutolootMain = renderAutolootMain;
