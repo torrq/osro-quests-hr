@@ -608,7 +608,7 @@ function renderAutolootMain() {
             ` : `
               <button class="mockup-vip-toggle ${state.autolootVip ? 'active' : ''}" onclick="toggleAutolootVip()" title="Click to toggle 24h VIP Ticket mode (60 vs 100 capacity)">
                 <span class="vip-dot"></span>
-                <span id="vipBtnLabel">${state.autolootVip ? '⭐ VIP: ACTIVE (100 max)' : '👑 VIP: OFF (60 max)'}</span>
+                <span id="vipBtnLabel">${state.autolootVip ? '⭐ VIP On (100)' : '👑 VIP Off (60)'}</span>
               </button>
             `}
           </div>
@@ -635,7 +635,7 @@ function renderAutolootMain() {
               <div class="al-capacity-fill ${fillClass}" style="width:${pct}%"></div>
             </div>
             <span class="al-capacity-label">${count} / ${maxLimit} items</span>
-            ${state.autolootVip && !isMidrate ? '<span style="font-size:10px; color:#fbbf24; font-weight:700;">(VIP Active)</span>' : ''}
+            ${state.autolootVip && !isMidrate ? '<span style="font-size:10px; color:#fbbf24; font-weight:700;">(VIP)</span>' : ''}
           </div>
 
           <!-- VIP Alert if >60 items and VIP is OFF in HR -->
