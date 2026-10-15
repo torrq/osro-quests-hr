@@ -534,7 +534,7 @@ function renderAutolootMain() {
             ` : `
               <button class="mockup-vip-toggle ${state.autolootVip ? 'active' : ''}" onclick="toggleAutolootVip()" title="Click to toggle 24h VIP Ticket mode (60 vs 100 capacity)">
                 <span class="vip-dot"></span>
-                <span id="vipBtnLabel">${state.autolootVip ? '⭐ VIP (HR): ACTIVE (100 max)' : '👑 VIP (HR): OFF (60 max)'}</span>
+                <span id="vipBtnLabel">${state.autolootVip ? '⭐ VIP: ACTIVE (100 max)' : '👑 VIP: OFF (60 max)'}</span>
               </button>
             `}
           </div>
