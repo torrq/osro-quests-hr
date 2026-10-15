@@ -6422,6 +6422,29 @@ a.bm-main-name:hover {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
+/* ===== AUTOLOOT: sibling tabs, overflow menu, row actions ===== */
+.al-crumb { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
+.al-set-tabs { display: flex; gap: 3px; align-items: flex-end; flex-wrap: wrap; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+.al-set-tab { display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: var(--panel); border: 1px solid var(--border); border-bottom: none; border-radius: 7px 7px 0 0; color: var(--text-muted); cursor: pointer; }
+.al-set-tab:hover { color: var(--text); background: var(--panel-hover); }
+.al-set-tab.active { color: var(--text); background: var(--bg-secondary); border-color: var(--accent); margin-bottom: -1px; }
+.al-set-tab-name { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.al-set-tab--add { padding: 6px 10px; }
+.al-tab-star { color: #fbbf24; }
+.al-tab-star.off { color: var(--border-light); }
+.al-tab-star.off:hover { color: #fbbf24; }
 
+.al-menu { position: relative; }
+.al-menu-dd { display: none; position: absolute; right: 0; top: calc(100% + 2px); z-index: 20; min-width: 180px; padding: 4px; background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 6px 16px var(--shadow); }
+.al-menu.open .al-menu-dd { display: block; }
+.al-menu-dd button, .al-menu-dd select { display: block; width: 100%; margin: 1px 0; padding: 6px 8px; text-align: left; font-size: 12px; background: transparent; border: none; color: var(--text); border-radius: 4px; cursor: pointer; }
+.al-menu-dd button:hover, .al-menu-dd select:hover { background: var(--panel-hover); }
+.al-menu-dd .danger { color: var(--danger); }
 
-
+.al-row-acts { display: none; gap: 3px; align-items: center; flex-shrink: 0; }
+.al-row-acts button { padding: 0 6px; font-size: 11px; line-height: 18px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; color: var(--text); cursor: pointer; }
+.al-row-acts button:hover { border-color: var(--accent); }
+.al-row-acts select { width: auto; padding: 1px 4px; font-size: 11px; }
+.al-tree-set-row:hover .al-row-acts { display: flex; }
+.al-tree-set-row:hover .al-tree-set-meta { display: none; }
+@media (hover: none) { .al-row-acts { display: flex; } }

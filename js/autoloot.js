@@ -432,10 +432,10 @@ function renderAutolootSidebar() {
         <span class="al-tree-slot-num">📁</span>
         <div class="al-tree-group-info">
           <div class="al-tree-group-title">
-            Archived Sets (No Slot)
+            Unassigned
           </div>
           <div class="al-tree-group-subtitle">
-            ${archSets.length} unassigned set${archSets.length !== 1 ? 's' : ''}
+            ${archSets.length} set${archSets.length !== 1 ? 's' : ''} · not in a slot
           </div>
         </div>
         <button class="al-tree-add-btn" onclick="addNewArchivedSet(event)" title="Add new archived set">+</button>
@@ -478,6 +478,10 @@ function renderSlotChildSets(slotNum, slot) {
         <div class="al-tree-set-meta">
           <span>${count} items</span>
         </div>
+        <div class="al-row-acts">
+          ${!isDefault ? `<button title="Make default" onclick="setSlotDefault(${slotNum}, '${s.id}'); event.stopPropagation();">★</button>` : ''}
+          <button title="Copy swap commands for Slot ${slotNum}" onclick="copySwapCommands('${s.id}', event)">⧉</button>
+        </div>
       </div>
     `;
   }).join('');
@@ -486,7 +490,7 @@ function renderSlotChildSets(slotNum, slot) {
 function renderArchiveChildSets() {
   const sets = state.autolootV2.archive?.sets || [];
   if (sets.length === 0) {
-    return `<div style="padding:6px 12px 6px 36px; font-size:11px; color:var(--text-muted);">No archived sets</div>`;
+    return `<div style="padding:6px 12px 6px 36px; font-size:11px; color:var(--text-muted);">No unassigned sets</div>`;
   }
 
   return sets.map(s => {
@@ -503,6 +507,12 @@ function renderArchiveChildSets() {
         </div>
         <div class="al-tree-set-meta">
           <span>${count} items</span>
+        </div>
+        <div class="al-row-acts">
+          <select title="Send to slot" onclick="event.stopPropagation()" onchange="moveSetToSlot('${s.id}', this.value)">
+            <option value="">→ Slot…</option>
+            ${Array.from({ length: AUTOLOOT_CONFIG.MAX_SLOTS }, (_, i) => `<option value="${i + 1}">Slot ${i + 1}</option>`).join('')}
+          </select>
         </div>
       </div>
     `;
@@ -540,49 +550,33 @@ function renderAutolootMain() {
   else if (count >= maxLimit * 0.8) fillClass = 'al-capacity-fill--warn';
   if (state.autolootVip) fillClass += ' al-capacity-fill--vip';
 
-  // Slot Context Card
+  // Sibling tabs (all sets in this slot group, or the Unassigned library)
+  const slotObj = info.isArchived ? null : state.autolootV2.slots[info.slotNum];
+  const sibs = info.isArchived ? (state.autolootV2.archive?.sets || []) : (slotObj?.sets || []);
+  const tabsHtml = sibs.map(s => {
+    const isDef = !info.isArchived && slotObj.defaultSetId === s.id;
+    const star = info.isArchived ? '' : `<span class="al-tab-star ${isDef ? '' : 'off'}" title="${isDef ? 'Default for this slot' : 'Make default'}" onclick="event.stopPropagation(); ${isDef ? '' : `setSlotDefault(${info.slotNum}, '${s.id}')`}">★</span>`;
+    return `<div class="al-set-tab ${s.id === set.id ? 'active' : ''}" onclick="selectAutolootSet('${s.id}')">${star}<span class="al-set-tab-name">${safeHtml(s.name)}</span></div>`;
+  }).join('') + `<div class="al-set-tab al-set-tab--add" title="Add set" onclick="${info.isArchived ? 'addNewArchivedSet(event)' : `addSetToSlot(${info.slotNum}, event)`}">＋</div>`;
+
   const slotContextBar = `
-    <div class="al-slot-context-card">
-      <div class="al-slot-context-left">
-        <span class="al-slot-badge ${info.isArchived ? 'archived' : ''}">
-          ${info.isArchived ? 'ARCHIVED (NO SLOT)' : `SLOT #${info.slotNum} GROUP`}
-        </span>
-        <div>
-          <div style="font-size:12px; font-weight:700;">
-            ${info.isArchived 
-              ? 'Unassigned / Archived Set' 
-              : `Assigned to In-Game Slot #${info.slotNum}`}
-          </div>
-          <div style="font-size:10px; color:var(--text-muted);">
-            ${info.isDefault 
-              ? '⭐ This is the active default set used for slot title & in-game commands.' 
-              : (info.isArchived ? 'Assign to a game slot (1–10) to generate in-game load commands.' : `Secondary rotated set under Slot #${info.slotNum}.`)}
-          </div>
-        </div>
-      </div>
-
-      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-        ${!info.isArchived && !info.isDefault ? `
-          <button class="btn btn-sm btn-gold" onclick="setSlotDefault(${info.slotNum}, '${set.id}')">
-            ⭐ Make Default for Slot #${info.slotNum}
-          </button>
-        ` : ''}
-
-        <div style="display:flex; align-items:center; gap:6px;">
-          <span style="font-size:11px; color:var(--text-muted);">Move to:</span>
-          <select class="search-input" style="padding:4px 8px; width:130px;" onchange="moveSetToSlot('${set.id}', this.value)">
-            <option value="">Move to slot...</option>
-            ${Array.from({ length: AUTOLOOT_CONFIG.MAX_SLOTS }, (_, i) => i + 1).map(n => `
-              <option value="${n}" ${info.slotNum === n ? 'disabled' : ''}>
-                Slot ${n} (${state.autolootV2.slots[n]?.sets?.length || 0} sets)
-              </option>
-            `).join('')}
-            <option value="archive" ${info.isArchived ? 'disabled' : ''}>📁 Archive (No Slot)</option>
-          </select>
-        </div>
-      </div>
-    </div>
+    <div class="al-crumb">${info.isArchived ? 'Unassigned library' : `Slot ${info.slotNum} · ${sibs.length} set${sibs.length !== 1 ? 's' : ''}`}</div>
+    <div class="al-set-tabs">${tabsHtml}</div>
   `;
+
+  const moveOpts = Array.from({ length: AUTOLOOT_CONFIG.MAX_SLOTS }, (_, i) => i + 1).map(n =>
+    `<option value="${n}" ${info.slotNum === n ? 'disabled' : ''}>Slot ${n} (${state.autolootV2.slots[n]?.sets?.length || 0} sets)</option>`).join('')
+    + `<option value="archive" ${info.isArchived ? 'disabled' : ''}>Unassigned</option>`;
+  const setMenuHtml = `
+    <div class="al-menu">
+      <button class="btn btn-sm" onclick="alToggleMenu(this, event)" title="More actions">⋯</button>
+      <div class="al-menu-dd">
+        <select onchange="moveSetToSlot('${set.id}', this.value)"><option value="">Move to…</option>${moveOpts}</select>
+        <button onclick="duplicateSet('${set.id}')">Duplicate</button>
+        <button class="danger" onclick="clearSetItems('${set.id}')">Clear items</button>
+        <button class="danger" onclick="deleteSet('${set.id}')">Delete set</button>
+      </div>
+    </div>`;
 
   // Target slot for command generation
   const commandSlot = info.slotNum || 1;
@@ -598,7 +592,7 @@ function renderAutolootMain() {
           <div class="qvh-title-row" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
             <div style="display:flex; align-items:baseline; gap:8px;">
               <span class="qvh-item-name">Autoloot</span>
-              <span class="qvh-id">${info.isArchived ? 'Archived' : `Slot #${info.slotNum}`}</span>
+              <span class="qvh-id">${info.isArchived ? 'Unassigned' : `Slot #${info.slotNum}`}</span>
               ${info.isDefault ? '<span class="al-default-pill" style="font-size:10px; padding:2px 6px;">DEFAULT</span>' : ''}
             </div>
 
@@ -608,7 +602,7 @@ function renderAutolootMain() {
             ` : `
               <button class="mockup-vip-toggle ${state.autolootVip ? 'active' : ''}" onclick="toggleAutolootVip()" title="Click to toggle 24h VIP Ticket mode (60 vs 100 capacity)">
                 <span class="vip-dot"></span>
-                <span id="vipBtnLabel">${state.autolootVip ? '⭐ VIP On (100)' : '👑 VIP Off (60)'}</span>
+                <span id="vipBtnLabel">${state.autolootVip ? '⭐ VIP: ACTIVE (100 max)' : '👑 VIP: OFF (60 max)'}</span>
               </button>
             `}
           </div>
@@ -622,11 +616,7 @@ function renderAutolootMain() {
               placeholder="Name this set..."
               onchange="updateSetName('${set.id}', this.value)"
             >
-            <div style="display:flex; gap:6px; flex-wrap:wrap;">
-              <button class="btn btn-sm" onclick="duplicateSet('${set.id}')">Duplicate</button>
-              <button class="btn btn-danger btn-sm" onclick="deleteSet('${set.id}')">Delete Set</button>
-              <button class="btn btn-danger btn-sm" onclick="clearSetItems('${set.id}')">Clear Items</button>
-            </div>
+            ${setMenuHtml}
           </div>
 
           <!-- Capacity Bar -->
@@ -635,7 +625,7 @@ function renderAutolootMain() {
               <div class="al-capacity-fill ${fillClass}" style="width:${pct}%"></div>
             </div>
             <span class="al-capacity-label">${count} / ${maxLimit} items</span>
-            ${state.autolootVip && !isMidrate ? '<span style="font-size:10px; color:#fbbf24; font-weight:700;">(VIP)</span>' : ''}
+            ${state.autolootVip && !isMidrate ? '<span style="font-size:10px; color:#fbbf24; font-weight:700;">(VIP Active)</span>' : ''}
           </div>
 
           <!-- VIP Alert if >60 items and VIP is OFF in HR -->
@@ -906,7 +896,7 @@ function moveSetToSlot(setId, targetValue) {
     state.autolootV2.archive.sets = state.autolootV2.archive.sets || [];
     state.autolootV2.archive.sets.push(theSet);
     state.autolootCollapsedGroups['archive'] = false;
-    showToast(`Moved "${safeHtml(theSet.name)}" to Archived Sets`, "info");
+    showToast(`Moved "${safeHtml(theSet.name)}" to Unassigned`, "info");
   } else {
     const targetSlotNum = parseInt(targetValue, 10);
     const targetSlotKey = targetSlotNum.toString();
@@ -1316,3 +1306,33 @@ window.AUTOLOOT_CONFIG = AUTOLOOT_CONFIG;
 window.initAutolootData = initAutolootData;
 window.renderAutolootSidebar = renderAutolootSidebar;
 window.renderAutolootMain = renderAutolootMain;
+
+// ===== ROW / MENU HELPERS =====
+
+function copySwapCommands(setId, e) {
+  if (e) e.stopPropagation();
+  const info = findSetInfo(setId);
+  if (!info || !info.set || info.isArchived) {
+    showToast('Assign this set to a slot first', 'warning');
+    return;
+  }
+  const cmds = generateCommands(info.slotNum, info.set.items, getMaxAutolootItems(), !!info.set.autoload);
+  navigator.clipboard.writeText(cmds.join('\n')).then(
+    () => showToast(`Copied swap commands for Slot ${info.slotNum}`, 'success'),
+    () => showToast('Copy failed', 'error')
+  );
+}
+window.copySwapCommands = copySwapCommands;
+
+function alToggleMenu(btn, e) {
+  if (e) e.stopPropagation();
+  const menu = btn.closest('.al-menu');
+  const open = menu.classList.contains('open');
+  document.querySelectorAll('.al-menu.open').forEach(m => m.classList.remove('open'));
+  if (!open) menu.classList.add('open');
+}
+window.alToggleMenu = alToggleMenu;
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.al-menu')) document.querySelectorAll('.al-menu.open').forEach(m => m.classList.remove('open'));
+});
