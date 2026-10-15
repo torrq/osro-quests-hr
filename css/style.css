@@ -1554,22 +1554,317 @@ div.quest-bound, div.shop-bound {
 /* =========================================
    7. AUTOLOOT MODULE
    ========================================= */
-/* Sidebar Slots */
-.autoloot-slot-item {
-  padding: 10px 15px;
+
+/* Tree Group Styles (Variation A) */
+.autoloot-tree-container {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.al-tree-group {
   border-bottom: 1px solid var(--border);
+}
+
+/* Group Header (Slot 1..9 & Archive) */
+.al-tree-group-header {
+  padding: 6px 10px 6px 8px;
+  background: var(--bg);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-left: 3px solid var(--accent);
+  transition: background 0.15s;
+  user-select: none;
+  gap: 6px;
+}
+
+.al-tree-group-header:hover {
+  background: var(--panel-hover);
+}
+
+.al-tree-group-header.archived {
+  border-left-color: var(--text-muted);
+  background: var(--subtle-overlay, rgba(0, 0, 0, 0.08));
+}
+
+.al-tree-arrow {
+  font-size: 10px;
+  color: var(--accent);
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease;
+  flex-shrink: 0;
+}
+
+.al-tree-arrow.collapsed {
+  transform: rotate(-90deg);
+}
+
+.al-tree-slot-num {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent);
+  min-width: 22px;
+  text-align: right;
+}
+
+.al-tree-group-header.archived .al-tree-slot-num {
+  color: var(--text-muted);
+  font-size: 12px;
+  text-align: center;
+}
+
+.al-tree-group-info {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.al-tree-group-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.al-tree-group-subtitle {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.al-tree-add-btn {
+  background: transparent;
+  border: 1px dashed var(--border);
+  border-radius: 3px;
+  color: var(--text-muted);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.al-tree-add-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--panel-hover);
+}
+
+/* Tree Children Container */
+.al-tree-children {
+  background: var(--bg-dark);
+  padding: 1px 0 3px 0;
+}
+
+.al-tree-children.collapsed {
+  display: none;
+}
+
+/* Tree Child Set Row */
+.al-tree-set-row {
+  padding: 6px 12px 6px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-light, rgba(255, 255, 255, 0.05));
+  transition: background 0.12s;
+  position: relative;
+}
+
+.al-tree-set-row:hover {
+  background: var(--panel-hover);
+}
+
+.al-tree-set-row.active {
+  background: var(--panel-active, var(--panel-hover));
+  border-left: 3px solid var(--accent);
+  padding-left: 33px;
+}
+
+/* Default Set Visual Distinction */
+.al-tree-set-row.is-default {
+  background: var(--accent-bg, rgba(0, 255, 184, 0.06));
+  border-bottom: 1px solid var(--accent-bg, rgba(0, 255, 184, 0.15));
+}
+
+.al-tree-set-row.is-default.active {
+  background: var(--panel-active, var(--panel-hover));
+}
+
+.al-tree-set-row.is-default .al-tree-set-name {
+  font-weight: 700;
+}
+
+.al-tree-set-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.al-default-star {
+  color: #fbbf24;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.al-tree-set-name {
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.al-default-pill {
+  font-size: 8px;
+  font-weight: 800;
+  color: #000;
+  background: #fbbf24;
+  padding: 1px 4px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  flex-shrink: 0;
+}
+
+.al-tree-set-meta {
+  font-size: 10px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Parent Slot Context Card */
+.al-slot-context-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 18px;
+  margin-bottom: 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-.autoloot-slot-item:hover { background: var(--panel-hover); }
-.autoloot-slot-item.active {
-  background: var(--panel-hover);
-  border-left: 3px solid var(--accent);
+.al-slot-context-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+.al-slot-badge {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--tab-active-text, #000);
+  background: var(--accent);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.al-slot-badge.archived {
+  background: var(--border);
+  color: var(--text-muted);
+}
+
+/* VIP Toggle & Overflows */
+.mockup-vip-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mockup-vip-toggle:hover {
+  border-color: #fbbf24;
+}
+
+.mockup-vip-toggle.active {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: #f59e0b;
+  color: #fbbf24;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+}
+
+.vip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.mockup-vip-toggle.active .vip-dot {
+  background: #fbbf24;
+  box-shadow: 0 0 8px #fbbf24;
+}
+
+.vip-tag-indicator {
+  font-size: 10px;
+  font-weight: 700;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid #b45309;
+  border-radius: 4px;
+  padding: 1px 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.vip-overflow-alert {
+  background: rgba(248, 81, 73, 0.12);
+  border: 1px solid var(--danger);
+  border-radius: 4px;
+  padding: 7px 12px;
+  font-size: 11px;
+  color: var(--danger);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.btn-gold {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: #b45309;
+  color: #fbbf24;
+}
+
+.btn-gold:hover {
+  background: #f59e0b;
+  color: #000;
+}
+
+/* Backward compatibility classes */
 .autoloot-slot-row {
   padding: 4px 15px;
   border-bottom: 1px solid var(--border);
@@ -1579,14 +1874,12 @@ div.quest-bound, div.shop-bound {
   align-items: center;
   transition: background 0.2s;
 }
-
 .autoloot-slot-row:hover { background: var(--panel-hover); }
 .autoloot-slot-row.active {
   background: var(--panel-hover);
   border-left: 5px solid var(--accent);
   padding-left: 8px;
 }
-
 .autoloot-slot-row-inner {
   display: flex;
   align-items: center;
@@ -1594,7 +1887,6 @@ div.quest-bound, div.shop-bound {
   flex: 1;
   min-width: 0;
 }
-
 .autoloot-slot-row-number {
   font-size: 20px;
   font-weight: 700;
@@ -1602,40 +1894,21 @@ div.quest-bound, div.shop-bound {
   min-width: 24px;
   text-align: right;
 }
-
 .autoloot-slot-row-name-container {
   flex: 1;
   min-width: 0;
   overflow: hidden;
 }
-
 .autoloot-slot-row-name {
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .autoloot-slot-row-itemcount {
   font-size: 11px;
   color: var(--text-muted);
   margin-top: 2px;
-}
-
-.slot-count {
-  font-size: 12px;
-  color: var(--text-muted);
-  background: var(--subtle-overlay);
-  padding: 2px 6px;
-  border-radius: 10px;
-}
-
-.slot-badge {
-  background: var(--subtle-overlay);
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 11px;
-  color: var(--text-muted);
 }
 
 /* Autoloot Main Area */
@@ -1689,6 +1962,10 @@ div.quest-bound, div.shop-bound {
 
 .al-capacity-fill--warn { background: var(--warning); }
 .al-capacity-fill--full { background: var(--danger); }
+.al-capacity-fill--vip {
+  background: #fbbf24 !important;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+}
 
 .al-capacity-label {
   font-size: 11px;

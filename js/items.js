@@ -189,7 +189,24 @@ function renderItemsCore() {
   }
 
   // 1c. Add autoloot items
-  if (state.autolootData) {
+  if (state.autolootV2) {
+    if (state.autolootV2.slots) {
+      Object.values(state.autolootV2.slots).forEach((slot) => {
+        (slot.sets || []).forEach((set) => {
+          (set.items || []).forEach((itemId) => {
+            usedItemIds.add(Number(itemId));
+          });
+        });
+      });
+    }
+    if (state.autolootV2.archive && Array.isArray(state.autolootV2.archive.sets)) {
+      state.autolootV2.archive.sets.forEach((set) => {
+        (set.items || []).forEach((itemId) => {
+          usedItemIds.add(Number(itemId));
+        });
+      });
+    }
+  } else if (state.autolootData) {
     Object.values(state.autolootData).forEach((autolootList) => {
       if (Array.isArray(autolootList)) {
         autolootList.forEach((itemId) => {

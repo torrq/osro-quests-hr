@@ -40,6 +40,10 @@ window.state = {
   autolootData: (window.osroStore ? osroStore.getJson(LOCAL_STORAGE.autoloot_data, {}) : JSON.parse(localStorage.getItem(LOCAL_STORAGE.autoloot_data))) || {},
   autolootNames: (window.osroStore ? osroStore.getJson(LOCAL_STORAGE.autoloot_names, {}) : JSON.parse(localStorage.getItem(LOCAL_STORAGE.autoloot_names))) || {},
   selectedAutolootSlot: 1,
+  autolootV2: null,
+  selectedAutolootSetId: null,
+  autolootCollapsedGroups: {},
+  autolootVip: (window.osroStore ? osroStore.getItem(LOCAL_STORAGE.autoloot_vip) : localStorage.getItem(LOCAL_STORAGE.autoloot_vip)) === 'true',
   selectedItemId: null,
   showValuesOnly: false,
   searchDescriptions: false,
@@ -1184,9 +1188,9 @@ function switchTab(tabName, pushState = true) {
     } else if (tabName === 'items' && state.selectedItemId) {
       entityType = 'item';
       entityId = state.selectedItemId.toString();
-    } else if (tabName === 'autoloot' && state.selectedAutolootSlot) {
+    } else if (tabName === 'autoloot' && (state.selectedAutolootSetId || state.selectedAutolootSlot)) {
       entityType = 'autoloot';
-      entityId = state.selectedAutolootSlot.toString();
+      entityId = (state.selectedAutolootSetId || state.selectedAutolootSlot).toString();
     }
 
     updateURL(entityId, entityType, true);
@@ -1276,6 +1280,11 @@ function render() {
 function osroOnSyncedDataChanged(changedKeys = []) {
   const has = k => changedKeys.includes(k);
 
+  if (has(LOCAL_STORAGE.autoloot_v2)) {
+    if (typeof window.loadAutolootV2FromSync === 'function') {
+      window.loadAutolootV2FromSync();
+    }
+  }
   if (has(LOCAL_STORAGE.autoloot_data)) {
     state.autolootData = osroStore.getJson(LOCAL_STORAGE.autoloot_data, {}) || {};
     for (let i = 1; i <= 10; i++) {
@@ -1553,8 +1562,10 @@ function handleURLNavigation() {
   } 
   else if (autolootSlot) {
     ensureTab('autoloot');
-    if (window.selectAutolootSlot) {
-      window.selectAutolootSlot(parseInt(autolootSlot), false);
+    if (window.selectAutolootByParam) {
+      window.selectAutolootByParam(autolootSlot, false);
+    } else if (window.selectAutolootSlot) {
+      window.selectAutolootSlot(autolootSlot, false);
     }
   }
   // Priority 2: Pure Tab Navigation (Only if no entity is linked)
@@ -1742,8 +1753,10 @@ function selectAutolootSlotFromHistory(slotNum) {
     return;
   }
   
-  if (window.selectAutolootSlot) {
-    window.selectAutolootSlot(parseInt(slotNum), false);
+  if (window.selectAutolootByParam) {
+    window.selectAutolootByParam(slotNum, false);
+  } else if (window.selectAutolootSlot) {
+    window.selectAutolootSlot(slotNum, false);
   }
 }
 

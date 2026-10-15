@@ -2,7 +2,7 @@
 // OSRO Quest Helper - Configuration
 // ============================================================================
 
-const VERSION = 118;
+const VERSION = 119;
 const FLAVOR = 'Highrate';
 
 // === DATA SOURCE CONFIGURATION ===
@@ -39,6 +39,8 @@ const LOCAL_STORAGE = {
   "theme":          "osrohr_theme",
   "autoloot_data":  "osrohr_autoloot_data",
   "autoloot_names": "osrohr_autoloot_names",
+  "autoloot_v2":    "osrohr_autoloot_v2",
+  "autoloot_vip":   "osrohr_autoloot_vip",
   "item_values":    "osrohr_item_values",
   "lab_data":       "osrohr_lab_data",
   "bookmarks":      "osrohr_bookmarks",
@@ -52,6 +54,7 @@ const SYNC_KEYS = [
   LOCAL_STORAGE.config,
   LOCAL_STORAGE.autoloot_data,
   LOCAL_STORAGE.autoloot_names,
+  LOCAL_STORAGE.autoloot_v2,
   LOCAL_STORAGE.item_values,
   LOCAL_STORAGE.lab_data,
   LOCAL_STORAGE.bookmarks,
