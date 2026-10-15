@@ -478,10 +478,11 @@ function renderSlotChildSets(slotNum, slot) {
         <div class="al-tree-set-meta">
           <span>${count} items</span>
         </div>
-        <div class="al-row-acts">
-          ${!isDefault ? `<button title="Make default" onclick="setSlotDefault(${slotNum}, '${s.id}'); event.stopPropagation();">★</button>` : ''}
-          <button title="Copy swap commands for Slot ${slotNum}" onclick="copySwapCommands('${s.id}', event)">⧉</button>
-        </div>
+        ${!isDefault ? `
+          <div class="al-row-acts">
+            <button title="Make default" onclick="setSlotDefault(${slotNum}, '${s.id}'); event.stopPropagation();">★</button>
+          </div>
+        ` : ''}
       </div>
     `;
   }).join('');

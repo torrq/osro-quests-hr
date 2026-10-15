@@ -1673,7 +1673,10 @@ div.quest-bound, div.shop-bound {
 
 /* Tree Child Set Row */
 .al-tree-set-row {
-  padding: 6px 12px 6px 36px;
+  height: 28px;
+  min-height: 28px;
+  box-sizing: border-box;
+  padding: 0 12px 0 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -6441,10 +6444,13 @@ a.bm-main-name:hover {
 .al-menu-dd button:hover, .al-menu-dd select:hover { background: var(--panel-hover); }
 .al-menu-dd .danger { color: var(--danger); }
 
-.al-row-acts { display: none; gap: 3px; align-items: center; flex-shrink: 0; }
-.al-row-acts button { padding: 0 6px; font-size: 11px; line-height: 18px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; color: var(--text); cursor: pointer; }
-.al-row-acts button:hover { border-color: var(--accent); }
-.al-row-acts select { width: auto; padding: 1px 4px; font-size: 11px; }
+.al-row-acts { display: none; gap: 3px; align-items: center; flex-shrink: 0; height: 100%; }
+.al-row-acts button { box-sizing: border-box; height: 20px; margin: 0; padding: 0 6px; font-size: 11px; line-height: 18px; background: var(--bg); border: 1px solid var(--border); border-radius: 4px; color: var(--text); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.al-row-acts button:hover { border-color: var(--accent); color: var(--accent); }
+.al-row-acts select { box-sizing: border-box; height: 20px; margin: 0; width: auto; padding: 0 4px; font-size: 11px; line-height: 18px; }
 .al-tree-set-row:hover .al-row-acts { display: flex; }
-.al-tree-set-row:hover .al-tree-set-meta { display: none; }
-@media (hover: none) { .al-row-acts { display: flex; } }
+.al-tree-set-row:hover:has(.al-row-acts) .al-tree-set-meta { display: none; }
+@media (hover: none) {
+  .al-row-acts { display: flex; }
+  .al-tree-set-row:has(.al-row-acts) .al-tree-set-meta { display: none; }
+}
