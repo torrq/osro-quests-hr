@@ -56135,15 +56135,15 @@
   },
   "22105": {
     "name": "Vampire Sidehat Wht",
-    "desc": "^008800Source: Halloween Event ^000000\n[^FF0000 Customized Headgear ^000000]\nMax Weight + 750\nIncrease Drop Rate by 5%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nHP +100\n------------------------\nClass :^777777 Headgear^000000\nDefense :^777777 0^000000\nEquipped on :^777777 Upper^000000\nWeight :^777777 10^000000\nRequired Level :^777777 1^000000\nApplicable Job :^777777 All^000000"
+    "desc": "^008800Source: Halloween Event ^000000\n[^FF0000 Customized Headgear ^000000]\nMax Weight + 750\nIncrease Drop Rate by 5%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nATK/MATK +2\n------------------------\nClass :^777777 Headgear^000000\nDefense :^777777 0^000000\nEquipped on :^777777 Upper^000000\nWeight :^777777 10^000000\nRequired Level :^777777 1^000000\nApplicable Job :^777777 All^000000"
   },
   "22106": {
     "name": "Vampire Tie Blk",
-    "desc": "[^FF0000 Customized Headgear ^000000]\nClass :^777777 Headgear^000000\nDefense :^777777 0^000000\nEquipped on :^777777 Lower^000000\nWeight :^777777 10^000000\nRequired Level :^777777 1^000000\nApplicable Job :^777777 All^000000"
+    "desc": "^008800Source: Halloween Event ^000000\n[^FF0000 Customized Headgear ^000000]\nMax Weight + 750\nIncrease Drop Rate by 5%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nATK/MATK +2\n------------------------\nClass :^777777 Headgear^000000\nDefense :^777777 0^000000\nEquipped on :^777777 Lower^000000\nWeight :^777777 10^000000\nRequired Level :^777777 1^000000\nApplicable Job :^777777 All^000000"
   },
   "22107": {
     "name": "Vampire Tie Blu",
-    "desc": "[^FF0000 Customized Headgear ^000000]\nClass :^777777 Headgear^000000\nDefense :^777777 0^000000\nEquipped on :^777777 Lower^000000\nWeight :^777777 10^000000\nRequired Level :^777777 1^000000\nApplicable Job :^777777 All^000000"
+    "desc": "^008800Source: Halloween Event ^000000\n[^FF0000 Customized Headgear ^000000]\nMax Weight + 750\nIncrease Drop Rate by 5%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nATK/MATK +2\n------------------------\nClass :^777777 Headgear^000000\nDefense :^777777 0^000000\nEquipped on :^777777 Lower^000000\nWeight :^777777 10^000000\nRequired Level :^777777 1^000000\nApplicable Job :^777777 All^000000"
   },
   "22108": {
     "name": "Vampire Tie Grn",
@@ -56444,6 +56444,54 @@
   "22183": {
     "name": "Sun God Nika Hat",
     "desc": "Grants ^777777Angelic Valkyrie's^000000 ^777777Refine Awakening Set^000000 effect.\n-------------------------\nMovespeed + 100%\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Sun God Nika Set ^000000]\nAll Stats + 1\nAttack & Magic Attack +1%\nIncreased Card Unlock chance by 0.03%\nIncrease damage on Boss monsters by 9%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nResistance againt All elements +1%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Garment^000000\nDefense :^777777 0^000000\nEquipped on :^777777 Garment^000000\nWeight :^777777 10^000000\nApplicable Job :^777777 All^000000"
+  },
+  "22184": {
+    "name": "Caelestis Eye",
+    "desc": "-------------------------\nDemi Human Resist +1%.\nBoss Monster Damage +4%.\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Caelestis Set ^000000]\nAll Stats + 1\nDemi Human Resist +3%.\nIncreased ALL skill damage by 4%.\nMonster Research kill count increased by 1.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nAll Stats +1.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Headgear^000000\nDefense:^0000FF 0^000000\nLocation:^6666CC Lower^000000\nWeight:^009900 10^000000\nRequired Level :^777777 1^000000\nJobs:^6666CC All^000000"
+  },
+  "22185": {
+    "name": "Caelestis Halo",
+    "desc": "-------------------------\nDemi Human Resist +1%.\nBoss Monster Damage +4%.\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Caelestis Set ^000000]\nAll Stats + 1\nDemi Human Resist +3%.\nIncreased ALL skill damage by 4%.\nMonster Research kill count increased by 1.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nDemi Human Damage +1%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Headgear^000000\nDefense:^0000FF 0^000000\nLocation:^6666CC Upper^000000\nWeight:^009900 10^000000\nRequired Level :^777777 1^000000\nJobs:^6666CC All^000000"
+  },
+  "22186": {
+    "name": "Caelestis Scarf",
+    "desc": "-------------------------\nDemi Human Resist +1%.\nBoss Monster Damage +4%.\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Caelestis Set ^000000]\nAll Stats + 1\nDemi Human Resist +3%.\nIncreased ALL skill damage by 4%.\nMonster Research kill count increased by 1.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nReduce damage from ^777777Demi-Humans^000000 by 1%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Headgear^000000\nDefense:^0000FF 0^000000\nLocation:^6666CC Mid^000000\nWeight:^009900 10^000000\nRequired Level :^777777 1^000000\nJobs:^6666CC All^000000"
+  },
+  "22187": {
+    "name": "Caelestis Staff",
+    "desc": "Grants ^777777Angelic Valkyrie's^000000 ^777777Refine Awakening Set^000000 effect.\n-------------------------\nMovespeed + 100%\nDemi Human Resist +1%.\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Caelestis Set ^000000]\nAll Stats + 1\nDemi Human Resist +3%.\nIncreased ALL skill damage by 4%.\nMonster Research kill count increased by 1.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nIncrease damage from ^777777All-Size^000000 by 1%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Garment^000000\nDefense :^777777 0^000000\nEquipped on :^777777 Garment^000000\nWeight :^777777 10^000000\nApplicable Job :^777777 All^000000"
+  },
+  "22188": {
+    "name": "Hiei Aura",
+    "desc": "-------------------------\nMax Weight + 1000\nIncreased ALL skill damage by +1%.\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Hiei Set ^000000]\nAll Stats + 1\nATK & MATK +1%.\nBoss Monster Damage +5%.\nIncreased Card Unlock chance by 0.03%\n------------------------\n[ ^008000Deposit Effect^000000 ]\nIncrease physical damage against Demi-Human by 1%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Headgear^000000\nDefense:^0000FF 0^000000\nLocation:^6666CC Lower^000000\nWeight:^009900 10^000000\nRequired Level :^777777 1^000000\nJobs:^6666CC All^000000"
+  },
+  "22189": {
+    "name": "Hiei Cape",
+    "desc": "-------------------------\nMax Weight + 1000\nIncreased ALL skill damage by +1%.\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Hiei Set ^000000]\nAll Stats + 1\nATK & MATK +1%.\nBoss Monster Damage +5%.\nIncreased Card Unlock chance by 0.03%\n------------------------\n[ ^008000Deposit Effect^000000 ]\nIncrease magic damage against Demi-Human by 1%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Headgear^000000\nDefense:^0000FF 0^000000\nLocation:^6666CC Mid^000000\nWeight:^009900 10^000000\nRequired Level :^777777 1^000000\nJobs:^6666CC All^000000"
+  },
+  "22190": {
+    "name": "Hiei Headgear",
+    "desc": "-------------------------\nMax Weight + 1000\nIncreased ALL skill damage by +1%.\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Hiei Set ^000000]\nAll Stats + 1\nATK & MATK +1%.\nBoss Monster Damage +5%.\nIncreased Card Unlock chance by 0.03%\n------------------------\n[ ^008000Deposit Effect^000000 ]\nBoss Monster Damage +1%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Headgear^000000\nDefense:^0000FF 0^000000\nLocation:^6666CC Upper^000000\nWeight:^009900 10^000000\nRequired Level :^777777 1^000000\nJobs:^6666CC All^000000"
+  },
+  "22191": {
+    "name": "Hiei Sword",
+    "desc": "Grants ^777777Angelic Valkyrie's^000000 ^777777Refine Awakening Set^000000 effect.\n-------------------------\nMovespeed + 100%\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Hiei Set ^000000]\nAll Stats + 1\nATK & MATK +1%.\nBoss Monster Damage +5%.\nIncreased Card Unlock chance by 0.03%\n------------------------\n[ ^008000Deposit Effect^000000 ]\nCritical damage +1%\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Garment^000000\nDefense :^777777 0^000000\nEquipped on :^777777 Garment^000000\nWeight :^777777 10^000000\nApplicable Job :^777777 All^000000"
+  },
+  "22192": {
+    "name": "Kurama Headgear",
+    "desc": "-------------------------\nMax Weight + 1000\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Kurama Set ^000000]\nMaximum HP +5%\nAttack & Magic Attack +1%.\nNullify 2% magic spells\nResistance againt All elements +3%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nReduce damage from long range attacks by 2%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Headgear^000000\nDefense:^0000FF 0^000000\nLocation:^6666CC Upper^000000\nWeight:^009900 10^000000\nRequired Level :^777777 1^000000\nJobs:^6666CC All^000000"
+  },
+  "22193": {
+    "name": "Kurama Ojigi Plant",
+    "desc": "-------------------------\nMax Weight + 1000\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Kurama Set ^000000]\nMaximum HP +5%\nAttack & Magic Attack +1%.\nNullify 2% magic spells\nResistance againt All elements +3%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nReduce damage from ^777777Demi-Humans^000000 by 1%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Headgear^000000\nDefense:^0000FF 0^000000\nLocation:^6666CC Mid^000000\nWeight:^009900 10^000000\nRequired Level :^777777 1^000000\nJobs:^6666CC All^000000"
+  },
+  "22194": {
+    "name": "Kurama Rose Aura",
+    "desc": "-------------------------\nMax Weight + 1000\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Kurama Set ^000000]\nMaximum HP +5%\nAttack & Magic Attack +1%.\nNullify 2% magic spells\nResistance againt All elements +3%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nDemi Human Resist +1%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Headgear^000000\nDefense:^0000FF 0^000000\nLocation:^6666CC Lower^000000\nWeight:^009900 10^000000\nRequired Level :^777777 1^000000\nJobs:^6666CC All^000000"
+  },
+  "22195": {
+    "name": "Kurama Fox Tail",
+    "desc": "Grants ^777777Angelic Valkyrie's^000000 ^777777Refine Awakening Set^000000 effect.\n-------------------------\nMovespeed + 100%\nGives +1 random stat when equipped.\nDrop Rate of any items and cards increased by 15%.\n------------------------\n[^663399 Kurama Set ^000000]\nMaximum HP +5%\nAttack & Magic Attack +1%.\nNullify 2% magic spells\nResistance againt All elements +3%.\n------------------------\n[ ^008000Deposit Effect^000000 ]\nIncrease damage from ^777777All-Size^000000 by 1%.\n------------------------\nSource:^777777 Donation Exclusive^000000\nClass:^6666CC Costume Garment^000000\nDefense :^777777 0^000000\nEquipped on :^777777 Garment^000000\nWeight :^777777 10^000000\nApplicable Job :^777777 All^000000"
   },
   "22506": {
     "name": "",
