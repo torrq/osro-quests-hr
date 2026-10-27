@@ -362,7 +362,7 @@ function renderItemsCore() {
   }
 
   // Update URL search parameters to reflect search state without pushing a new history item
-  if (typeof updateURL === 'function' && (state.currentTab === 'items' || state.selectedItemId)) {
+  if (!state.suppressUrlUpdate && typeof updateURL === 'function' && (state.currentTab === 'items' || state.selectedItemId)) {
     updateURL(state.selectedItemId, 'item', false);
   }
 }

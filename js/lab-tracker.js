@@ -145,8 +145,8 @@
       statsHtml += `<div class="dt-stats-grid">`;
       const sortedKeys = Object.keys(parsed).sort();
       sortedKeys.forEach(stat => {
-        const isPercent = stat.includes('%');
-        const displayName = isPercent ? stat.replace('%', '').trim() : stat;
+        const isPercent = stat.endsWith('%');
+        const displayName = isPercent ? stat.replace(/%$/, '').trim() : stat;
         const suffix = isPercent ? '%' : '';
         const data = parsed[stat];
         const sign = data.value >= 0 ? '+' : '';
@@ -179,7 +179,7 @@
                   </div>
                   <div class="dt-unparsed-source" style="font-size: 11px; margin-top: 3px;">
                     <span class="dt-unparsed-icon">${renderItemIcon(src.itemId)}</span>
-                    <a href="#" onclick="window.navigateToTrackerItem(${src.itemId}); return false;" class="item-link" style="font-size: 11px;">${src.itemName}</a>
+                    <a href="${typeof itemUrl === 'function' ? itemUrl(src.itemId) : '?item=' + src.itemId}" onclick="event.preventDefault(); window.navigateToTrackerItem(${src.itemId});" class="item-link" style="font-size: 11px;">${src.itemName}</a>
                   </div>
                 </div>
               `).join('')}
@@ -211,7 +211,7 @@
                   </div>
                   <div class="dt-unparsed-source">
                     <span class="dt-unparsed-icon">${renderItemIcon(item.itemId)}</span>
-                    <a href="#" onclick="window.navigateToTrackerItem(${item.itemId}); return false;" class="item-link">${item.itemName}</a>
+                    <a href="${typeof itemUrl === 'function' ? itemUrl(item.itemId) : '?item=' + item.itemId}" onclick="event.preventDefault(); window.navigateToTrackerItem(${item.itemId});" class="item-link">${item.itemName}</a>
                     <span class="item-row-id" style="margin-left: 4px;">#${item.itemId}</span>
                   </div>
                 </div>
@@ -412,7 +412,7 @@
             ${renderItemIcon(item.id)}
           </td>
           <td class="dt-col-item">
-            <a href="#" onclick="window.navigateToTrackerItem(${item.id}); return false;" class="item-link">${item.name}</a>
+            <a href="${typeof itemUrl === 'function' ? itemUrl(item.id) : '?item=' + item.id}" onclick="event.preventDefault(); window.navigateToTrackerItem(${item.id});" class="item-link">${item.name}</a>
           </td>
           <td class="dt-col-effect">
             ${item.effect}

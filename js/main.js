@@ -441,8 +441,11 @@ function initializeData() {
       if (!window.history.state) {
         const urlParams = new URLSearchParams(window.location.search);
         const questId = urlParams.get('quest');
+        const shopId = urlParams.get('shop');
+        const itemId = urlParams.get('item');
+        const autolootSlot = urlParams.get('autoloot');
         window.history.replaceState(
-          { questId: questId || null, tab: state.currentTab },
+          { questId: questId || null, shopId: shopId || null, itemId: itemId || null, autolootSlot: autolootSlot || null, tab: state.currentTab },
           '',
           window.location.href
         );
@@ -1156,44 +1159,54 @@ const TAB_ELEMENTS = {
 };
 
 function switchTab(tabName, pushState = true) {
-  // 'lab' is a namespace — redirect to the active experiment tab
-  if (tabName === 'lab') {
-      tabName = state.activeLabExperiment || (window.LAB_DEFAULT_EXPERIMENT) || 'lab-gc';
+  const prevSuppress = state.suppressUrlUpdate;
+  if (!pushState && window.state) {
+    state.suppressUrlUpdate = true;
   }
-  if (tabName.startsWith('lab-')) {
-      state.activeLabExperiment = tabName;
-  }
-  const previousTab = state.currentTab;
-  state.currentTab = tabName;
-  updateTabButtons(tabName);
-  hideAllElements();
-  showTabElements(tabName);
-
-  // Close the Values Manager when leaving Items tab
-  if (tabName !== 'items' && typeof window.closeValuesManager === 'function') {
-    window.closeValuesManager(false);
-  }
-  
-  // Update URL when switching tabs (avoid racing user clicks)
-  if (pushState && previousTab !== tabName && typeof updateURL === 'function') {
-    let entityType = null;
-    let entityId = null;
-
-    if (tabName === 'quests' && state.selectedQuest?.producesId) {
-      entityType = 'quest';
-      entityId = state.selectedQuest.producesId.toString();
-    } else if (tabName === 'shops' && state.selectedShop?.producesId) {
-      entityType = 'shop';
-      entityId = state.selectedShop.producesId.toString();
-    } else if (tabName === 'items' && state.selectedItemId) {
-      entityType = 'item';
-      entityId = state.selectedItemId.toString();
-    } else if (tabName === 'autoloot' && (state.selectedAutolootSetId || state.selectedAutolootSlot)) {
-      entityType = 'autoloot';
-      entityId = (state.selectedAutolootSetId || state.selectedAutolootSlot).toString();
+  try {
+    // 'lab' is a namespace — redirect to the active experiment tab
+    if (tabName === 'lab') {
+        tabName = state.activeLabExperiment || (window.LAB_DEFAULT_EXPERIMENT) || 'lab-gc';
     }
+    if (tabName.startsWith('lab-')) {
+        state.activeLabExperiment = tabName;
+    }
+    const previousTab = state.currentTab;
+    state.currentTab = tabName;
+    updateTabButtons(tabName);
+    hideAllElements();
+    showTabElements(tabName);
 
-    updateURL(entityId, entityType, true);
+    // Close the Values Manager when leaving Items tab
+    if (tabName !== 'items' && typeof window.closeValuesManager === 'function') {
+      window.closeValuesManager(false);
+    }
+    
+    // Update URL when switching tabs (avoid racing user clicks)
+    if (pushState && previousTab !== tabName && typeof updateURL === 'function') {
+      let entityType = null;
+      let entityId = null;
+
+      if (tabName === 'quests' && state.selectedQuest?.producesId) {
+        entityType = 'quest';
+        entityId = state.selectedQuest.producesId.toString();
+      } else if (tabName === 'shops' && state.selectedShop?.producesId) {
+        entityType = 'shop';
+        entityId = state.selectedShop.producesId.toString();
+      } else if (tabName === 'items' && state.selectedItemId) {
+        entityType = 'item';
+        entityId = state.selectedItemId.toString();
+      } else if (tabName === 'autoloot' && (state.selectedAutolootSetId || state.selectedAutolootSlot)) {
+        entityType = 'autoloot';
+        entityId = (state.selectedAutolootSetId || state.selectedAutolootSlot).toString();
+      }
+
+      updateURL(entityId, entityType, true);
+    }
+  } finally {
+    if (window.state) {
+      state.suppressUrlUpdate = prevSuppress;
+    }
   }
 }
 
@@ -1583,6 +1596,7 @@ function handleURLNavigation() {
 
 // Update URL with current state without reloading page
 function updateURL(entityId = null, entityType = null, pushState = true) {
+  if (state.suppressUrlUpdate) return;
   const url = new URL(window.location);
   
   // 1. Clear all tracking parameters first to ensure a clean state
@@ -1615,6 +1629,7 @@ function updateURL(entityId = null, entityType = null, pushState = true) {
       ? 'values'
       : state.currentTab,
     questId: entityType === 'quest' ? entityId : null,
+    shopId: entityType === 'shop' ? entityId : null,
     itemId: entityType === 'item' ? entityId : null,
     autolootSlot: entityType === 'autoloot' ? entityId : null
   };
@@ -1830,48 +1845,58 @@ document.addEventListener("DOMContentLoaded", () => {
   // Handle browser back/forward buttons
   window.addEventListener('popstate', function(event) {
     if (event.state) {
-      const { tab, questId, itemId, autolootSlot } = event.state;
-      
-      // Sync items filters from URL parameters on history change
-      const urlParams = new URLSearchParams(window.location.search);
-      const ilParam = urlParams.get('il');
-      if (ilParam !== null) {
-        const idx = parseInt(ilParam);
-        state.selectedItemList = Number.isFinite(idx) ? idx : -1;
-      } else {
-        state.selectedItemList = -1;
-      }
-      state.showAllItems = urlParams.get('ia') === '1';
-      state.showNewItemsOnly = urlParams.get('in') === '1';
-      state.showValuesOnly = urlParams.get('iv') === '1';
-      state.searchDescriptions = urlParams.get('id') === '1';
-      
-      const isParam = urlParams.get('is');
-      state.itemSearchFilter = isParam ? isParam.toLowerCase() : "";
+      state.suppressUrlUpdate = true;
+      try {
+        const { tab, questId, shopId, itemId, autolootSlot } = event.state;
+        
+        // Sync items filters from URL parameters on history change
+        const urlParams = new URLSearchParams(window.location.search);
+        const ilParam = urlParams.get('il');
+        if (ilParam !== null) {
+          const idx = parseInt(ilParam);
+          state.selectedItemList = Number.isFinite(idx) ? idx : -1;
+        } else {
+          state.selectedItemList = -1;
+        }
+        state.showAllItems = urlParams.get('ia') === '1';
+        state.showNewItemsOnly = urlParams.get('in') === '1';
+        state.showValuesOnly = urlParams.get('iv') === '1';
+        state.searchDescriptions = urlParams.get('id') === '1';
+        
+        const isParam = urlParams.get('is');
+        state.itemSearchFilter = isParam ? isParam.toLowerCase() : "";
 
-      if (tab === 'values') {
-        if (state.currentTab !== 'items') switchTab('items', false);
-        if (typeof window.openValuesManager === 'function') window.openValuesManager(false);
-      } else {
-        if (tab && tab !== state.currentTab) {
-          switchTab(tab, false);
+        if (tab === 'values') {
+          if (state.currentTab !== 'items') switchTab('items', false);
+          if (typeof window.openValuesManager === 'function') window.openValuesManager(false);
+        } else {
+          if (tab && tab !== state.currentTab) {
+            switchTab(tab, false);
+          }
+          if (tab === 'items' && typeof window.closeValuesManager === 'function') {
+            window.closeValuesManager(false);
+          }
         }
-        if (tab === 'items' && typeof window.closeValuesManager === 'function') {
-          window.closeValuesManager(false);
+        
+        if (questId) {
+          selectQuestFromHistory(questId);
+        } else if (shopId) {
+          if (window.selectShopById) window.selectShopById(shopId, false);
+        } else if (itemId) {
+          selectItemFromHistory(itemId);
+        } else if (autolootSlot) {
+          selectAutolootSlotFromHistory(autolootSlot);
+        } else {
+          state.selectedQuest = null;
+          state.selectedShop = null;
+          state.selectedItemId = null;
+          render();
         }
+      } finally {
+        state.suppressUrlUpdate = false;
       }
-      
-      if (questId) {
-        selectQuestFromHistory(questId);
-      } else if (itemId) {
-        selectItemFromHistory(itemId);
-      } else if (autolootSlot) {
-        selectAutolootSlotFromHistory(autolootSlot);
-      } else {
-        state.selectedQuest = null;
-        state.selectedItemId = null;
-        render();
-      }
+    } else {
+      handleURLNavigation();
     }
   });
 
