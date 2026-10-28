@@ -2,7 +2,7 @@
 // OSRO Quest Helper - Configuration
 // ============================================================================
 
-const VERSION = 119;
+const VERSION = 120;
 const FLAVOR = 'Highrate';
 
 // === DATA SOURCE CONFIGURATION ===
