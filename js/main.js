@@ -64,6 +64,11 @@ window.state = {
   bmSort: 'id',
   bmSortDir: 'asc',
   activeLabExperiment: null,   // last active lab sub-tab (e.g. 'lab-credit')
+  customTheme: {
+    enabled: false,
+    dark:  { accent: '#00ffb8', bg: '#020403', panel: '#080e0e', text: '#e6edf3' },
+    light: { accent: '#4f9800', bg: '#f5f8f4', panel: '#ffffff', text: '#24292f' }
+  },
 };
 
 // Ensure all 10 autoloot slots exist
@@ -209,6 +214,7 @@ function initSettings() {
   if (sl) sl.checked = state.showLocation;
   const fmv = document.getElementById('settingForceMobileView');
   if (fmv) fmv.checked = state.forceMobileView;
+  initCustomThemeFromConfig(cfg);
   applyMobileLayoutPreference();
   syncSectionButtons();
   syncValueButtons();
@@ -355,8 +361,427 @@ function applyTheme(theme) {
   link.id = 'theme-stylesheet';
   link.rel = 'stylesheet';
   link.href = `css/style_${theme}.css`;
+  applyCustomTheme(theme);
+  syncCustomThemeUI(theme);
   head.appendChild(link);
 }
+
+const CUSTOM_THEME_DEFAULTS = {
+  dark:  { accent: '#00ffb8', bg: '#020403', panel: '#080e0e', text: '#e6edf3' },
+  light: { accent: '#4f9800', bg: '#f5f8f4', panel: '#ffffff', text: '#24292f' }
+};
+
+const CUSTOM_THEME_PRESETS = {
+  dark: [
+    { id: 'default',  name: 'Default',  accent: '#00ffb8', bg: '#020403', panel: '#080e0e', text: '#e6edf3' },
+    { id: 'midnight', name: 'Midnight', accent: '#38bdf8', bg: '#060b14', panel: '#0d1626', text: '#e2e8f0' },
+    { id: 'amethyst', name: 'Amethyst', accent: '#c084fc', bg: '#090514', panel: '#130c24', text: '#f3e8ff' },
+    { id: 'crimson',  name: 'Crimson',  accent: '#ff4d6d', bg: '#0d0406', panel: '#19090d', text: '#fce7eb' },
+    { id: 'solar',    name: 'Solar',    accent: '#fbbf24', bg: '#0c0904', panel: '#171208', text: '#fef3c7' },
+    { id: 'sakura',   name: 'Sakura',   accent: '#f472b6', bg: '#0e060b', panel: '#1a0e15', text: '#fce7f3' }
+  ],
+  light: [
+    { id: 'default',   name: 'Default',   accent: '#4f9800', bg: '#f5f8f4', panel: '#ffffff', text: '#24292f' },
+    { id: 'ocean',     name: 'Ocean',     accent: '#0284c7', bg: '#f0f7ff', panel: '#ffffff', text: '#0f172a' },
+    { id: 'lavender',  name: 'Lavender',  accent: '#7c3aed', bg: '#f6f3ff', panel: '#ffffff', text: '#1e1b4b' },
+    { id: 'parchment', name: 'Parchment', accent: '#b45309', bg: '#faf5e8', panel: '#fffdf7', text: '#292524' },
+    { id: 'rose',      name: 'Rose',      accent: '#e11d48', bg: '#fff1f4', panel: '#ffffff', text: '#271217' },
+    { id: 'teal',      name: 'Teal',      accent: '#0d9488', bg: '#f0fdfa', panel: '#ffffff', text: '#132a28' }
+  ]
+};
+
+function ctNormalizeHex(hex, fallback = '#000000') {
+  if (typeof hex !== 'string') return fallback;
+  const clean = hex.trim().toLowerCase();
+  if (/^#[0-9a-f]{6}$/.test(clean)) return clean;
+  if (/^[0-9a-f]{6}$/.test(clean)) return '#' + clean;
+  return fallback;
+}
+
+function ctHexToRgb(hex) {
+  const h = ctNormalizeHex(hex).slice(1);
+  return {
+    r: parseInt(h.slice(0, 2), 16),
+    g: parseInt(h.slice(2, 4), 16),
+    b: parseInt(h.slice(4, 6), 16)
+  };
+}
+
+function ctRgbToHex(r, g, b) {
+  const clamp = v => Math.max(0, Math.min(255, Math.round(v)));
+  const toHex = v => clamp(v).toString(16).padStart(2, '0');
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+
+function ctHexToHsl(hex) {
+  const { r: r255, g: g255, b: b255 } = ctHexToRgb(hex);
+  const r = r255 / 255, g = g255 / 255, b = b255 / 255;
+  const max = Math.max(r, g, b), min = Math.min(r, g, b);
+  let h = 0, s = 0;
+  const l = (max + min) / 2;
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+      case g: h = ((b - r) / d + 2) / 6; break;
+      case b: h = ((r - g) / d + 4) / 6; break;
+    }
+  }
+  return { h, s, l };
+}
+
+function ctHslToHex(h, s, l) {
+  const hh = ((h % 1) + 1) % 1;
+  const ss = Math.max(0, Math.min(1, s));
+  const ll = Math.max(0, Math.min(1, l));
+  if (ss === 0) {
+    const v = ll * 255;
+    return ctRgbToHex(v, v, v);
+  }
+  const hue2rgb = (p, q, t) => {
+    if (t < 0) t += 1;
+    if (t > 1) t -= 1;
+    if (t < 1 / 6) return p + (q - p) * 6 * t;
+    if (t < 1 / 2) return q;
+    if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+    return p;
+  };
+  const q = ll < 0.5 ? ll * (1 + ss) : ll + ss - ll * ss;
+  const p = 2 * ll - q;
+  return ctRgbToHex(
+    hue2rgb(p, q, hh + 1 / 3) * 255,
+    hue2rgb(p, q, hh) * 255,
+    hue2rgb(p, q, hh - 1 / 3) * 255
+  );
+}
+
+function ctMix(hex1, hex2, weight2 = 0.5) {
+  const c1 = ctHexToRgb(hex1);
+  const c2 = ctHexToRgb(hex2);
+  const w = Math.max(0, Math.min(1, weight2));
+  return ctRgbToHex(
+    c1.r + (c2.r - c1.r) * w,
+    c1.g + (c2.g - c1.g) * w,
+    c1.b + (c2.b - c1.b) * w
+  );
+}
+
+function ctRgba(hex, alpha) {
+  const { r, g, b } = ctHexToRgb(hex);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+function ctShiftLightness(hex, deltaL, deltaS = 0) {
+  const { h, s, l } = ctHexToHsl(hex);
+  return ctHslToHex(h, s + deltaS, l + deltaL);
+}
+
+function ctRelativeLuminance(hex) {
+  const { r, g, b } = ctHexToRgb(hex);
+  const chan = c => {
+    const s = c / 255;
+    return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+  };
+  return 0.2126 * chan(r) + 0.7152 * chan(g) + 0.0722 * chan(b);
+}
+
+function isDefaultCustomPalette(palette, mode) {
+  const def = CUSTOM_THEME_DEFAULTS[mode] || CUSTOM_THEME_DEFAULTS.dark;
+  if (!palette) return true;
+  return ctNormalizeHex(palette.accent) === def.accent
+      && ctNormalizeHex(palette.bg)     === def.bg
+      && ctNormalizeHex(palette.panel)  === def.panel
+      && ctNormalizeHex(palette.text)   === def.text;
+}
+
+function buildCustomThemeCss(palette, mode) {
+  const def = CUSTOM_THEME_DEFAULTS[mode] || CUSTOM_THEME_DEFAULTS.dark;
+  const accent = ctNormalizeHex(palette?.accent, def.accent);
+  const bg     = ctNormalizeHex(palette?.bg,     def.bg);
+  const panel  = ctNormalizeHex(palette?.panel,  def.panel);
+  const text   = ctNormalizeHex(palette?.text,   def.text);
+
+  const isDarkSurface = ctRelativeLuminance(panel) < 0.35;
+  const acHsl = ctHexToHsl(accent);
+
+  const bgDark = isDarkSurface
+    ? ctMix(ctShiftLightness(bg, 0.03), accent, 0.06)
+    : ctMix(ctShiftLightness(bg, -0.04), accent, 0.04);
+  const bgSecondary = isDarkSurface
+    ? ctMix(ctMix(bg, panel, 0.72), accent, 0.04)
+    : ctMix(panel, bg, 0.35);
+  const bgTertiary = isDarkSurface
+    ? ctMix(ctMix(panel, text, 0.07), accent, 0.07)
+    : ctMix(ctMix(bg, text, 0.04), accent, 0.05);
+
+  const panelHover = isDarkSurface
+    ? ctMix(ctShiftLightness(panel, 0.09), accent, 0.16)
+    : ctMix(ctShiftLightness(panel, -0.05), accent, 0.12);
+  const buttonHover = isDarkSurface
+    ? ctMix(ctShiftLightness(panel, 0.13), accent, 0.20)
+    : ctMix(ctShiftLightness(panel, -0.08), accent, 0.15);
+
+  const border = isDarkSurface
+    ? ctMix(ctMix(panel, text, 0.18), accent, 0.12)
+    : ctMix(ctMix(panel, text, 0.16), accent, 0.10);
+  const borderLight = isDarkSurface
+    ? ctMix(ctMix(panel, text, 0.26), accent, 0.16)
+    : ctMix(ctMix(panel, text, 0.10), accent, 0.08);
+  const groupBorder = isDarkSurface
+    ? ctMix(ctMix(panel, accent, 0.18), text, 0.08)
+    : border;
+
+  const textMuted = ctMix(ctMix(text, panel, 0.42), accent, 0.06);
+
+  const accentHover = isDarkSurface
+    ? (acHsl.l > 0.80 ? ctShiftLightness(accent, -0.10, 0.05) : ctShiftLightness(accent, 0.10, 0.05))
+    : (acHsl.l < 0.22 ? ctShiftLightness(accent, 0.10, 0.05) : ctShiftLightness(accent, -0.08, 0.05));
+  const accentBg = ctRgba(accent, isDarkSurface ? 0.13 : 0.12);
+  const activeQuestBg = ctRgba(accent, isDarkSurface ? 0.16 : 0.12);
+  const expandIcon = isDarkSurface ? ctMix(accent, '#ffffff', 0.42) : accent;
+  const btnText = ctRelativeLuminance(accent) > 0.40 ? '#050807' : '#ffffff';
+  const versionTag = isDarkSurface ? ctShiftLightness(accent, 0.04) : ctShiftLightness(accent, -0.06);
+
+  const codeBg = isDarkSurface
+    ? ctMix(ctMix(bg, panel, 0.45), accent, 0.05)
+    : ctMix(bg, panel, 0.35);
+  const codeBlockBg = isDarkSurface
+    ? 'rgba(0, 0, 0, 0.32)'
+    : ctRgba(ctMix(text, accent, 0.25), 0.12);
+  const codeText = isDarkSurface
+    ? ctHslToHex(acHsl.h, Math.max(acHsl.s, 0.55), Math.max(acHsl.l, 0.68))
+    : ctHslToHex(acHsl.h, Math.max(acHsl.s, 0.55), Math.min(acHsl.l, 0.36));
+  const autocompleteBg = isDarkSurface
+    ? ctMix(ctShiftLightness(panel, 0.05), accent, 0.10)
+    : panel;
+
+  const placeholderBg = ctMix(panel, text, 0.10);
+  const matConnector = ctMix(border, accent, 0.24);
+  const subtleOverlay = ctRgba(text, 0.08);
+  const imgFile = mode === 'light' ? 'image/osrohr_light.jpg' : 'image/osrohr_dark.jpg';
+  const headerOverlayEnd = ctMix(panel, accent, isDarkSurface ? 0.24 : 0.18);
+  const headerBgImage = `linear-gradient(135deg, ${ctRgba(bg, 0.84)} 0%, ${ctRgba(headerOverlayEnd, 0.76)} 100%), url("${imgFile}")`;
+
+  return `html:root {
+  --bg: ${bg};
+  --bg-dark: ${bgDark};
+  --bg-secondary: ${bgSecondary};
+  --bg-tertiary: ${bgTertiary};
+  --header-bg-image: ${headerBgImage};
+  --panel: ${panel};
+  --panel-hover: ${panelHover};
+  --button-hover: ${buttonHover};
+  --bg-hover: ${buttonHover};
+  --border: ${border};
+  --border-light: ${borderLight};
+  --group-border: ${groupBorder};
+  --text: ${text};
+  --text-muted: ${textMuted};
+  --accent: ${accent};
+  --accent-hover: ${accentHover};
+  --accent-bg: ${accentBg};
+  --expand-icon: ${expandIcon};
+  --btn-text: ${btnText};
+  --tab-active-text: ${btnText};
+  --version-tag: ${versionTag};
+  --active-quest-bg: ${activeQuestBg};
+  --code-bg: ${codeBg};
+  --code-block-bg: ${codeBlockBg};
+  --code-text: ${codeText};
+  --autocomplete-bg: ${autocompleteBg};
+  --placeholder-bg: ${placeholderBg};
+  --placeholder-text: ${textMuted};
+  --placeholder-border: ${borderLight};
+  --placeholder-icon: ${textMuted};
+  --mat-connector: ${matConnector};
+  --mat-connector-opts: ${border};
+  --subtle-overlay: ${subtleOverlay};
+}`;
+}
+
+function getCurrentThemeMode() {
+  return localStorage.getItem(LOCAL_STORAGE.theme) === 'light' ? 'light' : 'dark';
+}
+
+function applyCustomTheme(modeOverride) {
+  const mode = modeOverride || getCurrentThemeMode();
+  const existing = document.getElementById('custom-theme-stylesheet');
+  const ct = state.customTheme;
+  if (!ct || !ct.enabled) {
+    if (existing) existing.remove();
+    return;
+  }
+  const palette = ct[mode] || CUSTOM_THEME_DEFAULTS[mode];
+  if (isDefaultCustomPalette(palette, mode)) {
+    if (existing) existing.remove();
+    return;
+  }
+  let styleEl = existing;
+  if (!styleEl) {
+    styleEl = document.createElement('style');
+    styleEl.id = 'custom-theme-stylesheet';
+    document.head.appendChild(styleEl);
+  }
+  styleEl.textContent = buildCustomThemeCss(palette, mode);
+}
+
+function initCustomThemeFromConfig(cfg) {
+  const ct = cfg?.customTheme || {};
+  state.customTheme = {
+    enabled: !!ct.enabled,
+    dark: {
+      accent: ctNormalizeHex(ct.dark?.accent, CUSTOM_THEME_DEFAULTS.dark.accent),
+      bg:     ctNormalizeHex(ct.dark?.bg,     CUSTOM_THEME_DEFAULTS.dark.bg),
+      panel:  ctNormalizeHex(ct.dark?.panel,  CUSTOM_THEME_DEFAULTS.dark.panel),
+      text:   ctNormalizeHex(ct.dark?.text,   CUSTOM_THEME_DEFAULTS.dark.text),
+    },
+    light: {
+      accent: ctNormalizeHex(ct.light?.accent, CUSTOM_THEME_DEFAULTS.light.accent),
+      bg:     ctNormalizeHex(ct.light?.bg,     CUSTOM_THEME_DEFAULTS.light.bg),
+      panel:  ctNormalizeHex(ct.light?.panel,  CUSTOM_THEME_DEFAULTS.light.panel),
+      text:   ctNormalizeHex(ct.light?.text,   CUSTOM_THEME_DEFAULTS.light.text),
+    }
+  };
+  syncCustomThemeUI();
+  applyCustomTheme();
+}
+
+function syncCustomThemeUI(modeOverride) {
+  const ct = state.customTheme;
+  if (!ct) return;
+  const mode = modeOverride || getCurrentThemeMode();
+
+  const toggle = document.getElementById('settingCustomTheme');
+  if (toggle) toggle.checked = !!ct.enabled;
+
+  const controls = document.getElementById('customThemeControls');
+  if (controls) controls.classList.toggle('hidden', !ct.enabled);
+
+  const darkBtn  = document.getElementById('ctModeBtn_dark');
+  const lightBtn = document.getElementById('ctModeBtn_light');
+  if (darkBtn)  darkBtn.classList.toggle('active', mode === 'dark');
+  if (lightBtn) lightBtn.classList.toggle('active', mode === 'light');
+
+  const palette = ct[mode] || CUSTOM_THEME_DEFAULTS[mode];
+  ['accent', 'bg', 'panel', 'text'].forEach(key => {
+    const val = ctNormalizeHex(palette[key], CUSTOM_THEME_DEFAULTS[mode][key]);
+    const input = document.getElementById(`ctInput_${key}`);
+    const preview = document.getElementById(`ctPreview_${key}`);
+    if (input && input.value.toLowerCase() !== val) input.value = val;
+    if (preview) preview.style.backgroundColor = val;
+  });
+
+  const presetsRow = document.getElementById('ctPresetsRow');
+  if (presetsRow) {
+    const presets = CUSTOM_THEME_PRESETS[mode] || [];
+    presetsRow.innerHTML = presets.map(p => {
+      const isMatch = ctNormalizeHex(palette.accent) === p.accent
+                   && ctNormalizeHex(palette.bg)     === p.bg
+                   && ctNormalizeHex(palette.panel)  === p.panel
+                   && ctNormalizeHex(palette.text)   === p.text;
+      return `<button type="button" class="ct-preset-chip${isMatch ? ' active' : ''}" onclick="customThemeApplyPreset('${p.id}')" title="${p.name} theme preset">
+        <span class="ct-preset-dot" style="background: linear-gradient(135deg, ${p.accent} 50%, ${p.bg} 50%);"></span>
+        <span>${p.name}</span>
+      </button>`;
+    }).join('');
+  }
+}
+
+let ctSaveTimer = null;
+function scheduleSaveCustomTheme(immediate = false) {
+  if (ctSaveTimer) clearTimeout(ctSaveTimer);
+  if (immediate) {
+    saveConfig({ customTheme: state.customTheme });
+  } else {
+    ctSaveTimer = setTimeout(() => {
+      saveConfig({ customTheme: state.customTheme });
+    }, 250);
+  }
+}
+
+function settingSetCustomThemeEnabled(enabled) {
+  state.customTheme.enabled = !!enabled;
+  scheduleSaveCustomTheme(true);
+  syncCustomThemeUI();
+  applyCustomTheme();
+}
+
+function customThemeSelectMode(mode) {
+  const target = mode === 'light' ? 'light' : 'dark';
+  localStorage.setItem(LOCAL_STORAGE.theme, target);
+  applyTheme(target);
+  updateThemeIcon(target);
+}
+
+function customThemeSetColor(key, value, commit = false) {
+  if (!['accent', 'bg', 'panel', 'text'].includes(key)) return;
+  const mode = getCurrentThemeMode();
+  const hex = ctNormalizeHex(value, state.customTheme[mode][key]);
+  state.customTheme[mode][key] = hex;
+
+  const preview = document.getElementById(`ctPreview_${key}`);
+  if (preview) preview.style.backgroundColor = hex;
+
+  applyCustomTheme(mode);
+  syncCustomThemeUI(mode);
+  scheduleSaveCustomTheme(commit);
+}
+
+function customThemeApplyPreset(presetId) {
+  const mode = getCurrentThemeMode();
+  const presets = CUSTOM_THEME_PRESETS[mode] || [];
+  const found = presets.find(p => p.id === presetId);
+  if (!found) return;
+  state.customTheme[mode] = {
+    accent: found.accent,
+    bg:     found.bg,
+    panel:  found.panel,
+    text:   found.text,
+  };
+  applyCustomTheme(mode);
+  syncCustomThemeUI(mode);
+  scheduleSaveCustomTheme(true);
+}
+
+function customThemeAutoTint() {
+  const mode = getCurrentThemeMode();
+  const accent = ctNormalizeHex(state.customTheme[mode]?.accent, CUSTOM_THEME_DEFAULTS[mode].accent);
+  const { h, s } = ctHexToHsl(accent);
+  if (mode === 'dark') {
+    state.customTheme.dark = {
+      accent,
+      bg:    ctHslToHex(h, Math.min(s * 0.48, 0.38), 0.035),
+      panel: ctHslToHex(h, Math.min(s * 0.45, 0.40), 0.075),
+      text:  ctHslToHex(h, Math.min(s * 0.25, 0.25), 0.93),
+    };
+  } else {
+    state.customTheme.light = {
+      accent,
+      bg:    ctHslToHex(h, Math.min(s * 0.40, 0.35), 0.955),
+      panel: ctHslToHex(h, Math.min(s * 0.20, 0.18), 0.995),
+      text:  ctHslToHex(h, Math.min(s * 0.35, 0.30), 0.15),
+    };
+  }
+  applyCustomTheme(mode);
+  syncCustomThemeUI(mode);
+  scheduleSaveCustomTheme(true);
+}
+
+function customThemeResetMode() {
+  const mode = getCurrentThemeMode();
+  state.customTheme[mode] = { ...CUSTOM_THEME_DEFAULTS[mode] };
+  applyCustomTheme(mode);
+  syncCustomThemeUI(mode);
+  scheduleSaveCustomTheme(true);
+}
+
+window.settingSetCustomThemeEnabled = settingSetCustomThemeEnabled;
+window.customThemeSelectMode        = customThemeSelectMode;
+window.customThemeSetColor          = customThemeSetColor;
+window.customThemeApplyPreset       = customThemeApplyPreset;
+window.customThemeAutoTint          = customThemeAutoTint;
+window.customThemeResetMode         = customThemeResetMode;
 
 // ===== SEARCH WORKER SUBSYSTEM =====
 

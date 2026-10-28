@@ -39,6 +39,57 @@
             </div>
           </div>
           <div id="settingsPanel">
+            <div class="settings-row settings-row--custom-theme">
+              <div class="custom-theme-header-row">
+                <div>
+                  <div class="settings-label">Custom Theme</div>
+                  <div class="settings-sublabel">Personalize dark &amp; light palettes</div>
+                </div>
+                <label class="setting-toggle">
+                  <input type="checkbox" id="settingCustomTheme" onchange="settingSetCustomThemeEnabled(this.checked)">
+                  <span class="setting-toggle-slider"></span>
+                </label>
+              </div>
+              <div id="customThemeControls" class="custom-theme-controls hidden">
+                <div class="ct-top-bar">
+                  <div class="ct-mode-tabs" role="tablist" aria-label="Theme mode">
+                    <button type="button" id="ctModeBtn_dark" class="ct-mode-btn" onclick="customThemeSelectMode('dark')">🌙 Dark</button>
+                    <button type="button" id="ctModeBtn_light" class="ct-mode-btn" onclick="customThemeSelectMode('light')">☀ Light</button>
+                  </div>
+                  <div class="ct-actions">
+                    <button type="button" class="ct-action-btn" onclick="customThemeAutoTint()" title="Auto-tint background, panel &amp; text from your Accent color">✨ Tint</button>
+                    <button type="button" class="ct-action-btn" onclick="customThemeResetMode()" title="Reset current mode to default">↺ Reset</button>
+                  </div>
+                </div>
+                <div class="ct-swatches-grid">
+                  <label class="ct-swatch-card" title="Primary accent color (buttons, links, active states)">
+                    <span class="ct-swatch-preview" id="ctPreview_accent">
+                      <input type="color" id="ctInput_accent" class="ct-color-input" oninput="customThemeSetColor('accent', this.value, false)" onchange="customThemeSetColor('accent', this.value, true)">
+                    </span>
+                    <span class="ct-swatch-label">Accent</span>
+                  </label>
+                  <label class="ct-swatch-card" title="Main backdrop color">
+                    <span class="ct-swatch-preview" id="ctPreview_bg">
+                      <input type="color" id="ctInput_bg" class="ct-color-input" oninput="customThemeSetColor('bg', this.value, false)" onchange="customThemeSetColor('bg', this.value, true)">
+                    </span>
+                    <span class="ct-swatch-label">Bg</span>
+                  </label>
+                  <label class="ct-swatch-card" title="Sidebar and card surface color">
+                    <span class="ct-swatch-preview" id="ctPreview_panel">
+                      <input type="color" id="ctInput_panel" class="ct-color-input" oninput="customThemeSetColor('panel', this.value, false)" onchange="customThemeSetColor('panel', this.value, true)">
+                    </span>
+                    <span class="ct-swatch-label">Panel</span>
+                  </label>
+                  <label class="ct-swatch-card" title="Primary text color">
+                    <span class="ct-swatch-preview" id="ctPreview_text">
+                      <input type="color" id="ctInput_text" class="ct-color-input" oninput="customThemeSetColor('text', this.value, false)" onchange="customThemeSetColor('text', this.value, true)">
+                    </span>
+                    <span class="ct-swatch-label">Text</span>
+                  </label>
+                </div>
+                <div class="ct-presets-row" id="ctPresetsRow"></div>
+              </div>
+            </div>
             <div class="settings-row">
               <div>
                 <div class="settings-label">Show Location</div>
