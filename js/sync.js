@@ -341,7 +341,7 @@
 
     try {
       const workerUrl = window.CLOUDFLARE_WORKER_URL || 'https://osro-push-worker.osro-push-worker.workers.dev';
-      const res = await fetch(`${workerUrl}/sync`, {
+      const res = await fetch(`${workerUrl}/sync?app=hr`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -400,7 +400,7 @@
     try {
       const bodyStr = JSON.stringify({ app: 'hr', changes });
       const useKeepalive = bodyStr.length < 60000;
-      fetch(`${workerUrl}/sync`, {
+      fetch(`${workerUrl}/sync?app=hr`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -595,7 +595,7 @@
 
     try {
       const workerUrl = window.CLOUDFLARE_WORKER_URL || 'https://osro-push-worker.osro-push-worker.workers.dev';
-      await fetch(`${workerUrl}/sync`, {
+      await fetch(`${workerUrl}/sync?app=hr`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${session.token}` },
       });
