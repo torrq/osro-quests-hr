@@ -1973,6 +1973,9 @@ function handleURLNavigation() {
   
   const isParam = urlParams.get('is');
   state.itemSearchFilter = isParam ? isParam.toLowerCase() : "";
+  if (typeof window.syncTrackerStateFromURL === 'function') {
+    window.syncTrackerStateFromURL(urlParams);
+  }
   
   // Helper to ensure tab is active before selection
   const ensureTab = (tabName) => {
@@ -2076,6 +2079,11 @@ function updateURL(entityId = null, entityType = null, pushState = true) {
   } else {
     // Clean up items params when not on items tab
     ['il','ia','in','iv','id','is'].forEach(k => url.searchParams.delete(k));
+  }
+
+  // Persist deposit/unlock tracker search state in URL
+  if (typeof window.applyTrackerURLParams === 'function') {
+    window.applyTrackerURLParams(url);
   }
 
   if (pushState) {
@@ -2290,6 +2298,9 @@ document.addEventListener("DOMContentLoaded", () => {
         
         const isParam = urlParams.get('is');
         state.itemSearchFilter = isParam ? isParam.toLowerCase() : "";
+        if (typeof window.syncTrackerStateFromURL === 'function') {
+          window.syncTrackerStateFromURL(urlParams);
+        }
 
         if (tab === 'values') {
           if (state.currentTab !== 'items') switchTab('items', false);
