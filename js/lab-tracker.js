@@ -10,6 +10,8 @@
   let currentSearchDesc = false;
   let currentFilter = "all"; // 'all' | 'need' | 'want' | 'done'
   let currentClassFilter = "all"; // 'all' | 'card' | 'equip/costume'
+  let currentSourceFilter = "all";
+  let currentLocationFilter = "all";
   
   let sortState = {
     key: "default", // 'default', 'have', 'want', 'name', 'effect', 'class'
@@ -24,6 +26,8 @@
       currentSearchDesc = false;
       currentFilter = "all";
       currentClassFilter = "all";
+      currentSourceFilter = "all";
+      currentLocationFilter = "all";
       sortState = { key: "default", dir: "asc" };
     }
   }
@@ -62,6 +66,61 @@
     }
     
     return "Equip/Costume";
+  }
+
+  const SOURCE_GROUPS_ORDER = [
+    "Halloween Event",
+    "Donate",
+    "Christmas Event",
+    "Quest",
+    "Valentine Event",
+    "Quest/Donate",
+    "Gacha Machine",
+    "Headgear Points"
+  ];
+
+  const LOCATION_GROUPS_ORDER = [
+    "Upper",
+    "Mid",
+    "Lower",
+    "Garment",
+    "Costume Weapon"
+  ];
+
+  function getItemSource(desc) {
+    if (!desc) return "";
+    const rawDesc = Array.isArray(desc) ? desc.join("\n") : String(desc);
+    const cleanDesc = rawDesc.replace(/\^[0-9A-Fa-f]{6}/g, "");
+    const m = cleanDesc.match(/Source\s*:\s*([^\r\n]+)/i);
+    if (!m) return "";
+    const raw = m[1].trim();
+    const lower = raw.toLowerCase();
+    if (lower === "halloween event") return "Halloween Event";
+    if (lower === "christmas event" || lower === "christmas 2025") return "Christmas Event";
+    if (lower === "valentine event") return "Valentine Event";
+    if (lower === "donation exclusive" || lower === "donate shop" || lower === "donate exclusive" || lower === "donate") return "Donate";
+    if (lower === "quest shop" || lower === "quest item" || lower === "quest") return "Quest";
+    if (lower === "quest/donate") return "Quest/Donate";
+    if (lower === "gacha machine") return "Gacha Machine";
+    if (lower === "headgear points") return "Headgear Points";
+    return raw;
+  }
+
+  function getItemLocation(itemId, itemClass, itemName, desc) {
+    if (getItemCategory(itemId, itemClass, itemName) === "Card") return "";
+    if (!desc) return "";
+    const rawDesc = Array.isArray(desc) ? desc.join("\n") : String(desc);
+    const cleanDesc = rawDesc.replace(/\^[0-9A-Fa-f]{6}/g, "");
+    const m = cleanDesc.match(/(?:Equipped\s+On|Location)\s*:\s*([^\r\n]+)/i);
+    if (!m) return "";
+    const raw = m[1].trim();
+    const lower = raw.toLowerCase();
+    if (lower === "upper") return "Upper";
+    if (lower === "mid" || lower === "middle") return "Mid";
+    if (lower === "lower") return "Lower";
+    if (lower === "garment") return "Garment";
+    if (lower === "shadow weapon") return "Costume Weapon";
+    return raw;
   }
 
   // Aggregate stats from checked items in both lists
@@ -383,12 +442,17 @@
     // Resolve all item details
     const items = listData.items.map(id => {
       const itemInfo = DATA.items[id];
+      const name = itemInfo ? itemInfo.name : `Item #${id}`;
+      const desc = itemInfo ? itemInfo.desc : "";
+      const cls = listData.classes?.[id] || "";
       return {
         id: id,
-        name: itemInfo ? itemInfo.name : `Item #${id}`,
-        desc: itemInfo ? itemInfo.desc : "",
+        name: name,
+        desc: desc,
         effect: listData.effects?.[id] || "",
-        class: listData.classes?.[id] || ""
+        class: cls,
+        source: isDeposit ? getItemSource(desc) : "",
+        location: isDeposit ? getItemLocation(id, cls, name, desc) : ""
       };
     });
     
@@ -414,6 +478,14 @@
       if (isDeposit && currentClassFilter !== "all") {
         const cat = getItemCategory(item.id, item.class, item.name).toLowerCase();
         if (cat !== currentClassFilter) return false;
+      }
+
+      // Filter Source & Location (only for Deposits)
+      if (isDeposit && currentSourceFilter !== "all") {
+        if (item.source !== currentSourceFilter) return false;
+      }
+      if (isDeposit && currentLocationFilter !== "all") {
+        if (item.location !== currentLocationFilter) return false;
       }
       
       return true;
@@ -503,12 +575,55 @@
     }).join('');
 
     let classFilterHtml = "";
+    let subfilterHtml = "";
     if (isDeposit) {
       classFilterHtml = `
         <div class="dt-class-filters">
           <button class="dt-class-btn ${currentClassFilter === 'all' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'all')">All</button>
           <button class="dt-class-btn ${currentClassFilter === 'card' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'card')">Cards</button>
           <button class="dt-class-btn ${currentClassFilter === 'equip/costume' ? 'active' : ''}" onclick="window.setTrackerClassFilter('Deposit List', 'equip/costume')">Equip/Costume</button>
+        </div>
+      `;
+
+      const sourceCounts = {};
+      const locationCounts = {};
+      items.forEach(item => {
+        if (item.source) sourceCounts[item.source] = (sourceCounts[item.source] || 0) + 1;
+        if (item.location) locationCounts[item.location] = (locationCounts[item.location] || 0) + 1;
+      });
+
+      const sourceOptions = SOURCE_GROUPS_ORDER
+        .filter(g => sourceCounts[g])
+        .map(g => `<option value="${g}" ${currentSourceFilter === g ? 'selected' : ''}>${g} (${sourceCounts[g]})</option>`)
+        .join('');
+
+      const locationOptions = LOCATION_GROUPS_ORDER
+        .filter(g => locationCounts[g])
+        .map(g => `<option value="${g}" ${currentLocationFilter === g ? 'selected' : ''}>${g} (${locationCounts[g]})</option>`)
+        .join('');
+
+      const isCardClass = currentClassFilter === 'card';
+      const hasSubfilter = currentSourceFilter !== 'all' || currentLocationFilter !== 'all';
+
+      subfilterHtml = `
+        <div class="dt-subfilter-bar">
+          <div class="dt-select-group ${currentSourceFilter !== 'all' ? 'active' : ''}">
+            <span class="dt-select-label">Source</span>
+            <select class="dt-filter-select" onchange="window.setTrackerSourceFilter('Deposit List', this.value)" aria-label="Filter by Source">
+              <option value="all">All</option>
+              ${sourceOptions}
+            </select>
+          </div>
+          <div class="dt-select-group ${currentLocationFilter !== 'all' ? 'active' : ''} ${isCardClass ? 'disabled' : ''}">
+            <span class="dt-select-label">Location</span>
+            <select class="dt-filter-select" ${isCardClass ? 'disabled title="Location does not apply to Cards"' : ''} onchange="window.setTrackerLocationFilter('Deposit List', this.value)" aria-label="Filter by Location">
+              <option value="all">All</option>
+              ${locationOptions}
+            </select>
+          </div>
+          ${hasSubfilter ? `
+            <button class="dt-subfilter-clear" onclick="window.clearTrackerSubfilters('Deposit List')" title="Reset Source & Location filters">× Reset</button>
+          ` : ''}
         </div>
       `;
     }
@@ -561,6 +676,8 @@
               <button class="dt-filter-btn ${currentFilter === 'done' ? 'active' : ''}" onclick="window.setTrackerFilter('${listName}', 'done')">Done</button>
             </div>
           </div>
+          
+          ${subfilterHtml}
           
           <div class="dt-table-wrapper">
             <table class="dt-table">
@@ -666,6 +783,10 @@
       currentFilter = (tf === 'need' || tf === 'want' || tf === 'done') ? tf : 'all';
       const tc = params.get('tc');
       currentClassFilter = (tab === 'lab-tracker-deposits' && (tc === 'card' || tc === 'equip/costume')) ? tc : 'all';
+      const tsrc = params.get('tsrc');
+      currentSourceFilter = (tab === 'lab-tracker-deposits' && tsrc && SOURCE_GROUPS_ORDER.includes(tsrc)) ? tsrc : 'all';
+      const tloc = params.get('tloc');
+      currentLocationFilter = (tab === 'lab-tracker-deposits' && currentClassFilter !== 'card' && tloc && LOCATION_GROUPS_ORDER.includes(tloc)) ? tloc : 'all';
     }
   };
 
@@ -689,8 +810,20 @@
       } else {
         url.searchParams.delete('tc');
       }
+
+      if (window.state.currentTab === 'lab-tracker-deposits' && currentSourceFilter && currentSourceFilter !== 'all') {
+        url.searchParams.set('tsrc', currentSourceFilter);
+      } else {
+        url.searchParams.delete('tsrc');
+      }
+
+      if (window.state.currentTab === 'lab-tracker-deposits' && currentLocationFilter && currentLocationFilter !== 'all') {
+        url.searchParams.set('tloc', currentLocationFilter);
+      } else {
+        url.searchParams.delete('tloc');
+      }
     } else {
-      ['ts', 'td', 'tf', 'tc'].forEach(k => url.searchParams.delete(k));
+      ['ts', 'td', 'tf', 'tc', 'tsrc', 'tloc'].forEach(k => url.searchParams.delete(k));
     }
   };
 
@@ -768,6 +901,28 @@
 
   window.setTrackerClassFilter = function(listName, filter) {
     currentClassFilter = filter;
+    if (filter === 'card') {
+      currentLocationFilter = 'all';
+    }
+    trackerRenderDeposits();
+    updateTrackerURL();
+  };
+
+  window.setTrackerSourceFilter = function(listName, source) {
+    currentSourceFilter = source || 'all';
+    trackerRenderDeposits();
+    updateTrackerURL();
+  };
+
+  window.setTrackerLocationFilter = function(listName, location) {
+    currentLocationFilter = location || 'all';
+    trackerRenderDeposits();
+    updateTrackerURL();
+  };
+
+  window.clearTrackerSubfilters = function(listName) {
+    currentSourceFilter = 'all';
+    currentLocationFilter = 'all';
     trackerRenderDeposits();
     updateTrackerURL();
   };
