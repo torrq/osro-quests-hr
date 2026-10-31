@@ -6734,6 +6734,52 @@ a.bm-main-name:hover {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
+.dt-footer-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 10px 16px 10px;
+}
+
+.dt-footer-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.dt-footer-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 11px;
+  padding: 5px 10px;
+  transition: all 0.15s;
+  white-space: nowrap;
+  opacity: 0.75;
+}
+
+.dt-footer-btn:hover {
+  opacity: 1;
+  background: var(--panel-hover);
+  color: var(--text);
+  border-color: var(--border-light);
+}
+
+.dt-footer-btn--select:hover {
+  color: #50e3c2;
+  border-color: rgba(80, 227, 194, 0.4);
+}
+
+.dt-footer-btn--clear:hover {
+  color: var(--danger, #ff6b6b);
+  border-color: rgba(255, 107, 107, 0.4);
+}
+
 /* ===== AUTOLOOT: sibling tabs, overflow menu, row actions ===== */
 .al-crumb { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
 .al-set-tabs { display: flex; gap: 3px; align-items: flex-end; flex-wrap: wrap; border-bottom: 1px solid var(--border); margin-bottom: 12px; }

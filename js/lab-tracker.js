@@ -631,24 +631,12 @@
     mainContainer.innerHTML = `
       <div class="lab-main">
         <div class="lab-section">
-          <div class="lab-section-header" style="position: relative; display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 16px; width: 100%;">
-            <div style="display: flex; flex-direction: column; gap: 3px; flex-grow: 1;">
-              <span class="lab-section-title">
-                <span class="lab-section-icon" data-svg-icon="tracker14"></span>
-                ${isDeposit ? "Equipment & Costume Deposits" : "Card Unlocks"}
-              </span>
-              <span class="lab-section-meta">${counts.have} of ${counts.total} collected (${pct}%) — ${counts.want} wanted</span>
-            </div>
-            <div style="display: flex; gap: 8px; align-self: flex-start; margin-top: 2px; align-items: center;">
-              <span style="font-size: 11px; cursor: pointer; color: #50e3c2; text-decoration: underline;" onclick="window.trackerSelectAll('${listName}')" title="Mark all items as Have">Select All</span>
-              <span style="font-size: 11px; cursor: pointer; color: #ff6b6b; text-decoration: underline;" onclick="window.trackerClearAll('${listName}')" title="Mark all items as Not Have">Clear All</span>
-              <button class="dt-export-btn" onclick="window.importTrackerFromCsv('${listName}')">
-                Import CSV
-              </button>
-              <button class="dt-export-btn" onclick="window.exportTrackerToCsv('${listName}')">
-                Export CSV
-              </button>
-            </div>
+          <div class="lab-section-header">
+            <span class="lab-section-title">
+              <span class="lab-section-icon" data-svg-icon="tracker14"></span>
+              ${isDeposit ? "Equipment & Costume Deposits" : "Card Unlocks"}
+            </span>
+            <span class="lab-section-meta">${counts.have} of ${counts.total} collected (${pct}%) — ${counts.want} wanted</span>
           </div>
           
           <div class="dt-toolbar">
@@ -696,6 +684,25 @@
                 ${tableRows || `<tr><td colspan="${isDeposit ? 7 : 6}" class="empty-msg-centered">No items found matching the filter.</td></tr>`}
               </tbody>
             </table>
+          </div>
+
+          <div class="dt-footer-actions">
+            <div class="dt-footer-group">
+              <button class="dt-footer-btn" onclick="window.importTrackerFromCsv('${listName}')" title="Import progress from CSV">
+                ↑ Import CSV
+              </button>
+              <button class="dt-footer-btn" onclick="window.exportTrackerToCsv('${listName}')" title="Export progress to CSV">
+                ↓ Export CSV
+              </button>
+            </div>
+            <div class="dt-footer-group">
+              <button class="dt-footer-btn dt-footer-btn--select" onclick="window.trackerSelectAll('${listName}')" title="Mark all items as Have">
+                ✓ Select All
+              </button>
+              <button class="dt-footer-btn dt-footer-btn--clear" onclick="window.trackerClearAll('${listName}')" title="Mark all items as Not Have">
+                ✕ Clear All
+              </button>
+            </div>
           </div>
         </div>
       </div>
