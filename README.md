@@ -1,5 +1,4 @@
-<p align="center"><img width="340" height="125" alt="osro_quests_logo_v3" src="https://torrq.github.io/osro-quests-hr/image/osro_quests_logo_v3.png" />
-</p>
+<p align="center"><img width="80%" alt="OSRO Quests: HR" src="https://raw.githubusercontent.com/torrq/osro-quests-hr/refs/heads/main/image/osro_quests_logo_dark.svg" /></p>
 
 # OSRO Quests (HR)
 
@@ -10,7 +9,7 @@ A web-based quest, shop, material, autoloot, timer, and collection tracker tool 
 </h1>
 <p>&nbsp;</p>
 <p align="center">
-  <img width="961" height="616" alt="OSRO Quests Highrate" src="https://github.com/user-attachments/assets/5ffc7e99-babf-48f0-9226-3b652040148d" />
+   <img width="2850" height="912" alt="OSRO Quests Highrate" src="https://github.com/user-attachments/assets/66a45f63-616f-4bf0-bba3-dbe7eb4b489b" />
 </p>
 
 ## ✨ Features
