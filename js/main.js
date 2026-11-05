@@ -1577,6 +1577,10 @@ const TAB_ELEMENTS = {
     sidebar: "labList",
     render: ["renderLabSidebar", "renderLabMain"]
   },
+  'lab-missions': {
+    sidebar: "labList",
+    render: ["renderLabSidebar", "renderLabMain"]
+  },
   bookmarks: {
     sidebar: "bookmarksList",
     render: ["renderBookmarksSidebar", "renderBookmarksMain"]
@@ -1976,6 +1980,9 @@ function handleURLNavigation() {
   if (typeof window.syncTrackerStateFromURL === 'function') {
     window.syncTrackerStateFromURL(urlParams);
   }
+  if (typeof window.syncMissionStateFromURL === 'function') {
+    window.syncMissionStateFromURL(urlParams);
+  }
   
   // Helper to ensure tab is active before selection
   const ensureTab = (tabName) => {
@@ -2084,6 +2091,9 @@ function updateURL(entityId = null, entityType = null, pushState = true) {
   // Persist deposit/unlock tracker search state in URL
   if (typeof window.applyTrackerURLParams === 'function') {
     window.applyTrackerURLParams(url);
+  }
+  if (typeof window.applyMissionURLParams === 'function') {
+    window.applyMissionURLParams(url);
   }
 
   if (pushState) {
@@ -2300,6 +2310,9 @@ document.addEventListener("DOMContentLoaded", () => {
         state.itemSearchFilter = isParam ? isParam.toLowerCase() : "";
         if (typeof window.syncTrackerStateFromURL === 'function') {
           window.syncTrackerStateFromURL(urlParams);
+        }
+        if (typeof window.syncMissionStateFromURL === 'function') {
+          window.syncMissionStateFromURL(urlParams);
         }
 
         if (tab === 'values') {
