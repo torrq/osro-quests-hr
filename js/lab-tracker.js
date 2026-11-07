@@ -661,7 +661,7 @@
               <button class="dt-filter-btn ${currentFilter === 'all' ? 'active' : ''}" onclick="window.setTrackerFilter('${listName}', 'all')">All</button>
               <button class="dt-filter-btn ${currentFilter === 'need' ? 'active' : ''}" onclick="window.setTrackerFilter('${listName}', 'need')">Need</button>
               <button class="dt-filter-btn ${currentFilter === 'want' ? 'active' : ''}" onclick="window.setTrackerFilter('${listName}', 'want')">Want</button>
-              <button class="dt-filter-btn ${currentFilter === 'done' ? 'active' : ''}" onclick="window.setTrackerFilter('${listName}', 'done')">Done</button>
+              <button class="dt-filter-btn ${currentFilter === 'done' ? 'active' : ''}" onclick="window.setTrackerFilter('${listName}', 'done')">Have</button>
             </div>
           </div>
           
