@@ -940,7 +940,8 @@
             </span>
             <span class="mg-reward-chip mg-reward-chip--ap" title="${m.activityPts} Activity Points">
               ${apIcon}
-              <span class="mg-reward-label">${m.activityPts} Activity Points</span>
+              <span class="mg-reward-qty">${m.activityPts}×</span>
+              <span class="mg-reward-label">Activity Points</span>
             </span>
             ${m.rewards.map(r => renderRewardItemChip(r)).join('')}
           </div>
@@ -1044,7 +1045,7 @@
           <td class="mg-col-mobs">${mobsCell}</td>
           <td class="mg-col-items">${itemsCell}</td>
           <td class="mg-col-zeny" title="${m.zeny.toLocaleString()} Zeny">${formatCompactNumber(m.zeny)}</td>
-          <td class="mg-col-ap" title="${m.activityPts} Activity Points">${m.activityPts} AP</td>
+          <td class="mg-col-ap" title="${m.activityPts} Activity Points">${m.activityPts}</td>
           <td class="mg-col-rewards">${rewardsCell}</td>
         </tr>`;
     }).join('');
