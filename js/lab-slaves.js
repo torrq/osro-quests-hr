@@ -174,7 +174,6 @@
       <a class="ss-card-pill" href="${url}" onclick="event.preventDefault(); window.ssNavigateToItem(${card.id});" title="View ${esc(displayName)} (#${card.id}) in Item Database">
         ${iconHtml}
         <span class="ss-card-name">${esc(displayName)}</span>
-        <span class="ss-card-rate">${(card.rate / 100).toFixed(2)}%</span>
       </a>`;
   }
 
