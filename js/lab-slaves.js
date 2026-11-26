@@ -145,6 +145,9 @@
       if (ssState.sortKey === 'card') {
         va = a.cards[0] ? getCardDisplayName(a.cards[0]) : '';
         vb = b.cards[0] ? getCardDisplayName(b.cards[0]) : '';
+      } else if (ssState.sortKey === 'unlock') {
+        va = a.cards[0] ? getUnlockEffect(a.cards[0].id) : '';
+        vb = b.cards[0] ? getUnlockEffect(b.cards[0].id) : '';
       } else {
         va = a[ssState.sortKey];
         vb = b[ssState.sortKey];
@@ -162,22 +165,24 @@
     });
   }
 
-  function renderCardDropHtml(card) {
+  function renderCardPillHtml(card) {
     const displayName = getCardDisplayName(card);
-    const unlockEffect = getUnlockEffect(card.id);
-    const iconHtml = typeof renderItemIcon === 'function' ? renderItemIcon(card.id, 20) : '';
+    const iconHtml = typeof renderItemIcon === 'function' ? renderItemIcon(card.id, 16) : '';
     const url = typeof itemUrl === 'function' ? itemUrl(card.id) : `?item=${card.id}`;
-    const unlockIconHtml = window.SVG_ICONS?.unlock14 || '';
 
     return `
-      <div class="ss-card-drop">
-        <a class="ss-card-pill" href="${url}" onclick="event.preventDefault(); window.ssNavigateToItem(${card.id});" title="View ${esc(displayName)} (#${card.id}) in Item Database">
-          ${iconHtml}
-          <span class="ss-card-name">${esc(displayName)}</span>
-          <span class="ss-card-rate">${(card.rate / 100).toFixed(2)}%</span>
-        </a>
-        ${unlockEffect ? `<div class="ss-unlock-effect" title="Unlock Effect: ${esc(unlockEffect)}"><span class="ss-unlock-label" aria-label="Unlock Effect">${unlockIconHtml}</span><span>${esc(unlockEffect)}</span></div>` : ''}
-      </div>`;
+      <a class="ss-card-pill" href="${url}" onclick="event.preventDefault(); window.ssNavigateToItem(${card.id});" title="View ${esc(displayName)} (#${card.id}) in Item Database">
+        ${iconHtml}
+        <span class="ss-card-name">${esc(displayName)}</span>
+        <span class="ss-card-rate">${(card.rate / 100).toFixed(2)}%</span>
+      </a>`;
+  }
+
+  function renderUnlockEffectHtml(card) {
+    const unlockEffect = getUnlockEffect(card.id);
+    if (!unlockEffect) return '';
+    const unlockIconHtml = window.SVG_ICONS?.unlock14 || '';
+    return `<div class="ss-unlock-effect" title="Unlock Effect: ${esc(unlockEffect)}"><span class="ss-unlock-label" aria-label="Unlock Effect">${unlockIconHtml}</span><span>${esc(unlockEffect)}</span></div>`;
   }
 
   function renderResults(rows) {
@@ -225,7 +230,6 @@
                 <a class="ss-mob-link" href="${rmsMobUrl(r.targetId)}" target="_blank" rel="noopener noreferrer">${esc(r.targetName)}</a>
                 ${!r.respawnsAfterKill ? '<span class="ss-badge ss-badge-spawn">Initial Spawn Only</span>' : ''}
               </div>
-              <span class="ss-mob-meta">${esc(r.targetSprite)} · Lv ${r.targetLv}</span>
             </div>
           </td>
           <td>
@@ -236,15 +240,19 @@
                 ${r.casterMvp ? '<span class="ss-badge ss-badge-mvp">MVP</span>' : ''}
                 ${r.category === 'event' ? '<span class="ss-badge ss-badge-event">Event</span>' : ''}
               </div>
-              <span class="ss-mob-meta">${esc(r.casterSprite)} · Lv ${r.casterLv}</span>
             </div>
           </td>
           <td>
             <div class="ss-card-drops">
-              ${r.cards.map(c => renderCardDropHtml(c)).join('')}
+              ${r.cards.map(c => renderCardPillHtml(c)).join('')}
             </div>
           </td>
-          <td><span class="ss-mob-meta">Lv ${r.summonCount}</span></td>
+          <td>
+            <div class="ss-card-drops">
+              ${r.cards.map(c => renderUnlockEffectHtml(c)).join('') || '<span class="ss-mob-meta">—</span>'}
+            </div>
+          </td>
+          <td class="ss-col-qty"><span class="ss-qty">${r.summonCount}</span></td>
         </tr>
       `).join('');
     }
@@ -257,24 +265,33 @@
               <div class="ss-mob-top">
                 <button type="button" class="ss-id-pill" onclick="window.ssCopyText('${r.targetId}')" title="Copy Mob ID (${r.targetId})">${r.targetId}</button>
                 <a class="ss-mob-link" href="${rmsMobUrl(r.targetId)}" target="_blank" rel="noopener noreferrer">${esc(r.targetName)}</a>
+                ${!r.respawnsAfterKill ? '<span class="ss-badge ss-badge-spawn">Initial Spawn Only</span>' : ''}
               </div>
-              <span class="ss-mob-meta">${esc(r.targetSprite)} · Lv ${r.targetLv}</span>
             </div>
-            ${!r.respawnsAfterKill ? '<span class="ss-badge ss-badge-spawn">Initial Spawn Only</span>' : ''}
+            <div class="ss-m-qty-badge" title="Summon Quantity">
+              <span class="ss-m-qty-label">Qty</span>
+              <span class="ss-qty-inline">${r.summonCount}</span>
+            </div>
           </div>
-          <div class="ss-m-arrow">↳ Spawned by (Skill Lv ${r.summonCount})</div>
-          <div class="ss-mob-cell">
-            <div class="ss-mob-top">
+          <div class="ss-m-caster-row">
+            <div class="ss-m-caster-left">
+              <span class="ss-m-arrow">Spawned by</span>
               <button type="button" class="ss-id-pill" onclick="window.ssCopyText('${r.casterId}')" title="Copy Mob ID (${r.casterId})">${r.casterId}</button>
               <a class="ss-mob-link" href="${rmsMobUrl(r.casterId)}" target="_blank" rel="noopener noreferrer">${esc(r.casterName)}</a>
-              ${r.casterMvp ? '<span class="ss-badge ss-badge-mvp">MVP</span>' : ''}
-              ${r.category === 'event' ? '<span class="ss-badge ss-badge-event">Event</span>' : ''}
             </div>
-            <span class="ss-mob-meta">${esc(r.casterSprite)} · Lv ${r.casterLv}</span>
+            ${(r.casterMvp || r.category === 'event') ? `
+              <div class="ss-m-caster-badges">
+                ${r.casterMvp ? '<span class="ss-badge ss-badge-mvp">MVP</span>' : ''}
+                ${r.category === 'event' ? '<span class="ss-badge ss-badge-event">Event</span>' : ''}
+              </div>
+            ` : ''}
           </div>
           <div class="ss-m-card-foot">
             <div class="ss-card-drops">
-              ${r.cards.map(c => renderCardDropHtml(c)).join('')}
+              ${r.cards.map(c => renderCardPillHtml(c)).join('')}
+            </div>
+            <div class="ss-card-drops">
+              ${r.cards.map(c => renderUnlockEffectHtml(c)).join('')}
             </div>
           </div>
         </article>
@@ -336,7 +353,8 @@
                 <th data-sort="targetName" onclick="window.ssHandleSort('targetName')">Real Mob Spawned <span class="ss-sort-ind"></span></th>
                 <th data-sort="casterName" onclick="window.ssHandleSort('casterName')">Spawned By (Caster) <span class="ss-sort-ind"></span></th>
                 <th data-sort="card" onclick="window.ssHandleSort('card')">Card Drop <span class="ss-sort-ind"></span></th>
-                <th data-sort="summonCount" onclick="window.ssHandleSort('summonCount')">Qty <span class="ss-sort-ind"></span></th>
+                <th data-sort="unlock" onclick="window.ssHandleSort('unlock')">Unlock Effect <span class="ss-sort-ind"></span></th>
+                <th class="ss-col-qty" data-sort="summonCount" onclick="window.ssHandleSort('summonCount')">Qty <span class="ss-sort-ind"></span></th>
               </tr>
             </thead>
             <tbody id="ssTableBody"></tbody>
