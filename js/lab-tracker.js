@@ -862,10 +862,11 @@
 
   window.trackerSelectAll = function(listName) {
     if (!confirm(`Are you sure you want to mark ALL items in ${listName} as 'Have'?`)) return;
+    loadTrackerState();
     const stateKey = listName === "Deposit List" ? "deposits" : "unlocks";
     const subState = trackerState[stateKey];
-    const listData = getListData(listName);
-    if (!listData) return;
+    const listData = DATA.itemLists?.find(l => l.name === listName);
+    if (!listData || !listData.items) return;
     
     const now = Date.now();
     listData.items.forEach(id => {
@@ -875,17 +876,19 @@
     });
     
     saveTrackerState();
-    trackerRenderDashboard();
+    if (listName === "Deposit List") trackerRenderDeposits();
+    else trackerRenderUnlocks();
   };
 
   window.trackerClearAll = function(listName) {
     if (!confirm(`Are you sure you want to clear all progress for ${listName}? This action cannot be undone.`)) {
       return;
     }
+    loadTrackerState();
     const stateKey = listName === "Deposit List" ? "deposits" : "unlocks";
     const subState = trackerState[stateKey];
-    const listData = getListData(listName);
-    if (!listData) return;
+    const listData = DATA.itemLists?.find(l => l.name === listName);
+    if (!listData || !listData.items) return;
     
     const now = Date.now();
     listData.items.forEach(id => {
@@ -896,7 +899,8 @@
     });
     
     saveTrackerState();
-    trackerRenderDashboard();
+    if (listName === "Deposit List") trackerRenderDeposits();
+    else trackerRenderUnlocks();
   };
 
   window.setTrackerFilter = function(listName, filter) {
