@@ -1555,6 +1555,10 @@ const TAB_ELEMENTS = {
     sidebar: "labList",
     render: ["renderLabSidebar", "renderLabMain"]
   },
+  'lab-slaves': {
+    sidebar: "labList",
+    render: ["renderLabSidebar", "renderLabMain"]
+  },
   bookmarks: {
     sidebar: "bookmarksList",
     render: ["renderBookmarksSidebar", "renderBookmarksMain"]
