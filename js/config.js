@@ -32,6 +32,7 @@ const FILES = {
   icons:           "osrohr_item_icons.json",
   spriteMap:       "osrohr_sprite_map.json",
   itemLists:       "osrohr_item_lists.json",
+  mapAnalyzer:     "osrohr_map_analyzer.json",
 };
 
 const LOCAL_STORAGE = {
