@@ -3,7 +3,6 @@
 
 (function () {
   const IS_HR = typeof FLAVOR === 'string' && FLAVOR.toLowerCase().includes('highrate');
-  const MVP_DELAY_CUTOFF_MS = 300000; // 5 minutes
   const TOP_N_LIMIT = 50;
 
   let dataset = null;       // { maps, mobs, spawns }
@@ -26,7 +25,6 @@
     mob: 'ALL',
     delay: '',
     instantOnly: false,
-    noMvp: false,
     showAll: false,
     manualSort: false,
   };
@@ -152,7 +150,6 @@
       if (p.has('rm')) rotdState.mob = p.get('rm') || 'ALL';
       if (p.has('rd')) rotdState.delay = p.get('rd') || '';
       if (p.get('ris') === '1') rotdState.instantOnly = true;
-      if (p.get('rnm') === '1') rotdState.noMvp = true;
       if (p.has('rs')) {
         rotdState.sortKey = p.get('rs') || 'density';
         rotdState.manualSort = true;
@@ -175,7 +172,6 @@
       setOrDel('rm', rotdState.mob !== 'ALL' ? rotdState.mob : '');
       setOrDel('rd', rotdState.delay.trim());
       setOrDel('ris', rotdState.instantOnly ? '1' : '');
-      setOrDel('rnm', rotdState.noMvp ? '1' : '');
       const defaultSort = hasSpawnFilters() ? 'filterDensity' : 'density';
       setOrDel('rs', rotdState.sortKey !== defaultSort ? rotdState.sortKey : '');
       setOrDel('rsd', rotdState.sortDir !== 'desc' ? rotdState.sortDir : '');
@@ -439,7 +435,6 @@
       rotdState.mob !== 'ALL' ||
       rotdState.delay.trim() !== '' ||
       rotdState.instantOnly ||
-      rotdState.noMvp ||
       rotdState.search.trim() !== ''
     );
   }
@@ -450,8 +445,7 @@
       rotdState.element !== 'ALL' ||
       rotdState.mob !== 'ALL' ||
       rotdState.delay.trim() !== '' ||
-      rotdState.instantOnly ||
-      rotdState.noMvp
+      rotdState.instantOnly
     );
   }
 
@@ -470,10 +464,7 @@
   function getEffectiveDelayLimitMs() {
     if (rotdState.instantOnly) return 0;
     const delayText = rotdState.delay.trim();
-    const userLimit = delayText === '' ? null : toNum(delayText) * 1000;
-    if (rotdState.noMvp && userLimit !== null) return Math.min(userLimit, MVP_DELAY_CUTOFF_MS);
-    if (rotdState.noMvp) return MVP_DELAY_CUTOFF_MS;
-    return userLimit;
+    return delayText === '' ? null : toNum(delayText) * 1000;
   }
 
   function buildRows() {
@@ -931,7 +922,6 @@
     const mobEl = document.getElementById('rotdMobFilter');
     const delayEl = document.getElementById('rotdDelayValue');
     const instantBtn = document.getElementById('rotdInstantBtn');
-    const noMvpBtn = document.getElementById('rotdNoMvpBtn');
     const resetBtn = document.getElementById('rotdResetBtn');
     const raceChipsEl = document.getElementById('rotdRaceChips');
     const showAllBtn = document.getElementById('rotdShowAllBtn');
@@ -1026,16 +1016,6 @@
       });
     }
 
-    if (noMvpBtn) {
-      noMvpBtn.classList.toggle('active', rotdState.noMvp);
-      noMvpBtn.addEventListener('click', () => {
-        rotdState.noMvp = !rotdState.noMvp;
-        noMvpBtn.classList.toggle('active', rotdState.noMvp);
-        applyAutoSort();
-        renderRotdTable();
-      });
-    }
-
     if (showAllBtn) {
       showAllBtn.addEventListener('click', () => {
         rotdState.showAll = !rotdState.showAll;
@@ -1051,14 +1031,12 @@
         rotdState.mob = 'ALL';
         rotdState.delay = '';
         rotdState.instantOnly = false;
-        rotdState.noMvp = false;
         rotdState.manualSort = false;
         if (searchEl) searchEl.value = '';
         if (raceEl) raceEl.value = 'ALL';
         if (elemEl) elemEl.value = 'ALL';
         if (delayEl) delayEl.value = '';
         if (instantBtn) instantBtn.classList.remove('active');
-        if (noMvpBtn) noMvpBtn.classList.remove('active');
         updateRaceChipActive();
         rebuildMobFilter();
         applyAutoSort();
@@ -1162,8 +1140,6 @@
             </div>
             <button type="button" id="rotdInstantBtn" class="ss-chip ss-chip-green rotd-chip-icon ${rotdState.instantOnly ? 'active' : ''}"
               title="Show only instant-respawn (0s delay) spawns">${window.SVG_ICONS?.zap12 || ''}<span>Instant Spawn Only</span></button>
-            <button type="button" id="rotdNoMvpBtn" class="ss-chip ss-chip-green ${rotdState.noMvp ? 'active' : ''}"
-              title="Exclude spawns with respawn delay &gt; 5 minutes (MVPs &amp; long-delay bosses)">No MVPs (&gt;5m)</button>
             <button type="button" id="rotdResetBtn" class="btn btn-sm rotd-reset-btn hidden" title="Reset all filters">${window.SVG_ICONS?.rotateCcw12 || ''}<span>Reset</span></button>
           </div>
 
