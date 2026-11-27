@@ -3,7 +3,6 @@
 
 (function () {
   const IS_HR = typeof FLAVOR === 'string' && FLAVOR.toLowerCase().includes('highrate');
-  const TOP_N_LIMIT = 50;
 
   let dataset = null;       // { maps, mobs, spawns }
   let indexedMaps = [];     // pre-computed per-map records for fast filtering
@@ -25,7 +24,6 @@
     mob: 'ALL',
     delay: '',
     instantOnly: false,
-    showAll: false,
     manualSort: false,
   };
 
@@ -783,24 +781,18 @@
     const tableWrap = document.getElementById('rotdTableWrap');
     const emptyEl = document.getElementById('rotdEmptyState');
     const cardsEl = document.getElementById('rotdCardsList');
-    const footerEl = document.getElementById('rotdShowAllWrap');
     if (!body) return;
 
-    const allRows = buildRows();
-    allRows.sort((a, b) => {
+    const rows = buildRows();
+    rows.sort((a, b) => {
       let result = compareRows(a, b, rotdState.sortKey);
       if (result === 0) result = a.mapName.localeCompare(b.mapName);
       return result * (rotdState.sortDir === 'asc' ? 1 : -1);
     });
 
-    const isCapped = !rotdState.showAll && allRows.length > TOP_N_LIMIT;
-    const rows = isCapped ? allRows.slice(0, TOP_N_LIMIT) : allRows;
-
     const countEl = document.getElementById('rotdResultCount');
     if (countEl) {
-      countEl.textContent = isCapped
-        ? `Showing top ${rows.length} of ${allRows.length} matching (${totalValidMaps} total)`
-        : `Showing ${allRows.length} of ${totalValidMaps} maps`;
+      countEl.textContent = `Showing ${rows.length} of ${totalValidMaps} maps`;
     }
 
     const resetBtn = document.getElementById('rotdResetBtn');
@@ -811,20 +803,6 @@
     const clearSearchBtn = document.getElementById('rotdClearSearchBtn');
     if (clearSearchBtn) {
       clearSearchBtn.classList.toggle('visible', Boolean(rotdState.search));
-    }
-
-    if (footerEl) {
-      if (allRows.length > TOP_N_LIMIT) {
-        footerEl.classList.remove('hidden');
-        const btn = document.getElementById('rotdShowAllBtn');
-        if (btn) {
-          btn.textContent = rotdState.showAll
-            ? `Show Top ${TOP_N_LIMIT} Only`
-            : `Show All ${allRows.length} Maps`;
-        }
-      } else {
-        footerEl.classList.add('hidden');
-      }
     }
 
     body.innerHTML = '';
@@ -924,7 +902,6 @@
     const instantBtn = document.getElementById('rotdInstantBtn');
     const resetBtn = document.getElementById('rotdResetBtn');
     const raceChipsEl = document.getElementById('rotdRaceChips');
-    const showAllBtn = document.getElementById('rotdShowAllBtn');
 
     attachTooltipDelegation(document.getElementById('rotdResultBody'));
     attachTooltipDelegation(document.getElementById('rotdCardsList'));
@@ -1012,13 +989,6 @@
         rotdState.instantOnly = !rotdState.instantOnly;
         instantBtn.classList.toggle('active', rotdState.instantOnly);
         applyAutoSort();
-        renderRotdTable();
-      });
-    }
-
-    if (showAllBtn) {
-      showAllBtn.addEventListener('click', () => {
-        rotdState.showAll = !rotdState.showAll;
         renderRotdTable();
       });
     }
@@ -1186,9 +1156,6 @@
 
         <div class="rotd-cards-list" id="rotdCardsList"></div>
         <div class="rotd-empty" id="rotdEmptyState" style="display:none;">No maps match current filters.</div>
-        <div class="rotd-footer-actions hidden" id="rotdShowAllWrap">
-          <button type="button" id="rotdShowAllBtn" class="btn btn-sm"></button>
-        </div>
       </div>`;
 
     populateFilterDropdowns();

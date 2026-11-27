@@ -8313,12 +8313,6 @@ body.force-mobile-view .ss-stats { margin-left: 0; width: 100%; }
   font-weight: 700;
 }
 
-.rotd-footer-actions {
-  display: flex;
-  justify-content: center;
-  padding: 4px 0 8px;
-}
-
 .rotd-col-race {
   text-align: left;
   color: var(--warning);
